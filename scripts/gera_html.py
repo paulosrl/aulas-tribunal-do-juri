@@ -326,6 +326,23 @@ def split_key_value_item(text: str) -> tuple[str, str] | None:
     return label, body
 
 
+def extract_agent_access_url(text: str) -> str | None:
+    raw = text.strip()
+    raw = re.sub(r"^\*{0,2}\s*Acesse o agente:\s*\*{0,2}\s*", "", raw, flags=re.IGNORECASE)
+    if raw == text.strip():
+        return None
+
+    m_md = re.match(r"^\[([^\]]+)\]\((https?://[^)]+)\)\s*$", raw, flags=re.IGNORECASE)
+    if m_md:
+        return re.sub(r"\\(.)", r"\1", m_md.group(2).strip())
+
+    m_url = re.match(r"^(https?://\S+)\s*$", raw, flags=re.IGNORECASE)
+    if m_url:
+        return re.sub(r"\\(.)", r"\1", m_url.group(1).strip())
+
+    return None
+
+
 def classify_critical_paragraph(text: str) -> tuple[str, str] | None:
     t = clean_md_title(text).lower()
     if len(t) < 90:
@@ -881,6 +898,19 @@ def parse_markdown(markdown: str, md_dir: Path, section_mode: str = "semantic") 
             para.append(nxt)
             i += 1
         paragraph_text = " ".join(para)
+        agent_access_url = extract_agent_access_url(paragraph_text)
+        if agent_access_url:
+            safe_url = esc(agent_access_url)
+            current.blocks.append(
+                '<div class="copilot-agent-cta-wrap">\n'
+                f'  <a href="{safe_url}" class="copilot-agent-cta" target="_blank">\n'
+                '    <span class="copilot-agent-cta-icon" aria-hidden="true"></span>\n'
+                '    <span class="copilot-agent-cta-label">Acessar Agente Copilot</span>\n'
+                '    <i class="fas fa-external-link-alt" aria-hidden="true"></i>\n'
+                "  </a>\n"
+                "</div>"
+            )
+            continue
         authors_meta = parse_authors_line(paragraph_text)
         if authors_meta:
             authors, org, date = authors_meta
@@ -1312,17 +1342,6 @@ def apply_global_page_rules(html_out: str, out_path: Path, page_title: str, menu
 .nav-topic-subitems .nav-l {
   font-size: clamp(0.89rem, 1.035vw, 0.98rem) !important;
 }
-/* Responsive grid layout for index page */
-.content-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-  gap: 1.5rem;
-}
-@media (max-width: 992px) {
-  .content-container {
-    grid-template-columns: 1fr;
-  }
-}
 /* Clickable cards for index page */
 .caor-card a {
   color: var(--accent);
@@ -1337,6 +1356,47 @@ def apply_global_page_rules(html_out: str, out_path: Path, page_title: str, menu
 .caor-card h2 a {
   display: inline;
   border-bottom: 2px solid var(--accent);
+}
+.copilot-agent-cta-wrap {
+  margin: 0.5rem 0 1rem 0;
+}
+.copilot-agent-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.62rem;
+  background: linear-gradient(135deg, #8a1f3a 0%, #a72c55 40%, #c63d73 100%);
+  color: #fff !important;
+  border: 0;
+  border-radius: 12px;
+  padding: 0.7rem 1rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none !important;
+  border-bottom: none !important;
+  box-shadow: 0 6px 18px rgba(138, 31, 58, 0.28);
+  transition: transform 0.15s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+.copilot-agent-cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(138, 31, 58, 0.34);
+  opacity: 1;
+}
+.copilot-agent-cta .fa-external-link-alt {
+  font-size: 0.82rem;
+  opacity: 0.95;
+}
+.copilot-agent-cta-icon {
+  width: 1.05rem;
+  height: 1.05rem;
+  border-radius: 0.35rem;
+  background:
+    radial-gradient(circle at 28% 24%, #7dd3fc 0 34%, transparent 36%),
+    radial-gradient(circle at 72% 25%, #60a5fa 0 32%, transparent 34%),
+    radial-gradient(circle at 32% 76%, #34d399 0 31%, transparent 33%),
+    radial-gradient(circle at 72% 76%, #a78bfa 0 31%, transparent 33%),
+    #0b1020;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.2);
+  flex-shrink: 0;
 }
 </style>"""
     html_out = html_out.replace("</head>", f"{agent_css}\n</head>", 1)
