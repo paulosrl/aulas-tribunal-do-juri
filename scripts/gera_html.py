@@ -637,7 +637,9 @@ def parse_markdown(markdown: str, md_dir: Path, section_mode: str = "semantic") 
         if mb:
             candidate = clean_md_title(mb.group(1))
             # Só promove negrito puro a título quando é texto curto (evita transformar parágrafos em menu)
-            if len(candidate) <= 120 and not has_page_markers and not strict_h2_mode:
+            # EXCETO linhas que parecem ser labels ou chamadas de ação (Acesse, Link, Nota, etc)
+            is_label = any(k in candidate.lower() for k in ("acesse", "link:", "nota:", "atenção:", "dica:", "estratégia:"))
+            if len(candidate) <= 120 and not has_page_markers and not strict_h2_mode and not is_label:
                 current = Card(title=candidate, level=2)
                 cards.append(current)
                 i += 1
