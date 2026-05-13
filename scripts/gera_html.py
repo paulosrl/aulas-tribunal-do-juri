@@ -107,6 +107,7 @@ def esc(text: str) -> str:
 def inline_md(text: str) -> str:
     text = esc(text)
     text = re.sub(r"\\([\\`*_{}\[\]()#+\-.!])", r"\1", text)
+    text = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", lambda m: f'<a href="{m.group(2)}">{m.group(1)}</a>', text)
     text = re.sub(r"`([^`]+)`", lambda m: f"<code>{m.group(1)}</code>", text)
     text = re.sub(r"\*\*([^*]+)\*\*", lambda m: f"<strong>{m.group(1)}</strong>", text)
     text = re.sub(r"\*([^*]+)\*", lambda m: f"<em>{m.group(1)}</em>", text)
@@ -116,8 +117,9 @@ def inline_md(text: str) -> str:
 def strip_source_references(text: str) -> str:
     # Remove referências de fonte do tipo [[...]](https://...)
     # e variações escapadas: [\[...\]](...)
+    # NÃO remove links para claude.ai ou outras plataformas externas legítimas
     text = re.sub(
-        r"\s*\[(?:\\?\[)?[^\]]+(?:\\?\])?\]\(https?://[^\)]+\)",
+        r"\s*\[(?:\\?\[)?[^\]]+(?:\\?\])?\]\(https?://(?!claude\.ai)[^\)]+\)",
         "",
         text,
         flags=re.IGNORECASE,
@@ -341,6 +343,10 @@ def pick_icon(title: str, fallback: str = "fa-list-ol") -> str:
 
 
 def pick_item_icon(text: str) -> str:
+    # Se o item contém uma URL, usa ícone de link externo
+    if "http" in text.lower() or "claude.ai" in text.lower():
+        return "fa-link"
+
     t = clean_md_title(text).lower()
     rules = [
         (("promotor", "juiz", "decid"), "fa-gavel"),
@@ -848,6 +854,75 @@ def render_menu_from_labels(cards: List[Card], card_icons: List[str], menu_icon:
     return "\n".join(links) + "\n"
 
 
+def render_topics_accordion(out_path: Path, cards: List[Card], card_icons: List[str], menu_icon: str) -> str:
+    # Menu lateral com acordeão para o tópico atual e links de navegação para os demais
+    fixed_items: list[tuple[str, str, str]] = [
+        ("Abertura", "1.html", "fa-book-open"),
+        ("Engenharia de Prompts", "2.html", "fa-window-maximize"),
+        ("Agentes no Juri", "3.html", "fa-gavel"),
+        ("Elementos Gráficos no Juri", "4.html", "fa-chart-line"),
+        ("NotebookLM no Júri", "5.html", "fa-pencil-ruler"),
+        ("Favoritos", "favoritos.html", "fa-star"),
+    ]
+
+    numbered_pages = {"1.html", "2.html", "3.html", "4.html", "5.html"}
+
+    # Sub-itens da página atual (seções internas do acordeão)
+    sub_html = render_menu_from_labels(cards, card_icons, menu_icon)
+
+    items = []
+    num = 0
+    for label, filename, icon in fixed_items:
+        is_numbered = filename in numbered_pages
+        if is_numbered:
+            num += 1
+        is_current = out_path.name.lower() == filename.lower()
+
+        if is_current:
+            # Tópico atual: renderizar como cabeçalho clicável com sub-itens expandidos
+            num_span = f'<span class="nav-topic-num">{num}.</span> ' if is_numbered else ''
+            header = (
+                f'<span class="nav-l nav-topic-header nav-aula current">'
+                f'<i class="fas {icon}"></i> {num_span}{esc(label)}'
+                f' <i class="fas fa-chevron-down nav-topic-chevron"></i></span>'
+            )
+            items.append(
+                f'            <div class="nav-topic-group nav-topic-open">\n'
+                f'                {header}\n'
+                f'                <div class="nav-topic-subitems">\n'
+                f'{sub_html}'
+                f'                </div>\n'
+                f'            </div>'
+            )
+        elif filename in numbered_pages:
+            # Outros tópicos numerados: links colapsáveis
+            num_span = f'<span class="nav-topic-num">{num}.</span> '
+            header = (
+                f'<a href="{filename}" class="nav-l nav-topic-header">'
+                f'<i class="fas {icon}"></i> {num_span}{esc(label)}</a>'
+            )
+            items.append(
+                f'            <div class="nav-topic-group">\n'
+                f'                {header}\n'
+                f'            </div>'
+            )
+        else:
+            # Itens extras (ex.: Favoritos) sem numeração
+            topic_file = out_path.parent / filename
+            if topic_file.exists():
+                items.append(
+                    f'            <a href="{filename}" class="nav-l">'
+                    f'<i class="fas {icon}"></i> {esc(label)}</a>'
+                )
+            else:
+                items.append(
+                    f'            <span class="nav-l nav-locked">'
+                    f'<i class="fas {icon}"></i> {esc(label)} <i class="fas fa-lock"></i></span>'
+                )
+
+    return "\n".join(items) + ("\n" if items else "")
+
+
 def render_topics_menu(out_path: Path) -> str:
     # Menu lateral fixo para todas as páginas geradas.
     fixed_items: list[tuple[str, str, str]] = [
@@ -919,14 +994,6 @@ def apply_global_page_rules(html_out: str, out_path: Path, page_title: str, menu
         html_out,
         flags=re.IGNORECASE | re.DOTALL,
     )
-    # Remove o título principal do menu esquerdo (mantém apenas os itens do menu).
-    html_out = re.sub(
-        r'\s*<div class="nav-group-title">.*?</div>\s*',
-        "\n",
-        html_out,
-        count=1,
-        flags=re.IGNORECASE | re.DOTALL,
-    )
     # Remove rótulo legado "Curso" que aparece antes de "Início".
     html_out = re.sub(
         r'\s*<div class="nav-group-title">\s*Curso\s*</div>\s*',
@@ -974,11 +1041,9 @@ def main() -> None:
     _, _ = parse_menu_md(menu_md_path)
     primary_h1 = extract_h1_title(markdown)
     menu_group_title = clean_md_title(primary_h1) or clean_md_title(args.page_title)
-    menu_html = render_menu_from_labels(cards, card_icons, args.menu_icon)
-    topics_html = render_topics_menu(out_path)
+    topics_html = render_topics_accordion(out_path, cards, card_icons, args.menu_icon)
 
-    html_out = replace_between(template, MENU_START, MENU_END, menu_html)
-    html_out = replace_between(html_out, CONTENT_START, CONTENT_END, content_html)
+    html_out = replace_between(template, CONTENT_START, CONTENT_END, content_html)
     html_out = replace_between(html_out, TOPICS_START, TOPICS_END, topics_html)
     html_out = apply_global_page_rules(html_out, out_path, args.page_title, menu_group_title)
 
