@@ -58,7 +58,7 @@ ICON_POOL = [
 ]
 
 AGENT_HEADER_PAT = re.compile(
-    r"^(?:\*\*(\d+)\\?\.\*\*|(\d+)\\?\.)[\s\t]+\*\*([^*]+)\*\*"
+    r"^\*\*(\d+)\\?\.\*\*[\s\t]+\*\*([^*]+)\*\*"
 )
 
 
@@ -612,8 +612,8 @@ def parse_markdown(markdown: str, md_dir: Path, section_mode: str = "semantic") 
         # agent ficha: **N\.** **NOME** ou N\. **NOME**
         m_agent = AGENT_HEADER_PAT.match(line)
         if m_agent and current is not None:
-            num = m_agent.group(1) or m_agent.group(2)
-            name = clean_md_title(m_agent.group(3))
+            num = m_agent.group(1)
+            name = clean_md_title(m_agent.group(2))
             block_html, i = parse_agent_block(lines, i + 1, num, name)
             current.blocks.append(block_html)
             continue
