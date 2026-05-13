@@ -1310,6 +1310,32 @@ def apply_global_page_rules(html_out: str, out_path: Path, page_title: str, menu
 .nav-topic-subitems .nav-l {
   font-size: clamp(0.89rem, 1.035vw, 0.98rem) !important;
 }
+/* Responsive grid layout for index page */
+.content-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  gap: 1.5rem;
+}
+@media (max-width: 992px) {
+  .content-container {
+    grid-template-columns: 1fr;
+  }
+}
+/* Clickable cards for index page */
+.caor-card a {
+  color: var(--accent);
+  text-decoration: none;
+  cursor: pointer;
+  border-bottom: 2px solid var(--accent);
+  transition: opacity 0.2s ease;
+}
+.caor-card a:hover {
+  opacity: 0.8;
+}
+.caor-card h2 a {
+  display: inline;
+  border-bottom: 2px solid var(--accent);
+}
 </style>"""
     html_out = html_out.replace("</head>", f"{agent_css}\n</head>", 1)
 

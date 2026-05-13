@@ -707,6 +707,32 @@
 .nav-topic-subitems .nav-l {
   font-size: clamp(0.89rem, 1.035vw, 0.98rem) !important;
 }
+/* Responsive grid layout for index page */
+.content-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  gap: 1.5rem;
+}
+@media (max-width: 992px) {
+  .content-container {
+    grid-template-columns: 1fr;
+  }
+}
+/* Clickable cards for index page */
+.caor-card a {
+  color: var(--accent);
+  text-decoration: none;
+  cursor: pointer;
+  border-bottom: 2px solid var(--accent);
+  transition: opacity 0.2s ease;
+}
+.caor-card a:hover {
+  opacity: 0.8;
+}
+.caor-card h2 a {
+  display: inline;
+  border-bottom: 2px solid var(--accent);
+}
 </style>
 </head>
 <body>
@@ -765,7 +791,7 @@
             </section>
 
             <section id="p2" class="caor-card">
-                <h2><i class="fas fa-landmark"></i> Tópico 1 | Abertura | 1.html</h2>
+                <h2><i class="fas fa-landmark"></i> <a href="1.html" target="_blank">Tópico 1 | Abertura</a></h2>
                 <div class="single-spot">
                     <div class="single-spot-head"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span></div>
                     <p>Visão geral da trilha e fundamentos estratégicos.</p>
@@ -773,7 +799,7 @@
             </section>
 
             <section id="p3" class="caor-card">
-                <h2><i class="fas fa-pencil-ruler"></i> Tópico 2 | Engenharia de Prompts | 2.html</h2>
+                <h2><i class="fas fa-pencil-ruler"></i> <a href="2.html" target="_blank">Tópico 2 | Engenharia de Prompts</a></h2>
                 <div class="single-spot">
                     <div class="single-spot-head"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span></div>
                     <p>Métodos práticos para instruções mais precisas.</p>
@@ -781,7 +807,7 @@
             </section>
 
             <section id="p4" class="caor-card">
-                <h2><i class="fas fa-book-open"></i> Tópico 3 | Agentes no Juri - Fluxo | 3.html</h2>
+                <h2><i class="fas fa-book-open"></i> <a href="3.html" target="_blank">Tópico 3 | Agentes no Juri - Fluxo</a></h2>
                 <div class="single-spot">
                     <div class="single-spot-head"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span></div>
                     <p>Aplicação de agentes no fluxo do Tribunal do Júri.</p>
@@ -789,7 +815,7 @@
             </section>
 
             <section id="p5" class="caor-card">
-                <h2><i class="fas fa-window-maximize"></i> Tópico 4 | Elementos Gráficos no Juri | 4.html</h2>
+                <h2><i class="fas fa-window-maximize"></i> <a href="4.html" target="_blank">Tópico 4 | Elementos Gráficos no Juri</a></h2>
                 <div class="single-spot">
                     <div class="single-spot-head"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span></div>
                     <p>Recursos visuais para síntese e sustentação oral.</p>
@@ -797,7 +823,7 @@
             </section>
 
             <section id="p6" class="caor-card">
-                <h2><i class="fas fa-exclamation-triangle"></i> Tópico 5 | NotebookLM no Júri | 5.html</h2>
+                <h2><i class="fas fa-exclamation-triangle"></i> <a href="5.html" target="_blank">Tópico 5 | NotebookLM no Júri</a></h2>
                 <div class="single-spot">
                     <div class="single-spot-head"><span class="li-topic-icon icon-cog"><i class="fas fa-cog"></i></span></div>
                     <p>Organização analítica e leitura orientada por IA.</p>
@@ -805,7 +831,7 @@
             </section>
 
             <section id="p7" class="caor-card">
-                <h2><i class="fas fa-shield-halved"></i> Tópico 6 | Favoritos | favoritos.html</h2>
+                <h2><i class="fas fa-shield-halved"></i> <a href="favoritos.html" target="_blank">Tópico 6 | Favoritos</a></h2>
                 <div class="single-spot">
                     <div class="single-spot-head"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span></div>
                     <p>Atalhos rápidos para referências e materiais prioritários.</p>
