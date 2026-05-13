@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inteligência Artificial Aplicada ao Tribunal do Júri — Do Inquérito ao Plenário</title>
+    <title>Abertura</title>
     <style>
         :root {
             --bg-main: #f3f4f6;
@@ -593,6 +593,92 @@
             .single-spot, .text-discreet, .alert-box { padding: 0.72rem 0.78rem; }
         }
     </style>
+<style>
+.agent-card {
+  background: linear-gradient(135deg, rgba(138,31,58,0.05), rgba(138,31,58,0.02));
+  border: 1px solid rgba(138,31,58,0.2);
+  border-radius: 16px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: box-shadow 0.2s ease;
+}
+.agent-card:hover {
+  box-shadow: 0 4px 20px rgba(138,31,58,0.15);
+}
+.agent-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.agent-num-badge {
+  background: var(--accent);
+  color: white;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+.agent-card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.agent-card-title i {
+  font-size: 1.1rem;
+}
+.agent-card-body {
+  flex: 1;
+}
+.agent-desc {
+  color: var(--text-main);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0 0 0.5rem 0;
+}
+.agent-pillars {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.agent-pillars li {
+  padding-left: 1rem;
+  border-left: 3px solid var(--accent);
+  font-size: 0.85rem;
+  color: var(--text-main);
+  margin: 0;
+}
+.agent-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--accent);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-decoration: none;
+  align-self: flex-start;
+  transition: opacity 0.2s ease;
+}
+.agent-link-btn:hover {
+  opacity: 0.85;
+}
+</style>
 </head>
 <body>
     <header class="mobile-header">
@@ -619,21 +705,21 @@
             <div class="nav-topic-group nav-topic-open">
                 <span class="nav-l nav-topic-header nav-aula current"><i class="fas fa-book-open"></i> <span class="nav-topic-num">1.</span> Abertura <i class="fas fa-chevron-down nav-topic-chevron"></i></span>
                 <div class="nav-topic-subitems">
-            <a href="#p2" class="nav-l"><i class="fas fa-graduation-cap"></i> 📑 Sumário</a>
-            <a href="#p3" class="nav-l"><i class="fas fa-book-open"></i> O Papel da IA no Ministério Público</a>
-            <a href="#p4" class="nav-l"><i class="fas fa-window-maximize"></i> Contexto: A Base de Tudo</a>
-            <a href="#p5" class="nav-l"><i class="fas fa-pencil-ruler"></i> Exemplo prático — a palavra &quot;Diligência&quot;:</a>
-            <a href="#p6" class="nav-l"><i class="fas fa-exclamation-triangle"></i> A Janela de Contexto: Entrada, Saída e Limites</a>
-            <a href="#p7" class="nav-l"><i class="fas fa-shield-halved"></i> Entradas ruins geram respostas ruins.</a>
-            <a href="#p8" class="nav-l"><i class="fas fa-database"></i> Memória da IA: O Agora e O Sempre</a>
-            <a href="#p9" class="nav-l"><i class="fas fa-search"></i> Os 5 Pilares da Engenharia de Contexto</a>
-            <a href="#p10" class="nav-l"><i class="fas fa-check-circle"></i> Os 5 Erros Críticos no Uso da IA</a>
-            <a href="#p11" class="nav-l"><i class="fas fa-bullseye"></i> Boas Práticas Institucionais e LGPD</a>
-            <a href="#p12" class="nav-l"><i class="fas fa-sync"></i> Alucinações: Riscos, Casos Reais e o Protocolo dos 3 V&#x27;s</a>
-            <a href="#p13" class="nav-l"><i class="fas fa-star"></i> A Curadoria Processual: Preparação dos Autos para a IA</a>
-            <a href="#p14" class="nav-l"><i class="fas fa-brain"></i> Por que analisar 200 páginas se apenas 50 interessam ao Plenário?</a>
-            <a href="#p15" class="nav-l"><i class="fas fa-microscope"></i> O Retorno Real e a Fórmula da Alta Performance no Júri</a>
-            <a href="#p16" class="nav-l"><i class="fas fa-balance-scale"></i> [A Inteligência Artificial] + [A Curadoria Processual] + [VOCÊ] = Precisão Absoluta no Plenário</a>
+            <a href="#p2" class="nav-l"><i class="fas fa-book-open"></i> 📑 Sumário</a>
+            <a href="#p3" class="nav-l"><i class="fas fa-window-maximize"></i> O Papel da IA no Ministério Público</a>
+            <a href="#p4" class="nav-l"><i class="fas fa-pencil-ruler"></i> Contexto: A Base de Tudo</a>
+            <a href="#p5" class="nav-l"><i class="fas fa-exclamation-triangle"></i> Exemplo prático — a palavra &quot;Diligência&quot;:</a>
+            <a href="#p6" class="nav-l"><i class="fas fa-shield-halved"></i> A Janela de Contexto: Entrada, Saída e Limites</a>
+            <a href="#p7" class="nav-l"><i class="fas fa-database"></i> Entradas ruins geram respostas ruins.</a>
+            <a href="#p8" class="nav-l"><i class="fas fa-search"></i> Memória da IA: O Agora e O Sempre</a>
+            <a href="#p9" class="nav-l"><i class="fas fa-check-circle"></i> Os 5 Pilares da Engenharia de Contexto</a>
+            <a href="#p10" class="nav-l"><i class="fas fa-bullseye"></i> Os 5 Erros Críticos no Uso da IA</a>
+            <a href="#p11" class="nav-l"><i class="fas fa-sync"></i> Boas Práticas Institucionais e LGPD</a>
+            <a href="#p12" class="nav-l"><i class="fas fa-star"></i> Alucinações: Riscos, Casos Reais e o Protocolo dos 3 V&#x27;s</a>
+            <a href="#p13" class="nav-l"><i class="fas fa-brain"></i> A Curadoria Processual: Preparação dos Autos para a IA</a>
+            <a href="#p14" class="nav-l"><i class="fas fa-microscope"></i> Por que analisar 200 páginas se apenas 50 interessam ao Plenário?</a>
+            <a href="#p15" class="nav-l"><i class="fas fa-balance-scale"></i> O Retorno Real e a Fórmula da Alta Performance no Júri</a>
+            <a href="#p16" class="nav-l"><i class="fas fa-chart-line"></i> [A Inteligência Artificial] + [A Curadoria Processual] + [VOCÊ] = Precisão Absoluta no Plenário</a>
                 </div>
             </div>
             <div class="nav-topic-group">
@@ -669,7 +755,7 @@
             </section>
 
             <section id="p2" class="caor-card">
-                <h2><i class="fas fa-graduation-cap"></i> 📑 Sumário</h2>
+                <h2><i class="fas fa-book-open"></i> 📑 Sumário</h2>
                 <div class="table-wrapper">
                 <table class="caor-table">
                 <thead>
@@ -725,7 +811,7 @@
             </section>
 
             <section id="p3" class="caor-card">
-                <h2><i class="fas fa-book-open"></i> O Papel da IA no Ministério Público</h2>
+                <h2><i class="fas fa-window-maximize"></i> O Papel da IA no Ministério Público</h2>
                 <p>A IA não substituirá o Promotor de Justiça nem o servidor, mas poderá elevá-los a um novo patamar de eficiência. A inteligência artificial surge como uma ferramenta poderosa para auxiliar os profissionais do Direito, especialmente no Ministério Público.</p>
                 <ul>
                 <li class="li-kv"><div class="li-kv-label">Atividade-Fim:</div><div class="li-kv-body">Foco no raciocínio jurídico complexo e na formulação de teses — tarefa exclusivamente humana.</div></li>
@@ -735,7 +821,7 @@
             </section>
 
             <section id="p4" class="caor-card">
-                <h2><i class="fas fa-window-maximize"></i> Contexto: A Base de Tudo</h2>
+                <h2><i class="fas fa-pencil-ruler"></i> Contexto: A Base de Tudo</h2>
                 <p><strong>Definição:</strong> Contexto é todo o texto fornecido ao modelo de linguagem no momento da interação: a pergunta atual, as interações anteriores, os arquivos anexados e as instruções do sistema. É a partir do contexto que a IA gera sua resposta.</p>
                 <p>O contexto inclui:</p>
                 <ul>
@@ -748,7 +834,7 @@
             </section>
 
             <section id="p5" class="caor-card">
-                <h2><i class="fas fa-pencil-ruler"></i> Exemplo prático — a palavra &quot;Diligência&quot;:</h2>
+                <h2><i class="fas fa-exclamation-triangle"></i> Exemplo prático — a palavra &quot;Diligência&quot;:</h2>
                 <ul>
                 <li class="li-kv"><div class="li-kv-label">Sem contexto:</div><div class="li-kv-body">A IA interpreta de forma absurda e literal (presteza e veículo).</div></li>
                 <li class="li-kv"><div class="li-kv-label">Com contexto jurídico:</div><div class="li-kv-body">A IA interpreta corretamente — diligência investigativa de coleta de provas no local do crime.</div></li>
@@ -757,12 +843,12 @@
             </section>
 
             <section id="p6" class="caor-card">
-                <h2><i class="fas fa-exclamation-triangle"></i> A Janela de Contexto: Entrada, Saída e Limites</h2>
+                <h2><i class="fas fa-shield-halved"></i> A Janela de Contexto: Entrada, Saída e Limites</h2>
                 <h3><i class="fas fa-window-maximize"></i> A Dinâmica da Janela de Contexto</h3>
             </section>
 
             <section id="p7" class="caor-card">
-                <h2><i class="fas fa-shield-halved"></i> Entradas ruins geram respostas ruins.</h2>
+                <h2><i class="fas fa-database"></i> Entradas ruins geram respostas ruins.</h2>
                 <ul>
                 <li class="li-kv"><div class="li-kv-label">Janela de Entrada:</div><div class="li-kv-body">Prompt (instrução), textos copiados, arquivos anexados, histórico da sessão. O modelo lê o bloco inteiro de uma vez.</div></li>
                 <li class="li-kv"><div class="li-kv-label">Janela de Saída:</div><div class="li-kv-body">A resposta gerada.</div></li>
@@ -780,23 +866,37 @@
             </section>
 
             <section id="p8" class="caor-card">
-                <h2><i class="fas fa-database"></i> Memória da IA: O Agora e O Sempre</h2>
+                <h2><i class="fas fa-search"></i> Memória da IA: O Agora e O Sempre</h2>
                 <h3><i class="fas fa-window-maximize"></i> O Agora (Janela de Contexto)</h3>
-                <ol class="icon-ol">
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>Temporária e Finita:</strong> Foco imediato na sessão atual.</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>Visão Limitada:</strong> A IA só enxerga os documentos &quot;em cima da mesa&quot;.</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>Amnésia por Design:</strong> Zera completamente a cada nova conversa.</span></li>
-                </ol>
-                <h3><i class="fas fa-window-maximize"></i> O Sempre (Memória da IA)</h3>
-                <ol class="icon-ol">
-                <li class="li-topic"><span class="li-topic-icon icon-bullseye"><i class="fas fa-bullseye"></i></span><span class="li-topic-text"><strong>Memória Estática:</strong> Conhecimento-base congelado no treinamento (possui data de corte).</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-window-maximize"><i class="fas fa-window-maximize"></i></span><span class="li-topic-text"><strong>Memória Dinâmica (RAG):</strong> Busca seletiva em bases oficiais do MPPA quando solicitada.</span></li>
-                </ol>
-                <blockquote><strong>Insight Crítico:</strong> A IA não tem memória contínua de ontem. Sem contexto na &quot;mesa&quot;, ela inventa fatos para preencher as lacunas.</blockquote>
+                <div class="agent-card">
+                  <div class="agent-card-header"><span class="agent-num-badge">1</span><div class="agent-card-title"><i class="fas fa-bolt"></i> Temporária e Finita:</div></div>
+                  <div class="agent-card-body"></div>
+                  
+                </div>
+                <div class="agent-card">
+                  <div class="agent-card-header"><span class="agent-num-badge">2</span><div class="agent-card-title"><i class="fas fa-bolt"></i> Visão Limitada:</div></div>
+                  <div class="agent-card-body"></div>
+                  
+                </div>
+                <div class="agent-card">
+                  <div class="agent-card-header"><span class="agent-num-badge">3</span><div class="agent-card-title"><i class="fas fa-bolt"></i> Amnésia por Design:</div></div>
+                  <div class="agent-card-body"><p class="agent-desc">### O Sempre (Memória da IA)</p></div>
+                  
+                </div>
+                <div class="agent-card">
+                  <div class="agent-card-header"><span class="agent-num-badge">1</span><div class="agent-card-title"><i class="fas fa-bolt"></i> Memória Estática:</div></div>
+                  <div class="agent-card-body"></div>
+                  
+                </div>
+                <div class="agent-card">
+                  <div class="agent-card-header"><span class="agent-num-badge">2</span><div class="agent-card-title"><i class="fas fa-bolt"></i> Memória Dinâmica (RAG):</div></div>
+                  <div class="agent-card-body"><p class="agent-desc">&gt; <strong>Insight Crítico:</strong> A IA não tem memória contínua de ontem. Sem contexto na &quot;mesa&quot;, ela inventa fatos para preencher as lacunas. ***</p></div>
+                  
+                </div>
             </section>
 
             <section id="p9" class="caor-card">
-                <h2><i class="fas fa-search"></i> Os 5 Pilares da Engenharia de Contexto</h2>
+                <h2><i class="fas fa-check-circle"></i> Os 5 Pilares da Engenharia de Contexto</h2>
                 <p>Engenharia de contexto não é apenas fazer uma pergunta. É arquitetar exatamente o que entra na mesa de trabalho para controlar o que sai.</p>
                 <div class="table-wrapper">
                 <table class="caor-table">
@@ -850,7 +950,7 @@
             </section>
 
             <section id="p10" class="caor-card">
-                <h2><i class="fas fa-check-circle"></i> Os 5 Erros Críticos no Uso da IA</h2>
+                <h2><i class="fas fa-bullseye"></i> Os 5 Erros Críticos no Uso da IA</h2>
                 <div class="table-wrapper">
                 <table class="caor-table">
                 <thead>
@@ -898,26 +998,42 @@
             </section>
 
             <section id="p11" class="caor-card">
-                <h2><i class="fas fa-bullseye"></i> Boas Práticas Institucionais e LGPD</h2>
+                <h2><i class="fas fa-sync"></i> Boas Práticas Institucionais e LGPD</h2>
                 <h3><i class="fas fa-pencil-ruler"></i> Protocolo MPPA — 6 Diretrizes</h3>
-                <ol class="icon-ol">
-                <li class="li-topic"><span class="li-topic-icon icon-window-maximize"><i class="fas fa-window-maximize"></i></span><span class="li-topic-text"><strong>Nova conversa para cada análise complexa:</strong> Inicie uma nova sessão e forneça o contexto completo a cada vez — evita contradições e perda de premissas.</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-window-maximize"><i class="fas fa-window-maximize"></i></span><span class="li-topic-text"><strong>Anexe apenas o necessário:</strong> PDFs e imagens consomem tokens valiosos da janela de contexto. Fragmentar é mais eficiente.</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>Crie uma biblioteca de prompts institucionais:</strong> Templates por tipo de peça — denúncia, alegações finais, notificação, TAC — padroniza e agiliza.</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-window-maximize"><i class="fas fa-window-maximize"></i></span><span class="li-topic-text"><strong>Use ferramentas pagas para documentos extensos:</strong> Copilot M365, Claude Pro e ChatGPT Plus oferecem janelas maiores e acesso direto a PDFs.</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-shield-halved"><i class="fas fa-shield-halved"></i></span><span class="li-topic-text"><strong>Nunca publique dados sigilosos sem política adequada:</strong> Verificar LGPD e política de privacidade da ferramenta antes de inserir dados de procedimentos.</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>Valide toda informação gerada por IA:</strong> Toda saída da IA deve ser revisada por um membro ou servidor antes de qualquer uso oficial.</span></li>
-                </ol>
-                <h3><i class="fas fa-shield-halved"></i> Privacidade e Dados Sigilosos (LGPD)</h3>
-                <p><strong>O Risco:</strong> Plataformas abertas podem processar e armazenar os dados inseridos. Nunca publique dados sigilosos sem observar a política institucional.</p>
-                <div class="alert-box alert-critical">
-                <span class="badge"><i class="fas fa-shield-halved"></i></span>
-                <p><strong>Filtro de proteção:</strong> Se o processo contém dados sensíveis ou sigilosos, prefira usar uma IA local ou uma nuvem certificada pelo seu órgão. Caso não seja possível, uma solução seria anonimizar os dados originais antes de submeter à IA. Substitua dados pessoais por nomes fictícios.</p>
+                <div class="agent-card">
+                  <div class="agent-card-header"><span class="agent-num-badge">1</span><div class="agent-card-title"><i class="fas fa-bolt"></i> Nova conversa para cada análise complexa:</div></div>
+                  <div class="agent-card-body"></div>
+                  
+                </div>
+                <div class="agent-card">
+                  <div class="agent-card-header"><span class="agent-num-badge">2</span><div class="agent-card-title"><i class="fas fa-bolt"></i> Anexe apenas o necessário:</div></div>
+                  <div class="agent-card-body"></div>
+                  
+                </div>
+                <div class="agent-card">
+                  <div class="agent-card-header"><span class="agent-num-badge">3</span><div class="agent-card-title"><i class="fas fa-bolt"></i> Crie uma biblioteca de prompts institucionais:</div></div>
+                  <div class="agent-card-body"></div>
+                  
+                </div>
+                <div class="agent-card">
+                  <div class="agent-card-header"><span class="agent-num-badge">4</span><div class="agent-card-title"><i class="fas fa-bolt"></i> Use ferramentas pagas para documentos extensos:</div></div>
+                  <div class="agent-card-body"></div>
+                  
+                </div>
+                <div class="agent-card">
+                  <div class="agent-card-header"><span class="agent-num-badge">5</span><div class="agent-card-title"><i class="fas fa-bolt"></i> Nunca publique dados sigilosos sem política adequada:</div></div>
+                  <div class="agent-card-body"></div>
+                  
+                </div>
+                <div class="agent-card">
+                  <div class="agent-card-header"><span class="agent-num-badge">6</span><div class="agent-card-title"><i class="fas fa-bolt"></i> Valide toda informação gerada por IA:</div></div>
+                  <div class="agent-card-body"><p class="agent-desc">### Privacidade e Dados Sigilosos (LGPD) <strong>O Risco:</strong> Plataformas abertas podem processar e armazenar os dados inseridos. Nunca publique dados sigilosos sem observar a política institucional. <strong>Filtro de proteção:</strong> Se o processo contém dados sensíveis ou sigilosos, prefira usar uma IA local ou uma nuvem certificada pelo seu órgão. Caso não seja possível, uma solução seria anonimizar os dados originais antes de submeter à IA. Substitua dados pessoais por nomes fictícios. ***</p></div>
+                  
                 </div>
             </section>
 
             <section id="p12" class="caor-card">
-                <h2><i class="fas fa-sync"></i> Alucinações: Riscos, Casos Reais e o Protocolo dos 3 V&#x27;s</h2>
+                <h2><i class="fas fa-star"></i> Alucinações: Riscos, Casos Reais e o Protocolo dos 3 V&#x27;s</h2>
                 <h3><i class="fas fa-exclamation-triangle"></i> O que são alucinações?</h3>
                 <p>É quando o modelo gera uma informação incorreta, inventada ou imprecisa, mas com absoluta aparência de verdade. Por prever palavras em vez de buscar fatos, a IA pode criar conexões linguísticas perfeitas para eventos que nunca existiram.</p>
                 <blockquote><strong>A IA não é inteligente. Ela é sensível ao contexto.</strong> A IA executa. O usuário pensa, decide e assina. Use com contexto. Atue com responsabilidade.</blockquote>
@@ -935,38 +1051,51 @@
                 <h3><i class="fas fa-star"></i> O Perigo da Delegação</h3>
                 <p><em>&quot;Qual a probabilidade de condenação no caso concreto em anexo? Dê um percentual e sua justificativa.&quot;</em> — Delegar o julgamento de mérito e a previsão probabilística diretamente à máquina é um atalho perigoso. A IA estrutura a informação; quem julga o cenário é o Promotor.</p>
                 <h3><i class="fas fa-pencil-ruler"></i> O Protocolo Antialucinação (Os 3 V&#x27;s)</h3>
-                <ol class="icon-ol">
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>Verificar:</strong> Exija links da IA. Cheque as bases factuais oficiais. Nunca confie em citações automáticas.</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>Validar:</strong> Garanta que a fundamentação jurídica apresentada está correta e não sofre com dados defasados da data de corte.</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>Vincular:</strong> Lembre-se de que a responsabilidade final pelo argumento inserido na peça está vinculada inteiramente a você, não à máquina.</span></li>
-                </ol>
+                <div class="agent-card">
+                  <div class="agent-card-header"><span class="agent-num-badge">1</span><div class="agent-card-title"><i class="fas fa-bolt"></i> Verificar:</div></div>
+                  <div class="agent-card-body"></div>
+                  
+                </div>
+                <div class="agent-card">
+                  <div class="agent-card-header"><span class="agent-num-badge">2</span><div class="agent-card-title"><i class="fas fa-bolt"></i> Validar:</div></div>
+                  <div class="agent-card-body"></div>
+                  
+                </div>
+                <div class="agent-card">
+                  <div class="agent-card-header"><span class="agent-num-badge">3</span><div class="agent-card-title"><i class="fas fa-bolt"></i> Vincular:</div></div>
+                  <div class="agent-card-body"><p class="agent-desc">***</p></div>
+                  
+                </div>
             </section>
 
             <section id="p13" class="caor-card">
-                <h2><i class="fas fa-star"></i> A Curadoria Processual: Preparação dos Autos para a IA</h2>
+                <h2><i class="fas fa-brain"></i> A Curadoria Processual: Preparação dos Autos para a IA</h2>
             </section>
 
             <section id="p14" class="caor-card">
-                <h2><i class="fas fa-brain"></i> Por que analisar 200 páginas se apenas 50 interessam ao Plenário?</h2>
+                <h2><i class="fas fa-microscope"></i> Por que analisar 200 páginas se apenas 50 interessam ao Plenário?</h2>
                 <p>A IA reflete exatamente a qualidade dos autos que recebe. Se o processo contém lixo probatório (petições de juntada, páginas em branco, ofícios irrelevantes), a máquina dispersa sua capacidade de análise, degradando o resultado.</p>
                 <p><strong>Analogia do Jornalista:</strong> Um jornalista não publica os cadernos de anotações brutos. Ele filtra fontes, verifica a relevância, descarta o ruído e estrutura a narrativa.</p>
                 <h3><i class="fas fa-database"></i> Três Passos Essenciais na Preparação dos Autos</h3>
-                <ol class="icon-ol">
-                <li class="li-topic"><span class="li-topic-icon icon-database"><i class="fas fa-database"></i></span><span class="li-topic-text"><strong>Filtrar (A Limpeza):</strong> Remover informações redundantes, certidões genéricas e peças de mero expediente do arquivo PDF antes do upload. Conservar apenas o cerne probatório (ex.: laudos, depoimentos).</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>Estruturar (A Ordem):</strong> Organizar os fatos de forma cronológica e hierárquica. Agrupar os depoimentos separados das perícias técnicas. Fragmentar arquivos muito grandes em blocos temáticos.</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>Contextualizar (O Foco):</strong> Fornecer os elementos vitais da tese acusatória para que a máquina compreenda o norte do raciocínio essencial do processo sem adivinhar o objetivo.</span></li>
-                </ol>
-                <h3><i class="fas fa-star"></i> O Funil de Refinamento</h3>
-                <ul>
-                <li class="li-kv"><div class="li-kv-label">Topo — Entrada Bruta (400 páginas):</div><div class="li-kv-body">O processo integral com ruídos, laudos em branco e documentos secundários. Risco de alucinação alto.</div></li>
-                <li class="li-kv"><div class="li-kv-label">Meio — A Intervenção Humana:</div><div class="li-kv-body">O filtro de curadoria processual removendo o lixo probatório.</div></li>
-                <li class="li-kv"><div class="li-kv-label">Base — Insumo Refinado (70 páginas):</div><div class="li-kv-body">A IA recebe apenas o extrato essencial.</div></li>
-                </ul>
-                <blockquote>Ao processar apenas a essência dos autos, a IA não dispersa tokens. A resposta entregue torna-se exponencialmente mais afiada e eficaz para a estratégia do Júri.</blockquote>
+                <div class="agent-card">
+                  <div class="agent-card-header"><span class="agent-num-badge">1</span><div class="agent-card-title"><i class="fas fa-bolt"></i> Filtrar (A Limpeza):</div></div>
+                  <div class="agent-card-body"></div>
+                  
+                </div>
+                <div class="agent-card">
+                  <div class="agent-card-header"><span class="agent-num-badge">2</span><div class="agent-card-title"><i class="fas fa-bolt"></i> Estruturar (A Ordem):</div></div>
+                  <div class="agent-card-body"></div>
+                  
+                </div>
+                <div class="agent-card">
+                  <div class="agent-card-header"><span class="agent-num-badge">3</span><div class="agent-card-title"><i class="fas fa-bolt"></i> Contextualizar (O Foco):</div></div>
+                  <div class="agent-card-body"><p class="agent-desc">### O Funil de Refinamento <em>   <strong>Topo — Entrada Bruta (400 páginas):</strong> O processo integral com ruídos, laudos em branco e documentos secundários. Risco de alucinação alto. </em>   <strong>Meio — A Intervenção Humana:</strong> O filtro de curadoria processual removendo o lixo probatório. <em>   <strong>Base — Insumo Refinado (70 páginas):</strong> A IA recebe apenas o extrato essencial. &gt; Ao processar apenas a essência dos autos, a IA não dispersa tokens. A resposta entregue torna-se exponencialmente mais afiada e eficaz para a estratégia do Júri. </em>**</p></div>
+                  
+                </div>
             </section>
 
             <section id="p15" class="caor-card">
-                <h2><i class="fas fa-microscope"></i> O Retorno Real e a Fórmula da Alta Performance no Júri</h2>
+                <h2><i class="fas fa-balance-scale"></i> O Retorno Real e a Fórmula da Alta Performance no Júri</h2>
                 <h3><i class="fas fa-gavel"></i> Benefícios Concretos na Rotina do Tribunal do Júri</h3>
                 <div class="table-wrapper">
                 <table class="caor-table">
@@ -1000,7 +1129,7 @@
             </section>
 
             <section id="p16" class="caor-card">
-                <h2><i class="fas fa-balance-scale"></i> [A Inteligência Artificial] + [A Curadoria Processual] + [VOCÊ] = Precisão Absoluta no Plenário</h2>
+                <h2><i class="fas fa-chart-line"></i> [A Inteligência Artificial] + [A Curadoria Processual] + [VOCÊ] = Precisão Absoluta no Plenário</h2>
                 <blockquote>A Inteligência Artificial não substitui o domínio dos autos. Na preparação para o Júri, evite a lei do menor esforço. O trabalho inteligente exige, impreterivelmente, o direcionamento humano.</blockquote>
             </section>
 <!-- AUTO:CONTENT:END -->

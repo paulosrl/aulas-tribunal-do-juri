@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Segurança, Compliance e Regulamentação de IA</title>
+    <title>Elementos Gráficos</title>
     <style>
         :root {
             --bg-main: #f3f4f6;
@@ -593,6 +593,92 @@
             .single-spot, .text-discreet, .alert-box { padding: 0.72rem 0.78rem; }
         }
     </style>
+<style>
+.agent-card {
+  background: linear-gradient(135deg, rgba(138,31,58,0.05), rgba(138,31,58,0.02));
+  border: 1px solid rgba(138,31,58,0.2);
+  border-radius: 16px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: box-shadow 0.2s ease;
+}
+.agent-card:hover {
+  box-shadow: 0 4px 20px rgba(138,31,58,0.15);
+}
+.agent-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.agent-num-badge {
+  background: var(--accent);
+  color: white;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+.agent-card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.agent-card-title i {
+  font-size: 1.1rem;
+}
+.agent-card-body {
+  flex: 1;
+}
+.agent-desc {
+  color: var(--text-main);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0 0 0.5rem 0;
+}
+.agent-pillars {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.agent-pillars li {
+  padding-left: 1rem;
+  border-left: 3px solid var(--accent);
+  font-size: 0.85rem;
+  color: var(--text-main);
+  margin: 0;
+}
+.agent-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--accent);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-decoration: none;
+  align-self: flex-start;
+  transition: opacity 0.2s ease;
+}
+.agent-link-btn:hover {
+  opacity: 0.85;
+}
+</style>
 </head>
 <body>
     <header class="mobile-header">
@@ -628,21 +714,21 @@
             <div class="nav-topic-group nav-topic-open">
                 <span class="nav-l nav-topic-header nav-aula current"><i class="fas fa-chart-line"></i> <span class="nav-topic-num">4.</span> Elementos Gráficos no Juri <i class="fas fa-chevron-down nav-topic-chevron"></i></span>
                 <div class="nav-topic-subitems">
-            <a href="#p2" class="nav-l"><i class="fas fa-shield-halved"></i> 📑Sumário</a>
+            <a href="#p2" class="nav-l"><i class="fas fa-chart-line"></i> 📑Sumário</a>
             <a href="#p3" class="nav-l"><i class="fas fa-book-open"></i> Por que visualizar?</a>
             <a href="#p4" class="nav-l"><i class="fas fa-window-maximize"></i> Clareza, Persuasão e Precisão</a>
             <a href="#p5" class="nav-l"><i class="fas fa-pencil-ruler"></i> Clareza</a>
             <a href="#p6" class="nav-l"><i class="fas fa-exclamation-triangle"></i> Persuasão</a>
-            <a href="#p7" class="nav-l"><i class="fas fa-database"></i> Precisão</a>
-            <a href="#p8" class="nav-l"><i class="fas fa-search"></i> O que a IA e o fluxograma entregam ao Promotor</a>
-            <a href="#p9" class="nav-l"><i class="fas fa-check-circle"></i> Feminicídio: Linha do Tempo Cronológica das Ameaças</a>
-            <a href="#p10" class="nav-l"><i class="fas fa-bullseye"></i> O Ciclo da Violência Doméstica</a>
-            <a href="#p11" class="nav-l"><i class="fas fa-sync"></i> O Ciclo da Violência Doméstica: Entenda a Espiral do Silêncio</a>
-            <a href="#p12" class="nav-l"><i class="fas fa-star"></i> Fase Investigativa / Plenário: Feminicídio</a>
-            <a href="#p13" class="nav-l"><i class="fas fa-brain"></i> Homicídio Mercenário: Mapeamento do Pagamento pelo Crime</a>
-            <a href="#p14" class="nav-l"><i class="fas fa-microscope"></i> O que foi descoberto</a>
-            <a href="#p15" class="nav-l"><i class="fas fa-balance-scale"></i> O que foi feito</a>
-            <a href="#p16" class="nav-l"><i class="fas fa-chart-line"></i> Impacto no Plenário e Robustez Probatória</a>
+            <a href="#p7" class="nav-l"><i class="fas fa-shield-halved"></i> Precisão</a>
+            <a href="#p8" class="nav-l"><i class="fas fa-database"></i> O que a IA e o fluxograma entregam ao Promotor</a>
+            <a href="#p9" class="nav-l"><i class="fas fa-search"></i> Feminicídio: Linha do Tempo Cronológica das Ameaças</a>
+            <a href="#p10" class="nav-l"><i class="fas fa-check-circle"></i> O Ciclo da Violência Doméstica</a>
+            <a href="#p11" class="nav-l"><i class="fas fa-bullseye"></i> O Ciclo da Violência Doméstica: Entenda a Espiral do Silêncio</a>
+            <a href="#p12" class="nav-l"><i class="fas fa-sync"></i> Fase Investigativa / Plenário: Feminicídio</a>
+            <a href="#p13" class="nav-l"><i class="fas fa-star"></i> Homicídio Mercenário: Mapeamento do Pagamento pelo Crime</a>
+            <a href="#p14" class="nav-l"><i class="fas fa-brain"></i> O que foi descoberto</a>
+            <a href="#p15" class="nav-l"><i class="fas fa-microscope"></i> O que foi feito</a>
+            <a href="#p16" class="nav-l"><i class="fas fa-balance-scale"></i> Impacto no Plenário e Robustez Probatória</a>
             <a href="#p17" class="nav-l"><i class="fas fa-handshake"></i> Execução financeira do crime</a>
             <a href="#p18" class="nav-l"><i class="fas fa-fingerprint"></i> O que este conjunto de provas demonstra</a>
                 </div>
@@ -671,7 +757,7 @@
             </section>
 
             <section id="p2" class="caor-card">
-                <h2><i class="fas fa-shield-halved"></i> 📑Sumário</h2>
+                <h2><i class="fas fa-chart-line"></i> 📑Sumário</h2>
                 <div class="table-wrapper">
                 <table class="caor-table">
                 <thead>
@@ -744,7 +830,7 @@
             </section>
 
             <section id="p7" class="caor-card">
-                <h2><i class="fas fa-database"></i> Precisão</h2>
+                <h2><i class="fas fa-shield-halved"></i> Precisão</h2>
                 <div class="single-spot">
                     <div class="single-spot-head"><span class="li-topic-icon icon-database"><i class="fas fa-database"></i></span></div>
                     <p>Dados visuais expõem contradições que o texto oculta. Hora a hora, mensagem a mensagem, transferência a transferência — sem margem para dúvida.</p>
@@ -752,14 +838,14 @@
             </section>
 
             <section id="p8" class="caor-card">
-                <h2><i class="fas fa-search"></i> O que a IA e o fluxograma entregam ao Promotor</h2>
+                <h2><i class="fas fa-database"></i> O que a IA e o fluxograma entregam ao Promotor</h2>
                 <div class="text-discreet">
                 <p>A <strong>IA</strong> aliada ao <strong>fluxograma</strong> organiza grandes volumes de informação e entrega uma leitura cronológica e lógica dos fatos. O resultado é um material visual que confronta versões defensivas e sustenta a acusação de forma direta e objetiva.</p>
                 </div>
             </section>
 
             <section id="p9" class="caor-card">
-                <h2><i class="fas fa-check-circle"></i> Feminicídio: Linha do Tempo Cronológica das Ameaças</h2>
+                <h2><i class="fas fa-search"></i> Feminicídio: Linha do Tempo Cronológica das Ameaças</h2>
                 <p>No <strong>feminicídio</strong>, a linha do tempo posiciona cada mensagem no tempo. O jurado acompanha a escalada de violência dia a dia — da primeira ameaça ao crime.</p>
                 <ul>
                 <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Dezenas de mensagens extraídas do celular da vítima documentam a progressão das ameaças.</span></li>
@@ -770,7 +856,7 @@
             </section>
 
             <section id="p10" class="caor-card">
-                <h2><i class="fas fa-bullseye"></i> O Ciclo da Violência Doméstica</h2>
+                <h2><i class="fas fa-check-circle"></i> O Ciclo da Violência Doméstica</h2>
                 <div class="single-spot">
                     <div class="single-spot-head"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span></div>
                     <p>🖼️ <em>Texto extraído de imagem anexa</em></p>
@@ -778,7 +864,7 @@
             </section>
 
             <section id="p11" class="caor-card">
-                <h2><i class="fas fa-sync"></i> O Ciclo da Violência Doméstica: Entenda a Espiral do Silêncio</h2>
+                <h2><i class="fas fa-bullseye"></i> O Ciclo da Violência Doméstica: Entenda a Espiral do Silêncio</h2>
                 <ul>
                 <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>A Escalada da Dominação</strong>: da violência psicológica à física, iniciando com críticas e silêncio e progredindo para empurrões, socos e destruição de objetos.</span></li>
                 <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>O Isolamento Estratégico</strong>: o agressor afasta a vítima da família, amigos e trabalho para eliminar redes de apoio.</span></li>
@@ -791,7 +877,7 @@
             </section>
 
             <section id="p12" class="caor-card">
-                <h2><i class="fas fa-star"></i> Fase Investigativa / Plenário: Feminicídio</h2>
+                <h2><i class="fas fa-sync"></i> Fase Investigativa / Plenário: Feminicídio</h2>
                 <p>Na <strong>fase investigativa e no plenário</strong>, a <strong>linha do tempo</strong> reconstrói o homicídio hora a hora:</p>
                 <ul>
                 <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Localização de cada envolvido no tempo.</span></li>
@@ -802,7 +888,7 @@
             </section>
 
             <section id="p13" class="caor-card">
-                <h2><i class="fas fa-brain"></i> Homicídio Mercenário: Mapeamento do Pagamento pelo Crime</h2>
+                <h2><i class="fas fa-star"></i> Homicídio Mercenário: Mapeamento do Pagamento pelo Crime</h2>
                 <div class="single-spot">
                     <div class="single-spot-head"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span></div>
                     <p>No <strong>homicídio mercenário</strong>, a autoridade policial obteve judicialmente o histórico de transferências bancárias do mandante e do executor.</p>
@@ -810,7 +896,7 @@
             </section>
 
             <section id="p14" class="caor-card">
-                <h2><i class="fas fa-microscope"></i> O que foi descoberto</h2>
+                <h2><i class="fas fa-brain"></i> O que foi descoberto</h2>
                 <div class="single-spot">
                     <div class="single-spot-head"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span></div>
                     <p>Extratos isolados somavam dezenas de páginas.</p>
@@ -818,7 +904,7 @@
             </section>
 
             <section id="p15" class="caor-card">
-                <h2><i class="fas fa-balance-scale"></i> O que foi feito</h2>
+                <h2><i class="fas fa-microscope"></i> O que foi feito</h2>
                 <ul>
                 <li class="li-topic"><span class="li-topic-icon icon-database"><i class="fas fa-database"></i></span><span class="li-topic-text">Extração e organização de dados bancários.</span></li>
                 <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Análise com <strong>IA</strong> para identificar padrões, conexões e relações relevantes.</span></li>
@@ -828,7 +914,7 @@
             </section>
 
             <section id="p16" class="caor-card">
-                <h2><i class="fas fa-chart-line"></i> Impacto no Plenário e Robustez Probatória</h2>
+                <h2><i class="fas fa-balance-scale"></i> Impacto no Plenário e Robustez Probatória</h2>
             </section>
 
             <section id="p17" class="caor-card">

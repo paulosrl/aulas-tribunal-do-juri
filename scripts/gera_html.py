@@ -57,6 +57,55 @@ ICON_POOL = [
     "fa-rocket",
 ]
 
+AGENT_HEADER_PAT = re.compile(
+    r"^(?:\*\*(\d+)\\?\.\*\*|(\d+)\\?\.)[\s\t]+\*\*([^*]+)\*\*"
+)
+
+
+def pick_agent_icon(name: str) -> str:
+    name_lower = clean_md_title(name).lower()
+    if any(k in name_lower for k in ("investiga", "analista")):
+        return "fa-search"
+    if any(k in name_lower for k in ("denúncia", "denuncia")):
+        return "fa-gavel"
+    if any(k in name_lower for k in ("diligência", "diligencia")):
+        return "fa-tasks"
+    if "arquivamento" in name_lower:
+        return "fa-database"
+    if any(k in name_lower for k in ("prisão", "prisao", "revogação", "revogacao")):
+        return "fa-lock"
+    if any(k in name_lower for k in ("laudo", "pericial")):
+        return "fa-microscope"
+    if any(k in name_lower for k in ("depoimento", "incoerência", "incoerencia")):
+        return "fa-eye-slash"
+    if any(k in name_lower for k in ("tese", "defensiva", "antecipação", "antecipacao")):
+        return "fa-shield-halved"
+    if any(k in name_lower for k in ("firac", "jurídica", "juridica")):
+        return "fa-balance-scale"
+    if any(k in name_lower for k in ("audiência", "audiencia", "perguntas")):
+        return "fa-calendar-alt"
+    if any(k in name_lower for k in ("cross", "interrogatório", "interrogatorio")):
+        return "fa-user-tie"
+    if any(k in name_lower for k in ("advogado", "diabo")):
+        return "fa-user-secret"
+    if any(k in name_lower for k in ("alegação", "alegacao", "memorial")):
+        return "fa-tasks"
+    if "embargo" in name_lower:
+        return "fa-exclamation-circle"
+    if any(k in name_lower for k in ("razões", "razoes", "recursal")):
+        return "fa-level-up-alt"
+    if any(k in name_lower for k in ("contrarrazões", "contrarrazoes")):
+        return "fa-users-slash"
+    if "roteiro" in name_lower:
+        return "fa-list-ol"
+    if any(k in name_lower for k in ("sustentação", "sustentacao", "oral")):
+        return "fa-play-circle"
+    if any(k in name_lower for k in ("quesitação", "quesitacao", "quesito")):
+        return "fa-check-circle"
+    if "dashboard" in name_lower:
+        return "fa-chart-line"
+    return "fa-bolt"
+
 
 @dataclass
 class Card:
@@ -105,9 +154,26 @@ def esc(text: str) -> str:
 
 
 def inline_md(text: str) -> str:
+    placeholders: dict[str, str] = {}
+
+    def _store(fragment: str) -> str:
+        key = f"\x02{len(placeholders)}\x03"
+        placeholders[key] = fragment
+        return key
+
+    def _make_link(url: str, label: str) -> str:
+        clean_url = re.sub(r"\\(.)", r"\1", url)
+        return _store(f'<a href="{clean_url}" target="_blank">{esc(label)}</a>')
+
+    text = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", lambda m: _make_link(m.group(2), m.group(1)), text)
+    text = re.sub(r'(?<!["\'/])(https?://[^\s<>"{}^\[\]]+?)(?=[\s\[\]()]|$)', lambda m: _make_link(m.group(1), m.group(1)), text)
+
     text = esc(text)
+
+    for key, fragment in placeholders.items():
+        text = text.replace(key, fragment)
+
     text = re.sub(r"\\([\\`*_{}\[\]()#+\-.!])", r"\1", text)
-    text = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", lambda m: f'<a href="{m.group(2)}">{m.group(1)}</a>', text)
     text = re.sub(r"`([^`]+)`", lambda m: f"<code>{m.group(1)}</code>", text)
     text = re.sub(r"\*\*([^*]+)\*\*", lambda m: f"<strong>{m.group(1)}</strong>", text)
     text = re.sub(r"\*([^*]+)\*", lambda m: f"<em>{m.group(1)}</em>", text)
@@ -115,29 +181,25 @@ def inline_md(text: str) -> str:
 
 
 def strip_source_references(text: str) -> str:
-    # Remove referências de fonte do tipo [[...]](https://...)
-    # e variações escapadas: [\[...\]](...)
-    # NÃO remove links para claude.ai ou outras plataformas externas legítimas
-    text = re.sub(
-        r"\s*\[(?:\\?\[)?[^\]]+(?:\\?\])?\]\(https?://(?!claude\.ai)[^\)]+\)",
-        "",
-        text,
-        flags=re.IGNORECASE,
-    )
-    # Regra fixa: remove qualquer referência para SharePoint/Copilot Chat
-    # mesmo quando o label vier truncado como mppabr-my....epoint.com.
+    # Remove APENAS referências automáticas de ferramentas (SharePoint, Copilot Chat)
+    # Preserva links úteis como m365.cloud.microsoft (agentes) e claude.ai
+
+    # Regra 1: Remove referências para SharePoint/Copilot Chat (truncadas)
     text = re.sub(
         r"\s*\[[^\]]*mppabr-my.*?epoint\.com[^\]]*\]\(https?://[^\)]*sharepoint\.com[^\)]*\)",
         "",
         text,
         flags=re.IGNORECASE,
     )
+
+    # Regra 2: Remove referências para Microsoft Copilot Chat path específico
     text = re.sub(
         r"\s*\[[^\]]*\]\(https?://[^\)]*sharepoint\.com/personal/paulolima_mppa_mp_br/Documents/Arquivos%20de%20Microsoft%20Copilot%20Chat/[^\)]*\)",
         "",
         text,
         flags=re.IGNORECASE,
     )
+
     return text
 
 
@@ -165,6 +227,81 @@ def parse_authors_line(text: str) -> tuple[str, str, str] | None:
     org = clean_md_title(parts[1]) if len(parts) > 1 else ""
     date = clean_md_title(parts[2]) if len(parts) > 2 else ""
     return (authors, org, date)
+
+
+def parse_agent_block(lines: List[str], start_i: int, agent_num: str, agent_name: str) -> tuple[str, int]:
+    i = start_i
+    desc_parts = []
+    pillars = []
+    agent_url = None
+
+    while i < len(lines):
+        raw = lines[i].strip()
+        if not raw:
+            i += 1
+            continue
+
+        if AGENT_HEADER_PAT.match(raw) or re.match(r"^##\s+", raw):
+            break
+
+        if raw.lower() == "link:":
+            i += 1
+            while i < len(lines):
+                url_line = lines[i].strip()
+                if not url_line:
+                    i += 1
+                    continue
+                lm = re.match(r"^\[([^\]]+)\]\(([^)]+)\)$", url_line)
+                if lm:
+                    agent_url = re.sub(r"\\(.)", r"\1", lm.group(2))
+                elif re.match(r"^https?://", url_line):
+                    agent_url = re.sub(r"\\(.)", r"\1", url_line)
+                i += 1
+                break
+            break
+
+        if re.match(r"^\\\*\s+", raw):
+            item = re.sub(r"^\\\*\s+", "", raw)
+            pillars.append(f"<li>{inline_md(item)}</li>")
+            i += 1
+            continue
+
+        if re.match(r"^(principais\s+)?pilares:?$", raw, re.IGNORECASE):
+            i += 1
+            continue
+
+        desc_line = re.sub(r"^Descrição:\s*", "", raw, flags=re.IGNORECASE)
+        desc_parts.append(desc_line)
+        i += 1
+
+    icon = pick_agent_icon(agent_name)
+    desc_html_parts = []
+    if desc_parts:
+        desc_text = " ".join(desc_parts)
+        desc_html_parts.append(f'<p class="agent-desc">{inline_md(desc_text)}</p>')
+    if pillars:
+        desc_html_parts.append(f'<ul class="agent-pillars">{"".join(pillars)}</ul>')
+
+    desc_block = "\n".join(desc_html_parts)
+    link_html = (
+        f'<a href="{agent_url}" class="agent-link-btn" target="_blank">'
+        f'<i class="fas fa-external-link-alt"></i> Acessar Agente</a>'
+        if agent_url
+        else ""
+    )
+
+    html_block = (
+        f'<div class="agent-card">\n'
+        f'  <div class="agent-card-header">'
+        f'<span class="agent-num-badge">{esc(agent_num)}</span>'
+        f'<div class="agent-card-title"><i class="fas {icon}"></i> {inline_md(agent_name)}</div>'
+        f'</div>\n'
+        f'  <div class="agent-card-body">{desc_block}</div>\n'
+        f'  {link_html}\n'
+        f'</div>'
+    )
+
+    return html_block, i
 
 
 def split_key_value_item(text: str) -> tuple[str, str] | None:
@@ -468,6 +605,15 @@ def parse_markdown(markdown: str, md_dir: Path, section_mode: str = "semantic") 
             if consumed_title_line:
                 i += 1
                 continue
+
+        # agent ficha: **N\.** **NOME** ou N\. **NOME**
+        m_agent = AGENT_HEADER_PAT.match(line)
+        if m_agent and current is not None:
+            num = m_agent.group(1) or m_agent.group(2)
+            name = clean_md_title(m_agent.group(3))
+            block_html, i = parse_agent_block(lines, i + 1, num, name)
+            current.blocks.append(block_html)
+            continue
 
         # headings
         m2 = re.match(r"^##\s+(.+)$", line)
@@ -966,6 +1112,27 @@ def render_topics_menu(out_path: Path) -> str:
     return "\n".join(links) + ("\n" if links else "")
 
 
+def validate_completeness(markdown: str, html_out: str, cards: List[Card]) -> None:
+    md_md_links = len(re.findall(r"\[[^\]]+\]\(https?://[^)]+\)", markdown))
+    md_bare_urls = len(re.findall(r'(?<!\[)(?<!\]\()https?://[^\s<>"{}^\[\]]+?(?=[\s\[\]()]|$)', markdown))
+    total_md_links = md_md_links + md_bare_urls
+
+    html_links = len(re.findall(r'<a\s+href="https?://', html_out))
+    empty_cards = [c for c in cards if not c.blocks]
+
+    issues = []
+    if html_links < total_md_links:
+        issues.append(f"  ⚠️  {total_md_links - html_links} link(s) perdido(s): MD={total_md_links} → HTML={html_links}")
+    if empty_cards:
+        issues.append(f"  ⚠️  {len(empty_cards)} card(s) sem conteúdo")
+    if issues:
+        print("ALERTAS DE COMPLETUDE:")
+        for msg in issues:
+            print(msg)
+    else:
+        print(f"  ✓ Completude: {len(cards)} seções, {html_links}/{total_md_links} links OK")
+
+
 def replace_between(text: str, start_marker: str, end_marker: str, replacement: str) -> str:
     start = text.find(start_marker)
     end = text.find(end_marker)
@@ -1021,6 +1188,96 @@ def apply_global_page_rules(html_out: str, out_path: Path, page_title: str, menu
         html_out,
         flags=re.IGNORECASE,
     )
+
+    # Regra 3: Injetar CSS para fichas de agente
+    agent_css = """<style>
+.agent-card {
+  background: linear-gradient(135deg, rgba(138,31,58,0.05), rgba(138,31,58,0.02));
+  border: 1px solid rgba(138,31,58,0.2);
+  border-radius: 16px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: box-shadow 0.2s ease;
+}
+.agent-card:hover {
+  box-shadow: 0 4px 20px rgba(138,31,58,0.15);
+}
+.agent-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.agent-num-badge {
+  background: var(--accent);
+  color: white;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+.agent-card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.agent-card-title i {
+  font-size: 1.1rem;
+}
+.agent-card-body {
+  flex: 1;
+}
+.agent-desc {
+  color: var(--text-main);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0 0 0.5rem 0;
+}
+.agent-pillars {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.agent-pillars li {
+  padding-left: 1rem;
+  border-left: 3px solid var(--accent);
+  font-size: 0.85rem;
+  color: var(--text-main);
+  margin: 0;
+}
+.agent-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--accent);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-decoration: none;
+  align-self: flex-start;
+  transition: opacity 0.2s ease;
+}
+.agent-link-btn:hover {
+  opacity: 0.85;
+}
+</style>"""
+    html_out = html_out.replace("</head>", f"{agent_css}\n</head>", 1)
+
     return html_out
 
 
@@ -1049,6 +1306,7 @@ def main() -> None:
 
     out_path.write_text(html_out, encoding="utf-8")
     print(f"OK: {out_path} gerado a partir de {md_path} com {len(cards)} seção(ões).")
+    validate_completeness(markdown, html_out, cards)
 
 
 if __name__ == "__main__":

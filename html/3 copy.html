@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NotebookLM no Júri</title>
+    <title>Inteligência Artificial Aplicada ao Tribunal do Júri — Do Inquérito ao Plenário</title>
     <style>
         :root {
             --bg-main: #f3f4f6;
@@ -593,97 +593,11 @@
             .single-spot, .text-discreet, .alert-box { padding: 0.72rem 0.78rem; }
         }
     </style>
-<style>
-.agent-card {
-  background: linear-gradient(135deg, rgba(138,31,58,0.05), rgba(138,31,58,0.02));
-  border: 1px solid rgba(138,31,58,0.2);
-  border-radius: 16px;
-  padding: 1.25rem 1.5rem;
-  margin-bottom: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  transition: box-shadow 0.2s ease;
-}
-.agent-card:hover {
-  box-shadow: 0 4px 20px rgba(138,31,58,0.15);
-}
-.agent-card-header {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-.agent-num-badge {
-  background: var(--accent);
-  color: white;
-  border-radius: 50%;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 800;
-  font-size: 0.85rem;
-  flex-shrink: 0;
-}
-.agent-card-title {
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--accent);
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-.agent-card-title i {
-  font-size: 1.1rem;
-}
-.agent-card-body {
-  flex: 1;
-}
-.agent-desc {
-  color: var(--text-main);
-  font-size: 0.9rem;
-  line-height: 1.6;
-  margin: 0 0 0.5rem 0;
-}
-.agent-pillars {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-}
-.agent-pillars li {
-  padding-left: 1rem;
-  border-left: 3px solid var(--accent);
-  font-size: 0.85rem;
-  color: var(--text-main);
-  margin: 0;
-}
-.agent-link-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  background: var(--accent);
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 0.85rem;
-  text-decoration: none;
-  align-self: flex-start;
-  transition: opacity 0.2s ease;
-}
-.agent-link-btn:hover {
-  opacity: 0.85;
-}
-</style>
 </head>
 <body>
     <header class="mobile-header">
         <button class="btn-menu" id="menu-toggle" aria-label="Abrir menu de navegação" aria-expanded="false">☰</button>
-        <span class="mobile-header-title">NotebookLM - O Gabinete como Centro de Inteligência Analítica</span>
+        <span class="mobile-header-title">Fluxo nos Crimes Dolosos Contra a Vida – Inteligência Artificial Aplicada ao Tribunal do Júri</span>
     </header>
     <div class="mobile-overlay" id="mobile-overlay" aria-hidden="true"></div>
 
@@ -708,27 +622,28 @@
             <div class="nav-topic-group">
                 <a href="2.html" class="nav-l nav-topic-header"><i class="fas fa-window-maximize"></i> <span class="nav-topic-num">2.</span> Engenharia de Prompts</a>
             </div>
-            <div class="nav-topic-group">
-                <a href="3.html" class="nav-l nav-topic-header"><i class="fas fa-gavel"></i> <span class="nav-topic-num">3.</span> Agentes no Juri</a>
+            <div class="nav-topic-group nav-topic-open">
+                <span class="nav-l nav-topic-header nav-aula current"><i class="fas fa-gavel"></i> <span class="nav-topic-num">3.</span> Agentes no Juri <i class="fas fa-chevron-down nav-topic-chevron"></i></span>
+                <div class="nav-topic-subitems">
+            <a href="#p2" class="nav-l"><i class="fas fa-book-open"></i> 📑 Sumário</a>
+            <a href="#p3" class="nav-l"><i class="fas fa-window-maximize"></i> Visão Geral e Princípios do Sistema</a>
+            <a href="#p4" class="nav-l"><i class="fas fa-sync"></i> Fluxo dos Assistentes</a>
+            <a href="#p5" class="nav-l"><i class="fas fa-search"></i> Análise de Inquéritos em Crimes Dolosos contra a Vida</a>
+            <a href="#p6" class="nav-l"><i class="fas fa-pencil-ruler"></i> Transformação de Inquéritos em Peças Acusatórias</a>
+            <a href="#p7" class="nav-l"><i class="fas fa-exclamation-triangle"></i> Requisição de Diligências Investigativas</a>
+            <a href="#p8" class="nav-l"><i class="fas fa-shield-halved"></i> Promoção de Arquivamento de Inquérito por Homicídio</a>
+            <a href="#p9" class="nav-l"><i class="fas fa-database"></i> Manifestações sobre Prisão e Medidas Cautelares</a>
+            <a href="#p10" class="nav-l"><i class="fas fa-check-circle"></i> Análises Técnicas de Provas e Depoimentos</a>
+            <a href="#p11" class="nav-l"><i class="fas fa-bullseye"></i> Estratégia Acusatória e Antecipação da Defesa</a>
+            <a href="#p12" class="nav-l"><i class="fas fa-star"></i> Análise Processual e Planejamento de Audiência</a>
+            <a href="#p13" class="nav-l"><i class="fas fa-brain"></i> Inteligência Estratégica e Simulações no Tribunal do Júri</a>
+                </div>
             </div>
             <div class="nav-topic-group">
                 <a href="4.html" class="nav-l nav-topic-header"><i class="fas fa-chart-line"></i> <span class="nav-topic-num">4.</span> Elementos Gráficos no Juri</a>
             </div>
-            <div class="nav-topic-group nav-topic-open">
-                <span class="nav-l nav-topic-header nav-aula current"><i class="fas fa-pencil-ruler"></i> <span class="nav-topic-num">5.</span> NotebookLM no Júri <i class="fas fa-chevron-down nav-topic-chevron"></i></span>
-                <div class="nav-topic-subitems">
-            <a href="#p2" class="nav-l"><i class="fas fa-book-open"></i> 📑 Sumário</a>
-            <a href="#p3" class="nav-l"><i class="fas fa-gavel"></i> A extensão da mente do Promotor e o fim do caos documental</a>
-            <a href="#p4" class="nav-l"><i class="fas fa-database"></i> O poder das fontes: internet versus autos</a>
-            <a href="#p5" class="nav-l"><i class="fas fa-window-maximize"></i> Extração seletiva e organização estratégica dos autos</a>
-            <a href="#p6" class="nav-l"><i class="fas fa-sync"></i> Processos volumosos: centralização, interação e foco</a>
-            <a href="#p7" class="nav-l"><i class="fas fa-exclamation-triangle"></i> Relatório Analítico FIRAC e a fratura da tese defensiva</a>
-            <a href="#p8" class="nav-l"><i class="fas fa-shield-halved"></i> A revolução da escuta: extração inteligente de depoimentos</a>
-            <a href="#p9" class="nav-l"><i class="fas fa-search"></i> O desafio da escala e os limites da IA em áudio e vídeo</a>
-            <a href="#p10" class="nav-l"><i class="fas fa-check-circle"></i> Engenharia de áudio como simulador cognitivo e estratégico</a>
-            <a href="#p11" class="nav-l"><i class="fas fa-bullseye"></i> Psicologia do júri, recursos visuais e organização probatória</a>
-            <a href="#p12" class="nav-l"><i class="fas fa-star"></i> O protagonismo inegociável do Promotor de Justiça</a>
-                </div>
+            <div class="nav-topic-group">
+                <a href="5.html" class="nav-l nav-topic-header"><i class="fas fa-pencil-ruler"></i> <span class="nav-topic-num">5.</span> NotebookLM no Júri</a>
             </div>
             <span class="nav-l nav-locked"><i class="fas fa-star"></i> Favoritos <i class="fas fa-lock"></i></span>
 <!-- AUTO:MENU:TOPICOS:END -->
@@ -741,7 +656,7 @@
         <div class="content-container">
             <!-- AUTO:CONTENT:START -->
             <section id="p1" class="caor-card">
-                <h1><i class="fas fa-pencil-ruler"></i> NotebookLM - O Gabinete como Centro de Inteligência Analítica</h1>
+                <h1><i class="fas fa-gavel"></i> Fluxo nos Crimes Dolosos Contra a Vida – Inteligência Artificial Aplicada ao Tribunal do Júri</h1>
                 <div class="authors-meta">
                   <div class="authors-badges"><span class="author-badge">🏅 Rodrigo Aquino</span><span class="author-badge">🏅 Paulo Lima</span></div>
                   <div class="authors-org">MPPA — CIIA</div>
@@ -763,43 +678,47 @@
                 <tbody>
                 <tr>
                 <td class="col-index"><span class="num-badge">1</span></td>
-                <td>A extensão da mente do Promotor e o fim do caos documental</td>
+                <td>Visão Geral e Princípios do Sistema</td>
                 </tr>
                 <tr>
                 <td class="col-index"><span class="num-badge">2</span></td>
-                <td>O poder das fontes: internet versus autos</td>
+                <td>Fluxo dos Assistentes</td>
                 </tr>
                 <tr>
                 <td class="col-index"><span class="num-badge">3</span></td>
-                <td>Extração seletiva e organização estratégica dos autos</td>
+                <td>Análise de Inquéritos em Crimes Dolosos contra a Vida</td>
                 </tr>
                 <tr>
                 <td class="col-index"><span class="num-badge">4</span></td>
-                <td>Processos volumosos: centralização, interação e foco</td>
+                <td>Transformação de Inquéritos em Peças Acusatórias</td>
                 </tr>
                 <tr>
                 <td class="col-index"><span class="num-badge">5</span></td>
-                <td>Relatório Analítico FIRAC e a fratura da tese defensiva</td>
+                <td>Requisição de Diligências Investigativas</td>
                 </tr>
                 <tr>
                 <td class="col-index"><span class="num-badge">6</span></td>
-                <td>A revolução da escuta: extração inteligente de depoimentos</td>
+                <td>Promoção de Arquivamento de Inquérito por Homicídio</td>
                 </tr>
                 <tr>
                 <td class="col-index"><span class="num-badge">7</span></td>
-                <td>O desafio da escala e os limites da IA em áudio e vídeo</td>
+                <td>Manifestações sobre Prisão e Medidas Cautelares</td>
                 </tr>
                 <tr>
                 <td class="col-index"><span class="num-badge">8</span></td>
-                <td>Engenharia de áudio como simulador cognitivo e estratégico</td>
+                <td>Análises Técnicas de Provas e Depoimentos</td>
                 </tr>
                 <tr>
                 <td class="col-index"><span class="num-badge">9</span></td>
-                <td>Psicologia do júri, recursos visuais e organização probatória</td>
+                <td>Estratégia Acusatória e Antecipação da Defesa</td>
                 </tr>
                 <tr>
                 <td class="col-index"><span class="num-badge">10</span></td>
-                <td>O protagonismo inegociável do Promotor de Justiça</td>
+                <td>Análise Processual e Planejamento de Audiência</td>
+                </tr>
+                <tr>
+                <td class="col-index"><span class="num-badge">11</span></td>
+                <td>Inteligência Estratégica e Simulações no Tribunal do Júri</td>
                 </tr>
                 </tbody>
                 </table>
@@ -807,111 +726,149 @@
             </section>
 
             <section id="p3" class="caor-card">
-                <h2><i class="fas fa-gavel"></i> A extensão da mente do Promotor e o fim do caos documental</h2>
-                <p>A atuação no Tribunal do Júri impõe uma <strong>carga cognitiva esmagadora</strong>, decorrente do volume bruto de processos e informações dispersas. O <strong>Centro de Inteligência Analítica</strong> surge como resposta a esse cenário, transformando informação desorganizada em conteúdo estruturado e pronto para o embate em plenário.</p>
+                <h2><i class="fas fa-window-maximize"></i> Visão Geral e Princípios do Sistema</h2>
+                <p>O sistema apresentado opera como <strong>copiloto inteligente</strong> voltado ao apoio técnico do(a) Promotor(a) de Justiça nos crimes dolosos contra a vida, com <strong>mapeamento 360º</strong> da investigação inicial até a fase recursal. Atua com rigor técnico, processamento instantâneo de inquéritos, laudos e depoimentos, além de simulação de teses defensivas.</p>
+                <blockquote>A decisão final é <strong>privativa, inegociável e indelegável</strong> ao(à) Promotor(a) de Justiça.</blockquote>
                 <div class="text-discreet">
-                <p>A tecnologia atua como um <strong>“segundo cérebro”</strong>, absorvendo o volume documental para que a mente do Promotor permaneça focada exclusivamente na <strong>estratégia e na argumentação</strong>, reduzindo o caos e ampliando a capacidade analítica.</p>
+                <p>Todo o fluxo respeita a soberania humana, oferecendo suporte à tomada de decisão sem substituição da função institucional.</p>
                 </div>
             </section>
 
             <section id="p4" class="caor-card">
-                <h2><i class="fas fa-database"></i> O poder das fontes: internet versus autos</h2>
-                <p>Há uma diferença crítica entre <strong>consultar a internet</strong> e <strong>interrogar os autos</strong>. A <strong>IA Generativa comum</strong>, baseada na internet inteira, opera sobre dados abertos e não verificados, com <strong>alto risco de invenção (alucinação)</strong>, fidelidade baixa e ausência de conhecimento do processo específico.</p>
-                <p>Em contraste, a <strong>IA aterrada (NotebookLM)</strong> atua exclusivamente sobre os documentos e autos que o usuário faz upload. Nesse ambiente fechado, o risco de alucinação é <strong>zero</strong>, a fidelidade é <strong>absoluta</strong>, cada citação remete à <strong>página exata do processo</strong>, e há <strong>proteção dos dados sigilosos</strong>, que não treinam modelos públicos.</p>
+                <h2><i class="fas fa-sync"></i> Fluxo dos Assistentes</h2>
+                <div class="text-discreet">
+                <p>Visualize o mapa completo do fluxo de trabalho com assistentes e agentes expandidos, integrando todas as etapas do processo:</p>
+                </div>
+                <ol class="icon-ol">
+                <li class="li-topic"><span class="li-topic-icon icon-link"><i class="fas fa-link"></i></span><span class="li-topic-text"><a href="https://claude.ai/public/artifacts/ef1a2f41-da57-432a-96b7-826f9327e47a">Fluxo do Júri com Assistentes / Agentes expandidos</a></span></li>
+                </ol>
             </section>
 
             <section id="p5" class="caor-card">
-                <h2><i class="fas fa-window-maximize"></i> Extração seletiva e organização estratégica dos autos</h2>
-                <p>A <strong>extração seletiva</strong> transforma o volume bruto em um <strong>mapa estratégico</strong>. A entrada de dados inclui processos volumosos, inquéritos, depoimentos e laudos.</p>
-                <p>O primeiro filtro é a <strong>cronologia automática</strong>, que organiza os fatos em uma linha do tempo linear e precisa, sem intervenção manual. O segundo filtro realiza a <strong>extração de pontos principais</strong>, identificando contradições, atores-chave e materialidade.</p>
-                <p>A saída consiste no <strong>cruzamento de dados</strong>, gerando um relatório limpo que destaca apenas o que é estrategicamente vital para o plenário. A velocidade da extração é potencializada pela tecnologia, mas a <strong>curadoria humana é inegociável</strong> na aprovação final.</p>
+                <h2><i class="fas fa-search"></i> Análise de Inquéritos em Crimes Dolosos contra a Vida</h2>
+                <p>Ferramenta <strong>Júri Analista de Investigação</strong>, projetada para auxiliar na análise técnica de inquéritos em crimes dolosos contra a vida. Opera por <strong>etapas rígidas e sequenciais</strong>, com foco em:</p>
+                <ul>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Depoimentos</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-database"><i class="fas fa-database"></i></span><span class="li-topic-text">Laudos periciais</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Elementos subjetivos (dolo/culpa)</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-database"><i class="fas fa-database"></i></span><span class="li-topic-text">Demais provas do inquérito</span></li>
+                </ul>
+                <h3><i class="fas fa-star"></i> Funcionalidades principais</h3>
+                <ul>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>Raciocínio jurídico técnico de alta precisão</strong></span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Aplicação do método <strong>SWOT</strong> (Forças, Fraquezas, Oportunidades e Ameaças)</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Suporte à decisão para posterior geração de minutas (denúncia, arquivamento ou diligências)</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Decisão final exclusiva do usuário</span></li>
+                </ul>
             </section>
 
             <section id="p6" class="caor-card">
-                <h2><i class="fas fa-sync"></i> Processos volumosos: centralização, interação e foco</h2>
-                <p>Diante de processos extensos, a equação é clara: <strong>Volume + IA = Foco</strong>. A metodologia propõe três passos:</p>
+                <h2><i class="fas fa-pencil-ruler"></i> Transformação de Inquéritos em Peças Acusatórias</h2>
+                <p>O módulo <strong>Júri Denúncia</strong> atua como assistente jurídico de alto nível, especializado no Tribunal do Júri, transformando inquéritos policiais em <strong>denúncias criminais tecnicamente precisas</strong>.</p>
+                <h3><i class="fas fa-star"></i> Funcionalidades principais</h3>
                 <ul>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>Centralize</strong>: faça o upload de milhares de páginas em um único ambiente seguro.</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-database"><i class="fas fa-database"></i></span><span class="li-topic-text"><strong>Interaja</strong>: formule perguntas diretas e permita que a IA analise provas e peças dos autos.</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>Resolva</strong>: obtenha sínteses precisas para fundamentar decisões institucionais em minutos.</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>Rigor técnico</strong> na fundamentação do <em>animus necandi</em> e das qualificadoras</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Estrutura processual conforme o <strong>rito bifásico</strong> e o padrão do art. 413 do CPP</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>Fidelidade probatória</strong>, com cada acusação lastreada nos documentos</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Saída completa: cabeçalho, fatos, materialidade, autoria, tipificação e testemunhas</span></li>
                 </ul>
-                <p>Trata-se de uma <strong>solução oficial de Inteligência Artificial recomendada</strong>, voltada ao uso institucional no âmbito do Ministério Público do Estado do Pará.</p>
             </section>
 
             <section id="p7" class="caor-card">
-                <h2><i class="fas fa-exclamation-triangle"></i> Relatório Analítico FIRAC e a fratura da tese defensiva</h2>
-                <p>O <strong>Relatório Analítico FIRAC</strong> radiografa as fraturas da tese defensiva a partir de quatro eixos:</p>
-                <div class="agent-card">
-                  <div class="agent-card-header"><span class="agent-num-badge">1</span><div class="agent-card-title"><i class="fas fa-bolt"></i> Fatos &amp; Incidentes</div></div>
-                  <div class="agent-card-body"></div>
-                  
-                </div>
-                <div class="agent-card">
-                  <div class="agent-card-header"><span class="agent-num-badge">2</span><div class="agent-card-title"><i class="fas fa-bolt"></i> Regras</div></div>
-                  <div class="agent-card-body"></div>
-                  
-                </div>
-                <div class="agent-card">
-                  <div class="agent-card-header"><span class="agent-num-badge">3</span><div class="agent-card-title"><i class="fas fa-bolt"></i> Análise de Nexo Causal</div></div>
-                  <div class="agent-card-body"></div>
-                  
-                </div>
-                <div class="agent-card">
-                  <div class="agent-card-header"><span class="agent-num-badge">4</span><div class="agent-card-title"><i class="fas fa-bolt"></i> Conclusão Estratégica</div></div>
-                  <div class="agent-card-body"><p class="agent-desc">Nesse modelo, há uma <strong>divisão de forças</strong>: a Inteligência Artificial processa as variáveis; o <strong>Promotor decide o ataque letal</strong>.</p></div>
-                  
-                </div>
+                <h2><i class="fas fa-exclamation-triangle"></i> Requisição de Diligências Investigativas</h2>
+                <p>Modelo estruturado para <strong>requisição de diligências</strong> em inquéritos de crimes dolosos contra a vida, com fundamentação em padrões internacionais.</p>
+                <h3><i class="fas fa-star"></i> Funcionalidades principais</h3>
+                <ul>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Citação de padrões da <strong>CADH</strong> e do <strong>Protocolo de Minnesota</strong></span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Contempla o <strong>Protocolo de Feminicídio</strong></span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Blocos modulares para lacunas periciais, testemunhais ou digitais</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-database"><i class="fas fa-database"></i></span><span class="li-topic-text">Fundamentação para retorno dos autos à delegacia</span></li>
+                </ul>
             </section>
 
             <section id="p8" class="caor-card">
-                <h2><i class="fas fa-shield-halved"></i> A revolução da escuta: extração inteligente de depoimentos</h2>
-                <p>A extração inteligente transforma <strong>horas de áudio e vídeo</strong> em dados estruturados, mapeados e cronológicos para o plenário. O processo inclui:</p>
+                <h2><i class="fas fa-shield-halved"></i> Promoção de Arquivamento de Inquérito por Homicídio</h2>
+                <p>Template de <strong>promoção de arquivamento</strong> de inquérito policial por homicídio, estruturado em fatos, fundamentação e dispositivo. Baseado no art. 28 do CPP e jurisprudência do STF.</p>
+                <h3><i class="fas fa-star"></i> Funcionalidades principais</h3>
                 <ul>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>Transcrição fiel (integral)</strong>, com conversão automática de fala em texto.</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>Busca instantânea</strong> de palavras-chave, nomes e fatos cruciais.</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>Mapeamento de interlocutores</strong>, identificando automaticamente quem está falando.</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>Cronologia automática</strong>, com indexação exata por minutagem.</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Hipóteses: ausência de autoria, insuficiência probatória ou excludente de ilicitude</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-database"><i class="fas fa-database"></i></span><span class="li-topic-text">Análise integrada de provas, diligências e laudos periciais</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Conclusão pela inexistência de justa causa para ação penal</span></li>
                 </ul>
-                <p>Essa organização permite antecipar gatilhos do réu, mapear teses defensivas e construir <strong>tabelas de organização inquestionável</strong>. O caos documental dá lugar ao protagonismo do Promotor, cuja curadoria entrega a Justiça.</p>
+                <blockquote>Atenção: uso apenas após decisão do(a) Promotor(a) pelo arquivamento.</blockquote>
             </section>
 
             <section id="p9" class="caor-card">
-                <h2><i class="fas fa-search"></i> O desafio da escala e os limites da IA em áudio e vídeo</h2>
-                <p>O processamento de longos conteúdos audiovisuais impõe desafios. Entre os principais limitadores estão:</p>
+                <h2><i class="fas fa-database"></i> Manifestações sobre Prisão e Medidas Cautelares</h2>
+                <div class="text-discreet">
+                <p>Estrutura para manifestações do MPPA em <strong>pedidos de revogação de prisão</strong> em crimes dolosos contra a vida, com fluxo lógico e redação técnica.</p>
+                </div>
+                <h3><i class="fas fa-star"></i> Funcionalidades principais</h3>
                 <ul>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>Ruído de transcrição</strong>, causado por áudio abafado ou legendas automáticas incorretas, especialmente com termos técnicos.</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-window-maximize"><i class="fas fa-window-maximize"></i></span><span class="li-topic-text"><strong>Fadiga de contexto</strong>, em vídeos extensos, nos quais o modelo pode “perder o meio” e misturar blocos distantes de informação.</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Fluxo em duas etapas: <strong>posicionamento → redação</strong></span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-database"><i class="fas fa-database"></i></span><span class="li-topic-text">Campos dinâmicos para fatos, provas e teses jurídicas</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Teses sobre contemporaneidade das cautelares e outros fundamentos</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Rebate específico e personalizado de argumentos defensivos</span></li>
                 </ul>
-                <p>Mesmo com grandes janelas de contexto, a qualidade da entrada é determinante: <strong>lixo na entrada gera lixo na saída</strong>.</p>
             </section>
 
             <section id="p10" class="caor-card">
-                <h2><i class="fas fa-check-circle"></i> Engenharia de áudio como simulador cognitivo e estratégico</h2>
-                <p>A <strong>engenharia de áudio</strong> utiliza o formato de <em>podcast</em> como simulador de cenários e reforço de memória. Entre as aplicações estão:</p>
+                <h2><i class="fas fa-check-circle"></i> Análises Técnicas de Provas e Depoimentos</h2>
+                <h3><i class="fas fa-database"></i> Análise de Laudos Periciais</h3>
+                <p>Atua como perito criminal especializado, analisando laudos em casos de homicídio no Tribunal do Júri.</p>
+                <p>Funcionalidades:</p>
                 <ul>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>Simulador de embate</strong> entre acusação e defesa, funcionando como teste de estresse.</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-database"><i class="fas fa-database"></i></span><span class="li-topic-text"><strong>Reforço cognitivo</strong>, com áudio-resumo para fixação passiva de nomes, datas e laudos.</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>Simulador de jurado leigo</strong>, traduzindo o jargão jurídico para linguagem comum e testando a clareza narrativa.</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-exclamation-triangle"><i class="fas fa-exclamation-triangle"></i></span><span class="li-topic-text"><strong>Perfil de interrogatório</strong>, com engenharia psicológica e mapeamento de gatilhos emocionais do réu.</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Síntese técnica acessível (causa mortis, dinâmica e compatibilidade)</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Avaliação probatória sob perspectivas acusatória e defensiva</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-exclamation-triangle"><i class="fas fa-exclamation-triangle"></i></span><span class="li-topic-text">Identificação de falhas metodológicas</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Sugestão de perguntas técnicas ao perito em plenário</span></li>
+                </ul>
+                <h3><i class="fas fa-star"></i> Detecção de Contradições em Depoimentos</h3>
+                <p>Analisa todos os depoimentos do caso, identificando:</p>
+                <ul>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Incoerências internas</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Contradições externas entre depoentes</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Suporte estratégico à instrução e ao plenário do Júri</span></li>
                 </ul>
             </section>
 
             <section id="p11" class="caor-card">
-                <h2><i class="fas fa-bullseye"></i> Psicologia do júri, recursos visuais e organização probatória</h2>
-                <p>O slide não é um documento para ser lido, mas um <strong>suporte visual estratégico</strong>. A decisão no júri nasce da <strong>clareza</strong>, não do excesso. Clareza e simplicidade geram confiança; visual confuso ou técnico demais produz desatenção e desconfiança.</p>
-                <p>Nesse contexto, destacam-se:</p>
+                <h2><i class="fas fa-bullseye"></i> Estratégia Acusatória e Antecipação da Defesa</h2>
+                <p>Ferramentas voltadas à <strong>antecipação e refutação de teses defensivas</strong>, com base exclusiva nos dados fornecidos pelo usuário.</p>
+                <h3><i class="fas fa-star"></i> Funcionalidades principais</h3>
                 <ul>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>Infográficos</strong> como âncoras da atenção e martelos da verdade factual.</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-database"><i class="fas fa-database"></i></span><span class="li-topic-text"><strong>Tabelas de organização inquestionável</strong>, que contabilizam provas de forma limpa e direta, criando um cerco lógico onde a “dúvida razoável” não encontra espaço.</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>Vídeos curtos</strong>, capazes de sintetizar horas de análise em uma narrativa linear, lógica e emocionalmente poderosa.</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Identificação e análise da força de cada tese defensiva</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Elaboração de contra-argumentos fundamentados</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Saída estruturada em tabela para visualização estratégica</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Restrições expressas: sem fontes externas e sem invenções</span></li>
                 </ul>
             </section>
 
             <section id="p12" class="caor-card">
-                <h2><i class="fas fa-star"></i> O protagonismo inegociável do Promotor de Justiça</h2>
-                <p>A tecnologia organiza, mas a <strong>voz do Promotor entrega a Justiça</strong>. Ética, curadoria e eloquência são elementos centrais para o veredito justo. O estúdio do Ministério Público não substitui o instinto investigativo; ele elimina o trabalho mecânico.</p>
-                <blockquote>O Ministério Público exerce sua verdadeira vocação quando domina absolutamente os fatos e realiza a defesa intransigente da sociedade no Tribunal do Júri.</blockquote>
-                <p>A tecnologia é a fundação. O protagonismo humano é inegociável.</p>
+                <h2><i class="fas fa-star"></i> Análise Processual e Planejamento de Audiência</h2>
+                <h3><i class="fas fa-pencil-ruler"></i> Metodologia FIRAC+</h3>
+                <p>Análise processual estruturada em:</p>
+                <ul>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>F</strong>atos</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>I/R</strong> – Questão Jurídica e Direito Aplicável</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>A</strong>nálise</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>C</strong>onclusão</span></li>
+                </ul>
+                <p>Ideal para análises rápidas de processos.</p>
+                <h3><i class="fas fa-star"></i> Planejamento de Audiência de Instrução</h3>
+                <p>Instrumento de planejamento prévio da audiência, conferindo visão global do caso e estrutura lógica da instrução, com perguntas direcionadas às partes e depoentes.</p>
+            </section>
+
+            <section id="p13" class="caor-card">
+                <h2><i class="fas fa-brain"></i> Inteligência Estratégica e Simulações no Tribunal do Júri</h2>
+                <h3><i class="fas fa-exclamation-triangle"></i> Interrogatório Estratégico (Cross Examination)</h3>
+                <p>Simula a atuação do(a) Promotor(a) no Júri, com interrogatórios por blocos temáticos, adaptados à fase processual e ao perfil do réu.</p>
+                <h3><i class="fas fa-star"></i> Advogado do Diabo</h3>
+                <div class="text-discreet">
+                <p>Simulação da estratégia defensiva para revelar <strong>pontos cegos</strong> da acusação antes do plenário, antecipando teses, nulidades e fragilidades probatórias.</p>
+                </div>
+                <h3><i class="fas fa-search"></i> Análise de Audiências Degravadas</h3>
+                <p>Análise técnica e objetiva de audiências transcritas, com identificação, síntese e confronto de depoimentos, gerando relatório fiel e estruturado, sem inferências.</p>
             </section>
 <!-- AUTO:CONTENT:END -->
         </div>
