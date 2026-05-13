@@ -383,7 +383,7 @@ def clean_md_title(text: str) -> str:
 
 def strip_leading_number(text: str) -> str:
     t = clean_md_title(text)
-    t = re.sub(r"^\d+\s*[\.\-\)]\s*", "", t)
+    t = re.sub(r"^\d+[\.\-\)]?\s*", "", t)
     return t.strip()
 
 
