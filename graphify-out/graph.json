@@ -9,7 +9,7 @@
       "source_file": "scripts/gera_index.py",
       "source_location": "L1",
       "id": "gera_index_py",
-      "community": 5,
+      "community": 6,
       "norm_label": "gera_index.py"
     },
     {
@@ -18,7 +18,7 @@
       "source_file": "scripts/gera_index.py",
       "source_location": "L18",
       "id": "scripts_gera_index_parse_index_md",
-      "community": 5,
+      "community": 6,
       "norm_label": "parse_index_md()"
     },
     {
@@ -27,7 +27,7 @@
       "source_file": "scripts/gera_index.py",
       "source_location": "L98",
       "id": "scripts_gera_index_generate_cards_html",
-      "community": 5,
+      "community": 6,
       "norm_label": "generate_cards_html()"
     },
     {
@@ -36,7 +36,7 @@
       "source_file": "scripts/gera_index.py",
       "source_location": "L125",
       "id": "scripts_gera_index_replace_between",
-      "community": 5,
+      "community": 6,
       "norm_label": "replace_between()"
     },
     {
@@ -45,7 +45,7 @@
       "source_file": "scripts/gera_index.py",
       "source_location": "L132",
       "id": "scripts_gera_index_main",
-      "community": 5,
+      "community": 6,
       "norm_label": "main()"
     },
     {
@@ -54,7 +54,7 @@
       "source_file": "scripts/gera_index.py",
       "source_location": "L19",
       "id": "scripts_gera_index_rationale_19",
-      "community": 5,
+      "community": 6,
       "norm_label": "parse index.md e extrai: titulo, metadados, topicos"
     },
     {
@@ -63,7 +63,7 @@
       "source_file": "scripts/gera_index.py",
       "source_location": "L99",
       "id": "scripts_gera_index_rationale_99",
-      "community": 5,
+      "community": 6,
       "norm_label": "gera html dos cards a partir dos topicos"
     },
     {
@@ -72,7 +72,7 @@
       "source_file": "scripts/gera_index.py",
       "source_location": "L126",
       "id": "scripts_gera_index_rationale_126",
-      "community": 5,
+      "community": 6,
       "norm_label": "replace conteudo entre dois marcadores"
     },
     {
@@ -90,7 +90,7 @@
       "source_file": "gera_html.py",
       "source_location": "L65",
       "id": "scripts_gera_html_pick_agent_icon",
-      "community": 7,
+      "community": 1,
       "norm_label": "pick_agent_icon()"
     },
     {
@@ -99,7 +99,7 @@
       "source_file": "gera_html.py",
       "source_location": "L111",
       "id": "scripts_gera_html_card",
-      "community": 4,
+      "community": 8,
       "norm_label": "card"
     },
     {
@@ -108,7 +108,7 @@
       "source_file": "gera_html.py",
       "source_location": "L117",
       "id": "scripts_gera_html_parse_args",
-      "community": 1,
+      "community": 9,
       "norm_label": "parse_args()"
     },
     {
@@ -117,7 +117,7 @@
       "source_file": "gera_html.py",
       "source_location": "L152",
       "id": "scripts_gera_html_esc",
-      "community": 7,
+      "community": 1,
       "norm_label": "esc()"
     },
     {
@@ -126,7 +126,7 @@
       "source_file": "gera_html.py",
       "source_location": "L156",
       "id": "scripts_gera_html_inline_md",
-      "community": 7,
+      "community": 1,
       "norm_label": "inline_md()"
     },
     {
@@ -135,7 +135,7 @@
       "source_file": "gera_html.py",
       "source_location": "L183",
       "id": "scripts_gera_html_strip_source_references",
-      "community": 4,
+      "community": 8,
       "norm_label": "strip_source_references()"
     },
     {
@@ -144,7 +144,7 @@
       "source_file": "gera_html.py",
       "source_location": "L206",
       "id": "scripts_gera_html_extract_h1_title",
-      "community": 1,
+      "community": 9,
       "norm_label": "extract_h1_title()"
     },
     {
@@ -162,7 +162,7 @@
       "source_file": "gera_html.py",
       "source_location": "L232",
       "id": "scripts_gera_html_parse_agent_block",
-      "community": 7,
+      "community": 1,
       "norm_label": "parse_agent_block()"
     },
     {
@@ -171,7 +171,7 @@
       "source_file": "gera_html.py",
       "source_location": "L310",
       "id": "scripts_gera_html_split_key_value_item",
-      "community": 4,
+      "community": 8,
       "norm_label": "split_key_value_item()"
     },
     {
@@ -180,7 +180,7 @@
       "source_file": "gera_html.py",
       "source_location": "L329",
       "id": "scripts_gera_html_extract_agent_access_url",
-      "community": 4,
+      "community": 8,
       "norm_label": "extract_agent_access_url()"
     },
     {
@@ -189,7 +189,7 @@
       "source_file": "gera_html.py",
       "source_location": "L346",
       "id": "scripts_gera_html_render_copilot_agent_cta",
-      "community": 7,
+      "community": 1,
       "norm_label": "render_copilot_agent_cta()"
     },
     {
@@ -297,7 +297,7 @@
       "source_file": "gera_html.py",
       "source_location": "L537",
       "id": "scripts_gera_html_assign_unique_icons",
-      "community": 1,
+      "community": 3,
       "norm_label": "assign_unique_icons()"
     },
     {
@@ -315,14 +315,14 @@
       "source_file": "gera_html.py",
       "source_location": "L558",
       "id": "scripts_gera_html_parse_markdown",
-      "community": 4,
+      "community": 8,
       "norm_label": "parse_markdown()"
     },
     {
       "label": "render_cards()",
       "file_type": "code",
       "source_file": "gera_html.py",
-      "source_location": "L986",
+      "source_location": "L1068",
       "id": "scripts_gera_html_render_cards",
       "community": 3,
       "norm_label": "render_cards()"
@@ -331,7 +331,7 @@
       "label": "parse_menu_md()",
       "file_type": "code",
       "source_file": "gera_html.py",
-      "source_location": "L1025",
+      "source_location": "L1190",
       "id": "scripts_gera_html_parse_menu_md",
       "community": 3,
       "norm_label": "parse_menu_md()"
@@ -340,16 +340,16 @@
       "label": "render_menu_from_labels()",
       "file_type": "code",
       "source_file": "gera_html.py",
-      "source_location": "L1050",
+      "source_location": "L1215",
       "id": "scripts_gera_html_render_menu_from_labels",
-      "community": 3,
+      "community": 1,
       "norm_label": "render_menu_from_labels()"
     },
     {
       "label": "render_topics_accordion()",
       "file_type": "code",
       "source_file": "gera_html.py",
-      "source_location": "L1067",
+      "source_location": "L1237",
       "id": "scripts_gera_html_render_topics_accordion",
       "community": 1,
       "norm_label": "render_topics_accordion()"
@@ -358,34 +358,43 @@
       "label": "render_topics_menu()",
       "file_type": "code",
       "source_file": "gera_html.py",
-      "source_location": "L1136",
+      "source_location": "L1308",
       "id": "scripts_gera_html_render_topics_menu",
-      "community": 7,
+      "community": 1,
       "norm_label": "render_topics_menu()"
     },
     {
       "label": "validate_completeness()",
       "file_type": "code",
       "source_file": "gera_html.py",
-      "source_location": "L1179",
+      "source_location": "L1363",
       "id": "scripts_gera_html_validate_completeness",
-      "community": 1,
+      "community": 9,
       "norm_label": "validate_completeness()"
+    },
+    {
+      "label": "validate_content_preservation()",
+      "file_type": "code",
+      "source_file": "gera_html.py",
+      "source_location": "L1384",
+      "id": "scripts_gera_html_validate_content_preservation",
+      "community": 4,
+      "norm_label": "validate_content_preservation()"
     },
     {
       "label": "replace_between()",
       "file_type": "code",
       "source_file": "gera_html.py",
-      "source_location": "L1200",
+      "source_location": "L1496",
       "id": "scripts_gera_html_replace_between",
-      "community": 1,
+      "community": 9,
       "norm_label": "replace_between()"
     },
     {
       "label": "normalize_data_uri()",
       "file_type": "code",
       "source_file": "gera_html.py",
-      "source_location": "L1209",
+      "source_location": "L1505",
       "id": "scripts_gera_html_normalize_data_uri",
       "community": 1,
       "norm_label": "normalize_data_uri()"
@@ -394,7 +403,7 @@
       "label": "apply_global_page_rules()",
       "file_type": "code",
       "source_file": "gera_html.py",
-      "source_location": "L1216",
+      "source_location": "L1512",
       "id": "scripts_gera_html_apply_global_page_rules",
       "community": 1,
       "norm_label": "apply_global_page_rules()"
@@ -403,35 +412,107 @@
       "label": "generate_index_page()",
       "file_type": "code",
       "source_file": "gera_html.py",
-      "source_location": "L1449",
+      "source_location": "L1816",
       "id": "scripts_gera_html_generate_index_page",
-      "community": 8,
+      "community": 2,
       "norm_label": "generate_index_page()"
     },
     {
       "label": "main()",
       "file_type": "code",
       "source_file": "gera_html.py",
-      "source_location": "L1511",
+      "source_location": "L1878",
       "id": "scripts_gera_html_main",
-      "community": 1,
+      "community": 9,
       "norm_label": "main()"
+    },
+    {
+      "label": "Regra absoluta: o HTML n\u00e3o pode perder conte\u00fado relevante do markdown.     Faz v",
+      "file_type": "rationale",
+      "source_file": "gera_html.py",
+      "source_location": "L1385",
+      "id": "scripts_gera_html_rationale_1385",
+      "community": 4,
+      "norm_label": "regra absoluta: o html nao pode perder conteudo relevante do markdown.     faz v"
+    },
+    {
+      "label": "Generate landing page with index.template.html",
+      "file_type": "rationale",
+      "source_file": "gera_html.py",
+      "source_location": "L1817",
+      "id": "scripts_gera_html_rationale_1817",
+      "community": 2,
+      "norm_label": "generate landing page with index.template.html"
+    },
+    {
+      "label": "Regra absoluta: o HTML n\u00e3o pode perder conte\u00fado relevante do markdown.     Faz v",
+      "file_type": "rationale",
+      "source_file": "gera_html.py",
+      "source_location": "L1328",
+      "community": 4,
+      "norm_label": "regra absoluta: o html nao pode perder conteudo relevante do markdown.     faz v",
+      "id": "scripts_gera_html_rationale_1328"
+    },
+    {
+      "label": "Generate landing page with index.template.html",
+      "file_type": "rationale",
+      "source_file": "gera_html.py",
+      "source_location": "L1698",
+      "community": 2,
+      "norm_label": "generate landing page with index.template.html",
+      "id": "scripts_gera_html_rationale_1698"
+    },
+    {
+      "label": "Regra absoluta: o HTML n\u00e3o pode perder conte\u00fado relevante do markdown.     Faz v",
+      "file_type": "rationale",
+      "source_file": "gera_html.py",
+      "source_location": "L1324",
+      "community": 4,
+      "norm_label": "regra absoluta: o html nao pode perder conteudo relevante do markdown.     faz v",
+      "id": "scripts_gera_html_rationale_1324"
+    },
+    {
+      "label": "Generate landing page with index.template.html",
+      "file_type": "rationale",
+      "source_file": "gera_html.py",
+      "source_location": "L1694",
+      "community": 2,
+      "norm_label": "generate landing page with index.template.html",
+      "id": "scripts_gera_html_rationale_1694"
+    },
+    {
+      "label": "Generate landing page with index.template.html",
+      "file_type": "rationale",
+      "source_file": "gera_html.py",
+      "source_location": "L1491",
+      "community": 2,
+      "norm_label": "generate landing page with index.template.html",
+      "id": "scripts_gera_html_rationale_1491"
+    },
+    {
+      "label": "Generate landing page with index.template.html",
+      "file_type": "rationale",
+      "source_file": "gera_html.py",
+      "source_location": "L1460",
+      "community": 2,
+      "norm_label": "generate landing page with index.template.html",
+      "id": "scripts_gera_html_rationale_1460"
     },
     {
       "label": "Generate landing page with index.template.html",
       "file_type": "rationale",
       "source_file": "gera_html.py",
       "source_location": "L1450",
-      "id": "scripts_gera_html_rationale_1450",
-      "community": 8,
-      "norm_label": "generate landing page with index.template.html"
+      "community": 2,
+      "norm_label": "generate landing page with index.template.html",
+      "id": "scripts_gera_html_rationale_1450"
     },
     {
       "label": "Generate landing page with index.template.html",
       "file_type": "rationale",
       "source_file": "gera_html.py",
       "source_location": "L1451",
-      "community": 8,
+      "community": 2,
       "norm_label": "generate landing page with index.template.html",
       "id": "scripts_gera_html_rationale_1451"
     },
@@ -440,7 +521,7 @@
       "file_type": "rationale",
       "source_file": "gera_html.py",
       "source_location": "L1437",
-      "community": 8,
+      "community": 2,
       "norm_label": "generate landing page with index.template.html",
       "id": "scripts_gera_html_rationale_1437"
     },
@@ -449,7 +530,7 @@
       "file_type": "rationale",
       "source_file": "gera_html.py",
       "source_location": "L1408",
-      "community": 8,
+      "community": 2,
       "norm_label": "generate landing page with index.template.html",
       "id": "scripts_gera_html_rationale_1408"
     },
@@ -458,7 +539,7 @@
       "file_type": "rationale",
       "source_file": "gera_html.py",
       "source_location": "L1337",
-      "community": 8,
+      "community": 2,
       "norm_label": "generate landing page with index.template.html",
       "id": "scripts_gera_html_rationale_1337"
     },
@@ -467,7 +548,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L1",
-      "community": 2,
+      "community": 5,
       "norm_label": "build_topico.py",
       "id": "home_pl_projetos_aulas_tribunal_do_juri_scripts_build_topico_py"
     },
@@ -476,7 +557,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L62",
-      "community": 2,
+      "community": 5,
       "norm_label": "card",
       "id": "scripts_build_topico_card"
     },
@@ -503,7 +584,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L107",
-      "community": 0,
+      "community": 10,
       "norm_label": "inline_md()",
       "id": "scripts_build_topico_inline_md"
     },
@@ -512,7 +593,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L116",
-      "community": 2,
+      "community": 0,
       "norm_label": "strip_source_references()",
       "id": "scripts_build_topico_strip_source_references"
     },
@@ -530,7 +611,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L151",
-      "community": 6,
+      "community": 7,
       "norm_label": "parse_authors_line()",
       "id": "scripts_build_topico_parse_authors_line"
     },
@@ -539,7 +620,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L168",
-      "community": 2,
+      "community": 5,
       "norm_label": "split_key_value_item()",
       "id": "scripts_build_topico_split_key_value_item"
     },
@@ -548,7 +629,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L187",
-      "community": 6,
+      "community": 7,
       "norm_label": "classify_critical_paragraph()",
       "id": "scripts_build_topico_classify_critical_paragraph"
     },
@@ -557,7 +638,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L212",
-      "community": 6,
+      "community": 7,
       "norm_label": "is_strategic_paragraph()",
       "id": "scripts_build_topico_is_strategic_paragraph"
     },
@@ -566,7 +647,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L230",
-      "community": 6,
+      "community": 7,
       "norm_label": "clean_md_title()",
       "id": "scripts_build_topico_clean_md_title"
     },
@@ -575,7 +656,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L242",
-      "community": 6,
+      "community": 7,
       "norm_label": "strip_leading_number()",
       "id": "scripts_build_topico_strip_leading_number"
     },
@@ -584,7 +665,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L248",
-      "community": 2,
+      "community": 5,
       "norm_label": "is_page_marker_line()",
       "id": "scripts_build_topico_is_page_marker_line"
     },
@@ -593,7 +674,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L265",
-      "community": 2,
+      "community": 5,
       "norm_label": "is_page_comment_line()",
       "id": "scripts_build_topico_is_page_comment_line"
     },
@@ -602,7 +683,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L275",
-      "community": 2,
+      "community": 5,
       "norm_label": "is_separator_line()",
       "id": "scripts_build_topico_is_separator_line"
     },
@@ -611,7 +692,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L280",
-      "community": 2,
+      "community": 5,
       "norm_label": "is_ocr_comment_line()",
       "id": "scripts_build_topico_is_ocr_comment_line"
     },
@@ -620,7 +701,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L285",
-      "community": 2,
+      "community": 5,
       "norm_label": "derive_page_card_title()",
       "id": "scripts_build_topico_derive_page_card_title"
     },
@@ -638,7 +719,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L343",
-      "community": 6,
+      "community": 10,
       "norm_label": "pick_item_icon()",
       "id": "scripts_build_topico_pick_item_icon"
     },
@@ -656,7 +737,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L377",
-      "community": 2,
+      "community": 0,
       "norm_label": "file_to_data_uri()",
       "id": "scripts_build_topico_file_to_data_uri"
     },
@@ -665,7 +746,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L384",
-      "community": 2,
+      "community": 5,
       "norm_label": "parse_markdown()",
       "id": "scripts_build_topico_parse_markdown"
     },
@@ -674,7 +755,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L770",
-      "community": 6,
+      "community": 10,
       "norm_label": "render_cards()",
       "id": "scripts_build_topico_render_cards"
     },
@@ -683,7 +764,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L809",
-      "community": 6,
+      "community": 7,
       "norm_label": "parse_menu_md()",
       "id": "scripts_build_topico_parse_menu_md"
     },
@@ -1179,6 +1260,16 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "gera_html.py",
+      "source_location": "L1323",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "gera_html_py",
+      "target": "scripts_gera_html_validate_content_preservation"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gera_html.py",
       "source_location": "L1141",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -1626,6 +1717,17 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "gera_html.py",
+      "source_location": "L1443",
+      "weight": 1.0,
+      "source": "scripts_gera_html_validate_content_preservation",
+      "target": "scripts_gera_html_clean_md_title",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "gera_html.py",
       "source_location": "L1421",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -1703,6 +1805,17 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "gera_html.py",
+      "source_location": "L1346",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_gera_html_validate_content_preservation",
+      "target": "scripts_gera_html_is_page_marker_line"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "gera_html.py",
       "source_location": "L437",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -1718,6 +1831,17 @@
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "scripts_gera_html_parse_markdown",
+      "target": "scripts_gera_html_is_page_comment_line"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "gera_html.py",
+      "source_location": "L1346",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_gera_html_validate_content_preservation",
       "target": "scripts_gera_html_is_page_comment_line"
     },
     {
@@ -1747,6 +1871,17 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "gera_html.py",
+      "source_location": "L1346",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_gera_html_validate_content_preservation",
+      "target": "scripts_gera_html_is_separator_line"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "gera_html.py",
       "source_location": "L441",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -1762,6 +1897,17 @@
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "scripts_gera_html_parse_markdown",
+      "target": "scripts_gera_html_is_ocr_comment_line"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "gera_html.py",
+      "source_location": "L1346",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_gera_html_validate_content_preservation",
       "target": "scripts_gera_html_is_ocr_comment_line"
     },
     {
@@ -1870,9 +2016,9 @@
       "source_file": "gera_html.py",
       "source_location": "L1267",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_gera_html_apply_global_page_rules",
-      "target": "scripts_gera_html_file_to_data_uri",
-      "confidence_score": 1.0
+      "target": "scripts_gera_html_file_to_data_uri"
     },
     {
       "relation": "calls",
@@ -1945,6 +2091,47 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "gera_html.py",
+      "source_location": "L1788",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_gera_html_main",
+      "target": "scripts_gera_html_validate_content_preservation"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "gera_html.py",
+      "source_location": "L1385",
+      "weight": 1.0,
+      "source": "scripts_gera_html_rationale_1385",
+      "target": "scripts_gera_html_validate_content_preservation",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "gera_html.py",
+      "source_location": "L1328",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_gera_html_rationale_1328",
+      "target": "scripts_gera_html_validate_content_preservation"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "gera_html.py",
+      "source_location": "L1324",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_gera_html_rationale_1324",
+      "target": "scripts_gera_html_validate_content_preservation"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "gera_html.py",
       "source_location": "L1424",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -1977,11 +2164,61 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "gera_html.py",
-      "source_location": "L1450",
+      "source_location": "L1817",
       "weight": 1.0,
-      "source": "scripts_gera_html_rationale_1450",
+      "source": "scripts_gera_html_rationale_1817",
       "target": "scripts_gera_html_generate_index_page",
       "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "gera_html.py",
+      "source_location": "L1698",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_gera_html_rationale_1698",
+      "target": "scripts_gera_html_generate_index_page"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "gera_html.py",
+      "source_location": "L1694",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_gera_html_rationale_1694",
+      "target": "scripts_gera_html_generate_index_page"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "gera_html.py",
+      "source_location": "L1491",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_gera_html_rationale_1491",
+      "target": "scripts_gera_html_generate_index_page"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "gera_html.py",
+      "source_location": "L1460",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_gera_html_rationale_1460",
+      "target": "scripts_gera_html_generate_index_page"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "gera_html.py",
+      "source_location": "L1450",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_gera_html_rationale_1450",
+      "target": "scripts_gera_html_generate_index_page"
     },
     {
       "relation": "rationale_for",
@@ -3241,5 +3478,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "230ba1f14dae42048229e2870ea8fabe5313874c"
+  "built_at_commit": "eec9c6dc7965d8fa509e23423ac16d838033bc9d"
 }

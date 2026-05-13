@@ -571,6 +571,7 @@ def parse_markdown(markdown: str, md_dir: Path, section_mode: str = "semantic") 
     seen_first_h2 = False
     current_agent_numbered_h3_idx: int | None = None
     current_agent_features_h3_idx: int | None = None
+    prompt_counter = 0
 
     if not has_page_markers:
         # H1 global vira primeiro card de abertura (mantém título + autores no topo).
@@ -819,6 +820,87 @@ def parse_markdown(markdown: str, md_dir: Path, section_mode: str = "semantic") 
             continue
 
         # markdown table (pipe format)
+        if line.startswith("|"):
+            prompt_lines: List[str] = []
+            j = i
+            while j < len(lines):
+                cand = lines[j].strip()
+                if not cand.startswith("|"):
+                    break
+                prompt_lines.append(cand)
+                j += 1
+
+            first_cell = prompt_lines[0].strip().strip("|").strip().upper() if prompt_lines else ""
+            first_cell = re.sub(r"^[^\w]+", "", first_cell)
+            is_prompt_block = bool(
+                re.match(r"^PROMPT\b", first_cell)
+            )
+            if prompt_lines and is_prompt_block:
+                cleaned_lines: List[str] = []
+                for pl in prompt_lines:
+                    cell = pl.strip().strip("|").strip()
+                    if not cell:
+                        continue
+                    if re.match(r"^[:\-\s|]+$", cell):
+                        continue
+                    cleaned_lines.append(cell)
+
+                prompt_text = "\n".join(cleaned_lines).strip()
+                if prompt_text:
+                    prompt_counter += 1
+                    prompt_id = f"prompt-{prompt_counter}"
+                    current.blocks.append(
+                        '<div class="prompt-lab">\n'
+                        '  <div class="prompt-lab-title">Prompt</div>\n'
+                        f'  <pre id="{prompt_id}" class="prompt-lab-text">{esc(prompt_text)}</pre>\n'
+                        '  <div class="prompt-lab-actions">\n'
+                        f'    <button type="button" class="prompt-lab-btn" onclick="copyPromptText(\'{prompt_id}\', this)">Copiar prompt</button>\n'
+                        '    <a class="prompt-lab-btn prompt-lab-btn-link" href="https://notebooklm.google.com/" target="_blank">Testar no NotebookLM</a>\n'
+                        "  </div>\n"
+                        "</div>"
+                    )
+                    i = j
+                    continue
+
+            # Tabela de coluna única (| texto | + separador) vira callout textual,
+            # evitando exibir barras "|" cruas no HTML.
+            if (
+                len(prompt_lines) >= 2
+                and re.match(r"^\|?[\s:\-|\t]+\|?$", prompt_lines[1])
+            ):
+                parsed_rows: List[str] = []
+                for pl in prompt_lines:
+                    cell = pl.strip().strip("|").strip()
+                    if not cell or re.match(r"^[:\-\s|]+$", cell):
+                        continue
+                    parsed_rows.append(cell)
+
+                if parsed_rows and all(len([c for c in r.split("|") if c.strip()]) <= 1 for r in parsed_rows):
+                    title_row = parsed_rows[0]
+                    body_rows = parsed_rows[1:]
+                    is_tip = clean_md_title(title_row).lower().startswith("💡 dica") or clean_md_title(title_row).lower().startswith("dica:")
+                    if is_tip:
+                        title_html = "Dica"
+                        tip_text = title_row
+                        tip_text = re.sub(r"^(💡\s*)?dica:\s*", "", tip_text, flags=re.IGNORECASE).strip()
+                        body_html = [f"<p>{inline_md(tip_text)}</p>"] if tip_text else []
+                        body_html += [f"<p>{inline_md(r)}</p>" for r in body_rows]
+                        current.blocks.append(
+                            '<div class="alert-box">\n'
+                            f'  <div class="alert-box-title"><i class="fas fa-lightbulb"></i> {title_html}</div>\n'
+                            f'  {"".join(body_html)}\n'
+                            "</div>"
+                        )
+                    else:
+                        content_rows = [f"<p>{inline_md(r)}</p>" for r in parsed_rows]
+                        current.blocks.append(
+                            '<div class="alert-box">\n'
+                            f'  {"".join(content_rows)}\n'
+                            "</div>"
+                        )
+                    i = j
+                    continue
+
         if "|" in line and i + 1 < len(lines):
             header_cells = [c.strip() for c in line.strip().strip("|").split("|")]
             sep_line = lines[i + 1].strip()
@@ -984,6 +1066,82 @@ def parse_markdown(markdown: str, md_dir: Path, section_mode: str = "semantic") 
 
 
 def render_cards(cards: List[Card], card_icons: List[str]) -> str:
+    def _is_summary_title(title: str) -> bool:
+        t = clean_md_title(title).lower()
+        return ("sumário" in t) or ("sumario" in t)
+
+    def _extract_text_lines_from_blocks(blocks: List[str]) -> List[str]:
+        lines: List[str] = []
+        for block in blocks:
+            for raw in block.splitlines():
+                txt = re.sub(r"<[^>]+>", "", raw).strip()
+                txt = html.unescape(txt)
+                txt = re.sub(r"\s+", " ", txt).strip()
+                if txt:
+                    lines.append(txt)
+        return lines
+
+    def _build_main_summary_table(current_idx: int, card: Card) -> str | None:
+        # O sumário deve espelhar o submenu esquerdo: mesmos itens e mesmas âncoras.
+        entries: List[tuple[int, str]] = []
+        for target_idx, target_card in enumerate(cards, start=1):
+            if target_idx == 1 and target_card.level == 1:
+                continue
+            short = strip_leading_number(target_card.title)
+            short = re.sub(r"^\d+(?:\.\d+)*[\.\-\)]?\s*", "", short).strip()
+            if not short:
+                short = f"Seção {target_idx}"
+            entries.append((target_idx, short))
+
+        if len(entries) < 1:
+            return None
+
+        rows: List[str] = []
+        for i, (tgt, label) in enumerate(entries, start=1):
+            rows.append(
+                "<tr>"
+                f'<td class="col-index"><a href="#p{tgt}"><span class="num-badge">{i}</span></a></td>'
+                f'<td><a href="#p{tgt}">{inline_md(label)}</a></td>'
+                "</tr>"
+            )
+        return (
+            '<div class="table-wrap">\n'
+            '<table class="caor-table">\n'
+            "<thead><tr><th class=\"col-index\">#</th><th>Nome da Seção</th></tr></thead>\n"
+            "<tbody>\n"
+            + "\n".join(rows)
+            + "\n</tbody>\n</table>\n</div>"
+        )
+
+    def _linkify_summary_table(block_html: str, current_section_idx: int) -> str:
+        # Em tabelas de "Sumário", liga cada linha numerada ao card correspondente.
+        # Ex.: estando no card p2, a linha "1" aponta para #p3.
+        if 'class="caor-table"' not in block_html:
+            return block_html
+        if "<span class=\"num-badge\">" not in block_html:
+            return block_html
+
+        def _row_repl(match: re.Match[str]) -> str:
+            num_text = match.group(1).strip()
+            label_html = match.group(2)
+            if not re.match(r"^\d+$", num_text):
+                return match.group(0)
+            target = f"p{current_section_idx + int(num_text)}"
+            return (
+                "<tr>"
+                f'<td class="col-index"><a href="#{target}"><span class="num-badge">{num_text}</span></a></td>'
+                f'<td><a href="#{target}">{label_html}</a></td>'
+                "</tr>"
+            )
+
+        pattern = (
+            r"<tr>\s*"
+            r'<td class="col-index"><span class="num-badge">(\d+)</span></td>\s*'
+            r"<td>(.*?)</td>\s*"
+            r"</tr>"
+        )
+        return re.sub(pattern, _row_repl, block_html, flags=re.DOTALL)
+
     out = []
     for idx, card in enumerate(cards, start=1):
         section_id = f"p{idx}"
@@ -992,17 +1150,22 @@ def render_cards(cards: List[Card], card_icons: List[str]) -> str:
         title = clean_md_title(card.title)
         if htag == "h2":
             title = strip_leading_number(title)
+            title = re.sub(r"^\d+(?:\.\d+)*[\.\-\)]?\s*", "", title).strip()
         if not title:
             title = f"Seção {idx}"
         out.append(f'            <section id="{section_id}" class="caor-card">')
         out.append(f'                <{htag}><i class="fas {icon}"></i> {inline_md(title)}</{htag}>')
+        auto_summary = _build_main_summary_table(idx, card) if _is_summary_title(card.title) else None
         is_single_plain_paragraph = (
             len(card.blocks) == 1
             and card.blocks[0].strip().startswith("<p>")
             and card.blocks[0].strip().endswith("</p>")
         )
 
-        if is_single_plain_paragraph:
+        if auto_summary:
+            for bl in auto_summary.splitlines():
+                out.append(f"                {bl}")
+        elif is_single_plain_paragraph:
             paragraph_html = card.blocks[0].strip()
             paragraph_text = re.sub(r"<[^>]+>", "", paragraph_html)
             single_icon = pick_item_icon(paragraph_text)
@@ -1015,6 +1178,8 @@ def render_cards(cards: List[Card], card_icons: List[str]) -> str:
             out.append("                </div>")
         else:
             for block in card.blocks:
+                if _is_summary_title(card.title):
+                    block = _linkify_summary_table(block, idx)
                 for bl in block.splitlines():
                     out.append(f"                {bl}")
         out.append("            </section>")
@@ -1048,18 +1213,23 @@ def parse_menu_md(menu_md_path: Path) -> tuple[str, list[str]]:
 
 
 def render_menu_from_labels(cards: List[Card], card_icons: List[str], menu_icon: str) -> str:
+    def _submenu_entries() -> list[tuple[int, str, str]]:
+        entries: list[tuple[int, str, str]] = []
+        for idx, card in enumerate(cards, start=1):
+            if idx == 1 and card.level == 1:
+                continue
+            short = strip_leading_number(card.title)
+            short = re.sub(r"^\d+(?:\.\d+)*[\.\-\)]?\s*", "", short).strip()
+            if not short:
+                short = f"Seção {idx}"
+            icon = card_icons[idx - 1] if idx - 1 < len(card_icons) else pick_icon(short, menu_icon)
+            entries.append((idx, short, icon))
+        return entries
+
     links = []
-    for idx, card in enumerate(cards, start=1):
-        # Não listar a seção de abertura (p1) no menu interno da página
-        # para evitar duplicação visual do título principal.
-        if idx == 1 and card.level == 1:
-            continue
-        short = strip_leading_number(card.title)
-        if not short:
-            short = f"Seção {idx}"
-        icon = card_icons[idx - 1] if idx - 1 < len(card_icons) else pick_icon(short, menu_icon)
+    for sub_num, (idx, short, icon) in enumerate(_submenu_entries(), start=1):
         links.append(
-            f'            <a href="#p{idx}" class="nav-l"><i class="fas {icon}"></i> {esc(short)}</a>'
+            f'            <a href="#p{idx}" class="nav-l"><i class="fas {icon}"></i> <span class="nav-topic-num">{sub_num}.</span> {esc(short)}</a>'
         )
     return "\n".join(links) + "\n"
 
@@ -1073,9 +1243,10 @@ def render_topics_accordion(out_path: Path, cards: List[Card], card_icons: List[
         ("Elementos Gráficos no Juri", "4.html", "fa-chart-line"),
         ("NotebookLM no Júri", "5.html", "fa-pencil-ruler"),
         ("Favoritos", "favoritos.html", "fa-star"),
+        ("NotebookLM", "notebooklm.html", "fa-brain"),
     ]
 
-    numbered_pages = {"1.html", "2.html", "3.html", "4.html", "5.html"}
+    numbered_pages = {"1.html", "2.html", "3.html", "4.html", "5.html", "favoritos.html", "notebooklm.html"}
 
     # Sub-itens da página atual (seções internas do acordeão)
     sub_html = render_menu_from_labels(cards, card_icons, menu_icon)
@@ -1086,7 +1257,8 @@ def render_topics_accordion(out_path: Path, cards: List[Card], card_icons: List[
         is_numbered = filename in numbered_pages
         if is_numbered:
             num += 1
-        is_current = out_path.name.lower() == filename.lower()
+        current_name = out_path.name.lower()
+        is_current = current_name == filename.lower()
 
         if is_current:
             # Tópico atual: renderizar como cabeçalho clicável com sub-itens expandidos
@@ -1142,22 +1314,34 @@ def render_topics_menu(out_path: Path) -> str:
         ("Elementos Gráficos no Juri", "4.html", "fa-chart-line"),
         ("NotebookLM no Júri", "5.html", "fa-pencil-ruler"),
         ("Favoritos", "favoritos.html", "fa-star"),
+        ("NotebookLM", "notebooklm.html", "fa-brain"),
     ]
 
-    available_core_pages = {"1.html", "2.html", "3.html", "4.html", "5.html"}
+    available_core_pages = {"1.html", "2.html", "3.html", "4.html", "5.html", "favoritos.html", "notebooklm.html"}
+    nav_numbers = {
+        "1.html": "1.",
+        "2.html": "2.",
+        "3.html": "3.",
+        "4.html": "4.",
+        "5.html": "5.",
+        "favoritos.html": "6.",
+        "notebooklm.html": "7.",
+    }
 
     links: list[str] = []
     for label, filename, icon in fixed_items:
         if out_path.name.lower() == filename.lower():
+            nav_num = f'<span class="nav-topic-num">{nav_numbers.get(filename, "")}</span> ' if filename in nav_numbers else ""
             links.append(
-                f'            <span class="nav-l nav-aula current"><i class="fas {icon}"></i> {esc(label)}</span>'
+                f'            <span class="nav-l nav-aula current"><i class="fas {icon}"></i> {nav_num}{esc(label)}</span>'
             )
             continue
 
         # Os 5 tópicos principais são sempre navegáveis.
         if filename in available_core_pages:
+            nav_num = f'<span class="nav-topic-num">{nav_numbers.get(filename, "")}</span> ' if filename in nav_numbers else ""
             links.append(
-                f'            <a href="{filename}" class="nav-l"><i class="fas {icon}"></i> {esc(label)}</a>'
+                f'            <a href="{filename}" class="nav-l"><i class="fas {icon}"></i> {nav_num}{esc(label)}</a>'
             )
             continue
 
@@ -1195,6 +1379,118 @@ def validate_completeness(markdown: str, html_out: str, cards: List[Card]) -> No
             print(msg)
     else:
         print(f"  ✓ Completude: {len(cards)} seções, {html_links}/{total_md_links} links OK")
+
+
+def validate_content_preservation(markdown: str, html_out: str) -> None:
+    """
+    Regra absoluta: o HTML não pode perder conteúdo relevante do markdown.
+    Faz verificação por linhas normalizadas (texto) contra o texto final do HTML.
+    """
+    def _normalize_text(s: str) -> str:
+        s = html.unescape(s)
+        s = re.sub(r"\\([\\`*_{}\[\]()#+\-.!])", r"\1", s)
+        s = s.replace("\\", " ")
+        s = re.sub(r"[^\w\sÀ-ÿ]", " ", s, flags=re.UNICODE)
+        s = re.sub(r"\s+", " ", s).strip().lower()
+        return s
+
+    html_text = re.sub(r"<[^>]+>", " ", html_out)
+    html_text_norm = _normalize_text(html_text)
+    html_source_norm = _normalize_text(html_out)
+
+    missing: list[str] = []
+    checked = 0
+
+    def _line_variants_for_match(raw_line: str, normalized_line: str) -> list[str]:
+        variants = [normalized_line]
+        stripped = raw_line.strip()
+
+        # Headings podem perder prefixo numérico no render (ex.: 1.1, 5.2).
+        if re.match(r"^#+\s+", stripped):
+            no_hash = re.sub(r"^#+\s*", "", stripped)
+            no_md = re.sub(r"[*_`]", "", no_hash).strip()
+            no_num = re.sub(r"^\d+(?:\.\d+)*[\.\-\)]?\s*", "", no_md).strip()
+            no_num_norm = _normalize_text(no_num)
+            if no_num_norm and no_num_norm not in variants:
+                variants.append(no_num_norm)
+
+        # Linhas de listas numeradas podem perder o prefixo no render com ícones/menu.
+        no_ord = re.sub(r"^\d+(?:\.\d+)*[\.\-\)]?\s*", "", stripped).strip()
+        if no_ord and no_ord != stripped:
+            no_ord_norm = _normalize_text(no_ord)
+            if no_ord_norm and no_ord_norm not in variants:
+                variants.append(no_ord_norm)
+
+        # Linhas com links markdown podem aparecer no HTML sem a URL visível no texto.
+        no_urls = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", r"\1", stripped)
+        no_urls = re.sub(r"https?://\S+", " ", no_urls).strip()
+        no_urls_norm = _normalize_text(no_urls)
+        if no_urls_norm and no_urls_norm not in variants:
+            variants.append(no_urls_norm)
+
+        no_ord_no_urls = re.sub(r"^\d+(?:\.\d+)*[\.\-\)]?\s*", "", no_urls).strip()
+        no_ord_no_urls_norm = _normalize_text(no_ord_no_urls)
+        if no_ord_no_urls_norm and no_ord_no_urls_norm not in variants:
+            variants.append(no_ord_no_urls_norm)
+
+        return [v for v in variants if v]
+
+    in_summary_block = False
+    for raw in markdown.splitlines():
+        line = raw.strip()
+        if not line:
+            continue
+        low_line = clean_md_title(line).lower()
+        if re.match(r"^#+\s+", line):
+            # Qualquer novo heading encerra bloco de sumário.
+            if in_summary_block and "sumário" not in low_line and "sumario" not in low_line:
+                in_summary_block = False
+        if "sumário" in low_line or "sumario" in low_line:
+            in_summary_block = True
+            continue
+        if in_summary_block:
+            # Permite sumário simplificado (apenas tópicos principais) sem acusar perda.
+            continue
+        if is_separator_line(line) or is_page_comment_line(line) or is_page_marker_line(line) or is_ocr_comment_line(line):
+            continue
+        if re.match(r"^\|?\s*[:\-| ]+\|?\s*$", line):
+            continue
+        if re.match(r"^#\s+\*{0,2}\s*m[óo]dulo\s+\d+", line, flags=re.IGNORECASE):
+            # Headings macro de módulo podem ser reestruturados em seções/cards.
+            continue
+        if re.match(r"^\*{0,2}\s*autores:\s*", line, flags=re.IGNORECASE):
+            # Linha de metadados de autores é renderizada em bloco próprio.
+            continue
+        if re.match(r"^\*{0,2}\s*acesse o agente:\s*", line, flags=re.IGNORECASE):
+            # Link de agente é renderizado como botão CTA.
+            continue
+
+        # Normalização de markdown para comparar texto puro.
+        norm = line
+        norm = re.sub(r"!\[[^\]]*\]\([^)]+\)", " ", norm)              # imagens
+        norm = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", r"\1 \2", norm)      # links markdown
+        norm = re.sub(r"[*_`>#]", " ", norm)                            # sintaxe markdown
+        norm = re.sub(r"\|", " ", norm)                                 # pipes em prompts/tabelas
+        norm = re.sub(r"\\([\\`*_{}\[\]()#+\-.!])", r"\1", norm)
+        norm = _normalize_text(norm)
+
+        # Ignora linhas muito curtas/estruturais para reduzir falso positivo.
+        if len(norm) < 12:
+            continue
+
+        checked += 1
+        variants = _line_variants_for_match(line, norm)
+        if not any((v in html_text_norm) or (v in html_source_norm) for v in variants):
+            missing.append(line)
+
+    if missing:
+        preview = "\n".join(f"  - {m[:160]}" for m in missing[:12])
+        raise ValueError(
+            "Perda de conteúdo detectada na geração HTML. "
+            f"{len(missing)} linha(s) relevantes não encontradas no HTML.\n"
+            f"Exemplos:\n{preview}"
+        )
+    print(f"  ✓ Preservação: {checked} linhas verificadas, sem perda de conteúdo")
 
 
 def replace_between(text: str, start_marker: str, end_marker: str, replacement: str) -> str:
@@ -1387,7 +1683,6 @@ def apply_global_page_rules(html_out: str, out_path: Path, page_title: str, menu
   color: var(--accent);
   text-decoration: none;
   cursor: pointer;
-  border-bottom: 2px solid var(--accent);
   transition: opacity 0.2s ease;
 }
 .caor-card a:hover {
@@ -1395,7 +1690,7 @@ def apply_global_page_rules(html_out: str, out_path: Path, page_title: str, menu
 }
 .caor-card h2 a {
   display: inline;
-  border-bottom: 2px solid var(--accent);
+  border-bottom: none;
 }
 .copilot-agent-cta-wrap {
   margin: 0.5rem 0 1rem 0;
@@ -1436,12 +1731,84 @@ def apply_global_page_rules(html_out: str, out_path: Path, page_title: str, menu
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
   flex-shrink: 0;
 }
+.prompt-lab {
+  margin: 0.9rem 0 1rem 0;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: linear-gradient(180deg, #121621 0%, #0d1119 100%);
+  box-shadow: 0 8px 22px rgba(0,0,0,0.28);
+  overflow: hidden;
+}
+.prompt-lab-title {
+  color: #d7def0;
+  font-weight: 700;
+  font-size: 0.86rem;
+  letter-spacing: 0.02em;
+  padding: 0.55rem 0.8rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.03);
+}
+.prompt-lab-text {
+  margin: 0;
+  padding: 0.9rem 1rem;
+  color: #f8fbff;
+  background: transparent;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+.prompt-lab-actions {
+  display: flex;
+  gap: 0.55rem;
+  padding: 0.75rem 0.9rem 0.9rem;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.prompt-lab-btn {
+  border: 1px solid #93c5fd;
+  background: #dbeafe;
+  color: #0f172a;
+  border-radius: 8px;
+  padding: 0.45rem 0.72rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none !important;
+}
+.prompt-lab-btn:hover {
+  background: #bfdbfe;
+  opacity: 1;
+}
+.prompt-lab-btn-link {
+  display: inline-flex;
+  align-items: center;
+  border-color: #f59e0b;
+  background: #fde68a;
+  color: #111827;
+}
+.prompt-lab-btn-link:hover {
+  background: #fcd34d;
+}
 </style>"""
     if copilot_icon_data_uri:
         agent_css = agent_css.replace("__COPILOT_ICON_DATA_URI__", copilot_icon_data_uri)
     else:
         agent_css = agent_css.replace("__COPILOT_ICON_DATA_URI__", "")
     html_out = html_out.replace("</head>", f"{agent_css}\n</head>", 1)
+    prompt_js = """<script>
+function copyPromptText(promptId, btnEl) {
+  const node = document.getElementById(promptId);
+  if (!node) return;
+  const text = node.innerText || node.textContent || "";
+  navigator.clipboard.writeText(text).then(() => {
+    const prev = btnEl.textContent;
+    btnEl.textContent = "Copiado";
+    setTimeout(() => { btnEl.textContent = prev; }, 1200);
+  });
+}
+</script>"""
+    html_out = html_out.replace("</body>", f"{prompt_js}\n</body>", 1)
 
     return html_out
 
@@ -1541,6 +1908,7 @@ def main() -> None:
     out_path.write_text(html_out, encoding="utf-8")
     print(f"OK: {out_path} gerado a partir de {md_path} com {len(cards)} seção(ões).")
     validate_completeness(markdown, html_out, cards)
+    validate_content_preservation(markdown, html_out)
 
 
 if __name__ == "__main__":

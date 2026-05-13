@@ -39,3 +39,7 @@ Organização analítica e leitura orientada por IA.
 ## [Tópico 6 | Favoritos](favoritos.html)
 
 Atalhos rápidos para referências e materiais prioritários.
+
+## [Tópico 7 | Guia NotebookLM](notebooklm.html)
+
+Atalhos rápidos para referências e materiais prioritários.

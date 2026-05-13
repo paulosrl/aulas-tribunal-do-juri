@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inteligência Artificial Aplicada ao Tribunal do Júri — Agentes no Júri</title>
+    <title>Estudos de Caso e Simulações Práticas</title>
     <style>
         :root {
             --bg-main: #f3f4f6;
@@ -712,6 +712,7 @@
   color: var(--accent);
   text-decoration: none;
   cursor: pointer;
+  border-bottom: 2px solid var(--accent);
   transition: opacity 0.2s ease;
 }
 .caor-card a:hover {
@@ -719,7 +720,7 @@
 }
 .caor-card h2 a {
   display: inline;
-  border-bottom: none;
+  border-bottom: 2px solid var(--accent);
 }
 .copilot-agent-cta-wrap {
   margin: 0.5rem 0 1rem 0;
@@ -795,36 +796,30 @@
   border-top: 1px solid rgba(255,255,255,0.08);
 }
 .prompt-lab-btn {
-  border: 1px solid #93c5fd;
-  background: #dbeafe;
-  color: #0f172a;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: #1f2a44;
+  color: #fff;
   border-radius: 8px;
   padding: 0.45rem 0.72rem;
   font-size: 0.8rem;
-  font-weight: 700;
+  font-weight: 650;
   cursor: pointer;
   text-decoration: none !important;
 }
 .prompt-lab-btn:hover {
-  background: #bfdbfe;
+  background: #2b3a5f;
   opacity: 1;
 }
 .prompt-lab-btn-link {
   display: inline-flex;
   align-items: center;
-  border-color: #f59e0b;
-  background: #fde68a;
-  color: #111827;
-}
-.prompt-lab-btn-link:hover {
-  background: #fcd34d;
 }
 </style>
 </head>
 <body>
     <header class="mobile-header">
         <button class="btn-menu" id="menu-toggle" aria-label="Abrir menu de navegação" aria-expanded="false">☰</button>
-        <span class="mobile-header-title">Fluxo nos Crimes Dolosos Contra a Vida – Inteligência Artificial Aplicada ao Tribunal do Júri</span>
+        <span class="mobile-header-title">NotebookLM - O Gabinete como Centro de Inteligência Analítica</span>
     </header>
     <div class="mobile-overlay" id="mobile-overlay" aria-hidden="true"></div>
 
@@ -849,20 +844,27 @@
             <div class="nav-topic-group">
                 <a href="2.html" class="nav-l nav-topic-header"><i class="fas fa-window-maximize"></i> <span class="nav-topic-num">2.</span> Engenharia de Prompts</a>
             </div>
-            <div class="nav-topic-group nav-topic-open">
-                <span class="nav-l nav-topic-header nav-aula current"><i class="fas fa-gavel"></i> <span class="nav-topic-num">3.</span> Agentes no Juri <i class="fas fa-chevron-down nav-topic-chevron"></i></span>
-                <div class="nav-topic-subitems">
-            <a href="#p2" class="nav-l"><i class="fas fa-list-ol"></i> <span class="nav-topic-num">1.</span> 📑 Sumário</a>
-            <a href="#p3" class="nav-l"><i class="fas fa-book-open"></i> <span class="nav-topic-num">2.</span> Visão Geral e Princípios do Sistema</a>
-            <a href="#p4" class="nav-l"><i class="fas fa-sync"></i> <span class="nav-topic-num">3.</span> Fluxo dos Assistentes</a>
-            <a href="#p5" class="nav-l"><i class="fas fa-window-maximize"></i> <span class="nav-topic-num">4.</span> Agentes/Assistentes Copilot para o Juri</a>
-                </div>
+            <div class="nav-topic-group">
+                <a href="3.html" class="nav-l nav-topic-header"><i class="fas fa-gavel"></i> <span class="nav-topic-num">3.</span> Agentes no Juri</a>
             </div>
             <div class="nav-topic-group">
                 <a href="4.html" class="nav-l nav-topic-header"><i class="fas fa-chart-line"></i> <span class="nav-topic-num">4.</span> Elementos Gráficos no Juri</a>
             </div>
-            <div class="nav-topic-group">
-                <a href="5.html" class="nav-l nav-topic-header"><i class="fas fa-pencil-ruler"></i> <span class="nav-topic-num">5.</span> NotebookLM no Júri</a>
+            <div class="nav-topic-group nav-topic-open">
+                <span class="nav-l nav-topic-header nav-aula current"><i class="fas fa-pencil-ruler"></i> <span class="nav-topic-num">5.</span> NotebookLM no Júri <i class="fas fa-chevron-down nav-topic-chevron"></i></span>
+                <div class="nav-topic-subitems">
+            <a href="#p2" class="nav-l"><i class="fas fa-book-open"></i> 📑 Sumário</a>
+            <a href="#p3" class="nav-l"><i class="fas fa-gavel"></i> A extensão da mente do Promotor e o fim do caos documental</a>
+            <a href="#p4" class="nav-l"><i class="fas fa-database"></i> O poder das fontes: internet versus autos</a>
+            <a href="#p5" class="nav-l"><i class="fas fa-window-maximize"></i> Extração seletiva e organização estratégica dos autos</a>
+            <a href="#p6" class="nav-l"><i class="fas fa-sync"></i> Processos volumosos: centralização, interação e foco</a>
+            <a href="#p7" class="nav-l"><i class="fas fa-pencil-ruler"></i> Relatório Analítico FIRAC e a fratura da tese defensiva</a>
+            <a href="#p8" class="nav-l"><i class="fas fa-exclamation-triangle"></i> A revolução da escuta: extração inteligente de depoimentos</a>
+            <a href="#p9" class="nav-l"><i class="fas fa-shield-halved"></i> O desafio da escala e os limites da IA em áudio e vídeo</a>
+            <a href="#p10" class="nav-l"><i class="fas fa-search"></i> Engenharia de áudio como simulador cognitivo e estratégico</a>
+            <a href="#p11" class="nav-l"><i class="fas fa-check-circle"></i> Psicologia do júri, recursos visuais e organização probatória</a>
+            <a href="#p12" class="nav-l"><i class="fas fa-bullseye"></i> O protagonismo inegociável do Promotor de Justiça</a>
+                </div>
             </div>
             <div class="nav-topic-group">
                 <a href="favoritos.html" class="nav-l nav-topic-header"><i class="fas fa-star"></i> <span class="nav-topic-num">6.</span> Favoritos</a>
@@ -880,7 +882,7 @@
         <div class="content-container">
             <!-- AUTO:CONTENT:START -->
             <section id="p1" class="caor-card">
-                <h1><i class="fas fa-gavel"></i> Fluxo nos Crimes Dolosos Contra a Vida – Inteligência Artificial Aplicada ao Tribunal do Júri</h1>
+                <h1><i class="fas fa-list-ol"></i> NotebookLM - O Gabinete como Centro de Inteligência Analítica</h1>
                 <div class="authors-meta">
                   <div class="authors-badges"><span class="author-badge">🏅 Rodrigo Aquino</span><span class="author-badge">🏅 Paulo Lima</span></div>
                   <div class="authors-org">MPPA — CIIA</div>
@@ -890,334 +892,124 @@
             </section>
 
             <section id="p2" class="caor-card">
-                <h2><i class="fas fa-list-ol"></i> 📑 Sumário</h2>
-                <div class="table-wrap">
+                <h2><i class="fas fa-book-open"></i> 📑 Sumário</h2>
+                <div class="table-wrapper">
                 <table class="caor-table">
-                <thead><tr><th class="col-index">#</th><th>Nome da Seção</th></tr></thead>
+                <thead>
+                <tr>
+                <th class="col-index">#</th>
+                <th>Nome da Seção</th>
+                </tr>
+                </thead>
                 <tbody>
-                <tr><td class="col-index"><a href="#p2"><span class="num-badge">1</span></a></td><td><a href="#p2">📑 Sumário</a></td></tr>
-                <tr><td class="col-index"><a href="#p3"><span class="num-badge">2</span></a></td><td><a href="#p3">Visão Geral e Princípios do Sistema</a></td></tr>
-                <tr><td class="col-index"><a href="#p4"><span class="num-badge">3</span></a></td><td><a href="#p4">Fluxo dos Assistentes</a></td></tr>
-                <tr><td class="col-index"><a href="#p5"><span class="num-badge">4</span></a></td><td><a href="#p5">Agentes/Assistentes Copilot para o Juri</a></td></tr>
+                <tr><td class="col-index"><a href="#p3"><span class="num-badge">1</span></a></td><td><a href="#p3">A extensão da mente do Promotor e o fim do caos documental</a></td></tr>
+                <tr><td class="col-index"><a href="#p4"><span class="num-badge">2</span></a></td><td><a href="#p4">O poder das fontes: internet versus autos</a></td></tr>
+                <tr><td class="col-index"><a href="#p5"><span class="num-badge">3</span></a></td><td><a href="#p5">Extração seletiva e organização estratégica dos autos</a></td></tr>
+                <tr><td class="col-index"><a href="#p6"><span class="num-badge">4</span></a></td><td><a href="#p6">Processos volumosos: centralização, interação e foco</a></td></tr>
+                <tr><td class="col-index"><a href="#p7"><span class="num-badge">5</span></a></td><td><a href="#p7">Relatório Analítico FIRAC e a fratura da tese defensiva</a></td></tr>
+                <tr><td class="col-index"><a href="#p8"><span class="num-badge">6</span></a></td><td><a href="#p8">A revolução da escuta: extração inteligente de depoimentos</a></td></tr>
+                <tr><td class="col-index"><a href="#p9"><span class="num-badge">7</span></a></td><td><a href="#p9">O desafio da escala e os limites da IA em áudio e vídeo</a></td></tr>
+                <tr><td class="col-index"><a href="#p10"><span class="num-badge">8</span></a></td><td><a href="#p10">Engenharia de áudio como simulador cognitivo e estratégico</a></td></tr>
+                <tr><td class="col-index"><a href="#p11"><span class="num-badge">9</span></a></td><td><a href="#p11">Psicologia do júri, recursos visuais e organização probatória</a></td></tr>
+                <tr><td class="col-index"><a href="#p12"><span class="num-badge">10</span></a></td><td><a href="#p12">O protagonismo inegociável do Promotor de Justiça</a></td></tr>
                 </tbody>
                 </table>
                 </div>
             </section>
 
             <section id="p3" class="caor-card">
-                <h2><i class="fas fa-book-open"></i> Visão Geral e Princípios do Sistema</h2>
-                <p>O sistema apresentado opera como <strong>copiloto inteligente</strong> voltado ao apoio técnico do(a) Promotor(a) de Justiça nos crimes dolosos contra a vida, com <strong>mapeamento 360º</strong> da investigação inicial até a fase recursal. Atua com rigor técnico, processamento instantâneo de inquéritos, laudos e depoimentos, além de simulação de teses defensivas.</p>
-                <blockquote>A decisão final é <strong>privativa, inegociável e indelegável</strong> ao(à) Promotor(a) de Justiça.</blockquote>
+                <h2><i class="fas fa-gavel"></i> A extensão da mente do Promotor e o fim do caos documental</h2>
+                <p>A atuação no Tribunal do Júri impõe uma <strong>carga cognitiva esmagadora</strong>, decorrente do volume bruto de processos e informações dispersas. O <strong>Centro de Inteligência Analítica</strong> surge como resposta a esse cenário, transformando informação desorganizada em conteúdo estruturado e pronto para o embate em plenário.</p>
                 <div class="text-discreet">
-                <p>Todo o fluxo respeita a soberania humana, oferecendo suporte à tomada de decisão sem substituição da função institucional.</p>
+                <p>A tecnologia atua como um <strong>“segundo cérebro”</strong>, absorvendo o volume documental para que a mente do Promotor permaneça focada exclusivamente na <strong>estratégia e na argumentação</strong>, reduzindo o caos e ampliando a capacidade analítica.</p>
                 </div>
             </section>
 
             <section id="p4" class="caor-card">
-                <h2><i class="fas fa-sync"></i> Fluxo dos Assistentes</h2>
-                <div class="text-discreet">
-                <p>Visualize o mapa completo do fluxo de trabalho com assistentes e agentes expandidos, integrando todas as etapas do processo:</p>
-                </div>
-                <ol class="icon-ol">
-                <li class="li-topic"><span class="li-topic-icon icon-link"><i class="fas fa-link"></i></span><span class="li-topic-text"><a href="https://claude.ai/public/artifacts/ef1a2f41-da57-432a-96b7-826f9327e47a" target="_blank">Fluxo do Júri com Assistentes / Agentes expandidos</a></span></li>
-                </ol>
+                <h2><i class="fas fa-database"></i> O poder das fontes: internet versus autos</h2>
+                <p>Há uma diferença crítica entre <strong>consultar a internet</strong> e <strong>interrogar os autos</strong>. A <strong>IA Generativa comum</strong>, baseada na internet inteira, opera sobre dados abertos e não verificados, com <strong>alto risco de invenção (alucinação)</strong>, fidelidade baixa e ausência de conhecimento do processo específico.</p>
+                <p>Em contraste, a <strong>IA aterrada (NotebookLM)</strong> atua exclusivamente sobre os documentos e autos que o usuário faz upload. Nesse ambiente fechado, o risco de alucinação é <strong>zero</strong>, a fidelidade é <strong>absoluta</strong>, cada citação remete à <strong>página exata do processo</strong>, e há <strong>proteção dos dados sigilosos</strong>, que não treinam modelos públicos.</p>
             </section>
 
             <section id="p5" class="caor-card">
-                <h2><i class="fas fa-window-maximize"></i> Agentes/Assistentes Copilot para o Juri</h2>
-                <h3><i class="fas fa-gavel"></i> 1. Júri Analista de Investigação</h3>
-                <p>Assistente especializado em análise sequencial de investigações em crimes dolosos contra a vida. Processa depoimentos, laudos e elementos subjetivos (dolo/culpa) para gerar insights que orientam a decisão do(a) promotor(a).</p>
-                <div class="copilot-agent-cta-wrap">
-                  <a href="https://m365.cloud.microsoft/chat/?titleId=T_0ba501dd-96cb-3e27-9af5-2e92236b744d&amp;source=embedded-builder" class="copilot-agent-cta" target="_blank"><span class="copilot-agent-cta-icon" aria-hidden="true"></span><span class="copilot-agent-cta-label">Acessar Agente Copilot</span><i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
-                </div>
-                <h3><i class="fas fa-star"></i> Funcionalidades principais</h3>
+                <h2><i class="fas fa-window-maximize"></i> Extração seletiva e organização estratégica dos autos</h2>
+                <p>A <strong>extração seletiva</strong> transforma o volume bruto em um <strong>mapa estratégico</strong>. A entrada de dados inclui processos volumosos, inquéritos, depoimentos e laudos.</p>
+                <p>O primeiro filtro é a <strong>cronologia automática</strong>, que organiza os fatos em uma linha do tempo linear e precisa, sem intervenção manual. O segundo filtro realiza a <strong>extração de pontos principais</strong>, identificando contradições, atores-chave e materialidade.</p>
+                <p>A saída consiste no <strong>cruzamento de dados</strong>, gerando um relatório limpo que destaca apenas o que é estrategicamente vital para o plenário. A velocidade da extração é potencializada pela tecnologia, mas a <strong>curadoria humana é inegociável</strong> na aprovação final.</p>
+            </section>
+
+            <section id="p6" class="caor-card">
+                <h2><i class="fas fa-sync"></i> Processos volumosos: centralização, interação e foco</h2>
+                <p>Diante de processos extensos, a equação é clara: <strong>Volume + IA = Foco</strong>. A metodologia propõe três passos:</p>
                 <ul>
-                <li class="li-topic"><span class="li-topic-icon icon-database"><i class="fas fa-database"></i></span><span class="li-topic-text">Analisar depoimentos, laudos e provas técnicas do inquérito</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Avaliar elementos subjetivos (dolo e culpa) e materialidade</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Estruturar análise para fundamentar denúncias, arquivamentos ou diligências</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Aplicar raciocínio jurídico técnico de alta precisão</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>Centralize</strong>: faça o upload de milhares de páginas em um único ambiente seguro.</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-database"><i class="fas fa-database"></i></span><span class="li-topic-text"><strong>Interaja</strong>: formule perguntas diretas e permita que a IA analise provas e peças dos autos.</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>Resolva</strong>: obtenha sínteses precisas para fundamentar decisões institucionais em minutos.</span></li>
                 </ul>
-                <blockquote><strong>ℹ️ Informação importante:</strong> A decisão final é privativa e indelegável do(a) Promotor(a). Este agente funciona como suporte analítico.</blockquote>
-                <h3><i class="fas fa-gavel"></i> 2. Júri Denúncia</h3>
-                <p>Transforma inquéritos policiais em denúncias criminais tecnicamente precisas e estruturadas para crimes de morte. Garante rigor probatório e conformidade com o rito bifásico do Tribunal do Júri.</p>
-                <div class="copilot-agent-cta-wrap">
-                  <a href="https://m365.cloud.microsoft/chat/?titleId=T_3624fc90-f3ff-3655-7703-f12ea6c38d62&amp;source=embedded-builder" class="copilot-agent-cta" target="_blank"><span class="copilot-agent-cta-icon" aria-hidden="true"></span><span class="copilot-agent-cta-label">Acessar Agente Copilot</span><i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
-                </div>
-                <h3><i class="fas fa-star"></i> Funcionalidades principais</h3>
+                <p>Trata-se de uma <strong>solução oficial de Inteligência Artificial recomendada</strong>, voltada ao uso institucional no âmbito do Ministério Público do Estado do Pará.</p>
+            </section>
+
+            <section id="p7" class="caor-card">
+                <h2><i class="fas fa-pencil-ruler"></i> Relatório Analítico FIRAC e a fratura da tese defensiva</h2>
+                <p>O <strong>Relatório Analítico FIRAC</strong> radiografa as fraturas da tese defensiva a partir de quatro eixos:</p>
+                <ol class="icon-ol">
+                <li class="li-topic"><span class="li-topic-icon icon-database"><i class="fas fa-database"></i></span><span class="li-topic-text"><strong>Fatos &amp; Incidentes</strong>: o que realmente aconteceu e quais provas materiais estão anexadas.</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>Regras</strong>: a base legal e a jurisprudência aplicável ao cenário isolado.</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>Análise de Nexo Causal</strong>: o cruzamento em que a IA expõe o “buraco” lógico entre a ação do réu e a justificativa defensiva.</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>Conclusão Estratégica</strong>: a síntese do contra-ataque.</span></li>
+                </ol>
+                <p>Nesse modelo, há uma <strong>divisão de forças</strong>: a Inteligência Artificial processa as variáveis; o <strong>Promotor decide o ataque letal</strong>.</p>
+            </section>
+
+            <section id="p8" class="caor-card">
+                <h2><i class="fas fa-exclamation-triangle"></i> A revolução da escuta: extração inteligente de depoimentos</h2>
+                <p>A extração inteligente transforma <strong>horas de áudio e vídeo</strong> em dados estruturados, mapeados e cronológicos para o plenário. O processo inclui:</p>
                 <ul>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Fundamentar intenção de matar (<em>animus necandi</em>) com análise de qualificadoras</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Diferenciar Homicídio de Latrocínio e aplicar tipificação correta</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Estruturar denúncia: cabeçalho, narrativa fática, materialidade, autoria e testemunhas</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-database"><i class="fas fa-database"></i></span><span class="li-topic-text">Vincular cada acusação a lastro probatório nos autos</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>Transcrição fiel (integral)</strong>, com conversão automática de fala em texto.</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>Busca instantânea</strong> de palavras-chave, nomes e fatos cruciais.</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>Mapeamento de interlocutores</strong>, identificando automaticamente quem está falando.</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>Cronologia automática</strong>, com indexação exata por minutagem.</span></li>
                 </ul>
-                <blockquote><strong>⚠️ Protocolo obrigatório:</strong> Impede invenção de fatos. Cada alegação deve ter apoio em documentação do inquérito.</blockquote>
-                <h3><i class="fas fa-gavel"></i> 3. Júri Diligências</h3>
-                <div class="text-discreet">
-                <p>Estrutura requisições de diligências policiais para colmar lacunas de investigação em crimes dolosos contra a vida. Segue padrões interamericanos (CADH) e protocolos especializados.</p>
-                </div>
-                <div class="copilot-agent-cta-wrap">
-                  <a href="https://m365.cloud.microsoft/chat/?titleId=T_e5424285-93b6-ab0c-3bec-e922acc1633a&amp;source=embedded-builder" class="copilot-agent-cta" target="_blank"><span class="copilot-agent-cta-icon" aria-hidden="true"></span><span class="copilot-agent-cta-label">Acessar Agente Copilot</span><i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
-                </div>
-                <h3><i class="fas fa-star"></i> Funcionalidades principais</h3>
+                <p>Essa organização permite antecipar gatilhos do réu, mapear teses defensivas e construir <strong>tabelas de organização inquestionável</strong>. O caos documental dá lugar ao protagonismo do Promotor, cuja curadoria entrega a Justiça.</p>
+            </section>
+
+            <section id="p9" class="caor-card">
+                <h2><i class="fas fa-shield-halved"></i> O desafio da escala e os limites da IA em áudio e vídeo</h2>
+                <p>O processamento de longos conteúdos audiovisuais impõe desafios. Entre os principais limitadores estão:</p>
                 <ul>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Identificar lacunas periciais, testemunhais e digitais no inquérito</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Elaborar peça jurídica modular para requisição ao delegado</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Fundamentar com protocolos específicos (Minnesota, Feminicídio)</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-database"><i class="fas fa-database"></i></span><span class="li-topic-text">Estruturar argumentação para retorno dos autos à delegacia</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>Ruído de transcrição</strong>, causado por áudio abafado ou legendas automáticas incorretas, especialmente com termos técnicos.</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-window-maximize"><i class="fas fa-window-maximize"></i></span><span class="li-topic-text"><strong>Fadiga de contexto</strong>, em vídeos extensos, nos quais o modelo pode “perder o meio” e misturar blocos distantes de informação.</span></li>
                 </ul>
-                <h3><i class="fas fa-gavel"></i> 4. Júri Arquivamento Homicídio</h3>
-                <p>Gera promoção de arquivamento de inquérito por homicídio com fundamentação em ausência de autoria, insuficiência probatória ou excludentes de ilicitude. Estruturado conforme art. 28 do CPP.</p>
-                <div class="copilot-agent-cta-wrap">
-                  <a href="https://m365.cloud.microsoft/chat/?titleId=T_1be62fa2-db75-630c-da0f-6ac3b1048f66&amp;source=embedded-builder" class="copilot-agent-cta" target="_blank"><span class="copilot-agent-cta-icon" aria-hidden="true"></span><span class="copilot-agent-cta-label">Acessar Agente Copilot</span><i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
-                </div>
-                <h3><i class="fas fa-star"></i> Funcionalidades principais</h3>
+                <p>Mesmo com grandes janelas de contexto, a qualidade da entrada é determinante: <strong>lixo na entrada gera lixo na saída</strong>.</p>
+            </section>
+
+            <section id="p10" class="caor-card">
+                <h2><i class="fas fa-search"></i> Engenharia de áudio como simulador cognitivo e estratégico</h2>
+                <p>A <strong>engenharia de áudio</strong> utiliza o formato de <em>podcast</em> como simulador de cenários e reforço de memória. Entre as aplicações estão:</p>
                 <ul>
-                <li class="li-topic"><span class="li-topic-icon icon-database"><i class="fas fa-database"></i></span><span class="li-topic-text">Analisar provas, diligências e laudos para justificar arquivamento</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Fundamentar em jurisprudência do STF sobre falta de justa causa</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Estruturar peça em fatos, fundamentação e dispositivo</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Submeter ao Judiciário conforme procedimento legal</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>Simulador de embate</strong> entre acusação e defesa, funcionando como teste de estresse.</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-database"><i class="fas fa-database"></i></span><span class="li-topic-text"><strong>Reforço cognitivo</strong>, com áudio-resumo para fixação passiva de nomes, datas e laudos.</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>Simulador de jurado leigo</strong>, traduzindo o jargão jurídico para linguagem comum e testando a clareza narrativa.</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-exclamation-triangle"><i class="fas fa-exclamation-triangle"></i></span><span class="li-topic-text"><strong>Perfil de interrogatório</strong>, com engenharia psicológica e mapeamento de gatilhos emocionais do réu.</span></li>
                 </ul>
-                <blockquote><strong>⚠️ Pré-requisito:</strong> Decisão pelo arquivamento já deve ter sido tomada pelo(a) PJ antes de usar este agente.</blockquote>
-                <h3><i class="fas fa-gavel"></i> 5. Júri Revogação Prisão</h3>
-                <div class="text-discreet">
-                <p>Estrutura manifestações do MP sobre pedidos de revogação de prisão preventiva em crimes dolosos contra a vida. Funciona em fluxo de duas etapas: definição de posicionamento e redação argumentada.</p>
-                </div>
-                <div class="copilot-agent-cta-wrap">
-                  <a href="https://m365.cloud.microsoft/chat/?titleId=T_41ed3d60-5501-e1cc-b87b-94d9ff71967c&amp;source=embedded-builder" class="copilot-agent-cta" target="_blank"><span class="copilot-agent-cta-icon" aria-hidden="true"></span><span class="copilot-agent-cta-label">Acessar Agente Copilot</span><i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
-                </div>
-                <h3><i class="fas fa-star"></i> Funcionalidades principais</h3>
+            </section>
+
+            <section id="p11" class="caor-card">
+                <h2><i class="fas fa-check-circle"></i> Psicologia do júri, recursos visuais e organização probatória</h2>
+                <p>O slide não é um documento para ser lido, mas um <strong>suporte visual estratégico</strong>. A decisão no júri nasce da <strong>clareza</strong>, não do excesso. Clareza e simplicidade geram confiança; visual confuso ou técnico demais produz desatenção e desconfiança.</p>
+                <p>Nesse contexto, destacam-se:</p>
                 <ul>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Definir posicionamento: deferimento ou indeferimento da revogação</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-database"><i class="fas fa-database"></i></span><span class="li-topic-text">Organizar redação com campos dinâmicos para fatos, provas e teses jurídicas</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Rebater argumentos defensivos com especificidade</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Aplicar teses de contemporaneidade e medidas cautelares quando cabível</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>Infográficos</strong> como âncoras da atenção e martelos da verdade factual.</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-database"><i class="fas fa-database"></i></span><span class="li-topic-text"><strong>Tabelas de organização inquestionável</strong>, que contabilizam provas de forma limpa e direta, criando um cerco lógico onde a “dúvida razoável” não encontra espaço.</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>Vídeos curtos</strong>, capazes de sintetizar horas de análise em uma narrativa linear, lógica e emocionalmente poderosa.</span></li>
                 </ul>
-                <h3><i class="fas fa-gavel"></i> 6. Júri Análise Laudos Periciais</h3>
-                <p>Analisa laudos periciais em profundidade, explicando termos técnicos, sintetizando pontos-chave e avaliando relevância para acusação e defesa. Combina acessibilidade com rigor técnico-jurídico.</p>
-                <div class="copilot-agent-cta-wrap">
-                  <a href="https://m365.cloud.microsoft/chat/?titleId=T_a440e6f8-96cc-fbf1-6b50-d4689f1c7fff&amp;source=embedded-builder" class="copilot-agent-cta" target="_blank"><span class="copilot-agent-cta-icon" aria-hidden="true"></span><span class="copilot-agent-cta-label">Acessar Agente Copilot</span><i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
-                </div>
-                <h3><i class="fas fa-star"></i> Funcionalidades principais</h3>
-                <ul>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Explicar termos técnicos em linguagem acessível</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Sintetizar pontos-chave e destacar relevância para investigação</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Avaliar compatibilidade pericial com dinâmica dos fatos</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-exclamation-triangle"><i class="fas fa-exclamation-triangle"></i></span><span class="li-topic-text">Sugerir perguntas ao perito e identificar falhas ou lacunas</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-bullseye"><i class="fas fa-bullseye"></i></span><span class="li-topic-text">Mapear estratégias para acusação e para defesa</span></li>
-                </ul>
-                <blockquote><strong>💡 Dica estratégica:</strong> Use este agente antes de audiências de instrução para preparar perguntas ao perito especializado.</blockquote>
-                <h3><i class="fas fa-gavel"></i> 7. Júri Incoerência Depoimentos</h3>
-                <p>Analisa sistematicamente todos os depoimentos do caso em ordem numérica, identificando incoerências internas e contradições externas entre depoentes. Essencial para mapear fragilidades e inconsistências probatórias.</p>
-                <div class="copilot-agent-cta-wrap">
-                  <a href="https://m365.cloud.microsoft/chat/?titleId=T_c73f20b3-3ce3-36d6-8836-3a1aa89929cd&amp;source=embedded-builder" class="copilot-agent-cta" target="_blank"><span class="copilot-agent-cta-icon" aria-hidden="true"></span><span class="copilot-agent-cta-label">Acessar Agente Copilot</span><i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
-                </div>
-                <h3><i class="fas fa-star"></i> Funcionalidades principais</h3>
-                <ul>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Identificar incoerências dentro de um mesmo depoimento</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Detectar contradições entre depoimentos distintos</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Estruturar inconsistências em ordem lógica e cronológica</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Destacar fragilidades probatórias para contra-argumentação</span></li>
-                </ul>
-                <h3><i class="fas fa-gavel"></i> 8. Júri Antecipação Teses Defensivas</h3>
-                <p>Antecipa argumentos da defesa com base exclusiva nos autos e elabora contra-argumentos estruturados em tabela. Ferramenta de inteligência estratégica para blindar a tese acusatória.</p>
-                <div class="copilot-agent-cta-wrap">
-                  <a href="https://m365.cloud.microsoft/chat/?titleId=T_66726cd4-bf7b-3724-d476-18302f66569a&amp;source=embedded-builder" class="copilot-agent-cta" target="_blank"><span class="copilot-agent-cta-icon" aria-hidden="true"></span><span class="copilot-agent-cta-label">Acessar Agente Copilot</span><i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
-                </div>
-                <h3><i class="fas fa-star"></i> Funcionalidades principais</h3>
-                <ul>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Identificar possíveis teses defensivas no caso concreto</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Analisar força de cada argumento defensivo</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-database"><i class="fas fa-database"></i></span><span class="li-topic-text">Elaborar refutações fundamentadas com provas dos autos</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Estruturar saída em tabela para fácil visualização e memorização</span></li>
-                </ul>
-                <blockquote><strong>⚠️ Limitação:</strong> Usa apenas dados fornecidos nos autos. Sem fontes externas ou criação de fatos.</blockquote>
-                <h3><i class="fas fa-gavel"></i> 9. FIRAC+ Análise Jurídica</h3>
-                <p>Aplica metodologia FIRAC (Fatos, Questão Jurídica, Direito Aplicável, Análise, Conclusão) para análise estruturada de processos. Fornece parecer jurídico organizado em cinco dimensões lógicas.</p>
-                <div class="copilot-agent-cta-wrap">
-                  <a href="https://m365.cloud.microsoft/chat/?titleId=T_19f44508-0f59-1cc2-c106-1cd64603500c&amp;source=embedded-builder" class="copilot-agent-cta" target="_blank"><span class="copilot-agent-cta-icon" aria-hidden="true"></span><span class="copilot-agent-cta-label">Acessar Agente Copilot</span><i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
-                </div>
-                <h3><i class="fas fa-star"></i> Funcionalidades principais</h3>
-                <ul>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Sintetizar FATOS do caso em narrativa objetiva</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Formular QUESTÃO JURÍDICA central em preciso</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Mapear DIREITO APLICÁVEL (leis, jurisprudência, precedentes)</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Realizar ANÁLISE integrando fatos com direito</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Formular CONCLUSÃO fundamentada</span></li>
-                </ul>
-                <blockquote><strong>💡 Uso recomendado:</strong> Anexe peças processuais em PDF/DOCX para análise automática.</blockquote>
-                <h3><i class="fas fa-gavel"></i> 10. Júri Perguntas em AIJ Crim</h3>
-                <div class="text-discreet">
-                <p>Estrutura estratégia de perguntas para audiência de instrução (AIJ), conferindo visão global do caso e fluxo lógico de condução da instrução. Versão estruturada com perguntas a partes, testemunhas e peritos.</p>
-                </div>
-                <div class="copilot-agent-cta-wrap">
-                  <a href="https://m365.cloud.microsoft/chat/?titleId=T_41bb993a-975a-e0d0-712b-6a792f55f9f3&amp;source=embedded-builder" class="copilot-agent-cta" target="_blank"><span class="copilot-agent-cta-icon" aria-hidden="true"></span><span class="copilot-agent-cta-label">Acessar Agente Copilot</span><i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
-                </div>
-                <h3><i class="fas fa-star"></i> Funcionalidades principais</h3>
-                <ul>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Mapear estrutura lógica do caso para condução de instrução</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Formular perguntas estratégicas a testemunhas (blocos temáticos)</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Estruturar questionamento ao réu (acareações e confrontos)</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Preparar perguntas a peritos (especialistas periciais)</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Sequenciar perguntas conforme fases da instrução</span></li>
-                </ul>
-                <h3><i class="fas fa-gavel"></i> 11. Júri Cross Examination</h3>
-                <p>Simula atuação estratégica do(a) promotor(a) no interrogatório e depoimentos. Elabora interrogatórios estruturados por blocos temáticos com técnicas de controle, comprometimento, reconstrução de fatos e confronto de provas.</p>
-                <div class="copilot-agent-cta-wrap">
-                  <a href="https://m365.cloud.microsoft/chat/?titleId=T_a693cb65-12f0-8a60-1bb5-e0b431ed4066&amp;source=embedded-builder" class="copilot-agent-cta" target="_blank"><span class="copilot-agent-cta-icon" aria-hidden="true"></span><span class="copilot-agent-cta-label">Acessar Agente Copilot</span><i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
-                </div>
-                <h3><i class="fas fa-star"></i> Funcionalidades principais</h3>
-                <ul>
-                <li class="li-topic"><span class="li-topic-icon icon-bullseye"><i class="fas fa-bullseye"></i></span><span class="li-topic-text">Ajustar estratégia e linguagem conforme fase processual</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Elaborar perguntas claras, objetivas e persuasivas</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Aplicar técnicas de controle e comprometimento lógico</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-database"><i class="fas fa-database"></i></span><span class="li-topic-text">Confrontar resposta com provas técnicas e depoimentos</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Registrar contradições e reforçar narrativa acusatória</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Orientar reações a respostas evasivas, silêncio ou hostilidade</span></li>
-                </ul>
-                <blockquote><strong>⚠️ Ética processual:</strong> Observe limites legais e cuidados éticos na condução do interrogatório.</blockquote>
-                <h3><i class="fas fa-gavel"></i> 12. Júri Advogado do Diabo</h3>
-                <div class="text-discreet">
-                <p>Simula estratégia defensiva em casos de crime doloso contra a vida. Analisa documentos (PDF/DOCX) como advogado criminalista, identificando teses, nulidades e fragilidades probatórias que o MP deve neutralizar.</p>
-                </div>
-                <div class="copilot-agent-cta-wrap">
-                  <a href="https://m365.cloud.microsoft/chat/?titleId=T_4af02066-9b54-fbb1-9708-683dff4c3a18&amp;source=embedded-builder" class="copilot-agent-cta" target="_blank"><span class="copilot-agent-cta-icon" aria-hidden="true"></span><span class="copilot-agent-cta-label">Acessar Agente Copilot</span><i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
-                </div>
-                <h3><i class="fas fa-star"></i> Funcionalidades principais</h3>
-                <ul>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Analisar caso sob perspectiva defensiva (pontos cegos do MP)</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-bullseye"><i class="fas fa-bullseye"></i></span><span class="li-topic-text">Antecipar teses defensivas viáveis e táticas de persuasão</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Identificar nulidades processuais potenciais</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Mapear fragilidades probatórias exploráveis pela defesa</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Sugerir contra-argumentos para blindar tese acusatória</span></li>
-                </ul>
-                <blockquote><strong>💡 Inteligência estratégica:</strong> Use antes do plenário para revelar vulnerabilidades e preparar rebates.</blockquote>
-                <h3><i class="fas fa-gavel"></i> 13. Júri Análise de Audiência Degravada</h3>
-                <p>Análise técnica e objetiva de audiências degravadas em formato textual. Identifica depoimentos, sintetiza falas e confronta narrativas entre depoentes. Gera relatórios estruturados e fiéis, sem inferências.</p>
-                <div class="copilot-agent-cta-wrap">
-                  <a href="https://m365.cloud.microsoft/chat/?titleId=T_110c0c66-5712-7cf8-4886-de5cb797e9c8&amp;source=embedded-builder" class="copilot-agent-cta" target="_blank"><span class="copilot-agent-cta-icon" aria-hidden="true"></span><span class="copilot-agent-cta-label">Acessar Agente Copilot</span><i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
-                </div>
-                <h3><i class="fas fa-star"></i> Funcionalidades principais</h3>
-                <ul>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Identificar e estruturar depoimentos em sequência</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Sintetizar pontos-chave de cada fala</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Confrontar narrativas entre depoentes distintos</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Mapear incoerências e contradições</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Gerar relatório objetivo sem interpretações especulativas</span></li>
-                </ul>
-                <blockquote><strong>⚠️ Rigor metodológico:</strong> Relatório limita-se a transcrição e síntese dos fatos relatados, sem análise especulativa.</blockquote>
-                <h3><i class="fas fa-gavel"></i> 14. Júri Alegações Finais MP</h3>
-                <p>Estrutura argumentação do(a) promotor(a) na 1ª fase do Tribunal do Júri (alegações finais). Exige análise integral dos autos, rigor probatório absoluto e fundamentação legal precisa.</p>
-                <div class="copilot-agent-cta-wrap">
-                  <a href="https://m365.cloud.microsoft/chat/?titleId=T_ee3d7f07-1cd1-e394-8ad6-6e5b3d130cf8&amp;source=embedded-builder" class="copilot-agent-cta" target="_blank"><span class="copilot-agent-cta-icon" aria-hidden="true"></span><span class="copilot-agent-cta-label">Acessar Agente Copilot</span><i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
-                </div>
-                <h3><i class="fas fa-star"></i> Funcionalidades principais</h3>
-                <ul>
-                <li class="li-topic"><span class="li-topic-icon icon-database"><i class="fas fa-database"></i></span><span class="li-topic-text">Analisar integralmente todos os autos do processo</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-window-maximize"><i class="fas fa-window-maximize"></i></span><span class="li-topic-text">Estruturar memorial em relatório, mérito e conclusão</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-database"><i class="fas fa-database"></i></span><span class="li-topic-text">Gerar tabelas-resumo obrigatórias de provas e teses</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Validar arguição conforme possíveis desfechos (pronúncia, impronúncia, desclassificação)</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Formular conclusão com pedido específico</span></li>
-                </ul>
-                <blockquote><strong>⚠️ Vedações absolutas:</strong> Sem criação de provas, jurisprudência ou argumentos inventados. Tudo fundado nos autos.</blockquote>
-                <h3><i class="fas fa-gavel"></i> 15. Júri Embargos de Declaração</h3>
-                <p>Identifica possíveis vícios de julgamento em decisões de Tribunal do Júri (pré e pós sentença) em crimes dolosos contra a vida. Subsidia elaboração de Embargos de Declaração pelo MP.</p>
-                <div class="copilot-agent-cta-wrap">
-                  <a href="https://m365.cloud.microsoft/chat/?titleId=T_29ba15de-1f9c-d016-2499-7945372eaac4&amp;source=embedded-builder" class="copilot-agent-cta" target="_blank"><span class="copilot-agent-cta-icon" aria-hidden="true"></span><span class="copilot-agent-cta-label">Acessar Agente Copilot</span><i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
-                </div>
-                <h3><i class="fas fa-star"></i> Funcionalidades principais</h3>
-                <ul>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Mapear vícios de fundamentação da sentença</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Identificar contradições entre fundamentação e dispositivo</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Detectar omissões em análise de teses debatidas</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Estruturar pedido de declaração/esclarecimento com base legal</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Preparar peça fundamentada conforme art. 535 CPC (aplicável subsidiariamente)</span></li>
-                </ul>
-                <h3><i class="fas fa-gavel"></i> 16. Júri Razões Recursais</h3>
-                <p>Estrutura razões recursais do MP em grau de apelação. Analisa integralmente os autos, diagnostica admissibilidade recursal e fundamenta argumentos com rigor técnico e vinculação probatória.</p>
-                <div class="copilot-agent-cta-wrap">
-                  <a href="https://m365.cloud.microsoft/chat/?titleId=T_320ca72e-eac7-4d48-8d84-7b840d1743e9&amp;source=embedded-builder" class="copilot-agent-cta" target="_blank"><span class="copilot-agent-cta-icon" aria-hidden="true"></span><span class="copilot-agent-cta-label">Acessar Agente Copilot</span><i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
-                </div>
-                <h3><i class="fas fa-star"></i> Funcionalidades principais</h3>
-                <ul>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Inventariar e cronologizar eventos processuais</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-database"><i class="fas fa-database"></i></span><span class="li-topic-text">Analisar provas, decisões e teses em profundidade</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Diagnosticar fase recursal, cabimento e limites do recurso</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Estruturar razões com fundamentação robusta organizada</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-database"><i class="fas fa-database"></i></span><span class="li-topic-text">Vincular cada argumento às provas dos autos</span></li>
-                </ul>
-                <blockquote><strong>⚠️ Restrição rigorosa:</strong> Vedado uso de jurisprudência não fornecida pelo usuário. Fundamentação limitada aos autos.</blockquote>
-                <h3><i class="fas fa-gavel"></i> 17. Júri Contrarrazões Recursais</h3>
-                <p>Estrutura contrarrazões em resposta a recurso da defesa em homicídio doloso. Estabelece blocos argumentativos modulares (autoria, qualificadoras, nulidades) com linguagem formal e aderência às provas.</p>
-                <div class="copilot-agent-cta-wrap">
-                  <a href="https://m365.cloud.microsoft/chat/?titleId=T_7fca3fe7-e30a-ac54-7749-4b9471dbc198&amp;source=embedded-builder" class="copilot-agent-cta" target="_blank"><span class="copilot-agent-cta-icon" aria-hidden="true"></span><span class="copilot-agent-cta-label">Acessar Agente Copilot</span><i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
-                </div>
-                <h3><i class="fas fa-star"></i> Funcionalidades principais</h3>
-                <ul>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Analisar teses defensivas apresentadas no recurso</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Estruturar blocos argumentativos por tema (autoria, qualificadoras, excludentes)</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Rebater argumentos com fundamentação probatória específica</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Elaborar síntese, tabela de teses e desenvolvimento argumentativo</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Formular conclusão com pedido de desprovimento</span></li>
-                </ul>
-                <blockquote><strong>⚠️ Vedação:</strong> Sem criação de novos precedentes jurisprudenciais. Argumentação limitada aos autos.</blockquote>
-                <h3><i class="fas fa-gavel"></i> 18. Júri Roteiro</h3>
-                <p>Estrutura roteiro de consulta rápida com as principais peças do processo. Auxilia o(a) PJ a estudar o caso para plenário com acesso ágil a documentação-chave.</p>
-                <div class="copilot-agent-cta-wrap">
-                  <a href="https://m365.cloud.microsoft/chat/?titleId=T_7f6da1fb-3198-1075-e4a4-2e61b9fd0a5a&amp;source=embedded-builder" class="copilot-agent-cta" target="_blank"><span class="copilot-agent-cta-icon" aria-hidden="true"></span><span class="copilot-agent-cta-label">Acessar Agente Copilot</span><i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
-                </div>
-                <h3><i class="fas fa-star"></i> Funcionalidades principais</h3>
-                <ul>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Catalogar principais peças processuais por fase</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Estruturar índice com links/referências às peças</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-database"><i class="fas fa-database"></i></span><span class="li-topic-text">Priorizar documentação crítica (pronúncia, defesa, provas técnicas)</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Criar guia de fácil navegação para estudo pré-plenário</span></li>
-                </ul>
-                <blockquote><strong>💡 Organização:</strong> Use como ferramenta de referência rápida durante plenário.</blockquote>
-                <h3><i class="fas fa-gavel"></i> 19. Júri Sustentação Oral</h3>
-                <p>Estrutura argumentação para debates orais na 2ª fase do Tribunal do Júri (sustentação oral). Constrói narrativa persuasiva dirigida aos jurados sobre a tese acusatória.</p>
-                <div class="copilot-agent-cta-wrap">
-                  <a href="https://m365.cloud.microsoft/chat/?titleId=T_c67c581e-522e-4123-90d9-0942bcd9cd73&amp;source=embedded-builder" class="copilot-agent-cta" target="_blank"><span class="copilot-agent-cta-icon" aria-hidden="true"></span><span class="copilot-agent-cta-label">Acessar Agente Copilot</span><i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
-                </div>
-                <h3><i class="fas fa-star"></i> Funcionalidades principais</h3>
-                <ul>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Estruturar discurso para linguagem acessível aos jurados</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Organizar argumentação em blocos temáticos claros</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Reforçar elementos emotivos e probatórios em equilíbrio</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Prever objeções e preparar contra-argumentos imediatos</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Praticar timing e distribuição de ênfase no discurso</span></li>
-                </ul>
-                <blockquote><strong>💡 Retórica:</strong> Argumento eficaz em plenário combina rigor técnico com clareza comunicativa.</blockquote>
-                <h3><i class="fas fa-gavel"></i> 20. Júri Quesitação</h3>
-                <div class="text-discreet">
-                <p>Protocolo técnico para formulação de quesitos no Tribunal do Júri conforme arts. 482 e 483 do CPP. Estrutura questões em sequência lógica obrigatória (materialidade, autoria, qualificadoras, causas de diminuição).</p>
-                </div>
-                <div class="copilot-agent-cta-wrap">
-                  <a href="https://m365.cloud.microsoft/chat/?titleId=T_fd059e07-16e3-986d-ab7a-1e3ac513830f&amp;source=embedded-builder" class="copilot-agent-cta" target="_blank"><span class="copilot-agent-cta-icon" aria-hidden="true"></span><span class="copilot-agent-cta-label">Acessar Agente Copilot</span><i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
-                </div>
-                <h3><i class="fas fa-star"></i> Funcionalidades principais</h3>
-                <ul>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Coletar peças processuais essenciais (especialmente decisão de pronúncia)</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Levantar teses de acusação, defesa e acusado</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Formular quesitos em linguagem clara, acessível e afirmativa</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Impor sequência lógica obrigatória (materialidade → autoria → qualificadoras)</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Evitar nulidades por quesitos fora da pronúncia ou em forma negativa</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Mapear teses debatidas em plenário não incluídas em quesitos</span></li>
-                </ul>
-                <blockquote><strong>⚠️ Rigor técnico:</strong> Quesitos fora da pronúncia ou em forma negativa causam nulidade. Respeite sequência obrigatória.</blockquote>
-                <h3><i class="fas fa-gavel"></i> 21. Júri Dashboard Quesitação</h3>
-                <p>Transforma quesitação do Tribunal do Júri em dashboard visual, interativo e autossuficiente. Ferramenta para apresentação clara aos jurados com revelação controlada do posicionamento do MP (SIM/NÃO) em cada quesito.</p>
-                <div class="copilot-agent-cta-wrap">
-                  <a href="https://m365.cloud.microsoft/chat/?titleId=T_3cf467bb-342b-1e6d-0b45-fbd1cea52d54&amp;source=embedded-builder" class="copilot-agent-cta" target="_blank"><span class="copilot-agent-cta-icon" aria-hidden="true"></span><span class="copilot-agent-cta-label">Acessar Agente Copilot</span><i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
-                </div>
-                <h3><i class="fas fa-star"></i> Funcionalidades principais</h3>
-                <ul>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Converter quesitação em formato visual e interativo</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Estruturar questões em sequência lógica clara</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Permitir revelação controlada do posicionamento do MP</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Otimizar apresentação para plenário com jurados leigos</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text">Facilitar navegação e referência durante debates</span></li>
-                </ul>
-                <blockquote><strong>💡 Uso em plenário:</strong> Ferramenta exclusiva para apresentação do MP aos jurados, revelando posição no momento estratégico desejado.</blockquote>
+            </section>
+
+            <section id="p12" class="caor-card">
+                <h2><i class="fas fa-bullseye"></i> O protagonismo inegociável do Promotor de Justiça</h2>
+                <p>A tecnologia organiza, mas a <strong>voz do Promotor entrega a Justiça</strong>. Ética, curadoria e eloquência são elementos centrais para o veredito justo. O estúdio do Ministério Público não substitui o instinto investigativo; ele elimina o trabalho mecânico.</p>
+                <blockquote>O Ministério Público exerce sua verdadeira vocação quando domina absolutamente os fatos e realiza a defesa intransigente da sociedade no Tribunal do Júri.</blockquote>
+                <p>A tecnologia é a fundação. O protagonismo humano é inegociável.</p>
             </section>
 <!-- AUTO:CONTENT:END -->
         </div>
