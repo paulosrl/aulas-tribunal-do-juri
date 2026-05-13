@@ -1342,6 +1342,68 @@ def apply_global_page_rules(html_out: str, out_path: Path, page_title: str, menu
     return html_out
 
 
+def generate_index_page(md_path: Path, out_path: Path) -> str:
+    """Generate landing page with index.template.html"""
+    markdown = md_path.read_text(encoding="utf-8")
+    tpl_path = md_path.parent.parent / "templates" / "index.template.html"
+    template = tpl_path.read_text(encoding="utf-8")
+
+    # Extract title (H1)
+    h1_match = re.search(r"^# (.+)$", markdown, re.MULTILINE)
+    title = h1_match.group(1) if h1_match else ""
+
+    # Extract metadata
+    subtitle = ""
+    footer = ""
+    subtitle_match = re.search(r"^\*\*subtítulo:\*\*\s+(.+)$", markdown, re.MULTILINE)
+    footer_match = re.search(r"^\*\*rodapé:\*\*\s+(.+)$", markdown, re.MULTILINE)
+
+    if subtitle_match:
+        subtitle = subtitle_match.group(1)
+    if footer_match:
+        footer = footer_match.group(1)
+
+    # Extract topics (H2 with links)
+    topic_pattern = r"^## \[([^\]]+)\]\(([^)]+)\)\s*\n\n(.+?)(?=\n\n\*\*\*|$)"
+    topics = []
+    for match in re.finditer(topic_pattern, markdown, re.MULTILINE | re.DOTALL):
+        title_text = match.group(1)
+        link = match.group(2)
+        desc = match.group(3).strip()
+
+        # Extract icon from menu_icon or use fa-landmark default
+        icon = "fa-landmark"
+        topics.append({"title": title_text, "link": link, "desc": desc, "icon": icon})
+
+    # Generate cards HTML
+    cards_html = ""
+    for topic in topics:
+        cards_html += f'''    <a href="{topic['link']}" class="card">
+      <div class="title-row">
+        <i class="fas {topic['icon']}"></i>
+        <h2 class="title">{html.escape(topic['title'])}</h2>
+      </div>
+      <p class="desc">{html.escape(topic['desc'])}</p>
+    </a>\n'''
+
+    # Replace markers
+    html_out = template.replace("<!-- AUTO:TITLE -->", html.escape(title))
+    html_out = html_out.replace("<!-- AUTO:SUBTITLE -->", html.escape(subtitle))
+    html_out = html_out.replace("<!-- AUTO:FOOTER -->", html.escape(footer))
+    html_out = html_out.replace("      <!-- AUTO:CARDS:START -->\n      <!-- AUTO:CARDS:END -->", f"      <!-- AUTO:CARDS:START -->\n{cards_html}      <!-- AUTO:CARDS:END -->")
+
+    # Inject logo as data URI
+    logo_path = out_path.parent / "logo.png"
+    if logo_path.exists():
+        with open(logo_path, "rb") as f:
+            logo_b64 = base64.b64encode(f.read()).decode("utf-8")
+            mime_type, _ = mimetypes.guess_type(str(logo_path))
+            logo_uri = f"data:{mime_type};base64,{logo_b64}"
+            html_out = html_out.replace('src="logo.png"', f'src="{logo_uri}"')
+
+    return html_out
+
+
 def main() -> None:
     args = parse_args()
 
@@ -1349,6 +1411,13 @@ def main() -> None:
     tpl_path = Path(args.template)
     out_path = Path(args.output_html)
     menu_md_path = Path(args.menu_md)
+
+    # Special handling for index page
+    if out_path.name == "index.html":
+        html_out = generate_index_page(md_path, out_path)
+        out_path.write_text(html_out, encoding="utf-8")
+        print(f"OK: {out_path} gerado como landing page.")
+        return
 
     markdown = md_path.read_text(encoding="utf-8")
     template = tpl_path.read_text(encoding="utf-8")
