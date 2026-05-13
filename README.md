@@ -5,7 +5,7 @@ Repositório do material em HTML da trilha **Inteligência Artificial Aplicada a
 O projeto converte conteúdo Markdown em páginas HTML com:
 - landing page em cards
 - páginas de tópicos com sidebar
-- menu lateral unificado com 6 itens (inclui **6. Favoritos**)
+- menu lateral unificado com 7 itens (inclui **Favoritos** e **NotebookLM**)
 - tema claro/escuro
 - ícones e estilos automáticos
 
@@ -20,7 +20,8 @@ O projeto converte conteúdo Markdown em páginas HTML com:
 ├── conteudo/
 │   ├── index.md
 │   ├── 1.md ... 5.md
-│   └── favoritos.md
+│   ├── favoritos.md
+│   └── notebooklm.md
 ├── templates/
 │   ├── index.template.html
 │   └── topico.template.html
@@ -31,8 +32,7 @@ O projeto converte conteúdo Markdown em páginas HTML com:
 │   ├── index.html
 │   ├── 1.html ... 5.html
 │   ├── favoritos.html
-│   ├── logo.png
-│   └── copilot.png
+│   └── notebooklm.html
 ├── graphify-out/
 ├── AGENTS.md
 ├── CLAUDE.md
@@ -50,6 +50,7 @@ O gerador principal do codebase é **`scripts/gera_html.py`**.
 Ele gera:
 - páginas de tópico (`1.html` a `5.html`)
 - página `favoritos.html`
+- página `notebooklm.html`
 - `index.html` (modo landing, quando `output_html` é `index.html`)
 
 ### Comandos
@@ -90,6 +91,7 @@ python3 scripts/gera_html.py conteudo/3.md html/3.html --template templates/topi
 python3 scripts/gera_html.py conteudo/4.md html/4.html --template templates/topico.template.html --page-title "Segurança, Compliance e Regulamentação de IA" --menu-md conteudo/index.md --section-mode semantic
 python3 scripts/gera_html.py conteudo/5.md html/5.html --template templates/topico.template.html --page-title "Estudos de Caso e Simulações Práticas" --menu-md conteudo/index.md --section-mode semantic
 python3 scripts/gera_html.py conteudo/favoritos.md html/favoritos.html --template templates/topico.template.html --page-title "Inteligência Artificial Aplicada ao Tribunal do Júri — Favoritos" --menu-md conteudo/index.md --section-mode semantic
+python3 scripts/gera_html.py conteudo/notebooklm.md html/notebooklm.html --template templates/topico.template.html --page-title "NotebookLM no Tribunal do Júri" --menu-md conteudo/index.md --section-mode semantic
 ```
 
 > `scripts/gera_index.py` ainda existe, mas o fluxo principal atual está centralizado em `gera_html.py`.
@@ -98,8 +100,7 @@ python3 scripts/gera_html.py conteudo/favoritos.md html/favoritos.html --templat
 
 ## Regras Visíveis no HTML Gerado
 
-- Sidebar com tópicos principais numerados de **1 a 6**.
-- Item **Favoritos** aparece como `6. Favoritos` no menu lateral.
+- Sidebar com navegação unificada para **1 a 5**, **Favoritos** e **NotebookLM**.
 - Página de favoritos deixa de ficar bloqueada quando `html/favoritos.html` existe.
 - Botões “Acessar Agente Copilot” são gerados a partir de linhas `Acesse o agente: ...` e posicionados antes de `Funcionalidades principais`.
 - Ícone desses botões usa `copilot.png` (embutido como data URI no CSS).

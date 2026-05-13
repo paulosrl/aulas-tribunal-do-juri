@@ -38,10 +38,20 @@ python3 scripts/gera_html.py conteudo/favoritos.md html/favoritos.html \
   --section-mode semantic
 ```
 
+### NotebookLM
+
+```bash
+python3 scripts/gera_html.py conteudo/notebooklm.md html/notebooklm.html \
+  --template templates/topico.template.html \
+  --page-title "NotebookLM no Tribunal do Júri" \
+  --menu-md conteudo/index.md \
+  --section-mode semantic
+```
+
 ## Regras Importantes
 
 - Não remover marcadores `<!-- AUTO:* -->` dos templates.
-- Menu lateral padrão tem 6 itens, com `6. Favoritos`.
+- Menu lateral padrão tem 7 itens, incluindo `Favoritos` e `NotebookLM`.
 - Botão de agente Copilot é detectado por linha `Acesse o agente: ...`.
 - Ícone do botão Copilot usa `copilot.png` e é embutido no CSS.
 
