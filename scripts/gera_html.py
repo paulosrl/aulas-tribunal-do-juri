@@ -61,6 +61,25 @@ AGENT_HEADER_PAT = re.compile(
     r"^\*\*(\d+)\\?\.\*\*[\s\t]+\*\*([^*]+)\*\*"
 )
 
+TOPIC_NAV_ITEMS: list[tuple[str, str, str]] = [
+    ("Abertura", "1.html", "fa-book-open"),
+    ("Engenharia de Prompts", "2.html", "fa-window-maximize"),
+    ("Agentes no Júri", "3.html", "fa-gavel"),
+    ("Elementos Gráficos no Júri", "4.html", "fa-chart-line"),
+    ("NotebookLM no Júri", "5.html", "fa-pencil-ruler"),
+    ("Favoritos", "favoritos.html", "fa-star"),
+    ("NotebookLM", "notebooklm.html", "fa-brain"),
+]
+
+NUMBERED_TOPIC_PAGES = {item[1] for item in TOPIC_NAV_ITEMS}
+
+
+def safe_href(url: str) -> str:
+    clean_url = re.sub(r"\\(.)", r"\1", url).strip()
+    if re.match(r"^\s*javascript\s*:", clean_url, flags=re.IGNORECASE):
+        return "#"
+    return esc(clean_url)
+
 
 def pick_agent_icon(name: str) -> str:
     name_lower = clean_md_title(name).lower()
@@ -162,8 +181,7 @@ def inline_md(text: str) -> str:
         return key
 
     def _make_link(url: str, label: str) -> str:
-        clean_url = re.sub(r"\\(.)", r"\1", url)
-        return _store(f'<a href="{clean_url}" target="_blank">{esc(label)}</a>')
+        return _store(f'<a href="{safe_href(url)}" target="_blank">{esc(label)}</a>')
 
     text = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", lambda m: _make_link(m.group(2), m.group(1)), text)
     text = re.sub(r'(?<!["\'/])(https?://[^\s<>"{}^\[\]]+?)(?=[\s\[\]()]|$)', lambda m: _make_link(m.group(1), m.group(1)), text)
@@ -285,7 +303,7 @@ def parse_agent_block(lines: List[str], start_i: int, agent_num: str, agent_name
     desc_block = "\n".join(desc_html_parts)
     link_html = (
         f'<div class="agent-card-footer">'
-        f'<a href="{agent_url}" class="agent-link-btn" target="_blank">'
+        f'<a href="{safe_href(agent_url)}" class="agent-link-btn" target="_blank">'
         f'<i class="fas fa-external-link-alt"></i> Acessar Agente</a>'
         f'<!-- AGENT_LOGO -->'
         f'</div>'
@@ -344,7 +362,7 @@ def extract_agent_access_url(text: str) -> str | None:
 
 
 def render_copilot_agent_cta(url: str) -> str:
-    safe_url = esc(url)
+    safe_url = safe_href(url)
     return (
         f'<a href="{safe_url}" class="copilot-agent-cta" target="_blank">'
         '<span class="copilot-agent-cta-icon" aria-hidden="true"></span>'
@@ -1024,18 +1042,21 @@ def parse_markdown(markdown: str, md_dir: Path, section_mode: str = "semantic") 
             continue
         authors_meta = parse_authors_line(paragraph_text)
         if authors_meta:
-            authors, _org, _date = authors_meta
+            authors, org, date = authors_meta
             author_names = [x.strip() for x in re.split(r"\s+e\s+", authors, flags=re.IGNORECASE) if x.strip()]
             author_badges = []
             for name in author_names[:2]:
                 author_badges.append(f'<span class="author-badge">🏅 {inline_md(name)}</span>')
             if not author_badges:
                 author_badges.append(f'<span class="author-badge">🏅 {inline_md(authors)}</span>')
-            org_date_line = "MPPA -  CIIA  (14 e 15 de maio de 2026)"
+            safe_org = inline_md(org) if org else "MPPA - CIIA"
+            safe_date = inline_md(date) if date else ""
+            date_html = f'  <div class="authors-date">{safe_date}</div>\n' if safe_date else ""
             current.blocks.append(
                 '<div class="authors-meta">\n'
                 f'  <div class="authors-badges">{"".join(author_badges)}</div>\n'
-                f'  <div class="authors-org">{org_date_line}</div>\n'
+                f'  <div class="authors-org">{safe_org}</div>\n'
+                f"{date_html}"
                 '  <div class="authors-note">Material produzido com apoio de ferramentas de IA</div>\n'
                 "</div>"
             )
@@ -1187,31 +1208,6 @@ def render_cards(cards: List[Card], card_icons: List[str]) -> str:
     return "\n".join(out).rstrip() + "\n"
 
 
-def parse_menu_md(menu_md_path: Path) -> tuple[str, list[str]]:
-    if not menu_md_path.exists():
-        return ("", [])
-
-    title = ""
-    items: list[str] = []
-    for raw in menu_md_path.read_text(encoding="utf-8").splitlines():
-        line = raw.strip()
-        if not line:
-            continue
-        m1 = re.match(r"^#\s+(.+)$", line)
-        if m1:
-            title = clean_md_title(m1.group(1))
-            continue
-        m2 = re.match(r"^[-*]\s+(.+)$", line)
-        if m2:
-            items.append(strip_leading_number(m2.group(1)))
-            continue
-        m3 = re.match(r"^\d+\.\s+(.+)$", line)
-        if m3:
-            items.append(strip_leading_number(m3.group(1)))
-            continue
-    return (title or "", items)
-
-
 def render_menu_from_labels(cards: List[Card], card_icons: List[str], menu_icon: str) -> str:
     def _submenu_entries() -> list[tuple[int, str, str]]:
         entries: list[tuple[int, str, str]] = []
@@ -1236,25 +1232,13 @@ def render_menu_from_labels(cards: List[Card], card_icons: List[str], menu_icon:
 
 def render_topics_accordion(out_path: Path, cards: List[Card], card_icons: List[str], menu_icon: str) -> str:
     # Menu lateral com acordeão para o tópico atual e links de navegação para os demais
-    fixed_items: list[tuple[str, str, str]] = [
-        ("Abertura", "1.html", "fa-book-open"),
-        ("Engenharia de Prompts", "2.html", "fa-window-maximize"),
-        ("Agentes no Júri", "3.html", "fa-gavel"),
-        ("Elementos Gráficos no Júri", "4.html", "fa-chart-line"),
-        ("NotebookLM no Júri", "5.html", "fa-pencil-ruler"),
-        ("Favoritos", "favoritos.html", "fa-star"),
-        ("NotebookLM", "notebooklm.html", "fa-brain"),
-    ]
-
-    numbered_pages = {"1.html", "2.html", "3.html", "4.html", "5.html", "favoritos.html", "notebooklm.html"}
-
     # Sub-itens da página atual (seções internas do acordeão)
     sub_html = render_menu_from_labels(cards, card_icons, menu_icon)
 
     items = []
     num = 0
-    for label, filename, icon in fixed_items:
-        is_numbered = filename in numbered_pages
+    for label, filename, icon in TOPIC_NAV_ITEMS:
+        is_numbered = filename in NUMBERED_TOPIC_PAGES
         if is_numbered:
             num += 1
         current_name = out_path.name.lower()
@@ -1276,7 +1260,7 @@ def render_topics_accordion(out_path: Path, cards: List[Card], card_icons: List[
                 f'                </div>\n'
                 f'            </div>'
             )
-        elif filename in numbered_pages:
+        elif filename in NUMBERED_TOPIC_PAGES:
             # Outros tópicos numerados: links colapsáveis
             num_span = f'<span class="nav-topic-num">{num}.</span> '
             header = (
@@ -1303,61 +1287,6 @@ def render_topics_accordion(out_path: Path, cards: List[Card], card_icons: List[
                 )
 
     return "\n".join(items) + ("\n" if items else "")
-
-
-def render_topics_menu(out_path: Path) -> str:
-    # Menu lateral fixo para todas as páginas geradas.
-    fixed_items: list[tuple[str, str, str]] = [
-        ("Abertura", "1.html", "fa-book-open"),
-        ("Engenharia de Prompts", "2.html", "fa-window-maximize"),
-        ("Agentes no Júri", "3.html", "fa-gavel"),
-        ("Elementos Gráficos no Júri", "4.html", "fa-chart-line"),
-        ("NotebookLM no Júri", "5.html", "fa-pencil-ruler"),
-        ("Favoritos", "favoritos.html", "fa-star"),
-        ("NotebookLM", "notebooklm.html", "fa-brain"),
-    ]
-
-    available_core_pages = {"1.html", "2.html", "3.html", "4.html", "5.html", "favoritos.html", "notebooklm.html"}
-    nav_numbers = {
-        "1.html": "1.",
-        "2.html": "2.",
-        "3.html": "3.",
-        "4.html": "4.",
-        "5.html": "5.",
-        "favoritos.html": "6.",
-        "notebooklm.html": "7.",
-    }
-
-    links: list[str] = []
-    for label, filename, icon in fixed_items:
-        if out_path.name.lower() == filename.lower():
-            nav_num = f'<span class="nav-topic-num">{nav_numbers.get(filename, "")}</span> ' if filename in nav_numbers else ""
-            links.append(
-                f'            <span class="nav-l nav-aula current"><i class="fas {icon}"></i> {nav_num}{esc(label)}</span>'
-            )
-            continue
-
-        # Os 5 tópicos principais são sempre navegáveis.
-        if filename in available_core_pages:
-            nav_num = f'<span class="nav-topic-num">{nav_numbers.get(filename, "")}</span> ' if filename in nav_numbers else ""
-            links.append(
-                f'            <a href="{filename}" class="nav-l"><i class="fas {icon}"></i> {nav_num}{esc(label)}</a>'
-            )
-            continue
-
-        # Itens extras (ex.: Favoritos) seguem regra de existência.
-        topic_file = out_path.parent / filename
-        if topic_file.exists():
-            links.append(
-                f'            <a href="{filename}" class="nav-l"><i class="fas {icon}"></i> {esc(label)}</a>'
-            )
-            continue
-
-        links.append(
-            f'            <span class="nav-l nav-locked"><i class="fas {icon}"></i> {esc(label)} <i class="fas fa-lock"></i></span>'
-        )
-
-    return "\n".join(links) + ("\n" if links else "")
 
 
 def validate_completeness(markdown: str, html_out: str, cards: List[Card]) -> None:
@@ -1495,7 +1424,7 @@ def validate_content_preservation(markdown: str, html_out: str) -> None:
 
 def replace_between(text: str, start_marker: str, end_marker: str, replacement: str) -> str:
     start = text.find(start_marker)
-    end = text.find(end_marker)
+    end = text.find(end_marker, start + len(start_marker))
     if start == -1 or end == -1 or end < start:
         raise ValueError(f"Marcadores não encontrados: {start_marker} ... {end_marker}")
     start_insert = start + len(start_marker)
@@ -1509,7 +1438,13 @@ def normalize_data_uri(raw_logo: str) -> str:
     return f"data:image/png;base64,{cleaned}"
 
 
-def apply_global_page_rules(html_out: str, out_path: Path, page_title: str, menu_group_title: str) -> str:
+def apply_global_page_rules(
+    html_out: str,
+    out_path: Path,
+    md_path: Path,
+    page_title: str,
+    menu_group_title: str,
+) -> str:
     # Regra 0: Título de página vindo de parâmetro de execução.
     safe_title = esc(page_title.strip() or "Defina o título da página")
     html_out = re.sub(r"<title>.*?</title>", f"<title>{safe_title}</title>", html_out, flags=re.IGNORECASE | re.DOTALL)
@@ -1532,12 +1467,17 @@ def apply_global_page_rules(html_out: str, out_path: Path, page_title: str, menu
     # Regra 1: Página inicial sempre aponta para index.html na mesma pasta.
     html_out = re.sub(r'href="\.\./index\.html"', 'href="index.html"', html_out, flags=re.IGNORECASE)
 
-    # Regra 2: Logo vem de logo.png na pasta do arquivo de saída.
-    logo_file = out_path.parent / "logo.png"
-    if not logo_file.exists():
+    # Regra 2: Logo preferencialmente na pasta de saída; fallback para pasta do markdown.
+    logo_candidates = [
+        out_path.parent / "logo.png",
+        md_path.parent / "logo.png",
+        Path("logo.png"),
+    ]
+    logo_file = next((p for p in logo_candidates if p.exists()), None)
+    if logo_file is None:
         raise FileNotFoundError(
-            f"Arquivo obrigatório não encontrado: {logo_file}\n"
-            f"Coloque logo.png no diretório {out_path.parent}"
+            f"Arquivo obrigatório não encontrado: logo.png\n"
+            f"Procurei em: {', '.join(str(p) for p in logo_candidates)}"
         )
     logo_bytes = base64.b64encode(logo_file.read_bytes()).decode("ascii")
     logo_data_uri = f"data:image/png;base64,{logo_bytes}"
@@ -1555,6 +1495,7 @@ def apply_global_page_rules(html_out: str, out_path: Path, page_title: str, menu
     # Ícone do botão Copilot: usa arquivo real para fidelidade visual.
     copilot_candidates = [
         out_path.parent / "copilot.png",
+        md_path.parent / "copilot.png",
         Path("copilot.png"),
     ]
     copilot_icon_data_uri = None
@@ -1849,7 +1790,7 @@ def generate_index_page(md_path: Path, out_path: Path) -> str:
     # Generate cards HTML
     cards_html = ""
     for topic in topics:
-        cards_html += f'''    <a href="{topic['link']}" class="card">
+        cards_html += f'''    <a href="{safe_href(topic['link'])}" class="card">
       <div class="title-row">
         <i class="fas {topic['icon']}"></i>
         <h2 class="title">{html.escape(topic['title'])}</h2>
@@ -1881,7 +1822,6 @@ def main() -> None:
     md_path = Path(args.input_md)
     tpl_path = Path(args.template)
     out_path = Path(args.output_html)
-    menu_md_path = Path(args.menu_md)
 
     # Special handling for index page
     if out_path.name == "index.html":
@@ -1896,14 +1836,13 @@ def main() -> None:
     cards = parse_markdown(markdown, md_path.parent, section_mode=args.section_mode)
     card_icons = assign_unique_icons(cards, args.menu_icon)
     content_html = render_cards(cards, card_icons)
-    _, _ = parse_menu_md(menu_md_path)
     primary_h1 = extract_h1_title(markdown)
     menu_group_title = clean_md_title(primary_h1) or clean_md_title(args.page_title)
     topics_html = render_topics_accordion(out_path, cards, card_icons, args.menu_icon)
 
     html_out = replace_between(template, CONTENT_START, CONTENT_END, content_html)
     html_out = replace_between(html_out, TOPICS_START, TOPICS_END, topics_html)
-    html_out = apply_global_page_rules(html_out, out_path, args.page_title, menu_group_title)
+    html_out = apply_global_page_rules(html_out, out_path, md_path, args.page_title, menu_group_title)
 
     out_path.write_text(html_out, encoding="utf-8")
     print(f"OK: {out_path} gerado a partir de {md_path} com {len(cards)} seção(ões).")

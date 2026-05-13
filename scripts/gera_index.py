@@ -11,8 +11,16 @@ Arquivo de entrada deve conter:
 """
 
 import argparse
+import html
 import re
 from pathlib import Path
+
+
+def safe_href(url: str) -> str:
+    clean_url = re.sub(r"\\(.)", r"\1", url).strip()
+    if re.match(r"^\s*javascript\s*:", clean_url, flags=re.IGNORECASE):
+        return "#"
+    return html.escape(clean_url, quote=True)
 
 
 def parse_index_md(markdown: str) -> dict:
@@ -109,7 +117,7 @@ def generate_cards_html(topics: list) -> str:
     cards = []
     for idx, topic in enumerate(topics):
         icon = icons[idx % len(icons)]
-        card = f'''      <a class="card" href="{topic['href']}">
+        card = f'''      <a class="card" href="{safe_href(topic['href'])}">
         <span class="tag">{topic['tag']}</span>
         <div class="title-row">
           {icon}

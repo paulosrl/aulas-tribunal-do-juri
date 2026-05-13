@@ -1,16 +1,16 @@
 # Graph Report - aulas-tribunal-do-juri  (2026-05-13)
 
 ## Corpus Check
-- 2 files · ~116,726 words
+- 2 files · ~37,913 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 92 nodes · 251 edges · 11 communities detected
+- 102 nodes · 266 edges · 11 communities detected
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `eec9c6dc`
+- Built from commit: `c5367007`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -32,83 +32,85 @@
 2. `parse_markdown()` - 23 edges
 3. `parse_markdown()` - 21 edges
 4. `clean_md_title()` - 16 edges
-5. `clean_md_title()` - 15 edges
-6. `main()` - 14 edges
-7. `main()` - 13 edges
-8. `generate_index_page()` - 12 edges
-9. `validate_content_preservation()` - 10 edges
-10. `esc()` - 9 edges
+5. `generate_index_page()` - 16 edges
+6. `clean_md_title()` - 15 edges
+7. `main()` - 14 edges
+8. `main()` - 13 edges
+9. `validate_content_preservation()` - 12 edges
+10. `esc()` - 10 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `pick_agent_icon()` --calls--> `clean_md_title()`  [EXTRACTED]
-  gera_html.py → gera_html.py  _Bridges community 1 → community 3_
+- `generate_index_page()` --calls--> `safe_href()`  [EXTRACTED]
+  gera_html.py → gera_html.py  _Bridges community 9 → community 0_
+- `parse_agent_block()` --calls--> `pick_agent_icon()`  [EXTRACTED]
+  gera_html.py → gera_html.py  _Bridges community 6 → community 9_
 - `parse_markdown()` --calls--> `esc()`  [EXTRACTED]
-  gera_html.py → gera_html.py  _Bridges community 1 → community 8_
-- `extract_h1_title()` --calls--> `clean_md_title()`  [EXTRACTED]
-  gera_html.py → gera_html.py  _Bridges community 9 → community 3_
-- `parse_markdown()` --calls--> `parse_authors_line()`  [EXTRACTED]
-  gera_html.py → gera_html.py  _Bridges community 3 → community 8_
-- `is_page_marker_line()` --calls--> `clean_md_title()`  [EXTRACTED]
-  gera_html.py → gera_html.py  _Bridges community 3 → community 4_
+  gera_html.py → gera_html.py  _Bridges community 9 → community 5_
+- `render_menu_from_labels()` --calls--> `esc()`  [EXTRACTED]
+  gera_html.py → gera_html.py  _Bridges community 9 → community 10_
+- `apply_global_page_rules()` --calls--> `esc()`  [EXTRACTED]
+  gera_html.py → gera_html.py  _Bridges community 9 → community 4_
 
 ## Communities (11 total, 0 thin omitted)
 
 ### Community 0 - "Community 0"
-Cohesion: 0.27
-Nodes (13): apply_global_page_rules(), assign_unique_icons(), esc(), extract_h1_title(), file_to_data_uri(), main(), normalize_data_uri(), parse_args() (+5 more)
+Cohesion: 0.14
+Nodes (14): generate_index_page(), Generate landing page with index.template.html, Generate landing page with index.template.html, Generate landing page with index.template.html, Generate landing page with index.template.html, Generate landing page with index.template.html, Generate landing page with index.template.html, Generate landing page with index.template.html (+6 more)
 
 ### Community 1 - "Community 1"
-Cohesion: 0.33
-Nodes (10): apply_global_page_rules(), esc(), file_to_data_uri(), inline_md(), parse_agent_block(), pick_agent_icon(), render_copilot_agent_cta(), render_menu_from_labels() (+2 more)
+Cohesion: 0.23
+Nodes (11): generate_cards_html(), main(), parse_index_md(), Gera HTML dos cards a partir dos tópicos, Replace conteúdo entre dois marcadores, Replace conteúdo entre dois marcadores, Parse index.md e extrai: título, metadados, tópicos, Parse index.md e extrai: título, metadados, tópicos (+3 more)
 
 ### Community 2 - "Community 2"
-Cohesion: 0.18
-Nodes (11): generate_index_page(), Generate landing page with index.template.html, Generate landing page with index.template.html, Generate landing page with index.template.html, Generate landing page with index.template.html, Generate landing page with index.template.html, Generate landing page with index.template.html, Generate landing page with index.template.html (+3 more)
+Cohesion: 0.36
+Nodes (12): build_topico.py, Card, derive_page_card_title(), file_to_data_uri(), is_ocr_comment_line(), is_page_comment_line(), is_page_marker_line(), is_separator_line() (+4 more)
 
 ### Community 3 - "Community 3"
-Cohesion: 0.29
-Nodes (10): assign_unique_icons(), classify_critical_paragraph(), clean_md_title(), is_strategic_paragraph(), parse_authors_line(), parse_menu_md(), pick_icon(), pick_item_icon() (+2 more)
+Cohesion: 0.36
+Nodes (11): apply_global_page_rules(), assign_unique_icons(), esc(), extract_h1_title(), inline_md(), main(), parse_args(), pick_icon() (+3 more)
 
 ### Community 4 - "Community 4"
-Cohesion: 0.31
-Nodes (9): derive_page_card_title(), is_ocr_comment_line(), is_page_comment_line(), is_page_marker_line(), is_separator_line(), Regra absoluta: o HTML não pode perder conteúdo relevante do markdown.     Faz v, Regra absoluta: o HTML não pode perder conteúdo relevante do markdown.     Faz v, Regra absoluta: o HTML não pode perder conteúdo relevante do markdown.     Faz v (+1 more)
+Cohesion: 0.33
+Nodes (9): apply_global_page_rules(), assign_unique_icons(), extract_h1_title(), file_to_data_uri(), main(), parse_args(), parse_menu_md(), replace_between() (+1 more)
 
 ### Community 5 - "Community 5"
-Cohesion: 0.53
-Nodes (9): build_topico.py, Card, derive_page_card_title(), is_ocr_comment_line(), is_page_comment_line(), is_page_marker_line(), is_separator_line(), parse_markdown() (+1 more)
+Cohesion: 0.29
+Nodes (10): Card, derive_page_card_title(), extract_agent_access_url(), is_ocr_comment_line(), is_page_comment_line(), is_page_marker_line(), is_separator_line(), parse_markdown() (+2 more)
 
 ### Community 6 - "Community 6"
-Cohesion: 0.36
-Nodes (7): generate_cards_html(), main(), parse_index_md(), Replace conteúdo entre dois marcadores, Parse index.md e extrai: título, metadados, tópicos, Gera HTML dos cards a partir dos tópicos, replace_between()
+Cohesion: 0.32
+Nodes (8): classify_critical_paragraph(), clean_md_title(), is_strategic_paragraph(), parse_authors_line(), pick_agent_icon(), pick_item_icon(), render_cards(), strip_leading_number()
 
 ### Community 7 - "Community 7"
-Cohesion: 0.4
-Nodes (6): classify_critical_paragraph(), clean_md_title(), is_strategic_paragraph(), parse_authors_line(), parse_menu_md(), strip_leading_number()
+Cohesion: 0.36
+Nodes (8): classify_critical_paragraph(), clean_md_title(), is_strategic_paragraph(), parse_authors_line(), parse_menu_md(), pick_item_icon(), render_cards(), strip_leading_number()
 
 ### Community 8 - "Community 8"
-Cohesion: 0.4
-Nodes (5): Card, extract_agent_access_url(), parse_markdown(), split_key_value_item(), strip_source_references()
+Cohesion: 0.33
+Nodes (6): Regra absoluta: o HTML não pode perder conteúdo relevante do markdown.     Faz v, Regra absoluta: o HTML não pode perder conteúdo relevante do markdown.     Faz v, Regra absoluta: o HTML não pode perder conteúdo relevante do markdown.     Faz v, Regra absoluta: o HTML não pode perder conteúdo relevante do markdown.     Faz v, Regra absoluta: o HTML não pode perder conteúdo relevante do markdown.     Faz v, validate_content_preservation()
 
 ### Community 9 - "Community 9"
-Cohesion: 0.4
-Nodes (5): extract_h1_title(), main(), parse_args(), replace_between(), validate_completeness()
+Cohesion: 0.53
+Nodes (6): esc(), inline_md(), parse_agent_block(), render_copilot_agent_cta(), render_topics_menu(), safe_href()
 
 ### Community 10 - "Community 10"
 Cohesion: 0.67
-Nodes (3): inline_md(), pick_item_icon(), render_cards()
+Nodes (3): pick_icon(), render_menu_from_labels(), render_topics_accordion()
 
 ## Knowledge Gaps
-- **16 isolated node(s):** `Parse index.md e extrai: título, metadados, tópicos`, `Gera HTML dos cards a partir dos tópicos`, `Replace conteúdo entre dois marcadores`, `Regra absoluta: o HTML não pode perder conteúdo relevante do markdown.     Faz v`, `Generate landing page with index.template.html` (+11 more)
+- **24 isolated node(s):** `Parse index.md e extrai: título, metadados, tópicos`, `Gera HTML dos cards a partir dos tópicos`, `Replace conteúdo entre dois marcadores`, `Regra absoluta: o HTML não pode perder conteúdo relevante do markdown.     Faz v`, `Generate landing page with index.template.html` (+19 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `generate_index_page()` connect `Community 2` to `Community 1`, `Community 9`?**
-  _High betweenness centrality (0.111) - this node is a cross-community bridge._
-- **Why does `validate_content_preservation()` connect `Community 4` to `Community 1`, `Community 3`, `Community 9`?**
-  _High betweenness centrality (0.037) - this node is a cross-community bridge._
-- **Why does `build_topico.py` connect `Community 5` to `Community 0`, `Community 10`, `Community 7`?**
-  _High betweenness centrality (0.035) - this node is a cross-community bridge._
+- **Why does `generate_index_page()` connect `Community 0` to `Community 9`, `Community 4`?**
+  _High betweenness centrality (0.129) - this node is a cross-community bridge._
+- **Why does `validate_content_preservation()` connect `Community 8` to `Community 4`, `Community 5`, `Community 6`?**
+  _High betweenness centrality (0.054) - this node is a cross-community bridge._
+- **Why does `main()` connect `Community 4` to `Community 0`, `Community 5`, `Community 6`, `Community 8`, `Community 10`?**
+  _High betweenness centrality (0.033) - this node is a cross-community bridge._
 - **What connects `Parse index.md e extrai: título, metadados, tópicos`, `Gera HTML dos cards a partir dos tópicos`, `Replace conteúdo entre dois marcadores` to the rest of the system?**
-  _16 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _24 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Should `Community 0` be split into smaller, more focused modules?**
+  _Cohesion score 0.14 - nodes in this community are weakly interconnected._
