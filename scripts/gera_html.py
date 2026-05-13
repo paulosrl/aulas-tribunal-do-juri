@@ -343,6 +343,17 @@ def extract_agent_access_url(text: str) -> str | None:
     return None
 
 
+def render_copilot_agent_cta(url: str) -> str:
+    safe_url = esc(url)
+    return (
+        f'<a href="{safe_url}" class="copilot-agent-cta" target="_blank">'
+        '<span class="copilot-agent-cta-icon" aria-hidden="true"></span>'
+        '<span class="copilot-agent-cta-label">Acessar Agente Copilot</span>'
+        '<i class="fas fa-external-link-alt" aria-hidden="true"></i>'
+        "</a>"
+    )
+
+
 def classify_critical_paragraph(text: str) -> tuple[str, str] | None:
     t = clean_md_title(text).lower()
     if len(t) < 90:
@@ -558,6 +569,8 @@ def parse_markdown(markdown: str, md_dir: Path, section_mode: str = "semantic") 
     pending_page_start = False
     seen_first_page_marker = False
     seen_first_h2 = False
+    current_agent_numbered_h3_idx: int | None = None
+    current_agent_features_h3_idx: int | None = None
 
     if not has_page_markers:
         # H1 global vira primeiro card de abertura (mantém título + autores no topo).
@@ -667,6 +680,11 @@ def parse_markdown(markdown: str, md_dir: Path, section_mode: str = "semantic") 
             h3_title = clean_md_title(m3.group(1))
             h3_icon = pick_icon(h3_title, "fa-star")
             current.blocks.append(f'<h3><i class="fas {h3_icon}"></i> {inline_md(h3_title)}</h3>')
+            if re.match(r"^\d+[\.\)]\s+", h3_title):
+                current_agent_numbered_h3_idx = len(current.blocks) - 1
+                current_agent_features_h3_idx = None
+            elif "funcionalidades principais" in h3_title.lower():
+                current_agent_features_h3_idx = len(current.blocks) - 1
             i += 1
             continue
 
@@ -900,16 +918,27 @@ def parse_markdown(markdown: str, md_dir: Path, section_mode: str = "semantic") 
         paragraph_text = " ".join(para)
         agent_access_url = extract_agent_access_url(paragraph_text)
         if agent_access_url:
-            safe_url = esc(agent_access_url)
-            current.blocks.append(
-                '<div class="copilot-agent-cta-wrap">\n'
-                f'  <a href="{safe_url}" class="copilot-agent-cta" target="_blank">\n'
-                '    <span class="copilot-agent-cta-icon" aria-hidden="true"></span>\n'
-                '    <span class="copilot-agent-cta-label">Acessar Agente Copilot</span>\n'
-                '    <i class="fas fa-external-link-alt" aria-hidden="true"></i>\n'
-                "  </a>\n"
-                "</div>"
-            )
+            if current_agent_features_h3_idx is not None and 0 <= current_agent_features_h3_idx < len(current.blocks):
+                cta_block = (
+                    '<div class="copilot-agent-cta-wrap">\n'
+                    f"  {render_copilot_agent_cta(agent_access_url)}\n"
+                    "</div>"
+                )
+                current.blocks.insert(current_agent_features_h3_idx, cta_block)
+                current_agent_features_h3_idx += 1
+            elif current_agent_numbered_h3_idx is not None:
+                # Fallback para casos sem "Funcionalidades principais" no agente
+                current.blocks.append(
+                    '<div class="copilot-agent-cta-wrap">\n'
+                    f"  {render_copilot_agent_cta(agent_access_url)}\n"
+                    "</div>"
+                )
+            else:
+                current.blocks.append(
+                    '<div class="copilot-agent-cta-wrap">\n'
+                    f"  {render_copilot_agent_cta(agent_access_url)}\n"
+                    "</div>"
+                )
             continue
         authors_meta = parse_authors_line(paragraph_text)
         if authors_meta:
@@ -1227,6 +1256,17 @@ def apply_global_page_rules(html_out: str, out_path: Path, page_title: str, menu
     agent_logo_html = f'<img src="{logo_data_uri}" class="agent-logo" alt="Logo" />'
     html_out = html_out.replace("<!-- AGENT_LOGO -->", agent_logo_html)
 
+    # Ícone do botão Copilot: usa arquivo real para fidelidade visual.
+    copilot_candidates = [
+        out_path.parent / "copilot.png",
+        Path("copilot.png"),
+    ]
+    copilot_icon_data_uri = None
+    for candidate in copilot_candidates:
+        if candidate.exists():
+            copilot_icon_data_uri = file_to_data_uri(candidate)
+            break
+
     # Regra 3: Injetar CSS para fichas de agente e aumentar tamanho do conteúdo em 20%
     agent_css = """<style>
 .agent-card {
@@ -1386,19 +1426,21 @@ def apply_global_page_rules(html_out: str, out_path: Path, page_title: str, menu
   opacity: 0.95;
 }
 .copilot-agent-cta-icon {
-  width: 1.05rem;
-  height: 1.05rem;
-  border-radius: 0.35rem;
-  background:
-    radial-gradient(circle at 28% 24%, #7dd3fc 0 34%, transparent 36%),
-    radial-gradient(circle at 72% 25%, #60a5fa 0 32%, transparent 34%),
-    radial-gradient(circle at 32% 76%, #34d399 0 31%, transparent 33%),
-    radial-gradient(circle at 72% 76%, #a78bfa 0 31%, transparent 33%),
-    #0b1020;
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.2);
+  width: 1.26rem;
+  height: 1.26rem;
+  background-image: url("__COPILOT_ICON_DATA_URI__");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 0.25rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
   flex-shrink: 0;
 }
 </style>"""
+    if copilot_icon_data_uri:
+        agent_css = agent_css.replace("__COPILOT_ICON_DATA_URI__", copilot_icon_data_uri)
+    else:
+        agent_css = agent_css.replace("__COPILOT_ICON_DATA_URI__", "")
     html_out = html_out.replace("</head>", f"{agent_css}\n</head>", 1)
 
     return html_out
