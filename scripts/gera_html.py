@@ -213,7 +213,7 @@ def extract_h1_title(markdown: str) -> str:
 
 
 def parse_authors_line(text: str) -> tuple[str, str, str] | None:
-    # Ex: "Autores: Rodrigo Aquino e Paulo Lima | MPPA — CIIA | 14 e 15 de maio de 2025"
+    # Ex: "Autores: Rodrigo Aquino e Paulo Lima | MPPA - CIIA | 14 e 15 de maio de 2026"
     m = re.match(r"^\s*\*{0,2}\s*Autores:\s*(.+?)\s*\*{0,2}\s*$", text, flags=re.IGNORECASE)
     if not m:
         return None
@@ -1024,18 +1024,18 @@ def parse_markdown(markdown: str, md_dir: Path, section_mode: str = "semantic") 
             continue
         authors_meta = parse_authors_line(paragraph_text)
         if authors_meta:
-            authors, org, date = authors_meta
+            authors, _org, _date = authors_meta
             author_names = [x.strip() for x in re.split(r"\s+e\s+", authors, flags=re.IGNORECASE) if x.strip()]
             author_badges = []
             for name in author_names[:2]:
                 author_badges.append(f'<span class="author-badge">🏅 {inline_md(name)}</span>')
             if not author_badges:
                 author_badges.append(f'<span class="author-badge">🏅 {inline_md(authors)}</span>')
+            org_date_line = "MPPA -  CIIA  (14 e 15 de maio de 2026)"
             current.blocks.append(
                 '<div class="authors-meta">\n'
                 f'  <div class="authors-badges">{"".join(author_badges)}</div>\n'
-                f'  <div class="authors-org">{inline_md(org)}</div>\n'
-                f'  <div class="authors-date">{inline_md(date)}</div>\n'
+                f'  <div class="authors-org">{org_date_line}</div>\n'
                 '  <div class="authors-note">Material produzido com apoio de ferramentas de IA</div>\n'
                 "</div>"
             )
@@ -1239,8 +1239,8 @@ def render_topics_accordion(out_path: Path, cards: List[Card], card_icons: List[
     fixed_items: list[tuple[str, str, str]] = [
         ("Abertura", "1.html", "fa-book-open"),
         ("Engenharia de Prompts", "2.html", "fa-window-maximize"),
-        ("Agentes no Juri", "3.html", "fa-gavel"),
-        ("Elementos Gráficos no Juri", "4.html", "fa-chart-line"),
+        ("Agentes no Júri", "3.html", "fa-gavel"),
+        ("Elementos Gráficos no Júri", "4.html", "fa-chart-line"),
         ("NotebookLM no Júri", "5.html", "fa-pencil-ruler"),
         ("Favoritos", "favoritos.html", "fa-star"),
         ("NotebookLM", "notebooklm.html", "fa-brain"),
@@ -1310,8 +1310,8 @@ def render_topics_menu(out_path: Path) -> str:
     fixed_items: list[tuple[str, str, str]] = [
         ("Abertura", "1.html", "fa-book-open"),
         ("Engenharia de Prompts", "2.html", "fa-window-maximize"),
-        ("Agentes no Juri", "3.html", "fa-gavel"),
-        ("Elementos Gráficos no Juri", "4.html", "fa-chart-line"),
+        ("Agentes no Júri", "3.html", "fa-gavel"),
+        ("Elementos Gráficos no Júri", "4.html", "fa-chart-line"),
         ("NotebookLM no Júri", "5.html", "fa-pencil-ruler"),
         ("Favoritos", "favoritos.html", "fa-star"),
         ("NotebookLM", "notebooklm.html", "fa-brain"),

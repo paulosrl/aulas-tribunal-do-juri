@@ -18,13 +18,13 @@ Métodos práticos para instruções mais precisas.
 
 ***
 
-## [Tópico 3 | Agentes no Juri - Fluxo](3.html)
+## [Tópico 3 | Agentes no Júri - Fluxo](3.html)
 
 Aplicação de agentes no fluxo do Tribunal do Júri.
 
 ***
 
-## [Tópico 4 | Elementos Gráficos no Juri](4.html)
+## [Tópico 4 | Elementos Gráficos no Júri](4.html)
 
 Recursos visuais para síntese e sustentação oral.
 

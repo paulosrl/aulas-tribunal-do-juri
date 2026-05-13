@@ -38,7 +38,7 @@ Prompt 05 — O "Antecipador de Defesa" (Estratégico) 6
 
 Prompt 06 — O "Extrator de Perfil e Padrões" (Comportamental) 7
 
-Prompt 07 — O "Descomplicador de Jurisprudência" (Sintético) 7
+Prompt 07 — O "Descomplicador de Júrisprudência" (Sintético) 7
 
 Prompt 08 — O "Buscador de Agulhas" (Investigativo/Auditoria) 7
 
@@ -217,9 +217,9 @@ Este módulo reúne 15 prompts especializados, cada um com uma função estraté
 
  
 
-### **Prompt 07 — O "Descomplicador de Jurisprudência" (Sintético)**
+### **Prompt 07 — O "Descomplicador de Júrisprudência" (Sintético)**
 
-| ⚖️ PROMPT 07 — DESCOMPLICADOR DE JURISPRUDÊNCIA |
+| ⚖️ PROMPT 07 — DESCOMPLICADOR DE JÚRISPRUDÊNCIA |
 | :---- |
 | "Eu fiz o upload de 5 acórdãos e decisões judiciais recentes sobre \[inserir tema, ex: qualificadora de motivo fútil em contexto de briga de bar\]. Extraia a tese central de cada decisão que favorece a nossa tese de acusação. Em seguida, condense essas ideias em um único parágrafo persuasivo, com linguagem acessível, pronto para ser lido ou falado para os jurados durante os debates." |
 
@@ -378,7 +378,7 @@ A metodologia FIRAC+ permite uma análise holística, profunda e estruturada do 
 
 # **MÓDULO 4 — EXTRAÇÃO INTELIGENTE DE DEPOIMENTOS**
 
-Este módulo disponibiliza um prompt especializado para transcrição forense de arquivos de áudio e vídeo de audiências, depoimentos e interrogatórios. O resultado é uma transcrição fiel e estruturada, acompanhada de um Sumário Executivo com as afirmações juridicamente relevantes — pronta para ser carregada no NotebookLM e utilizada com os demais prompts deste guia.
+Este módulo disponibiliza um prompt especializado para transcrição forense de arquivos de áudio e vídeo de audiências, depoimentos e interrogatórios. O resultado é uma transcrição fiel e estruturada, acompanhada de um Sumário Executivo com as afirmações júridicamente relevantes — pronta para ser carregada no NotebookLM e utilizada com os demais prompts deste guia.
 
  
 
@@ -458,7 +458,7 @@ O NotebookLM possui recurso nativo de geração de podcasts. Estes prompts devem
 | 2\. O Teste de Clareza: Eles devem discutir se entenderam a motivação do crime. Se houver algo confuso no processo ou se a explicação da acusação parecer 'complicada demais', eles devem confessar essa confusão. |
 | 3\. Dúvida Razoável: Um deles deve assumir uma postura levemente cética, fazendo perguntas como: 'Mas será que foi isso mesmo?', 'Será que ele não se defendeu?'. |
 | 4\. Conclusão Moral: O áudio deve terminar com eles discutindo se, com o que ouviram, eles teriam coragem de condenar ou se 'ainda falta alguma coisa' para terem certeza. |
-| Tom de Voz: Linguagem simples, coloquial, sem 'juridiquês'. O objetivo é que eu, como Promotor, perceba se a minha tese é convincente para o povo ou se estou sendo técnico demais." |
+| Tom de Voz: Linguagem simples, coloquial, sem 'júridiquês'. O objetivo é que eu, como Promotor, perceba se a minha tese é convincente para o povo ou se estou sendo técnico demais." |
 | Somente após gerar o roteiro, vamos produzir o podcast. |
 
  
