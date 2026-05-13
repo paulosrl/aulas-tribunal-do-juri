@@ -43,25 +43,34 @@ O projeto converte conteúdo Markdown em páginas HTML com:
 
 ---
 
-## Build Atual (Fonte da Verdade)
+## Build Automático (Recomendado)
 
-O gerador principal do codebase é **`scripts/gera_html.py`**.
+Para regenerar **todos** os arquivos HTML de uma vez:
 
-Ele gera:
-- páginas de tópico (`1.html` a `5.html`)
-- página `favoritos.html`
-- página `notebooklm.html`
-- `index.html` (modo landing, quando `output_html` é `index.html`)
+```bash
+python3 scripts/build_all.py
+```
 
-### Comandos
+Este script:
 
-Landing:
+- Descobre automaticamente todos os `.md` em `conteudo/`
+- Aplica configurações de página-título e template apropriadas
+- Gera um relatório com sucesso/falha de cada arquivo
+- Mantém ordem lógica: `index.md` → tópicos 1-5 → favoritos → notebooklm
+
+---
+
+## Build Manual (Por Arquivo)
+
+Se precisar gerar um arquivo isoladamente, use `scripts/gera_html.py`:
+
+**Landing:**
 
 ```bash
 python3 scripts/gera_html.py conteudo/index.md html/index.html
 ```
 
-Tópico (exemplo):
+**Tópico (exemplo):**
 
 ```bash
 python3 scripts/gera_html.py conteudo/3.md html/3.html \
@@ -71,7 +80,7 @@ python3 scripts/gera_html.py conteudo/3.md html/3.html \
   --section-mode semantic
 ```
 
-Favoritos:
+**Favoritos / NotebookLM:**
 
 ```bash
 python3 scripts/gera_html.py conteudo/favoritos.md html/favoritos.html \
@@ -81,20 +90,42 @@ python3 scripts/gera_html.py conteudo/favoritos.md html/favoritos.html \
   --section-mode semantic
 ```
 
-Regenerar tudo:
+---
 
-```bash
-python3 scripts/gera_html.py conteudo/index.md html/index.html
-python3 scripts/gera_html.py conteudo/1.md html/1.html --template templates/topico.template.html --page-title "Inteligência Artificial Aplicada ao Tribunal do Júri — Do Inquérito ao Plenário" --menu-md conteudo/index.md --section-mode semantic
-python3 scripts/gera_html.py conteudo/2.md html/2.html --template templates/topico.template.html --page-title "Engenharia de Prompts – Aplicada ao Ministério Público" --menu-md conteudo/index.md --section-mode semantic
-python3 scripts/gera_html.py conteudo/3.md html/3.html --template templates/topico.template.html --page-title "Inteligência Artificial Aplicada ao Tribunal do Júri — Do Inquérito ao Plenário" --menu-md conteudo/index.md --section-mode semantic
-python3 scripts/gera_html.py conteudo/4.md html/4.html --template templates/topico.template.html --page-title "Segurança, Compliance e Regulamentação de IA" --menu-md conteudo/index.md --section-mode semantic
-python3 scripts/gera_html.py conteudo/5.md html/5.html --template templates/topico.template.html --page-title "Estudos de Caso e Simulações Práticas" --menu-md conteudo/index.md --section-mode semantic
-python3 scripts/gera_html.py conteudo/favoritos.md html/favoritos.html --template templates/topico.template.html --page-title "Inteligência Artificial Aplicada ao Tribunal do Júri — Favoritos" --menu-md conteudo/index.md --section-mode semantic
-python3 scripts/gera_html.py conteudo/notebooklm.md html/notebooklm.html --template templates/topico.template.html --page-title "NotebookLM no Tribunal do Júri" --menu-md conteudo/index.md --section-mode semantic
+## Arquitetura
+
+### Estrutura de Módulos
+
+O gerador está organizado em `scripts/html_gen/` com responsabilidades claras:
+
+- **`cli.py`**: Interface de linha de comando (parse de argumentos, orquestração)
+- **`parser.py`**: Parse de markdown → HTML intermediário
+- **`renderer.py`**: Renderização em templates
+- **`postprocessor.py`**: Processamento pós-geração (injeção de menu, regras globais)
+- **`classifier.py`**: Detecção de tipos de linha (marcadores, comentários, etc)
+- **`icons.py`**: Mapeamento automático de ícones
+- **`validation.py`**: Validação de integridade de conteúdo
+- **`constants.py`**: Constantes globais (regras de ícones, pools, etc)
+- **`models.py`**: Estruturas de dados
+- **`utils.py`**: Funções utilitárias
+
+Para detalhes, veja [scripts/html_gen/README.md](scripts/html_gen/README.md).
+
+### Pipeline Geral
+
+```text
+conteudo/*.md
+    ↓
+[parse_markdown]
+    ↓
+[apply_global_rules]
+    ↓
+[assign_icons]
+    ↓
+[render_templates]
+    ↓
+html/*.html
 ```
-
-> `scripts/gera_index.py` ainda existe, mas o fluxo principal atual está centralizado em `gera_html.py`.
 
 ---
 
