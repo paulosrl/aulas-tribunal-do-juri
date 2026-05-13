@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Bash(git commit *)"
+      "Bash(git commit *)",
+      "Bash(grep -n \"^def \\\\|^class \\\\|^[A-Z_]\\\\{2,\\\\} \" /home/pl/projetos/aulas-tribunal-do-juri/scripts/gera_html.py)"
     ]
   }
 }
