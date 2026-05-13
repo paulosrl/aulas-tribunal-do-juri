@@ -1,0 +1,32 @@
+# OS / filesystem
+.DS_Store
+Thumbs.db
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Python cache / bytecode
+__pycache__/
+*.py[cod]
+*.pyd
+
+# Test / tooling caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local env files
+.env
+.env.*
+.venv/
+venv/
+
+# Local tool state
+.codex
+
+# Graphify local cache artifacts (regenerated)
+graphify-out/cache/
