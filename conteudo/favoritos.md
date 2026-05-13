@@ -1,5 +1,4 @@
-# Links Favoritos CIIA
- 
+# Sites Abertos
 
 ## CIIA
 
@@ -7,7 +6,16 @@ Desenvolvemos soluções tecnológicas inovadoras para otimizar os processos do 
 
 https://ciia.mppa.mp.br/
 
-## Banco de Prompts (Requer VPN)
+## Guia NotebookLM
+
+Guia e Dicas (Mihailo Zoin)
+
+https://claude.ai/public/artifacts/3a35b96b-4753-420c-a51f-57dd55f70071  
+
+
+Os sites a seguir, precisam de acessos mediante login e senha institucionais do MPPA.
+
+## Banco de Prompts
 
 Repositório digital criado pelo Escritório de IA para armazenar, organizar e disponibilizar prompts otimizados para diferentes áreas de atuação do MPPA.
 
@@ -34,9 +42,3 @@ https://dhiana.mppa.mp.br
 Estes assistentes de IA são recursos exclusivos do Copilot e só podem ser utilizados por usuários autenticados (credenciais do MPPA). Os assistentes estão organizados por área de especialização.
 
 https://ciia.mppa.mp.br/assistentes-de-ia.htm
-
-## Guia NotebookLM - Mihailo Zoin
-
-Varios artigos sobre NotebookLM, Engenharia de Prompts e outras ferramentas de IA.
-
-https://claude.ai/public/artifacts/3a35b96b-4753-420c-a51f-57dd55f70071  
