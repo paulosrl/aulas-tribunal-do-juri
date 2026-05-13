@@ -1287,8 +1287,8 @@ def apply_global_page_rules(html_out: str, out_path: Path, page_title: str, menu
   opacity: 0.85;
 }
 .agent-logo {
-  width: 32px;
-  height: 32px;
+  width: 34px;
+  height: 34px;
   object-fit: contain;
   opacity: 0.7;
   transition: opacity 0.2s ease;
