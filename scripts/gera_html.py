@@ -284,8 +284,11 @@ def parse_agent_block(lines: List[str], start_i: int, agent_num: str, agent_name
 
     desc_block = "\n".join(desc_html_parts)
     link_html = (
+        f'<div class="agent-card-footer">'
         f'<a href="{agent_url}" class="agent-link-btn" target="_blank">'
         f'<i class="fas fa-external-link-alt"></i> Acessar Agente</a>'
+        f'<!-- AGENT_LOGO -->'
+        f'</div>'
         if agent_url
         else ""
     )
@@ -1189,7 +1192,10 @@ def apply_global_page_rules(html_out: str, out_path: Path, page_title: str, menu
         flags=re.IGNORECASE,
     )
 
-    # Regra 3: Injetar CSS para fichas de agente
+    agent_logo_html = f'<img src="{logo_data_uri}" class="agent-logo" alt="Logo" />'
+    html_out = html_out.replace("<!-- AGENT_LOGO -->", agent_logo_html)
+
+    # Regra 3: Injetar CSS para fichas de agente e aumentar tamanho do conteúdo em 20%
     agent_css = """<style>
 .agent-card {
   background: linear-gradient(135deg, rgba(138,31,58,0.05), rgba(138,31,58,0.02));
@@ -1258,6 +1264,12 @@ def apply_global_page_rules(html_out: str, out_path: Path, page_title: str, menu
   color: var(--text-main);
   margin: 0;
 }
+.agent-card-footer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-top: 0.5rem;
+}
 .agent-link-btn {
   display: inline-flex;
   align-items: center;
@@ -1269,11 +1281,34 @@ def apply_global_page_rules(html_out: str, out_path: Path, page_title: str, menu
   font-weight: 600;
   font-size: 0.85rem;
   text-decoration: none;
-  align-self: flex-start;
   transition: opacity 0.2s ease;
 }
 .agent-link-btn:hover {
   opacity: 0.85;
+}
+.agent-logo {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+.agent-logo:hover {
+  opacity: 1;
+}
+.caor-card {
+  font-size: 1.2em;
+}
+.caor-card h1,
+.caor-card h2,
+.caor-card h3 {
+  font-size: 1.2em;
+}
+.caor-card p {
+  font-size: 1.2em;
+}
+.caor-card li {
+  font-size: 1.2em;
 }
 </style>"""
     html_out = html_out.replace("</head>", f"{agent_css}\n</head>", 1)
