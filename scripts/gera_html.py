@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 import base64
 import html
+import mimetypes
 import re
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -90,6 +91,12 @@ def parse_args() -> argparse.Namespace:
         default="menu.md",
         help="Arquivo markdown com título e itens do menu lateral",
     )
+    parser.add_argument(
+        "--section-mode",
+        choices=("semantic", "page"),
+        default="semantic",
+        help="Modo de seções: 'semantic' (padrão, estilo topico1) ou 'page' (1 seção por página marcada).",
+    )
     return parser.parse_args()
 
 
@@ -104,6 +111,58 @@ def inline_md(text: str) -> str:
     text = re.sub(r"\*\*([^*]+)\*\*", lambda m: f"<strong>{m.group(1)}</strong>", text)
     text = re.sub(r"\*([^*]+)\*", lambda m: f"<em>{m.group(1)}</em>", text)
     return text
+
+
+def strip_source_references(text: str) -> str:
+    # Remove referências de fonte do tipo [[...]](https://...)
+    # e variações escapadas: [\[...\]](...)
+    text = re.sub(
+        r"\s*\[(?:\\?\[)?[^\]]+(?:\\?\])?\]\(https?://[^\)]+\)",
+        "",
+        text,
+        flags=re.IGNORECASE,
+    )
+    # Regra fixa: remove qualquer referência para SharePoint/Copilot Chat
+    # mesmo quando o label vier truncado como mppabr-my....epoint.com.
+    text = re.sub(
+        r"\s*\[[^\]]*mppabr-my.*?epoint\.com[^\]]*\]\(https?://[^\)]*sharepoint\.com[^\)]*\)",
+        "",
+        text,
+        flags=re.IGNORECASE,
+    )
+    text = re.sub(
+        r"\s*\[[^\]]*\]\(https?://[^\)]*sharepoint\.com/personal/paulolima_mppa_mp_br/Documents/Arquivos%20de%20Microsoft%20Copilot%20Chat/[^\)]*\)",
+        "",
+        text,
+        flags=re.IGNORECASE,
+    )
+    return text
+
+
+def extract_h1_title(markdown: str) -> str:
+    for raw in markdown.splitlines():
+        line = raw.strip()
+        m = re.match(r"^#\s+(.+)$", line)
+        if m:
+            return clean_md_title(m.group(1))
+    return ""
+
+
+def parse_authors_line(text: str) -> tuple[str, str, str] | None:
+    # Ex: "Autores: Rodrigo Aquino e Paulo Lima | MPPA — CIIA | 14 e 15 de maio de 2025"
+    m = re.match(r"^\s*\*{0,2}\s*Autores:\s*(.+?)\s*\*{0,2}\s*$", text, flags=re.IGNORECASE)
+    if not m:
+        return None
+    payload = m.group(1).strip()
+    payload = re.sub(r"^\*+\s*", "", payload)
+    payload = re.sub(r"\s*\*+$", "", payload)
+    parts = [p.strip() for p in payload.split("|")]
+    if not parts:
+        return None
+    authors = clean_md_title(parts[0])
+    org = clean_md_title(parts[1]) if len(parts) > 1 else ""
+    date = clean_md_title(parts[2]) if len(parts) > 2 else ""
+    return (authors, org, date)
 
 
 def split_key_value_item(text: str) -> tuple[str, str] | None:
@@ -186,6 +245,93 @@ def strip_leading_number(text: str) -> str:
     return t.strip()
 
 
+def is_page_marker_line(text: str) -> bool:
+    line = text.strip()
+    if not line:
+        return False
+
+    # Remove emoji comum de paginação em materiais OCR/exportados.
+    line_no_emoji = re.sub(r"^[\U0001F300-\U0001FAFF]+\s*", "", line)
+    normalized = clean_md_title(line_no_emoji)
+
+    patterns = [
+        r"^<!--\s*p[áa]gina\s+\d+\s*-->$",
+        r"^\*\*p[áa]gina\s+\d+\*\*$",
+        r"^p[áa]gina\s+\d+$",
+    ]
+    return any(re.match(p, normalized, flags=re.IGNORECASE) for p in patterns)
+
+
+def is_page_comment_line(text: str) -> bool:
+    return bool(
+        re.match(
+            r"^<!--\s*(?:p[áa]gina|page)\s*[: ]\s*\d+\s*-->$",
+            text.strip(),
+            flags=re.IGNORECASE,
+        )
+    )
+
+
+def is_separator_line(text: str) -> bool:
+    line = text.strip()
+    return bool(re.match(r"^(\*{3,}|-{3,}|_{3,})$", line))
+
+
+def is_ocr_comment_line(text: str) -> bool:
+    line = text.strip()
+    return bool(re.match(r"^<!--\s*/?\s*ocr:image_[^>]*-->$", line, flags=re.IGNORECASE))
+
+
+def derive_page_card_title(lines: List[str], start_idx: int) -> str:
+    bold_candidate: str | None = None
+    h3_candidate: str | None = None
+    quote_candidate: str | None = None
+    plain_candidate: str | None = None
+
+    for j in range(start_idx, min(start_idx + 30, len(lines))):
+        s = lines[j].strip()
+        if not s:
+            continue
+        if is_page_comment_line(s) or is_page_marker_line(s):
+            if j > start_idx:
+                break
+            continue
+        if is_ocr_comment_line(s):
+            continue
+        if is_separator_line(s):
+            if j > start_idx:
+                break
+            continue
+
+        # Para título de página, segue lógica mais próxima do topico1:
+        # prioriza apenas headings principais (# e ##), ignorando ###.
+        mh = re.match(r"^(#{1,2})\s+(.+)$", s)
+        if mh:
+            return clean_md_title(mh.group(2))
+
+        mh3 = re.match(r"^#{3}\s+(.+)$", s)
+        if mh3 and h3_candidate is None:
+            h3_candidate = clean_md_title(mh3.group(1))
+            continue
+
+        mb = re.match(r"^\*\*([^*]+)\*\*$", s)
+        if mb and len(clean_md_title(mb.group(1))) <= 140:
+            if bold_candidate is None:
+                bold_candidate = clean_md_title(mb.group(1))
+            continue
+
+        if s.startswith(">") and quote_candidate is None:
+            q = clean_md_title(re.sub(r"^>\s*", "", s))
+            if q:
+                quote_candidate = q
+            continue
+
+        if not s.startswith(">") and plain_candidate is None:
+            plain_candidate = clean_md_title(s)
+
+    return bold_candidate or h3_candidate or plain_candidate or quote_candidate or "Tópico"
+
+
 def pick_icon(title: str, fallback: str = "fa-list-ol") -> str:
     t = clean_md_title(title).lower()
     for keywords, icon in ICON_RULES:
@@ -228,21 +374,39 @@ def assign_unique_icons(cards: List[Card], fallback: str) -> List[str]:
     return assigned
 
 
-def parse_markdown(markdown: str) -> List[Card]:
+def file_to_data_uri(path: Path) -> str:
+    mime, _ = mimetypes.guess_type(path.name)
+    safe_mime = mime or "application/octet-stream"
+    content_b64 = base64.b64encode(path.read_bytes()).decode("ascii")
+    return f"data:{safe_mime};base64,{content_b64}"
+
+
+def parse_markdown(markdown: str, md_dir: Path, section_mode: str = "semantic") -> List[Card]:
+    markdown = strip_source_references(markdown)
     lines = markdown.splitlines()
     cards: List[Card] = []
+    raw_has_page_markers = any(is_page_comment_line(l) or is_page_marker_line(l) for l in lines)
+    has_page_markers = (
+        section_mode == "page"
+        and raw_has_page_markers
+    )
+    strict_h2_mode = section_mode == "semantic" and raw_has_page_markers
+    current: Card | None = None
+    pending_page_start = False
+    seen_first_page_marker = False
+    seen_first_h2 = False
 
-    # H1 global vira primeiro card de abertura
-    h1 = None
-    for line in lines:
-        m = re.match(r"^#\s+(.+)$", line.strip())
-        if m:
-            h1 = m.group(1).strip()
-            break
-
-    intro = Card(title=h1 or "Tópico", level=1)
-    cards.append(intro)
-    current = intro
+    if not has_page_markers:
+        # H1 global vira primeiro card de abertura (mantém título + autores no topo).
+        h1 = None
+        for line in lines:
+            m = re.match(r"^#\s+(.+)$", line.strip())
+            if m:
+                h1 = m.group(1).strip()
+                break
+        intro = Card(title=h1 or "", level=1)
+        cards.append(intro)
+        current = intro
 
     i = 0
     while i < len(lines):
@@ -253,11 +417,63 @@ def parse_markdown(markdown: str) -> List[Card]:
             i += 1
             continue
 
+        # Descarta comentários HTML do markdown (ex.: <!-- Página 20 -->)
+        # e marcadores de paginação exportados do material fonte.
+        if is_page_comment_line(line) or is_page_marker_line(line):
+            if has_page_markers:
+                seen_first_page_marker = True
+                pending_page_start = True
+            i += 1
+            continue
+
+        # Descarta comentários de OCR inseridos por extração automática.
+        if is_ocr_comment_line(line):
+            i += 1
+            continue
+
+        if has_page_markers and not seen_first_page_marker:
+            i += 1
+            continue
+
+        if strict_h2_mode and not seen_first_h2 and not re.match(r"^##\s+(.+)$", line):
+            i += 1
+            continue
+
+        # Separadores de markdown (***, ---, ___) são descartados.
+        if is_separator_line(line):
+            i += 1
+            continue
+
+        if has_page_markers and (pending_page_start or current is None):
+            title = derive_page_card_title(lines, i)
+            consumed_title_line = False
+
+            mh = re.match(r"^(#{1,3})\s+(.+)$", line)
+            if mh and clean_md_title(mh.group(2)) == title:
+                consumed_title_line = True
+            else:
+                mb_card = re.match(r"^\*\*([^*]+)\*\*$", line)
+                if mb_card and len(clean_md_title(mb_card.group(1))) <= 120 and clean_md_title(mb_card.group(1)) == title:
+                    consumed_title_line = True
+
+            current = Card(title=title or "", level=2)
+            cards.append(current)
+            pending_page_start = False
+            if consumed_title_line:
+                i += 1
+                continue
+
         # headings
         m2 = re.match(r"^##\s+(.+)$", line)
         if m2:
-            current = Card(title=clean_md_title(m2.group(1)), level=2)
-            cards.append(current)
+            seen_first_h2 = True
+            if has_page_markers:
+                h_title = clean_md_title(m2.group(1))
+                h_icon = pick_icon(h_title, "fa-star")
+                current.blocks.append(f'<h3><i class="fas {h_icon}"></i> {inline_md(h_title)}</h3>')
+            else:
+                current = Card(title=clean_md_title(m2.group(1)), level=2)
+                cards.append(current)
             i += 1
             continue
 
@@ -266,7 +482,7 @@ def parse_markdown(markdown: str) -> List[Card]:
         if mb:
             candidate = clean_md_title(mb.group(1))
             # Só promove negrito puro a título quando é texto curto (evita transformar parágrafos em menu)
-            if len(candidate) <= 120:
+            if len(candidate) <= 120 and not has_page_markers and not strict_h2_mode:
                 current = Card(title=candidate, level=2)
                 cards.append(current)
                 i += 1
@@ -280,9 +496,40 @@ def parse_markdown(markdown: str) -> List[Card]:
             i += 1
             continue
 
+        # imagem markdown: ![alt](caminho)
+        mimg = re.match(r"^!\[(.*?)\]\((.+?)\)$", line)
+        if mimg:
+            alt_text = mimg.group(1).strip()
+            src_raw = mimg.group(2).strip()
+            if re.match(r"^https?://", src_raw, flags=re.IGNORECASE):
+                raise ValueError(
+                    f"Imagem remota detectada no markdown: {src_raw}\n"
+                    "Para saída 100% offline, use apenas arquivos locais."
+                )
+            image_path = (md_dir / src_raw).resolve()
+            if not image_path.exists():
+                raise FileNotFoundError(
+                    f"Imagem referenciada não encontrada: {image_path}\n"
+                    "Use um caminho local válido relativo ao markdown de entrada."
+                )
+            data_uri = file_to_data_uri(image_path)
+            alt_html = inline_md(alt_text) if alt_text else ""
+            current.blocks.append(
+                '<figure class="media-figure">\n'
+                f'<img src="{data_uri}" alt="{esc(alt_text)}" loading="lazy" />\n'
+                + (f"<figcaption>{alt_html}</figcaption>\n" if alt_html else "")
+                + "</figure>"
+            )
+            i += 1
+            continue
+
         # H1 já foi capturado como título global, então não deve virar parágrafo
         m1 = re.match(r"^#\s+(.+)$", line)
         if m1:
+            if has_page_markers:
+                h1_title = clean_md_title(m1.group(1))
+                h1_icon = pick_icon(h1_title, "fa-star")
+                current.blocks.append(f'<h3><i class="fas {h1_icon}"></i> {inline_md(h1_title)}</h3>')
             i += 1
             continue
 
@@ -408,20 +655,46 @@ def parse_markdown(markdown: str) -> List[Card]:
                         r = r[:col_count]
                     norm_rows.append(r)
 
+                # Ajuste específico para o Sumário: remove coluna "Páginas de origem".
+                lower_headers = [clean_md_title(h).lower() for h in header_cells]
+                drop_idx = None
+                for idx_h, hh in enumerate(lower_headers):
+                    if "páginas de origem" in hh or "paginas de origem" in hh:
+                        drop_idx = idx_h
+                        break
+                if drop_idx is not None:
+                    header_cells = [h for j, h in enumerate(header_cells) if j != drop_idx]
+                    norm_rows = [
+                        [c for j, c in enumerate(r) if j != drop_idx]
+                        for r in norm_rows
+                    ]
+
                 table_html = []
                 table_html.append('<div class="table-wrapper">')
-                table_html.append("<table>")
+                table_html.append('<table class="caor-table">')
                 table_html.append("<thead>")
                 table_html.append("<tr>")
                 for h in header_cells:
-                    table_html.append(f"<th style=\"white-space: nowrap;\">{inline_md(h)}</th>")
+                    header_label = clean_md_title(h)
+                    th_class = ' class="col-index"' if header_label == "#" else ""
+                    table_html.append(f"<th{th_class}>{inline_md(h)}</th>")
                 table_html.append("</tr>")
                 table_html.append("</thead>")
                 table_html.append("<tbody>")
                 for r in norm_rows:
                     table_html.append("<tr>")
-                    for c in r:
-                        table_html.append(f"<td style=\"white-space: nowrap;\">{inline_md(c)}</td>")
+                    for col_idx, c in enumerate(r):
+                        if col_idx == 0 and header_cells and clean_md_title(header_cells[0]) == "#":
+                            num_text = clean_md_title(c)
+                            if re.match(r"^\d+$", num_text):
+                                table_html.append(
+                                    '<td class="col-index"><span class="num-badge">'
+                                    f"{esc(num_text)}"
+                                    "</span></td>"
+                                )
+                                continue
+                        td_class = ' class="col-index"' if col_idx == 0 and header_cells and clean_md_title(header_cells[0]) == "#" else ""
+                        table_html.append(f"<td{td_class}>{inline_md(c)}</td>")
                     table_html.append("</tr>")
                 table_html.append("</tbody>")
                 table_html.append("</table>")
@@ -436,6 +709,12 @@ def parse_markdown(markdown: str) -> List[Card]:
             nxt = lines[i].strip()
             if not nxt:
                 break
+            if is_page_comment_line(nxt) or is_page_marker_line(nxt):
+                break
+            if is_ocr_comment_line(nxt):
+                break
+            if is_separator_line(nxt):
+                break
             if re.match(r"^(#|##|###)\s+", nxt):
                 break
             if nxt.startswith(">"):
@@ -445,12 +724,30 @@ def parse_markdown(markdown: str) -> List[Card]:
             para.append(nxt)
             i += 1
         paragraph_text = " ".join(para)
+        authors_meta = parse_authors_line(paragraph_text)
+        if authors_meta:
+            authors, org, date = authors_meta
+            author_names = [x.strip() for x in re.split(r"\s+e\s+", authors, flags=re.IGNORECASE) if x.strip()]
+            author_badges = []
+            for name in author_names[:2]:
+                author_badges.append(f'<span class="author-badge">🏅 {inline_md(name)}</span>')
+            if not author_badges:
+                author_badges.append(f'<span class="author-badge">🏅 {inline_md(authors)}</span>')
+            current.blocks.append(
+                '<div class="authors-meta">\n'
+                f'  <div class="authors-badges">{"".join(author_badges)}</div>\n'
+                f'  <div class="authors-org">{inline_md(org)}</div>\n'
+                f'  <div class="authors-date">{inline_md(date)}</div>\n'
+                '  <div class="authors-note">Material produzido com apoio de ferramentas de IA</div>\n'
+                "</div>"
+            )
+            continue
         critical = classify_critical_paragraph(paragraph_text)
         if critical:
-            label, icon = critical
+            _label, icon = critical
             current.blocks.append(
                 '<div class="alert-box alert-critical">\n'
-                f'<span class="badge"><i class="fas {icon}"></i> {inline_md(label)}</span>\n'
+                f'<span class="badge"><i class="fas {icon}"></i></span>\n'
                 f'<p>{inline_md(paragraph_text)}</p>\n'
                 "</div>"
             )
@@ -478,7 +775,9 @@ def render_cards(cards: List[Card], card_icons: List[str]) -> str:
         icon = card_icons[idx - 1] if idx - 1 < len(card_icons) else pick_icon(card.title, "fa-book-open")
         title = clean_md_title(card.title)
         if htag == "h2":
-            title = f"{idx}. {strip_leading_number(title)}"
+            title = strip_leading_number(title)
+        if not title:
+            title = f"Seção {idx}"
         out.append(f'            <section id="{section_id}" class="caor-card">')
         out.append(f'                <{htag}><i class="fas {icon}"></i> {inline_md(title)}</{htag}>')
         is_single_plain_paragraph = (
@@ -509,9 +808,9 @@ def render_cards(cards: List[Card], card_icons: List[str]) -> str:
 
 def parse_menu_md(menu_md_path: Path) -> tuple[str, list[str]]:
     if not menu_md_path.exists():
-        return ("Introdução", [])
+        return ("", [])
 
-    title = "Introdução"
+    title = ""
     items: list[str] = []
     for raw in menu_md_path.read_text(encoding="utf-8").splitlines():
         line = raw.strip()
@@ -529,13 +828,19 @@ def parse_menu_md(menu_md_path: Path) -> tuple[str, list[str]]:
         if m3:
             items.append(strip_leading_number(m3.group(1)))
             continue
-    return (title or "Introdução", items)
+    return (title or "", items)
 
 
 def render_menu_from_labels(cards: List[Card], card_icons: List[str], menu_icon: str) -> str:
     links = []
     for idx, card in enumerate(cards, start=1):
-        short = f"{idx}. {strip_leading_number(card.title)}"
+        # Não listar a seção de abertura (p1) no menu interno da página
+        # para evitar duplicação visual do título principal.
+        if idx == 1 and card.level == 1:
+            continue
+        short = strip_leading_number(card.title)
+        if not short:
+            short = f"Seção {idx}"
         icon = card_icons[idx - 1] if idx - 1 < len(card_icons) else pick_icon(short, menu_icon)
         links.append(
             f'            <a href="#p{idx}" class="nav-l"><i class="fas {icon}"></i> {esc(short)}</a>'
@@ -543,36 +848,46 @@ def render_menu_from_labels(cards: List[Card], card_icons: List[str], menu_icon:
     return "\n".join(links) + "\n"
 
 
-def render_topics_menu(out_path: Path, total_topics: int = 4) -> str:
-    current_topic = None
-    m = re.search(r"topico(\d+)\.html$", out_path.name, flags=re.IGNORECASE)
-    if m:
-        current_topic = int(m.group(1))
+def render_topics_menu(out_path: Path) -> str:
+    # Menu lateral fixo para todas as páginas geradas.
+    fixed_items: list[tuple[str, str, str]] = [
+        ("Abertura", "1.html", "fa-book-open"),
+        ("Engenharia de Prompts", "2.html", "fa-window-maximize"),
+        ("Agentes no Juri", "3.html", "fa-gavel"),
+        ("Elementos Gráficos no Juri", "4.html", "fa-chart-line"),
+        ("NotebookLM no Júri", "5.html", "fa-pencil-ruler"),
+        ("Favoritos", "favoritos.html", "fa-star"),
+    ]
+
+    available_core_pages = {"1.html", "2.html", "3.html", "4.html", "5.html"}
 
     links: list[str] = []
-    topic_icons = [
-        "fa-book-open",
-        "fa-window-maximize",
-        "fa-pencil-ruler",
-        "fa-shield-halved",
-        "fa-gavel",
-        "fa-database",
-        "fa-search",
-        "fa-check-circle",
-    ]
-    for idx in range(1, total_topics + 1):
-        if current_topic == idx:
+    for label, filename, icon in fixed_items:
+        if out_path.name.lower() == filename.lower():
+            links.append(
+                f'            <span class="nav-l nav-aula current"><i class="fas {icon}"></i> {esc(label)}</span>'
+            )
             continue
-        topic_icon = topic_icons[(idx - 1) % len(topic_icons)]
-        topic_file = out_path.parent / f"topico{idx}.html"
+
+        # Os 5 tópicos principais são sempre navegáveis.
+        if filename in available_core_pages:
+            links.append(
+                f'            <a href="{filename}" class="nav-l"><i class="fas {icon}"></i> {esc(label)}</a>'
+            )
+            continue
+
+        # Itens extras (ex.: Favoritos) seguem regra de existência.
+        topic_file = out_path.parent / filename
         if topic_file.exists():
             links.append(
-                f'            <a href="topico{idx}.html" class="nav-l"><i class="fas {topic_icon}"></i> Tópico {idx}</a>'
+                f'            <a href="{filename}" class="nav-l"><i class="fas {icon}"></i> {esc(label)}</a>'
             )
-        else:
-            links.append(
-                f'            <span class="nav-l nav-locked"><i class="fas {topic_icon}"></i> Tópico {idx} <i class="fas fa-lock"></i></span>'
-            )
+            continue
+
+        links.append(
+            f'            <span class="nav-l nav-locked"><i class="fas {icon}"></i> {esc(label)} <i class="fas fa-lock"></i></span>'
+        )
+
     return "\n".join(links) + ("\n" if links else "")
 
 
@@ -597,18 +912,26 @@ def apply_global_page_rules(html_out: str, out_path: Path, page_title: str, menu
     safe_title = esc(page_title.strip() or "Defina o título da página")
     html_out = re.sub(r"<title>.*?</title>", f"<title>{safe_title}</title>", html_out, flags=re.IGNORECASE | re.DOTALL)
 
-    safe_group_title = esc(menu_group_title.strip() or "Introdução")
+    safe_group_title = esc(menu_group_title.strip() or page_title.strip() or "Tópico")
     html_out = re.sub(
         r'(<span class="mobile-header-title">).*?(</span>)',
         rf"\1{safe_group_title}\2",
         html_out,
         flags=re.IGNORECASE | re.DOTALL,
     )
+    # Remove o título principal do menu esquerdo (mantém apenas os itens do menu).
     html_out = re.sub(
-        r'(<div class="nav-group-title">)\s*Aula 1\s*(</div>)',
-        rf"\1{safe_group_title}\2",
+        r'\s*<div class="nav-group-title">.*?</div>\s*',
+        "\n",
         html_out,
         count=1,
+        flags=re.IGNORECASE | re.DOTALL,
+    )
+    # Remove rótulo legado "Curso" que aparece antes de "Início".
+    html_out = re.sub(
+        r'\s*<div class="nav-group-title">\s*Curso\s*</div>\s*',
+        "\n",
+        html_out,
         flags=re.IGNORECASE,
     )
 
@@ -645,10 +968,12 @@ def main() -> None:
     markdown = md_path.read_text(encoding="utf-8")
     template = tpl_path.read_text(encoding="utf-8")
 
-    cards = parse_markdown(markdown)
+    cards = parse_markdown(markdown, md_path.parent, section_mode=args.section_mode)
     card_icons = assign_unique_icons(cards, args.menu_icon)
     content_html = render_cards(cards, card_icons)
-    menu_group_title, _ = parse_menu_md(menu_md_path)
+    _, _ = parse_menu_md(menu_md_path)
+    primary_h1 = extract_h1_title(markdown)
+    menu_group_title = clean_md_title(primary_h1) or clean_md_title(args.page_title)
     menu_html = render_menu_from_labels(cards, card_icons, args.menu_icon)
     topics_html = render_topics_menu(out_path)
 

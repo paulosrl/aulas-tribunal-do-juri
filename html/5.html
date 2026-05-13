@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Defina o título da página</title>
+    <title>Inteligência Artificial Aplicada ao Tribunal do Júri — Do Inquérito ao Plenário</title>
     <style>
         :root {
             --bg-main: #f3f4f6;
@@ -68,21 +68,21 @@
             font-weight: 900;
         }
         .sidebar-logo {
-            width: 67px;
-            height: 67px;
+            width: 87px;
+            height: 87px;
             border-radius: 10px;
             object-fit: contain;
         }
         .sidebar-title {
             font-weight: 800;
             letter-spacing: 1px;
-            color: var(--nav-text);
+            color: #8A1F3A;
         }
         .sidebar-site {
             display: inline-flex;
             align-items: center;
             gap: 0.45rem;
-            font-size: 0.76rem;
+            font-size: 0.99rem;
             color: var(--nav-text);
             text-decoration: none;
             font-weight: 500;
@@ -100,15 +100,22 @@
         }
         .sidebar-site i {
             color: var(--accent);
-            font-size: 0.72rem;
+            font-size: 0.94rem;
         }
         .nav-group-title {
-            font-size: 0.68rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: var(--accent);
+            color: #8A1F3A;
             margin: 1rem 0 0.45rem 0.6rem;
             font-weight: 800;
+        }
+        .nav-main-title {
+            text-transform: none;
+            letter-spacing: 0;
+            font-weight: 500;
+            font-size: 1.02rem;
+            line-height: 1.3;
         }
         .nav-aula.current {
             background: var(--nav-hover);
@@ -126,7 +133,7 @@
         .nav-locked i:last-child {
             margin-left: auto;
             width: auto;
-            color: var(--accent);
+            color: #8A1F3A;
             opacity: 0.95;
         }
         .nav-divider-line {
@@ -136,9 +143,9 @@
             margin: 0.75rem 0;
         }
 
-        .nav-l { display: flex; align-items: center; gap: 10px; padding: 10px; color: var(--nav-text); text-decoration: none; border-radius: 8px; margin-bottom: 5px; font-size: clamp(0.72rem, 0.85vw, 0.8rem); border-bottom: 1px solid var(--nav-divider); overflow-wrap: anywhere; }
-        .nav-l i { color: var(--accent); width: 15px; }
-        .nav-l:hover { background: var(--nav-hover); color: var(--accent); }
+        .nav-l { display: flex; align-items: center; gap: 10px; padding: 10px; color: #8A1F3A; text-decoration: none; border-radius: 8px; margin-bottom: 5px; font-size: clamp(0.871rem, 1.029vw, 0.968rem); border-bottom: 1px solid var(--nav-divider); overflow-wrap: anywhere; }
+        .nav-l i { color: #8A1F3A; width: 15px; }
+        .nav-l:hover { background: var(--nav-hover); color: #8A1F3A; }
 
         /* Conteúdo */
         .main-content { margin-left: clamp(248px, 22vw, 280px); flex: 1; padding: clamp(1.1rem, 3vw, 3rem); display: flex; flex-direction: column; align-items: center; width: calc(100% - clamp(248px, 22vw, 280px)); }
@@ -161,7 +168,8 @@
         .mobile-header-title {
             font-weight: 800;
             letter-spacing: 0.5px;
-            font-size: 0.85rem;
+            font-size: 0.935rem;
+            color: #8A1F3A;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -255,7 +263,7 @@
             border-left: 10px solid var(--accent); border-top: 1px solid rgba(255,255,255,0.05);
             width: 100%;
         }
-        .caor-card h1, .caor-card h2 { color: var(--table-head-bg) !important; margin-bottom: 1.3rem; display: flex; align-items: center; gap: 12px; line-height: 1.2; }
+        .caor-card h1, .caor-card h2 { color: #8A1F3A !important; margin-bottom: 1.3rem; display: flex; align-items: center; gap: 12px; line-height: 1.2; }
         .caor-card h1 { font-size: clamp(1.44rem, 4vw, 2.24rem); }
         .caor-card h2 { font-size: clamp(1.11435rem, 2.73125vw, 1.584125rem); }
         .caor-card h3 {
@@ -263,7 +271,7 @@
             font-weight: 500;
             line-height: 1.35;
             margin: 1rem 0 0.75rem 0;
-            color: var(--table-head-bg);
+            color: #8A1F3A;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -373,14 +381,28 @@
         }
         .icon-ol li::marker { content: ""; }
         
-        .table-wrapper { width: 100%; overflow-x: auto; margin: 1.5rem 0; border-radius: 8px; border: 1px solid var(--table-border); }
-        table { width: 100%; border-collapse: collapse; background: rgba(255,255,255,0.04); }
-        th, td { padding: 13px 15px; text-align: left; border-bottom: 1px solid var(--table-border); font-size: clamp(0.88rem, 1.15vw, 1rem); overflow-wrap: anywhere; word-break: break-word; }
+        .table-wrapper { width: 100%; overflow-x: hidden; margin: 1.5rem 0; border-radius: 8px; border: 1px solid var(--table-border); }
+        table { width: 100%; border-collapse: collapse; background: rgba(255,255,255,0.04); table-layout: fixed; }
+        th, td { padding: 13px 15px; text-align: left; border-bottom: 1px solid var(--table-border); font-size: clamp(0.88rem, 1.15vw, 1rem); overflow-wrap: anywhere; word-break: break-word; white-space: normal; hyphens: auto; }
         th {
             background: var(--table-head-bg) !important;
             color: #ffffff;
             font-weight: 400;
             letter-spacing: 0.1px;
+        }
+        .col-index { width: 72px; text-align: center; }
+        .num-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.86rem;
+            line-height: 1;
         }
 
         /* UI Elements */
@@ -433,6 +455,56 @@
         .single-spot p {
             margin: 0;
         }
+        .authors-meta {
+            margin: 0.35rem 0 0.95rem 0;
+            padding: 0.85rem 0.95rem 0.8rem 0.95rem;
+            border-radius: 12px;
+            border: 1px solid rgba(148, 163, 184, 0.24);
+            background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.015) 100%);
+        }
+        .authors-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+            margin-bottom: 0.35rem;
+        }
+        .author-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            padding: 0.25rem 0.55rem;
+            border-radius: 999px;
+            background: rgba(138,31,58,0.12);
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 0.86rem;
+        }
+        .authors-org, .authors-date {
+            font-size: 0.99rem;
+            line-height: 1.45;
+        }
+        .authors-note {
+            margin-top: 0.25rem;
+            font-size: 0.84rem;
+            opacity: 0.85;
+        }
+        .media-figure {
+            margin: 1rem 0 1.3rem 0;
+            padding: 0.7rem;
+            border-radius: 12px;
+            border: 1px solid rgba(148, 163, 184, 0.24);
+            background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.015) 100%);
+        }
+        .media-figure img {
+            width: 100%;
+            border-radius: 10px;
+            display: block;
+        }
+        .media-figure figcaption {
+            margin-top: 0.5rem;
+            font-size: 0.86rem;
+            opacity: 0.9;
+        }
 
         .btn-theme { position: fixed; top: 1.5rem; right: 2rem; z-index: 1100; background: var(--bg-main); color: var(--nav-text); border: 2px solid var(--accent); padding: 10px 20px; border-radius: 50px; cursor: pointer; font-weight: 800; font-size: 0.75rem; max-width: calc(100vw - 1.2rem); }
 
@@ -473,9 +545,9 @@
             .main-content { padding-left: 0.7rem; padding-right: 0.7rem; }
             .btn-theme { right: 0.7rem; top: 4.8rem; }
             .caor-card h1 { font-size: 1.16rem; }
-            .mobile-header-title { font-size: 0.8rem; }
+            .mobile-header-title { font-size: 0.88rem; }
             .sidebar { width: min(90vw, 320px); }
-            .nav-l { font-size: 0.74rem; }
+            .nav-l { font-size: 0.895rem; }
             .single-spot, .text-discreet, .alert-box { padding: 0.72rem 0.78rem; }
         }
     </style>
@@ -483,7 +555,7 @@
 <body>
     <header class="mobile-header">
         <button class="btn-menu" id="menu-toggle" aria-label="Abrir menu de navegação" aria-expanded="false">☰</button>
-        <span class="mobile-header-title">Introdução</span>
+        <span class="mobile-header-title">NotebookLM - O Gabinete como Centro de Inteligência Analítica</span>
     </header>
     <div class="mobile-overlay" id="mobile-overlay" aria-hidden="true"></div>
 
@@ -498,28 +570,30 @@
             </a>
         </div>
         <nav id="sidebar-nav">
-            <div class="nav-group-title">Curso</div>
-            <a href="index.html" class="nav-l"><i class="fas fa-play-circle"></i> Início</a>
+                        <a href="index.html" class="nav-l"><i class="fas fa-play-circle"></i> Início</a>
             <hr class="nav-divider-line">
-            <div class="nav-group-title">Introdução</div>
-            <!-- AUTO:MENU:AULA1:START -->
-            <a href="#p1" class="nav-l"><i class="fas fa-book-open"></i> 1. Introdução: A IA como Motor de Eficiência Jurídica</a>
-            <a href="#p2" class="nav-l"><i class="fas fa-window-maximize"></i> 2. A Fundação do Processamento: Contexto e Janela de Memória</a>
-            <a href="#p3" class="nav-l"><i class="fas fa-pencil-ruler"></i> 3. Elementos que compõem o contexto:</a>
-            <a href="#p4" class="nav-l"><i class="fas fa-exclamation-triangle"></i> 4. Os 5 Pilares da Engenharia de Contexto</a>
-            <a href="#p5" class="nav-l"><i class="fas fa-shield-halved"></i> 5. O Ponto Cego Jurídico: Alucinações e Data de Corte</a>
-            <a href="#p6" class="nav-l"><i class="fas fa-gavel"></i> 6. O Protocolo Antialucinação: Os 3 V&#x27;s</a>
-            <a href="#p7" class="nav-l"><i class="fas fa-database"></i> 7. Curadoria Processual: A Estratégia de Preparação para o Júri</a>
-            <a href="#p8" class="nav-l"><i class="fas fa-search"></i> 8. Boas Práticas Institucionais e Segurança (LGPD)</a>
-            <a href="#p9" class="nav-l"><i class="fas fa-check-circle"></i> 9. ALERTA DE SEGURANÇA E LGPD</a>
-            <a href="#p10" class="nav-l"><i class="fas fa-star"></i> 10. Conclusão: O Domínio Humano sobre a Máquina</a>
+<!-- AUTO:MENU:AULA1:START -->
+            <a href="#p2" class="nav-l"><i class="fas fa-book-open"></i> 📑 Sumário</a>
+            <a href="#p3" class="nav-l"><i class="fas fa-gavel"></i> A extensão da mente do Promotor e o fim do caos documental</a>
+            <a href="#p4" class="nav-l"><i class="fas fa-database"></i> O poder das fontes: internet versus autos</a>
+            <a href="#p5" class="nav-l"><i class="fas fa-window-maximize"></i> Extração seletiva e organização estratégica dos autos</a>
+            <a href="#p6" class="nav-l"><i class="fas fa-sync"></i> Processos volumosos: centralização, interação e foco</a>
+            <a href="#p7" class="nav-l"><i class="fas fa-pencil-ruler"></i> Relatório Analítico FIRAC e a fratura da tese defensiva</a>
+            <a href="#p8" class="nav-l"><i class="fas fa-exclamation-triangle"></i> A revolução da escuta: extração inteligente de depoimentos</a>
+            <a href="#p9" class="nav-l"><i class="fas fa-shield-halved"></i> O desafio da escala e os limites da IA em áudio e vídeo</a>
+            <a href="#p10" class="nav-l"><i class="fas fa-search"></i> Engenharia de áudio como simulador cognitivo e estratégico</a>
+            <a href="#p11" class="nav-l"><i class="fas fa-check-circle"></i> Psicologia do júri, recursos visuais e organização probatória</a>
+            <a href="#p12" class="nav-l"><i class="fas fa-bullseye"></i> O protagonismo inegociável do Promotor de Justiça</a>
 <!-- AUTO:MENU:AULA1:END -->
             <hr class="nav-divider-line">
             <div class="nav-group-title">Tópicos</div>
             <!-- AUTO:MENU:TOPICOS:START -->
-            <span class="nav-l nav-locked"><i class="fas fa-window-maximize"></i> Tópico 2 <i class="fas fa-lock"></i></span>
-            <span class="nav-l nav-locked"><i class="fas fa-pencil-ruler"></i> Tópico 3 <i class="fas fa-lock"></i></span>
-            <span class="nav-l nav-locked"><i class="fas fa-shield-halved"></i> Tópico 4 <i class="fas fa-lock"></i></span>
+            <a href="1.html" class="nav-l"><i class="fas fa-book-open"></i> Abertura</a>
+            <a href="2.html" class="nav-l"><i class="fas fa-window-maximize"></i> Engenharia de Prompts</a>
+            <a href="3.html" class="nav-l"><i class="fas fa-gavel"></i> Agentes no Juri</a>
+            <a href="4.html" class="nav-l"><i class="fas fa-chart-line"></i> Elementos Gráficos no Juri</a>
+            <span class="nav-l nav-aula current"><i class="fas fa-pencil-ruler"></i> NotebookLM no Júri</span>
+            <span class="nav-l nav-locked"><i class="fas fa-star"></i> Favoritos <i class="fas fa-lock"></i></span>
 <!-- AUTO:MENU:TOPICOS:END -->
             <a href="#p1" class="nav-l" id="nav-back-top"><i class="fas fa-level-up-alt"></i> Voltar ao início</a>
         </nav>
@@ -531,237 +605,164 @@
         <div class="content-container">
             <!-- AUTO:CONTENT:START -->
             <section id="p1" class="caor-card">
-                <h2><i class="fas fa-book-open"></i> 1. Introdução: A IA como Motor de Eficiência Jurídica</h2>
-                <p>A Inteligência Artificial (IA) não substitui o Promotor de Justiça, mas atua como um catalisador para elevá-lo a um novo patamar de eficiência. No âmbito do Ministério Público, a aplicação tecnológica exige uma separação clara entre a inteligência humana e o processamento de dados:</p>
-                <ul>
-                <li class="li-kv"><div class="li-kv-label">⚖️ Atividade-Fim:</div><div class="li-kv-body">Foco no raciocínio jurídico complexo, na análise de provas subjetivas e na formulação de teses acusatórias. É o domínio exclusivo e intransferível do operador do Direito.</div></li>
-                <li class="li-kv"><div class="li-kv-label">⚙️ Trabalho Operacional:</div><div class="li-kv-body">Processamento, síntese e organização de tarefas repetitivas e conteudistas que a tecnologia automatiza com precisão.</div></li>
-                </ul>
-                <p>Utilizar a IA é comparável a pilotar uma <strong>Ferrari</strong>: trata-se de um motor de altíssimo desempenho. Para extrair valor real e evitar &quot;acidentes&quot; (erros processuais ou nulidades), o Promotor de Justiça deve dominar o manual do piloto, assumindo o controle total da máquina.</p>
+                <h1><i class="fas fa-list-ol"></i> NotebookLM - O Gabinete como Centro de Inteligência Analítica</h1>
+                <div class="authors-meta">
+                  <div class="authors-badges"><span class="author-badge">🏅 Rodrigo Aquino</span><span class="author-badge">🏅 Paulo Lima</span></div>
+                  <div class="authors-org">MPPA — CIIA</div>
+                  <div class="authors-date">14 e 15 de maio de 2025</div>
+                  <div class="authors-note">Material produzido com apoio de ferramentas de IA</div>
+                </div>
             </section>
 
             <section id="p2" class="caor-card">
-                <h2><i class="fas fa-window-maximize"></i> 2. A Fundação do Processamento: Contexto e Janela de Memória</h2>
-                <div class="single-spot">
-                    <div class="single-spot-head"><span class="li-topic-icon icon-window-maximize"><i class="fas fa-window-maximize"></i></span></div>
-                    <p>O &quot;Contexto&quot; é a base de toda interação. Ele representa tudo o que a IA &quot;enxerga&quot; no momento exato da conversa. Sem o contexto jurídico adequado, a ferramenta interpreta termos de forma literal ou absurda, ignorando a técnica processual.</p>
+                <h2><i class="fas fa-book-open"></i> 📑 Sumário</h2>
+                <div class="table-wrapper">
+                <table class="caor-table">
+                <thead>
+                <tr>
+                <th class="col-index">#</th>
+                <th>Nome da Seção</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td class="col-index"><span class="num-badge">1</span></td>
+                <td>A extensão da mente do Promotor e o fim do caos documental</td>
+                </tr>
+                <tr>
+                <td class="col-index"><span class="num-badge">2</span></td>
+                <td>O poder das fontes: internet versus autos</td>
+                </tr>
+                <tr>
+                <td class="col-index"><span class="num-badge">3</span></td>
+                <td>Extração seletiva e organização estratégica dos autos</td>
+                </tr>
+                <tr>
+                <td class="col-index"><span class="num-badge">4</span></td>
+                <td>Processos volumosos: centralização, interação e foco</td>
+                </tr>
+                <tr>
+                <td class="col-index"><span class="num-badge">5</span></td>
+                <td>Relatório Analítico FIRAC e a fratura da tese defensiva</td>
+                </tr>
+                <tr>
+                <td class="col-index"><span class="num-badge">6</span></td>
+                <td>A revolução da escuta: extração inteligente de depoimentos</td>
+                </tr>
+                <tr>
+                <td class="col-index"><span class="num-badge">7</span></td>
+                <td>O desafio da escala e os limites da IA em áudio e vídeo</td>
+                </tr>
+                <tr>
+                <td class="col-index"><span class="num-badge">8</span></td>
+                <td>Engenharia de áudio como simulador cognitivo e estratégico</td>
+                </tr>
+                <tr>
+                <td class="col-index"><span class="num-badge">9</span></td>
+                <td>Psicologia do júri, recursos visuais e organização probatória</td>
+                </tr>
+                <tr>
+                <td class="col-index"><span class="num-badge">10</span></td>
+                <td>O protagonismo inegociável do Promotor de Justiça</td>
+                </tr>
+                </tbody>
+                </table>
                 </div>
             </section>
 
             <section id="p3" class="caor-card">
-                <h2><i class="fas fa-pencil-ruler"></i> 3. Elementos que compõem o contexto:</h2>
-                <ol class="icon-ol">
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>A pergunta atual (prompt):</strong> A instrução direta dada à máquina.</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>O histórico:</strong> As interações anteriores dentro da mesma sessão.</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-database"><i class="fas fa-database"></i></span><span class="li-topic-text"><strong>Textos colados:</strong> Recortes de depoimentos, laudos ou petições.</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>Anexos:</strong> PDFs de Inquéritos Policiais ou processos digitalizados.</span></li>
-                </ol>
-                <h3><i class="fas fa-star"></i> O Micro-Exemplo da &quot;Diligência&quot;</h3>
-                <p>A IA sofre de <strong>Amnésia por Design</strong>: ela não presume conceitos jurídicos sem direcionamento.</p>
-                <ul>
-                <li class="li-kv"><div class="li-kv-label">Cenário 1 (Sem Contexto):</div><div class="li-kv-body">Se o usuário digitar apenas &quot;Diligência&quot;, a IA pode interpretar de forma literal como &quot;presteza&quot; ou &quot;cuidado&quot;.</div></li>
-                <li class="li-kv"><div class="li-kv-label">Cenário 2 (Com Contexto Legal):</div><div class="li-kv-body">Ao fornecer os autos, a IA identifica &quot;Diligência investigativa de coleta de provas no local do crime&quot;, acertando o alvo jurídico.</div></li>
-                </ul>
-                <h3><i class="fas fa-window-maximize"></i> Dinâmica da Memória: O Agora vs. O Sempre</h3>
-                <div class="table-wrapper">
-                <table>
-                <thead>
-                <tr>
-                <th style="white-space: nowrap;">Característica</th>
-                <th style="white-space: nowrap;">O Agora (Janela de Contexto)</th>
-                <th style="white-space: nowrap;">O Sempre (Memória da IA)</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                <td style="white-space: nowrap;"><strong>Natureza</strong></td>
-                <td style="white-space: nowrap;">Temporária e Finita (Tokens).</td>
-                <td style="white-space: nowrap;">Estática (Treinamento Base).</td>
-                </tr>
-                <tr>
-                <td style="white-space: nowrap;"><strong>Visão</strong></td>
-                <td style="white-space: nowrap;">Limitada aos documentos &quot;em cima da mesa&quot;.</td>
-                <td style="white-space: nowrap;">Conhecimento congelado na data de corte.</td>
-                </tr>
-                <tr>
-                <td style="white-space: nowrap;"><strong>Persistência</strong></td>
-                <td style="white-space: nowrap;"><strong>Amnésia por Design:</strong> Zera a cada nova conversa.</td>
-                <td style="white-space: nowrap;">Não aprende com seus dados privados.</td>
-                </tr>
-                <tr>
-                <td style="white-space: nowrap;"><strong>Risco</strong></td>
-                <td style="white-space: nowrap;">Entradas ruins geram respostas genéricas.</td>
-                <td style="white-space: nowrap;">Sem contexto atual, a IA &quot;alucina&quot; fatos.</td>
-                </tr>
-                </tbody>
-                </table>
+                <h2><i class="fas fa-gavel"></i> A extensão da mente do Promotor e o fim do caos documental</h2>
+                <p>A atuação no Tribunal do Júri impõe uma <strong>carga cognitiva esmagadora</strong>, decorrente do volume bruto de processos e informações dispersas. O <strong>Centro de Inteligência Analítica</strong> surge como resposta a esse cenário, transformando informação desorganizada em conteúdo estruturado e pronto para o embate em plenário.</p>
+                <div class="text-discreet">
+                <p>A tecnologia atua como um <strong>“segundo cérebro”</strong>, absorvendo o volume documental para que a mente do Promotor permaneça focada exclusivamente na <strong>estratégia e na argumentação</strong>, reduzindo o caos e ampliando a capacidade analítica.</p>
                 </div>
             </section>
 
             <section id="p4" class="caor-card">
-                <h2><i class="fas fa-exclamation-triangle"></i> 4. Os 5 Pilares da Engenharia de Contexto</h2>
-                <p>Para controlar a saída da IA, o Promotor deve arquitetar a entrada utilizando cinco elementos essenciais:</p>
-                <ol class="icon-ol">
-                <li class="li-topic"><span class="li-topic-icon icon-gavel"><i class="fas fa-gavel"></i></span><span class="li-topic-text"><strong>Persona:</strong> O papel institucional (Ex: &quot;Atue como Promotor de Justiça com 20 anos de experiência no Tribunal do Júri&quot;).</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-database"><i class="fas fa-database"></i></span><span class="li-topic-text"><strong>Tarefa:</strong> A missão específica (Ex: &quot;Aponte contradições entre o depoimento da testemunha X e o laudo pericial&quot;).</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-database"><i class="fas fa-database"></i></span><span class="li-topic-text"><strong>Dados:</strong> A matéria-prima fática (Ex: &quot;Utilize exclusivamente o conteúdo do IP n.º 123/2024 anexo&quot;).</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-shield-halved"><i class="fas fa-shield-halved"></i></span><span class="li-topic-text"><strong>Restrições:</strong> O cinto de segurança (Ex: &quot;Não invente fatos; não emita juízos políticos; use apenas provas dos autos&quot;).</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>Formato:</strong> A estrutura visual (Ex: &quot;Apresente o resultado em uma tabela comparativa de duas colunas&quot;).</span></li>
-                </ol>
-                <h3><i class="fas fa-exclamation-triangle"></i> Matriz de Transformação: Do Risco à Precisão</h3>
-                <div class="table-wrapper">
-                <table>
-                <thead>
-                <tr>
-                <th style="white-space: nowrap;">Tipo de Contexto</th>
-                <th style="white-space: nowrap;">Exemplo de Entrada</th>
-                <th style="white-space: nowrap;">Resultado Esperado</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                <td style="white-space: nowrap;"><strong>Contexto Fraco</strong></td>
-                <td style="white-space: nowrap;">&quot;Analise este inquérito e me diga se devo oferecer denúncia.&quot;</td>
-                <td style="white-space: nowrap;">Resposta genérica, delegação indevida de decisão e alto risco de erro.</td>
-                </tr>
-                <tr>
-                <td style="white-space: nowrap;"><strong>Contexto Engenheirado</strong></td>
-                <td style="white-space: nowrap;">&quot;Como Promotor [Persona], analise o IP anexo [Dados]. Resuma os indícios de autoria e materialidade [Tarefa]. Não utilize informações externas aos autos [Restrições] e organize em tópicos numerados [Formato].&quot;</td>
-                <td style="white-space: nowrap;">Análise estruturada, rastreável, focada na prova e juridicamente útil para a peça.</td>
-                </tr>
-                </tbody>
-                </table>
-                </div>
+                <h2><i class="fas fa-database"></i> O poder das fontes: internet versus autos</h2>
+                <p>Há uma diferença crítica entre <strong>consultar a internet</strong> e <strong>interrogar os autos</strong>. A <strong>IA Generativa comum</strong>, baseada na internet inteira, opera sobre dados abertos e não verificados, com <strong>alto risco de invenção (alucinação)</strong>, fidelidade baixa e ausência de conhecimento do processo específico.</p>
+                <p>Em contraste, a <strong>IA aterrada (NotebookLM)</strong> atua exclusivamente sobre os documentos e autos que o usuário faz upload. Nesse ambiente fechado, o risco de alucinação é <strong>zero</strong>, a fidelidade é <strong>absoluta</strong>, cada citação remete à <strong>página exata do processo</strong>, e há <strong>proteção dos dados sigilosos</strong>, que não treinam modelos públicos.</p>
             </section>
 
             <section id="p5" class="caor-card">
-                <h2><i class="fas fa-shield-halved"></i> 5. O Ponto Cego Jurídico: Alucinações e Data de Corte</h2>
-                <p>As <strong>Alucinações</strong> ocorrem porque a IA é um modelo probabilístico que prevê a próxima palavra, e não um buscador de verdades. Ela pode criar conexões linguísticas perfeitas para eventos ou leis que nunca existiram.</p>
-                <h3><i class="fas fa-star"></i> Limitações de Conhecimento (Knowledge Cut-off)</h3>
-                <p>A memória estática da IA &quot;parou no tempo&quot;. Informações essenciais para o Ministério Público, como <strong>Jurisprudência recente do STF/STJ, novas Súmulas e Resoluções do CNMP</strong> posteriores a estas datas, são invisíveis para o modelo:</p>
-                <div class="table-wrapper">
-                <table>
-                <thead>
-                <tr>
-                <th style="white-space: nowrap;">Modelo de IA</th>
-                <th style="white-space: nowrap;">Data de Corte (Knowledge Cut-off)</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                <td style="white-space: nowrap;"><strong>ChatGPT</strong></td>
-                <td style="white-space: nowrap;">Outubro 2024 / Janeiro 2025</td>
-                </tr>
-                <tr>
-                <td style="white-space: nowrap;"><strong>Copilot</strong></td>
-                <td style="white-space: nowrap;">Janeiro 2024 / Agosto 2025</td>
-                </tr>
-                <tr>
-                <td style="white-space: nowrap;"><strong>Claude</strong></td>
-                <td style="white-space: nowrap;">2025 (Ano de referência do material)</td>
-                </tr>
-                </tbody>
-                </table>
-                </div>
-                <h3><i class="fas fa-exclamation-triangle"></i> Os 5 Erros Críticos na Atuação Jurídica</h3>
-                <div class="table-wrapper">
-                <table>
-                <thead>
-                <tr>
-                <th style="white-space: nowrap;">Erro</th>
-                <th style="white-space: nowrap;">Impacto</th>
-                <th style="white-space: nowrap;">Solução</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                <td style="white-space: nowrap;"><strong>1. Limite de Contexto</strong></td>
-                <td style="white-space: nowrap;">Achar que a IA &quot;leu&quot; 1.000 páginas de uma vez.</td>
-                <td style="white-space: nowrap;">Fragmentar documentos volumosos em blocos.</td>
-                </tr>
-                <tr>
-                <td style="white-space: nowrap;"><strong>2. Verificação Ausente</strong></td>
-                <td style="white-space: nowrap;">Confiar cegamente em citações de leis ou datas.</td>
-                <td style="white-space: nowrap;">Auditoria humana obrigatória.</td>
-                </tr>
-                <tr>
-                <td style="white-space: nowrap;"><strong>3. Delegação de Decisão</strong></td>
-                <td style="white-space: nowrap;">Pedir para a IA &quot;julgar&quot; o mérito da causa.</td>
-                <td style="white-space: nowrap;">A IA organiza; o Promotor decide.</td>
-                </tr>
-                <tr>
-                <td style="white-space: nowrap;"><strong>4. Aleatoriedade</strong></td>
-                <td style="white-space: nowrap;">Esperar a mesma resposta para prompts diferentes.</td>
-                <td style="white-space: nowrap;">Padronizar a biblioteca de prompts.</td>
-                </tr>
-                <tr>
-                <td style="white-space: nowrap;"><strong>5. Entrada Fraca</strong></td>
-                <td style="white-space: nowrap;">Fornecer pouco contexto e culpar a ferramenta.</td>
-                <td style="white-space: nowrap;">Aplicar rigorosamente os 5 Pilares.</td>
-                </tr>
-                </tbody>
-                </table>
-                </div>
+                <h2><i class="fas fa-window-maximize"></i> Extração seletiva e organização estratégica dos autos</h2>
+                <p>A <strong>extração seletiva</strong> transforma o volume bruto em um <strong>mapa estratégico</strong>. A entrada de dados inclui processos volumosos, inquéritos, depoimentos e laudos.</p>
+                <p>O primeiro filtro é a <strong>cronologia automática</strong>, que organiza os fatos em uma linha do tempo linear e precisa, sem intervenção manual. O segundo filtro realiza a <strong>extração de pontos principais</strong>, identificando contradições, atores-chave e materialidade.</p>
+                <p>A saída consiste no <strong>cruzamento de dados</strong>, gerando um relatório limpo que destaca apenas o que é estrategicamente vital para o plenário. A velocidade da extração é potencializada pela tecnologia, mas a <strong>curadoria humana é inegociável</strong> na aprovação final.</p>
             </section>
 
             <section id="p6" class="caor-card">
-                <h2><i class="fas fa-gavel"></i> 6. O Protocolo Antialucinação: Os 3 V&#x27;s</h2>
-                <div class="text-discreet">
-                <p>Para garantir a integridade da prova e do argumento no Plenário, aplique este protocolo:</p>
-                </div>
+                <h2><i class="fas fa-sync"></i> Processos volumosos: centralização, interação e foco</h2>
+                <p>Diante de processos extensos, a equação é clara: <strong>Volume + IA = Foco</strong>. A metodologia propõe três passos:</p>
                 <ul>
-                <li class="li-kv"><div class="li-kv-label">Verificar:</div><div class="li-kv-body">Exija links e fontes. Cheque as bases factuais em sistemas oficiais (PJe, SAJ). Nunca confie em citações automáticas.</div></li>
-                <li class="li-kv"><div class="li-kv-label">Validar:</div><div class="li-kv-body">Certifique-se de que a fundamentação jurídica não está defasada pela data de corte da ferramenta.</div></li>
-                <li class="li-kv"><div class="li-kv-label">Vincular:</div><div class="li-kv-body">Reafirme a autoria. A IA não assume riscos processuais; o operador, sim.</div></li>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>Centralize</strong>: faça o upload de milhares de páginas em um único ambiente seguro.</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-database"><i class="fas fa-database"></i></span><span class="li-topic-text"><strong>Interaja</strong>: formule perguntas diretas e permita que a IA analise provas e peças dos autos.</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>Resolva</strong>: obtenha sínteses precisas para fundamentar decisões institucionais em minutos.</span></li>
                 </ul>
-                <p>&quot;A responsabilidade final pelo argumento inserido na peça ou sustentado em Plenário está vinculada inteiramente ao Promotor de Justiça. A IA é um assistente, não um substituto da consciência jurídica.&quot;</p>
+                <p>Trata-se de uma <strong>solução oficial de Inteligência Artificial recomendada</strong>, voltada ao uso institucional no âmbito do Ministério Público do Estado do Pará.</p>
             </section>
 
             <section id="p7" class="caor-card">
-                <h2><i class="fas fa-database"></i> 7. Curadoria Processual: A Estratégia de Preparação para o Júri</h2>
-                <p>A máquina reflete a qualidade dos dados que recebe. A <strong>Curadoria Processual</strong> é o filtro humano que seleciona o cerne probatório relevante para evitar a <strong>dispersão da capacidade probabilística</strong> da IA.</p>
-                <p><strong>Analogia do Jornalista:</strong> O Promotor não deve &quot;jogar&quot; o processo inteiro na IA. Deve filtrar, verificar relevância, descartar o que é redundante e estruturar a narrativa.</p>
-                <h3><i class="fas fa-sync"></i> O Fluxo da Maximização:</h3>
-                <ul>
-                <li class="li-kv"><div class="li-kv-label">Entrada Bruta (400 páginas):</div><div class="li-kv-body">Processo com ruídos, petições padronizadas, comprovantes de endereço e documentos secundários.</div></li>
-                <li class="li-kv"><div class="li-kv-label">Insumo Refinado (70 páginas):</div><div class="li-kv-body">Apenas o depoimento das testemunhas-chave, laudos necroscópicos e o interrogatório do réu.</div></li>
-                </ul>
-                <p>Ao remover o <strong>&quot;lixo processual&quot;</strong>, a IA foca toda a sua potência de processamento no que realmente importa para a tese acusatória, resultando em análises exponencialmente mais precisas para o embate em Plenário.</p>
+                <h2><i class="fas fa-pencil-ruler"></i> Relatório Analítico FIRAC e a fratura da tese defensiva</h2>
+                <p>O <strong>Relatório Analítico FIRAC</strong> radiografa as fraturas da tese defensiva a partir de quatro eixos:</p>
+                <ol class="icon-ol">
+                <li class="li-topic"><span class="li-topic-icon icon-database"><i class="fas fa-database"></i></span><span class="li-topic-text"><strong>Fatos &amp; Incidentes</strong>: o que realmente aconteceu e quais provas materiais estão anexadas.</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>Regras</strong>: a base legal e a jurisprudência aplicável ao cenário isolado.</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>Análise de Nexo Causal</strong>: o cruzamento em que a IA expõe o “buraco” lógico entre a ação do réu e a justificativa defensiva.</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>Conclusão Estratégica</strong>: a síntese do contra-ataque.</span></li>
+                </ol>
+                <p>Nesse modelo, há uma <strong>divisão de forças</strong>: a Inteligência Artificial processa as variáveis; o <strong>Promotor decide o ataque letal</strong>.</p>
             </section>
 
             <section id="p8" class="caor-card">
-                <h2><i class="fas fa-search"></i> 8. Boas Práticas Institucionais e Segurança (LGPD)</h2>
-                <h3><i class="fas fa-star"></i> Diretrizes Práticas de Uso</h3>
-                <ol class="icon-ol">
-                <li class="li-topic"><span class="li-topic-icon icon-database"><i class="fas fa-database"></i></span><span class="li-topic-text"><strong>Sessões Isoladas:</strong> Inicie uma nova conversa para cada caso para evitar contaminação de dados.</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>Fragmentação Estratégica:</strong> Em IPs extensos, analise blocos temáticos em sessões separadas.</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>Biblioteca de Prompts:</strong> Utilize templates institucionais para denúncias e alegações finais.</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-window-maximize"><i class="fas fa-window-maximize"></i></span><span class="li-topic-text"><strong>Ferramentas Pro:</strong> Utilize versões pagas (Claude Pro, ChatGPT Plus, Copilot M365) para janelas de contexto expandidas.</span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>Validação Humana:</strong> Toda minuta deve ser revisada integralmente por um membro ou servidor.</span></li>
-                </ol>
-                <h3><i class="fas fa-shield-halved"></i> Privacidade e Sigilo de Dados</h3>
+                <h2><i class="fas fa-exclamation-triangle"></i> A revolução da escuta: extração inteligente de depoimentos</h2>
+                <p>A extração inteligente transforma <strong>horas de áudio e vídeo</strong> em dados estruturados, mapeados e cronológicos para o plenário. O processo inclui:</p>
+                <ul>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>Transcrição fiel (integral)</strong>, com conversão automática de fala em texto.</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>Busca instantânea</strong> de palavras-chave, nomes e fatos cruciais.</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>Mapeamento de interlocutores</strong>, identificando automaticamente quem está falando.</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>Cronologia automática</strong>, com indexação exata por minutagem.</span></li>
+                </ul>
+                <p>Essa organização permite antecipar gatilhos do réu, mapear teses defensivas e construir <strong>tabelas de organização inquestionável</strong>. O caos documental dá lugar ao protagonismo do Promotor, cuja curadoria entrega a Justiça.</p>
             </section>
 
             <section id="p9" class="caor-card">
-                <h2><i class="fas fa-check-circle"></i> 9. ALERTA DE SEGURANÇA E LGPD</h2>
-                <div class="alert-box alert-critical">
-                <span class="badge"><i class="fas fa-shield-halved"></i> Alerta Crítico</span>
-                <p><strong>É terminantemente proibido o upload de dados sensíveis ou informações protegidas por sigilo judicial em modelos de domínio público (versões gratuitas de IA) sem autorização institucional. Plataformas abertas podem processar e armazenar dados para treinamento futuro.</strong></p>
-                </div>
-                <div class="text-discreet">
-                <p><strong>Estratégia de Mitigação:</strong> Utilize apenas nuvens certificadas pelo órgão. Caso necessite usar ferramentas externas, realize a <strong>anonimização prévia</strong>: substitua nomes de réus, vítimas e testemunhas por nomes fictícios ou códigos antes de submeter os textos à IA.</p>
-                </div>
+                <h2><i class="fas fa-shield-halved"></i> O desafio da escala e os limites da IA em áudio e vídeo</h2>
+                <p>O processamento de longos conteúdos audiovisuais impõe desafios. Entre os principais limitadores estão:</p>
+                <ul>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>Ruído de transcrição</strong>, causado por áudio abafado ou legendas automáticas incorretas, especialmente com termos técnicos.</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-window-maximize"><i class="fas fa-window-maximize"></i></span><span class="li-topic-text"><strong>Fadiga de contexto</strong>, em vídeos extensos, nos quais o modelo pode “perder o meio” e misturar blocos distantes de informação.</span></li>
+                </ul>
+                <p>Mesmo com grandes janelas de contexto, a qualidade da entrada é determinante: <strong>lixo na entrada gera lixo na saída</strong>.</p>
             </section>
 
             <section id="p10" class="caor-card">
-                <h2><i class="fas fa-star"></i> 10. Conclusão: O Domínio Humano sobre a Máquina</h2>
-                <p>A Inteligência Artificial aplicada ao Tribunal do Júri não substitui o domínio pleno dos autos. Ela executa tarefas em alta velocidade, mas o Promotor de Justiça é quem pensa, decide e assina. A eficácia operacional depende deste binômio inquebrável:</p>
+                <h2><i class="fas fa-search"></i> Engenharia de áudio como simulador cognitivo e estratégico</h2>
+                <p>A <strong>engenharia de áudio</strong> utiliza o formato de <em>podcast</em> como simulador de cenários e reforço de memória. Entre as aplicações estão:</p>
                 <ul>
-                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>A IA é o motor.</strong></span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-bolt"><i class="fas fa-bolt"></i></span><span class="li-topic-text"><strong>A curadoria é o combustível.</strong></span></li>
-                <li class="li-topic"><span class="li-topic-icon icon-gavel"><i class="fas fa-gavel"></i></span><span class="li-topic-text"><strong>O Promotor é o piloto.</strong></span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>Simulador de embate</strong> entre acusação e defesa, funcionando como teste de estresse.</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-database"><i class="fas fa-database"></i></span><span class="li-topic-text"><strong>Reforço cognitivo</strong>, com áudio-resumo para fixação passiva de nomes, datas e laudos.</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>Simulador de jurado leigo</strong>, traduzindo o jargão jurídico para linguagem comum e testando a clareza narrativa.</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-exclamation-triangle"><i class="fas fa-exclamation-triangle"></i></span><span class="li-topic-text"><strong>Perfil de interrogatório</strong>, com engenharia psicológica e mapeamento de gatilhos emocionais do réu.</span></li>
                 </ul>
-                <p>Na preparação para o julgamento, evite a lei do menor esforço. O trabalho inteligente exige, impreterivelmente, o direcionamento humano para que a ferramenta entregue agilidade com segurança jurídica e precisão estratégica.</p>
+            </section>
+
+            <section id="p11" class="caor-card">
+                <h2><i class="fas fa-check-circle"></i> Psicologia do júri, recursos visuais e organização probatória</h2>
+                <p>O slide não é um documento para ser lido, mas um <strong>suporte visual estratégico</strong>. A decisão no júri nasce da <strong>clareza</strong>, não do excesso. Clareza e simplicidade geram confiança; visual confuso ou técnico demais produz desatenção e desconfiança.</p>
+                <p>Nesse contexto, destacam-se:</p>
+                <ul>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>Infográficos</strong> como âncoras da atenção e martelos da verdade factual.</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-database"><i class="fas fa-database"></i></span><span class="li-topic-text"><strong>Tabelas de organização inquestionável</strong>, que contabilizam provas de forma limpa e direta, criando um cerco lógico onde a “dúvida razoável” não encontra espaço.</span></li>
+                <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>Vídeos curtos</strong>, capazes de sintetizar horas de análise em uma narrativa linear, lógica e emocionalmente poderosa.</span></li>
+                </ul>
+            </section>
+
+            <section id="p12" class="caor-card">
+                <h2><i class="fas fa-bullseye"></i> O protagonismo inegociável do Promotor de Justiça</h2>
+                <p>A tecnologia organiza, mas a <strong>voz do Promotor entrega a Justiça</strong>. Ética, curadoria e eloquência são elementos centrais para o veredito justo. O estúdio do Ministério Público não substitui o instinto investigativo; ele elimina o trabalho mecânico.</p>
+                <blockquote>O Ministério Público exerce sua verdadeira vocação quando domina absolutamente os fatos e realiza a defesa intransigente da sociedade no Tribunal do Júri.</blockquote>
+                <p>A tecnologia é a fundação. O protagonismo humano é inegociável.</p>
             </section>
 <!-- AUTO:CONTENT:END -->
         </div>
@@ -771,8 +772,6 @@
         function toggleTheme() {
             document.body.classList.toggle('dark-mode');
         }
-
-        document.body.classList.add('dark-mode');
 
         const menuButton = document.getElementById('menu-toggle');
         const mobileOverlay = document.getElementById('mobile-overlay');

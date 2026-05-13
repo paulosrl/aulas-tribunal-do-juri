@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CIIA MPPA | Entrada</title>
+  <style>
+    :root {
+      --bg-main: #f3f4f6;
+      --accent: #8a1f3a;
+      --text-main: #1e293b;
+      --card-bg: #ffffff;
+      --border: #e2e8f0;
+      --muted: #64748b;
+      --chip: rgba(167,31,49,0.10);
+      --chip-hover: rgba(167,31,49,0.18);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background:
+        radial-gradient(circle at 15% 10%, rgba(138,31,58,0.12), transparent 38%),
+        radial-gradient(circle at 85% 85%, rgba(138,31,58,0.10), transparent 35%),
+        var(--bg-main);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 1.2rem;
+    }
+    body.dark-mode {
+      --bg-main: #000917;
+      --text-main: #f1f5f9;
+      --card-bg: #0b1733;
+      --border: #32486f;
+      --muted: #cbd5e1;
+      --chip: rgba(167,31,49,0.22);
+      --chip-hover: rgba(167,31,49,0.30);
+    }
+
+    .btn-theme {
+      position: fixed;
+      top: 1.2rem;
+      right: 1.2rem;
+      z-index: 20;
+      background: var(--bg-main);
+      color: var(--text-main);
+      border: 2px solid var(--accent);
+      border-radius: 999px;
+      padding: 0.55rem 0.95rem;
+      font-weight: 800;
+      font-size: 0.78rem;
+      cursor: pointer;
+    }
+
+    .wrap {
+      width: min(1040px, 100%);
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.10);
+      overflow: hidden;
+    }
+
+    .hero {
+      padding: 2.1rem 1.4rem 1.3rem;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(138,31,58,0.06) 0%, rgba(138,31,58,0.01) 100%);
+    }
+
+    .logo {
+      width: 148px;
+      height: 148px;
+      border-radius: 14px;
+      object-fit: contain;
+      box-shadow: 0 8px 22px rgba(138,31,58,0.20);
+      background: #fff;
+    }
+
+    h1 {
+      margin: 1rem 0 0.35rem;
+      color: var(--accent);
+      font-size: clamp(1.2rem, 2.5vw, 1.9rem);
+      line-height: 1.22;
+    }
+
+    .site {
+      display: inline-block;
+      margin-top: 0.45rem;
+      padding: 0.42rem 0.9rem;
+      border-radius: 999px;
+      background: var(--chip);
+      color: var(--text-main);
+      text-decoration: none;
+      font-size: 1.05rem;
+      font-weight: 600;
+      border: 1px solid rgba(138,31,58,0.25);
+    }
+    .site:hover { background: var(--chip-hover); }
+
+    .subtitle {
+      margin: 0.75rem auto 0;
+      max-width: 780px;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .grid {
+      padding: 1.15rem;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem;
+    }
+
+    .card {
+      display: block;
+      text-decoration: none;
+      color: var(--text-main);
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-left: 6px solid var(--accent);
+      border-radius: 14px;
+      padding: 0.95rem 0.95rem 0.9rem;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px rgba(15, 23, 42, 0.12);
+      border-color: #cbd5e1;
+    }
+    body.dark-mode .card:hover {
+      box-shadow: 0 12px 24px rgba(2, 8, 23, 0.55);
+      border-color: #5b77a6;
+    }
+
+    .title-row {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+    .topic-icon {
+      width: 20px;
+      height: 20px;
+      color: var(--accent);
+      flex: 0 0 auto;
+    }
+
+    .tag {
+      display: inline-block;
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 0.35rem;
+    }
+
+    .title {
+      margin: 0;
+      font-size: 1.08rem;
+      font-weight: 800;
+      line-height: 1.28;
+      color: var(--accent);
+    }
+
+    .desc {
+      margin: 0.38rem 0 0;
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    .footer {
+      padding: 0 1.15rem 1.1rem;
+      color: var(--muted);
+      font-size: 0.83rem;
+      text-align: center;
+    }
+
+    @media (max-width: 860px) {
+      .grid { grid-template-columns: 1fr; }
+      .logo { width: 122px; height: 122px; }
+      .site { font-size: 0.98rem; }
+    }
+  </style>
+</head>
+<body>
+  <button class="btn-theme" onclick="toggleTheme()">🌓 TEMA</button>
+  <main class="wrap">
+    <section class="hero">
+      <img src="logo.png" alt="Logo MPPA" class="logo">
+      <h1>Inteligência Artificial Aplicada ao Tribunal do Júri</h1>
+      <a class="site" href="https://ciia.mppa.mp.br" target="_blank" rel="noopener noreferrer">ciia.mppa.mp.br</a>
+      <p class="subtitle">Selecione um tópico para acessar o conteúdo completo da formação.</p>
+    </section>
+
+    <section class="grid">
+      <a class="card" href="1.html">
+        <span class="tag">Tópico 1</span>
+        <div class="title-row">
+          <svg class="topic-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M10 17.5L4.5 12 6 10.5l4 4 8-8L19.5 8z"/></svg>
+          <p class="title">Abertura</p>
+        </div>
+        <p class="desc">Visão geral da trilha e fundamentos estratégicos.</p>
+      </a>
+      <a class="card" href="2.html">
+        <span class="tag">Tópico 2</span>
+        <div class="title-row">
+          <svg class="topic-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 17.25V21h3.75L17.8 9.94l-3.75-3.75L3 17.25zm18-11.5a1 1 0 0 0 0-1.41l-1.34-1.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75L21 5.75z"/></svg>
+          <p class="title">Engenharia de Prompts</p>
+        </div>
+        <p class="desc">Métodos práticos para instruções mais precisas.</p>
+      </a>
+      <a class="card" href="3.html">
+        <span class="tag">Tópico 3</span>
+        <div class="title-row">
+          <svg class="topic-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M1 21h12v2H1v-2zm2-3h10v2H3v-2zm5-16l8 8-6 6-8-8 6-6zm6.59 8L8 3.41 4.41 7 11 13.59 14.59 10z"/></svg>
+          <p class="title">Agentes no Juri</p>
+        </div>
+        <p class="desc">Aplicação de agentes no fluxo do Tribunal do Júri.</p>
+      </a>
+      <a class="card" href="4.html">
+        <span class="tag">Tópico 4</span>
+        <div class="title-row">
+          <svg class="topic-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 3h18v4H3V3zm0 7h8v11H3V10zm10 0h8v11h-8V10z"/></svg>
+          <p class="title">Elementos Gráficos no Juri</p>
+        </div>
+        <p class="desc">Recursos visuais para síntese e sustentação oral.</p>
+      </a>
+      <a class="card" href="5.html">
+        <span class="tag">Tópico 5</span>
+        <div class="title-row">
+          <svg class="topic-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 5h16a2 2 0 0 1 2 2v12l-4-3-4 3-4-3-4 3V7a2 2 0 0 1 2-2z"/></svg>
+          <p class="title">NotebookLM no Júri</p>
+        </div>
+        <p class="desc">Organização analítica e leitura orientada por IA.</p>
+      </a>
+      <a class="card" href="favoritos.html">
+        <span class="tag">Tópico 6</span>
+        <div class="title-row">
+          <svg class="topic-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 17.27 6.18 3.73-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <p class="title">Favoritos</p>
+        </div>
+        <p class="desc">Atalhos rápidos para referências e materiais prioritários.</p>
+      </a>
+    </section>
+
+    <div class="footer">MPPA — CIIA</div>
+  </main>
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle("dark-mode");
+      localStorage.setItem("theme", document.body.classList.contains("dark-mode") ? "dark" : "light");
+    }
+    if (localStorage.getItem("theme") === "dark") {
+      document.body.classList.add("dark-mode");
+    }
+  </script>
+</body>
+</html>
