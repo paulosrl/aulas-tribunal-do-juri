@@ -26,8 +26,9 @@ O projeto converte conteúdo Markdown em páginas HTML com:
 │   ├── index.template.html
 │   └── topico.template.html
 ├── scripts/
-│   ├── gera_html.py
-│   └── gera_index.py
+│   ├── build_all.py
+│   ├── gera_html.py (wrapper)
+│   └── html_gen/ (módulo principal)
 ├── html/
 │   ├── index.html
 │   ├── 1.html ... 5.html
