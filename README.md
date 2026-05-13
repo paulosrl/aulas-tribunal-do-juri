@@ -112,20 +112,145 @@ O gerador está organizado em `scripts/html_gen/` com responsabilidades claras:
 
 Para detalhes, veja [scripts/html_gen/README.md](scripts/html_gen/README.md).
 
-### Pipeline Geral
+### Pipeline Detalhado
+
+O processamento de cada arquivo markdown segue 6 etapas:
+
+#### **1️⃣ Orquestração (cli.py)**
+
+- Parse argumentos de linha de comando
+- Determina tipo de página: landing (`index.html`) ou tópico
+- Carrega template apropriado
+- Valida caminhos de entrada/saída
+
+**Entrada**: argumentos do shell
+
+**Saída**: configurações validadas para próxima etapa
+
+---
+
+#### **2️⃣ Parse de Markdown (parser.py)**
+
+Converte markdown bruto em HTML estruturado.
+
+**O que faz:**
+
+- Converte `#`, `##`, `###` em `<h1>`, `<h2>`, `<h3>`
+- Processa listas (`-`, `1.`)
+- Renderiza tabelas pipe (`| coluna |`)
+- Transforma blockquotes e alertas (`> [!WARNING]`)
+- Preserva links markdown `[texto](url)` e URLs diretas
+- Detecta blocos de agentes (`Acesse o agente: ...`)
+- **Remove**: marcadores de página, comentários OCR, referências automáticas de SharePoint
+
+**Conecta com:**
+
+- `classifier.py` — para filtrar linhas não relevantes
+- `constants.py` — para padrões de detecção
+
+**Entrada**: Conteúdo markdown bruto
+
+**Saída**: HTML intermediário com blocos estruturados
+
+---
+
+#### **3️⃣ Atribuição de Ícones (icons.py)**
+
+Mapeia títulos de blocos para ícones Font Awesome 6 de forma automática.
+
+**O que faz:**
+
+- Lê título de cada bloco (ex: "Introdução", "Segurança")
+- Consulta `ICON_RULES` em `constants.py` para encontrar melhor match
+- Evita duplicação: se ícone já foi usado, escolhe alternativo de `ICON_POOL`
+- Injeta class CSS `fa-icon-name` no HTML
+
+**Exemplos de mapeamento:**
+
+- "Introdução" → `fa-book-open`
+- "Segurança" → `fa-shield-alt`
+- "Tecnologia" → `fa-microchip`
+
+**Entrada**: HTML com blocos (sem ícones)
+
+**Saída**: HTML com classes de ícones FA6 adicionadas
+
+---
+
+#### **4️⃣ Renderização em Template (renderer.py)**
+
+Injeta conteúdo HTML no template apropriado.
+
+**Para landing page** (`index.html`):
+
+- Extrai tópicos de `conteudo/index.md`
+- Gera cards com título, descrição, ícone
+- Renderiza grid de 7 tópicos (1-5, Favoritos, NotebookLM)
+
+**Para tópicos** (`1.html` a `5.html`, `favoritos.html`, `notebooklm.html`):
+
+- Injeta conteúdo na tag `<!-- AUTO:content -->`
+- Preserva estrutura de template
+
+**Entrada**: HTML processado + template
+
+**Saída**: HTML com conteúdo injetado em template
+
+---
+
+#### **5️⃣ Pós-processamento (postprocessor.py)**
+
+Injeção de menu sidebar e aplicação de regras globais.
+
+**O que faz:**
+
+- Extrai menu de `conteudo/index.md` (ou arquivo customizado via `--menu-md`)
+- Renderiza sidebar com 7 itens fixos: Início, Tópicos (1-5), Favoritos, NotebookLM
+- Injeta menu na tag `<!-- AUTO:menu -->`
+- Aplica regras CSS/JavaScript globais (tema claro/escuro, responsive)
+- Escapa HTML especial e sanitiza URLs (previne XSS)
+
+**Entrada**: HTML com placeholder de menu
+
+**Saída**: HTML final com sidebar injetada
+
+---
+
+#### **6️⃣ Validação (validation.py)**
+
+Verifica integridade do conteúdo antes de salvar.
+
+**O que faz:**
+
+- Compara contagem de linhas/parágrafos: markdown vs HTML
+- Verifica se URLs foram preservadas
+- Alerta se houver discrepâncias suspeitas
+- Garante que nenhum conteúdo foi perdido silenciosamente
+
+**Entrada**: Markdown original + HTML final
+
+**Saída**: Bool (sucesso/falha) + detalhes
+
+---
+
+### Pipeline Visual
 
 ```text
-conteudo/*.md
+conteudo/N.md
     ↓
-[parse_markdown]
+[1. cli.py] — Parse CLI, valida caminhos
     ↓
-[apply_global_rules]
+[2. parser.py] — Markdown → HTML, filtra linhas, detecta agentes
     ↓
-[assign_icons]
+[3. icons.py] — Mapeia títulos → ícones FA6, evita duplicação
     ↓
-[render_templates]
+[4. renderer.py] — Injeta em template (landing ou tópico)
     ↓
-html/*.html
+[5. postprocessor.py] — Injeção de sidebar, escaping, regras globais
+    ↓
+[6. validation.py] — Verifica integridade conteúdo
+    ↓
+html/N.html
 ```
 
 ---
