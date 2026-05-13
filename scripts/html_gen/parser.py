@@ -756,6 +756,35 @@ def parse_markdown(markdown: str, md_dir: Path, section_mode: str = "semantic") 
             para.append(nxt)
             i += 1
         paragraph_text = " ".join(para)
+
+        # Padrão «pergunta + link»: parágrafo que abre com aspas seguido de URL pura
+        # → emite bloco practice-card destacado
+        _starts_with_quote = re.match(r'^[\u201c\u201d"]', paragraph_text)
+        if _starts_with_quote:
+            # Avança por linhas vazias até encontrar o próximo parágrafo não-vazio
+            _j = i
+            while _j < len(lines) and not lines[_j].strip():
+                _j += 1
+            _next_line = lines[_j].strip() if _j < len(lines) else ""
+            _url_match = re.match(r'^(https?://\S+)$', _next_line)
+            if _url_match:
+                _practice_url = _url_match.group(1)
+                _safe_url = safe_href(_practice_url)
+                # Texto da pergunta: remove aspas envolventes se existirem
+                _question = paragraph_text.strip().strip('\u201c\u201d"').strip().rstrip('\u201d"').strip()
+                current.blocks.append(
+                    '<div class="practice-card">\n'
+                    '  <div class="practice-card-header">\n'
+                    '    <span class="practice-card-icon"><i class="fas fa-flask"></i></span>\n'
+                    '    <span class="practice-card-label">Experimente</span>\n'
+                    '  </div>\n'
+                    f'  <p class="practice-card-question">\u201c{esc(_question)}\u201d</p>\n'
+                    f'  <a href="{_safe_url}" class="practice-card-btn" target="_blank" rel="noopener noreferrer">'
+                    '<i class="fas fa-external-link-alt"></i> Testar agente</a>\n'
+                    '</div>'
+                )
+                i = _j + 1  # consome a linha da URL
+                continue
         agent_access_url = extract_agent_access_url(paragraph_text)
         if agent_access_url:
             if current_agent_features_h3_idx is not None and 0 <= current_agent_features_h3_idx < len(current.blocks):
@@ -819,8 +848,9 @@ def parse_markdown(markdown: str, md_dir: Path, section_mode: str = "semantic") 
         else:
             current.blocks.append(f"<p>{inline_md(paragraph_text)}</p>")
 
-    # Remove intro vazio quando há outros cards
-    if len(cards) > 1 and not cards[0].blocks:
+    # Remove intro apenas quando realmente vazio (sem blocos e sem título).
+    # Isso preserva H1s de abertura como "Sites Abertos" em páginas como Favoritos.
+    if len(cards) > 1 and not cards[0].blocks and not cards[0].title.strip():
         cards = cards[1:]
 
     return cards

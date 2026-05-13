@@ -4,85 +4,112 @@
   "graph": {},
   "nodes": [
     {
-      "label": "gera_index.py",
+      "label": "build_all.py",
       "file_type": "code",
-      "source_file": "scripts/gera_index.py",
+      "source_file": "scripts/build_all.py",
       "source_location": "L1",
-      "id": "gera_index_py",
-      "community": 3,
-      "norm_label": "gera_index.py"
+      "id": "build_all_py",
+      "community": 4,
+      "norm_label": "build_all.py"
     },
     {
-      "label": "safe_href()",
+      "label": "get_project_root()",
       "file_type": "code",
-      "source_file": "scripts/gera_index.py",
-      "source_location": "L19",
-      "id": "scripts_gera_index_safe_href",
-      "community": 3,
-      "norm_label": "safe_href()"
+      "source_file": "scripts/build_all.py",
+      "source_location": "L25",
+      "id": "scripts_build_all_get_project_root",
+      "community": 4,
+      "norm_label": "get_project_root()"
     },
     {
-      "label": "parse_index_md()",
+      "label": "discover_markdown_files()",
       "file_type": "code",
-      "source_file": "scripts/gera_index.py",
-      "source_location": "L26",
-      "id": "scripts_gera_index_parse_index_md",
-      "community": 3,
-      "norm_label": "parse_index_md()"
+      "source_file": "scripts/build_all.py",
+      "source_location": "L33",
+      "id": "scripts_build_all_discover_markdown_files",
+      "community": 4,
+      "norm_label": "discover_markdown_files()"
     },
     {
-      "label": "generate_cards_html()",
+      "label": "build_html()",
       "file_type": "code",
-      "source_file": "scripts/gera_index.py",
-      "source_location": "L106",
-      "id": "scripts_gera_index_generate_cards_html",
-      "community": 3,
-      "norm_label": "generate_cards_html()"
+      "source_file": "scripts/build_all.py",
+      "source_location": "L55",
+      "id": "scripts_build_all_build_html",
+      "community": 4,
+      "norm_label": "build_html()"
     },
     {
-      "label": "replace_between()",
+      "label": "print_header()",
       "file_type": "code",
-      "source_file": "scripts/gera_index.py",
-      "source_location": "L133",
-      "id": "scripts_gera_index_replace_between",
-      "community": 3,
-      "norm_label": "replace_between()"
+      "source_file": "scripts/build_all.py",
+      "source_location": "L97",
+      "id": "scripts_build_all_print_header",
+      "community": 4,
+      "norm_label": "print_header()"
+    },
+    {
+      "label": "print_summary()",
+      "file_type": "code",
+      "source_file": "scripts/build_all.py",
+      "source_location": "L107",
+      "id": "scripts_build_all_print_summary",
+      "community": 4,
+      "norm_label": "print_summary()"
     },
     {
       "label": "main()",
       "file_type": "code",
-      "source_file": "scripts/gera_index.py",
+      "source_file": "scripts/build_all.py",
       "source_location": "L140",
-      "id": "scripts_gera_index_main",
-      "community": 3,
+      "id": "scripts_build_all_main",
+      "community": 4,
       "norm_label": "main()"
     },
     {
-      "label": "Parse index.md e extrai: t\u00edtulo, metadados, t\u00f3picos",
+      "label": "Retorna a raiz do projeto (onde est\u00e1 conteudo/ e html/)",
       "file_type": "rationale",
-      "source_file": "scripts/gera_index.py",
-      "source_location": "L27",
-      "id": "scripts_gera_index_rationale_27",
-      "community": 3,
-      "norm_label": "parse index.md e extrai: titulo, metadados, topicos"
+      "source_file": "scripts/build_all.py",
+      "source_location": "L26",
+      "id": "scripts_build_all_rationale_26",
+      "community": 4,
+      "norm_label": "retorna a raiz do projeto (onde esta conteudo/ e html/)"
     },
     {
-      "label": "Gera HTML dos cards a partir dos t\u00f3picos",
+      "label": "Descobre todos os .md em conteudo/ e ordena logicamente",
       "file_type": "rationale",
-      "source_file": "scripts/gera_index.py",
-      "source_location": "L107",
-      "id": "scripts_gera_index_rationale_107",
-      "community": 3,
-      "norm_label": "gera html dos cards a partir dos topicos"
+      "source_file": "scripts/build_all.py",
+      "source_location": "L34",
+      "id": "scripts_build_all_rationale_34",
+      "community": 4,
+      "norm_label": "descobre todos os .md em conteudo/ e ordena logicamente"
     },
     {
-      "label": "Replace conte\u00fado entre dois marcadores",
+      "label": "Executa gera_html.py para um arquivo markdown     Retorna True se bem-sucedido,",
       "file_type": "rationale",
-      "source_file": "scripts/gera_index.py",
-      "source_location": "L134",
-      "id": "scripts_gera_index_rationale_134",
-      "community": 3,
-      "norm_label": "replace conteudo entre dois marcadores"
+      "source_file": "scripts/build_all.py",
+      "source_location": "L56",
+      "id": "scripts_build_all_rationale_56",
+      "community": 4,
+      "norm_label": "executa gera_html.py para um arquivo markdown     retorna true se bem-sucedido,"
+    },
+    {
+      "label": "Imprime cabe\u00e7alho visual",
+      "file_type": "rationale",
+      "source_file": "scripts/build_all.py",
+      "source_location": "L98",
+      "id": "scripts_build_all_rationale_98",
+      "community": 4,
+      "norm_label": "imprime cabecalho visual"
+    },
+    {
+      "label": "Imprime sum\u00e1rio final",
+      "file_type": "rationale",
+      "source_file": "scripts/build_all.py",
+      "source_location": "L108",
+      "id": "scripts_build_all_rationale_108",
+      "community": 4,
+      "norm_label": "imprime sumario final"
     },
     {
       "label": "gera_html.py",
@@ -90,366 +117,1113 @@
       "source_file": "scripts/gera_html.py",
       "source_location": "L1",
       "id": "gera_html_py",
-      "community": 5,
+      "community": 1,
       "norm_label": "gera_html.py"
+    },
+    {
+      "label": "postprocessor.py",
+      "file_type": "code",
+      "source_file": "scripts/html_gen/postprocessor.py",
+      "source_location": "L1",
+      "id": "html_gen_postprocessor_py",
+      "community": 3,
+      "norm_label": "postprocessor.py"
+    },
+    {
+      "label": "apply_global_page_rules()",
+      "file_type": "code",
+      "source_file": "scripts/html_gen/postprocessor.py",
+      "source_location": "L8",
+      "id": "html_gen_postprocessor_apply_global_page_rules",
+      "community": 3,
+      "norm_label": "apply_global_page_rules()"
+    },
+    {
+      "label": "Apply global post-processing rules to HTML output.      Handles:     - Title inj",
+      "file_type": "rationale",
+      "source_file": "scripts/html_gen/postprocessor.py",
+      "source_location": "L15",
+      "id": "html_gen_postprocessor_rationale_15",
+      "community": 3,
+      "norm_label": "apply global post-processing rules to html output.      handles:     - title inj"
+    },
+    {
+      "label": "__init__.py",
+      "file_type": "code",
+      "source_file": "scripts/html_gen/__init__.py",
+      "source_location": "L1",
+      "id": "html_gen_init_py",
+      "community": 0,
+      "norm_label": "__init__.py"
+    },
+    {
+      "label": "classifier.py",
+      "file_type": "code",
+      "source_file": "scripts/html_gen/classifier.py",
+      "source_location": "L1",
+      "id": "html_gen_classifier_py",
+      "community": 0,
+      "norm_label": "classifier.py"
+    },
+    {
+      "label": "is_page_marker_line()",
+      "file_type": "code",
+      "source_file": "scripts/html_gen/classifier.py",
+      "source_location": "L7",
+      "id": "html_gen_classifier_is_page_marker_line",
+      "community": 0,
+      "norm_label": "is_page_marker_line()"
+    },
+    {
+      "label": "is_page_comment_line()",
+      "file_type": "code",
+      "source_file": "scripts/html_gen/classifier.py",
+      "source_location": "L24",
+      "id": "html_gen_classifier_is_page_comment_line",
+      "community": 0,
+      "norm_label": "is_page_comment_line()"
+    },
+    {
+      "label": "is_separator_line()",
+      "file_type": "code",
+      "source_file": "scripts/html_gen/classifier.py",
+      "source_location": "L34",
+      "id": "html_gen_classifier_is_separator_line",
+      "community": 0,
+      "norm_label": "is_separator_line()"
+    },
+    {
+      "label": "is_ocr_comment_line()",
+      "file_type": "code",
+      "source_file": "scripts/html_gen/classifier.py",
+      "source_location": "L39",
+      "id": "html_gen_classifier_is_ocr_comment_line",
+      "community": 0,
+      "norm_label": "is_ocr_comment_line()"
+    },
+    {
+      "label": "classify_critical_paragraph()",
+      "file_type": "code",
+      "source_file": "scripts/html_gen/classifier.py",
+      "source_location": "L44",
+      "id": "html_gen_classifier_classify_critical_paragraph",
+      "community": 0,
+      "norm_label": "classify_critical_paragraph()"
+    },
+    {
+      "label": "is_strategic_paragraph()",
+      "file_type": "code",
+      "source_file": "scripts/html_gen/classifier.py",
+      "source_location": "L69",
+      "id": "html_gen_classifier_is_strategic_paragraph",
+      "community": 0,
+      "norm_label": "is_strategic_paragraph()"
+    },
+    {
+      "label": "validation.py",
+      "file_type": "code",
+      "source_file": "scripts/html_gen/validation.py",
+      "source_location": "L1",
+      "id": "html_gen_validation_py",
+      "community": 3,
+      "norm_label": "validation.py"
+    },
+    {
+      "label": "validate_completeness()",
+      "file_type": "code",
+      "source_file": "scripts/html_gen/validation.py",
+      "source_location": "L7",
+      "id": "html_gen_validation_validate_completeness",
+      "community": 3,
+      "norm_label": "validate_completeness()"
+    },
+    {
+      "label": "validate_content_preservation()",
+      "file_type": "code",
+      "source_file": "scripts/html_gen/validation.py",
+      "source_location": "L31",
+      "id": "html_gen_validation_validate_content_preservation",
+      "community": 3,
+      "norm_label": "validate_content_preservation()"
+    },
+    {
+      "label": "Valida\u00e7\u00e3o de completude: verifica se links e cards vazios foram preservados.",
+      "file_type": "rationale",
+      "source_file": "scripts/html_gen/validation.py",
+      "source_location": "L8",
+      "id": "html_gen_validation_rationale_8",
+      "community": 3,
+      "norm_label": "validacao de completude: verifica se links e cards vazios foram preservados."
+    },
+    {
+      "label": "Regra absoluta: o HTML n\u00e3o pode perder conte\u00fado relevante do markdown.     Faz v",
+      "file_type": "rationale",
+      "source_file": "scripts/html_gen/validation.py",
+      "source_location": "L32",
+      "id": "html_gen_validation_rationale_32",
+      "community": 3,
+      "norm_label": "regra absoluta: o html nao pode perder conteudo relevante do markdown.     faz v"
+    },
+    {
+      "label": "icons.py",
+      "file_type": "code",
+      "source_file": "scripts/html_gen/icons.py",
+      "source_location": "L1",
+      "id": "html_gen_icons_py",
+      "community": 0,
+      "norm_label": "icons.py"
+    },
+    {
+      "label": "pick_agent_icon()",
+      "file_type": "code",
+      "source_file": "scripts/html_gen/icons.py",
+      "source_location": "L8",
+      "id": "html_gen_icons_pick_agent_icon",
+      "community": 0,
+      "norm_label": "pick_agent_icon()"
+    },
+    {
+      "label": "pick_icon()",
+      "file_type": "code",
+      "source_file": "scripts/html_gen/icons.py",
+      "source_location": "L53",
+      "id": "html_gen_icons_pick_icon",
+      "community": 0,
+      "norm_label": "pick_icon()"
+    },
+    {
+      "label": "pick_item_icon()",
+      "file_type": "code",
+      "source_file": "scripts/html_gen/icons.py",
+      "source_location": "L61",
+      "id": "html_gen_icons_pick_item_icon",
+      "community": 0,
+      "norm_label": "pick_item_icon()"
+    },
+    {
+      "label": "assign_unique_icons()",
+      "file_type": "code",
+      "source_file": "scripts/html_gen/icons.py",
+      "source_location": "L85",
+      "id": "html_gen_icons_assign_unique_icons",
+      "community": 0,
+      "norm_label": "assign_unique_icons()"
+    },
+    {
+      "label": "utils.py",
+      "file_type": "code",
+      "source_file": "scripts/html_gen/utils.py",
+      "source_location": "L1",
+      "id": "html_gen_utils_py",
+      "community": 0,
+      "norm_label": "utils.py"
+    },
+    {
+      "label": "esc()",
+      "file_type": "code",
+      "source_file": "scripts/html_gen/utils.py",
+      "source_location": "L10",
+      "id": "html_gen_utils_esc",
+      "community": 3,
+      "norm_label": "esc()"
+    },
+    {
+      "label": "safe_href()",
+      "file_type": "code",
+      "source_file": "scripts/html_gen/utils.py",
+      "source_location": "L14",
+      "id": "html_gen_utils_safe_href",
+      "community": 0,
+      "norm_label": "safe_href()"
+    },
+    {
+      "label": "inline_md()",
+      "file_type": "code",
+      "source_file": "scripts/html_gen/utils.py",
+      "source_location": "L21",
+      "id": "html_gen_utils_inline_md",
+      "community": 0,
+      "norm_label": "inline_md()"
+    },
+    {
+      "label": "clean_md_title()",
+      "file_type": "code",
+      "source_file": "scripts/html_gen/utils.py",
+      "source_location": "L47",
+      "id": "html_gen_utils_clean_md_title",
+      "community": 0,
+      "norm_label": "clean_md_title()"
+    },
+    {
+      "label": "strip_leading_number()",
+      "file_type": "code",
+      "source_file": "scripts/html_gen/utils.py",
+      "source_location": "L59",
+      "id": "html_gen_utils_strip_leading_number",
+      "community": 0,
+      "norm_label": "strip_leading_number()"
+    },
+    {
+      "label": "file_to_data_uri()",
+      "file_type": "code",
+      "source_file": "scripts/html_gen/utils.py",
+      "source_location": "L65",
+      "id": "html_gen_utils_file_to_data_uri",
+      "community": 0,
+      "norm_label": "file_to_data_uri()"
+    },
+    {
+      "label": "normalize_data_uri()",
+      "file_type": "code",
+      "source_file": "scripts/html_gen/utils.py",
+      "source_location": "L72",
+      "id": "html_gen_utils_normalize_data_uri",
+      "community": 0,
+      "norm_label": "normalize_data_uri()"
+    },
+    {
+      "label": "replace_between()",
+      "file_type": "code",
+      "source_file": "scripts/html_gen/utils.py",
+      "source_location": "L79",
+      "id": "html_gen_utils_replace_between",
+      "community": 0,
+      "norm_label": "replace_between()"
+    },
+    {
+      "label": "cli.py",
+      "file_type": "code",
+      "source_file": "scripts/html_gen/cli.py",
+      "source_location": "L1",
+      "id": "html_gen_cli_py",
+      "community": 3,
+      "norm_label": "cli.py"
+    },
+    {
+      "label": "parse_args()",
+      "file_type": "code",
+      "source_file": "scripts/html_gen/cli.py",
+      "source_location": "L16",
+      "id": "html_gen_cli_parse_args",
+      "community": 3,
+      "norm_label": "parse_args()"
+    },
+    {
+      "label": "generate_index_page()",
+      "file_type": "code",
+      "source_file": "scripts/html_gen/cli.py",
+      "source_location": "L47",
+      "id": "html_gen_cli_generate_index_page",
+      "community": 3,
+      "norm_label": "generate_index_page()"
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "scripts/html_gen/cli.py",
+      "source_location": "L109",
+      "id": "html_gen_cli_main",
+      "community": 3,
+      "norm_label": "main()"
+    },
+    {
+      "label": "Parse command-line arguments for the HTML generator.",
+      "file_type": "rationale",
+      "source_file": "scripts/html_gen/cli.py",
+      "source_location": "L17",
+      "id": "html_gen_cli_rationale_17",
+      "community": 3,
+      "norm_label": "parse command-line arguments for the html generator."
+    },
+    {
+      "label": "Generate landing page with index.template.html",
+      "file_type": "rationale",
+      "source_file": "scripts/html_gen/cli.py",
+      "source_location": "L48",
+      "id": "html_gen_cli_rationale_48",
+      "community": 3,
+      "norm_label": "generate landing page with index.template.html"
+    },
+    {
+      "label": "Main entry point: orchestrates parsing, rendering, and validation.",
+      "file_type": "rationale",
+      "source_file": "scripts/html_gen/cli.py",
+      "source_location": "L110",
+      "id": "html_gen_cli_rationale_110",
+      "community": 3,
+      "norm_label": "main entry point: orchestrates parsing, rendering, and validation."
+    },
+    {
+      "label": "renderer.py",
+      "file_type": "code",
+      "source_file": "scripts/html_gen/renderer.py",
+      "source_location": "L1",
+      "id": "html_gen_renderer_py",
+      "community": 3,
+      "norm_label": "renderer.py"
+    },
+    {
+      "label": "render_copilot_agent_cta()",
+      "file_type": "code",
+      "source_file": "scripts/html_gen/renderer.py",
+      "source_location": "L12",
+      "id": "html_gen_renderer_render_copilot_agent_cta",
+      "community": 3,
+      "norm_label": "render_copilot_agent_cta()"
+    },
+    {
+      "label": "inline_md()",
+      "file_type": "code",
+      "source_file": "scripts/html_gen/renderer.py",
+      "source_location": "L23",
+      "id": "html_gen_renderer_inline_md",
+      "community": 3,
+      "norm_label": "inline_md()"
+    },
+    {
+      "label": "render_cards()",
+      "file_type": "code",
+      "source_file": "scripts/html_gen/renderer.py",
+      "source_location": "L50",
+      "id": "html_gen_renderer_render_cards",
+      "community": 0,
+      "norm_label": "render_cards()"
+    },
+    {
+      "label": "render_menu_from_labels()",
+      "file_type": "code",
+      "source_file": "scripts/html_gen/renderer.py",
+      "source_location": "L172",
+      "id": "html_gen_renderer_render_menu_from_labels",
+      "community": 3,
+      "norm_label": "render_menu_from_labels()"
+    },
+    {
+      "label": "render_topics_accordion()",
+      "file_type": "code",
+      "source_file": "scripts/html_gen/renderer.py",
+      "source_location": "L194",
+      "id": "html_gen_renderer_render_topics_accordion",
+      "community": 3,
+      "norm_label": "render_topics_accordion()"
+    },
+    {
+      "label": "Convert markdown inline formatting to HTML.",
+      "file_type": "rationale",
+      "source_file": "scripts/html_gen/renderer.py",
+      "source_location": "L24",
+      "id": "html_gen_renderer_rationale_24",
+      "community": 3,
+      "norm_label": "convert markdown inline formatting to html."
+    },
+    {
+      "label": "models.py",
+      "file_type": "code",
+      "source_file": "scripts/html_gen/models.py",
+      "source_location": "L1",
+      "id": "html_gen_models_py",
+      "community": 0,
+      "norm_label": "models.py"
+    },
+    {
+      "label": "Card",
+      "file_type": "code",
+      "source_file": "scripts/html_gen/models.py",
+      "source_location": "L10",
+      "id": "html_gen_models_card",
+      "community": 0,
+      "norm_label": "card"
+    },
+    {
+      "label": "parser.py",
+      "file_type": "code",
+      "source_file": "scripts/html_gen/parser.py",
+      "source_location": "L1",
+      "id": "html_gen_parser_py",
+      "community": 0,
+      "norm_label": "parser.py"
+    },
+    {
+      "label": "strip_source_references()",
+      "file_type": "code",
+      "source_file": "scripts/html_gen/parser.py",
+      "source_location": "L32",
+      "id": "html_gen_parser_strip_source_references",
+      "community": 0,
+      "norm_label": "strip_source_references()"
+    },
+    {
+      "label": "extract_h1_title()",
+      "file_type": "code",
+      "source_file": "scripts/html_gen/parser.py",
+      "source_location": "L56",
+      "id": "html_gen_parser_extract_h1_title",
+      "community": 0,
+      "norm_label": "extract_h1_title()"
+    },
+    {
+      "label": "parse_authors_line()",
+      "file_type": "code",
+      "source_file": "scripts/html_gen/parser.py",
+      "source_location": "L66",
+      "id": "html_gen_parser_parse_authors_line",
+      "community": 0,
+      "norm_label": "parse_authors_line()"
+    },
+    {
+      "label": "parse_agent_block()",
+      "file_type": "code",
+      "source_file": "scripts/html_gen/parser.py",
+      "source_location": "L88",
+      "id": "html_gen_parser_parse_agent_block",
+      "community": 0,
+      "norm_label": "parse_agent_block()"
+    },
+    {
+      "label": "split_key_value_item()",
+      "file_type": "code",
+      "source_file": "scripts/html_gen/parser.py",
+      "source_location": "L174",
+      "id": "html_gen_parser_split_key_value_item",
+      "community": 0,
+      "norm_label": "split_key_value_item()"
+    },
+    {
+      "label": "extract_agent_access_url()",
+      "file_type": "code",
+      "source_file": "scripts/html_gen/parser.py",
+      "source_location": "L197",
+      "id": "html_gen_parser_extract_agent_access_url",
+      "community": 0,
+      "norm_label": "extract_agent_access_url()"
+    },
+    {
+      "label": "render_copilot_agent_cta()",
+      "file_type": "code",
+      "source_file": "scripts/html_gen/parser.py",
+      "source_location": "L221",
+      "id": "html_gen_parser_render_copilot_agent_cta",
+      "community": 0,
+      "norm_label": "render_copilot_agent_cta()"
+    },
+    {
+      "label": "derive_page_card_title()",
+      "file_type": "code",
+      "source_file": "scripts/html_gen/parser.py",
+      "source_location": "L233",
+      "id": "html_gen_parser_derive_page_card_title",
+      "community": 0,
+      "norm_label": "derive_page_card_title()"
+    },
+    {
+      "label": "file_to_data_uri()",
+      "file_type": "code",
+      "source_file": "scripts/html_gen/parser.py",
+      "source_location": "L288",
+      "id": "html_gen_parser_file_to_data_uri",
+      "community": 0,
+      "norm_label": "file_to_data_uri()"
+    },
+    {
+      "label": "parse_markdown()",
+      "file_type": "code",
+      "source_file": "scripts/html_gen/parser.py",
+      "source_location": "L299",
+      "id": "html_gen_parser_parse_markdown",
+      "community": 0,
+      "norm_label": "parse_markdown()"
+    },
+    {
+      "label": "Parser module: Markdown \u2192 List[Card] conversion.  Core parsing logic for convert",
+      "file_type": "rationale",
+      "source_file": "scripts/html_gen/parser.py",
+      "source_location": "L1",
+      "id": "html_gen_parser_rationale_1",
+      "community": 0,
+      "norm_label": "parser module: markdown \u2192 list[card] conversion.  core parsing logic for convert"
+    },
+    {
+      "label": "Remove APENAS refer\u00eancias autom\u00e1ticas de ferramentas (SharePoint, Copilot Chat).",
+      "file_type": "rationale",
+      "source_file": "scripts/html_gen/parser.py",
+      "source_location": "L33",
+      "id": "html_gen_parser_rationale_33",
+      "community": 0,
+      "norm_label": "remove apenas referencias automaticas de ferramentas (sharepoint, copilot chat)."
+    },
+    {
+      "label": "Extract the H1 title from markdown source.",
+      "file_type": "rationale",
+      "source_file": "scripts/html_gen/parser.py",
+      "source_location": "L57",
+      "id": "html_gen_parser_rationale_57",
+      "community": 0,
+      "norm_label": "extract the h1 title from markdown source."
+    },
+    {
+      "label": "Parse authors metadata line.      Example: \"Autores: Rodrigo Aquino e Paulo Lima",
+      "file_type": "rationale",
+      "source_file": "scripts/html_gen/parser.py",
+      "source_location": "L67",
+      "id": "html_gen_parser_rationale_67",
+      "community": 0,
+      "norm_label": "parse authors metadata line.      example: \"autores: rodrigo aquino e paulo lima"
+    },
+    {
+      "label": "Parse agent block: description, pillars, and access link.      Returns: (html_bl",
+      "file_type": "rationale",
+      "source_file": "scripts/html_gen/parser.py",
+      "source_location": "L89",
+      "id": "html_gen_parser_rationale_89",
+      "community": 0,
+      "norm_label": "parse agent block: description, pillars, and access link.      returns: (html_bl"
+    },
+    {
+      "label": "Split key-value item from markdown.      Acepta padr\u00f5es como:     - \u2696\ufe0f **Ativida",
+      "file_type": "rationale",
+      "source_file": "scripts/html_gen/parser.py",
+      "source_location": "L175",
+      "id": "html_gen_parser_rationale_175",
+      "community": 0,
+      "norm_label": "split key-value item from markdown.      acepta padroes como:     - \u2696\ufe0f **ativida"
+    },
+    {
+      "label": "Extract agent access URL from paragraph text.      Matches:     - \"Acesse o agen",
+      "file_type": "rationale",
+      "source_file": "scripts/html_gen/parser.py",
+      "source_location": "L198",
+      "id": "html_gen_parser_rationale_198",
+      "community": 0,
+      "norm_label": "extract agent access url from paragraph text.      matches:     - \"acesse o agen"
+    },
+    {
+      "label": "Render CTA (Call-to-Action) button for Copilot agent access.",
+      "file_type": "rationale",
+      "source_file": "scripts/html_gen/parser.py",
+      "source_location": "L222",
+      "id": "html_gen_parser_rationale_222",
+      "community": 0,
+      "norm_label": "render cta (call-to-action) button for copilot agent access."
+    },
+    {
+      "label": "Derive card title from lines, prioritizing headings and bold text.      Used in",
+      "file_type": "rationale",
+      "source_file": "scripts/html_gen/parser.py",
+      "source_location": "L234",
+      "id": "html_gen_parser_rationale_234",
+      "community": 0,
+      "norm_label": "derive card title from lines, prioritizing headings and bold text.      used in"
+    },
+    {
+      "label": "Convert image file to data URI for embedding.",
+      "file_type": "rationale",
+      "source_file": "scripts/html_gen/parser.py",
+      "source_location": "L289",
+      "id": "html_gen_parser_rationale_289",
+      "community": 0,
+      "norm_label": "convert image file to data uri for embedding."
+    },
+    {
+      "label": "MAIN PARSER: Convert markdown to List[Card].      This is the core parsing engin",
+      "file_type": "rationale",
+      "source_file": "scripts/html_gen/parser.py",
+      "source_location": "L300",
+      "id": "html_gen_parser_rationale_300",
+      "community": 0,
+      "norm_label": "main parser: convert markdown to list[card].      this is the core parsing engin"
+    },
+    {
+      "label": "constants.py",
+      "file_type": "code",
+      "source_file": "scripts/html_gen/constants.py",
+      "source_location": "L1",
+      "id": "html_gen_constants_py",
+      "community": 0,
+      "norm_label": "constants.py"
+    },
+    {
+      "label": "Imprime cabe\u00e7alho visual",
+      "file_type": "rationale",
+      "source_file": "build_all.py",
+      "source_location": "L99",
+      "community": 4,
+      "norm_label": "imprime cabecalho visual",
+      "id": "scripts_build_all_rationale_99"
+    },
+    {
+      "label": "Imprime sum\u00e1rio final",
+      "file_type": "rationale",
+      "source_file": "build_all.py",
+      "source_location": "L109",
+      "community": 4,
+      "norm_label": "imprime sumario final",
+      "id": "scripts_build_all_rationale_109"
+    },
+    {
+      "label": "Generate landing page with index.template.html",
+      "file_type": "rationale",
+      "source_file": "scripts/html_gen/cli.py",
+      "source_location": "L53",
+      "community": 3,
+      "norm_label": "generate landing page with index.template.html",
+      "id": "html_gen_cli_rationale_53"
+    },
+    {
+      "label": "Main entry point: orchestrates parsing, rendering, and validation.",
+      "file_type": "rationale",
+      "source_file": "scripts/html_gen/cli.py",
+      "source_location": "L115",
+      "community": 3,
+      "norm_label": "main entry point: orchestrates parsing, rendering, and validation.",
+      "id": "html_gen_cli_rationale_115"
+    },
+    {
+      "label": "Executa gera_html.py para um arquivo markdown     Retorna True se bem-sucedido,",
+      "file_type": "rationale",
+      "source_file": "scripts/build_all.py",
+      "source_location": "L55",
+      "community": 4,
+      "norm_label": "executa gera_html.py para um arquivo markdown     retorna true se bem-sucedido,",
+      "id": "scripts_build_all_rationale_55"
+    },
+    {
+      "label": "gera_index.py",
+      "file_type": "code",
+      "source_file": "scripts/gera_index.py",
+      "source_location": "L1",
+      "community": 6,
+      "norm_label": "gera_index.py",
+      "id": "gera_index_py"
+    },
+    {
+      "label": "safe_href()",
+      "file_type": "code",
+      "source_file": "scripts/gera_index.py",
+      "source_location": "L19",
+      "community": 6,
+      "norm_label": "safe_href()",
+      "id": "scripts_gera_index_safe_href"
+    },
+    {
+      "label": "parse_index_md()",
+      "file_type": "code",
+      "source_file": "scripts/gera_index.py",
+      "source_location": "L26",
+      "community": 6,
+      "norm_label": "parse_index_md()",
+      "id": "scripts_gera_index_parse_index_md"
+    },
+    {
+      "label": "generate_cards_html()",
+      "file_type": "code",
+      "source_file": "scripts/gera_index.py",
+      "source_location": "L106",
+      "community": 6,
+      "norm_label": "generate_cards_html()",
+      "id": "scripts_gera_index_generate_cards_html"
+    },
+    {
+      "label": "replace_between()",
+      "file_type": "code",
+      "source_file": "scripts/gera_index.py",
+      "source_location": "L133",
+      "community": 6,
+      "norm_label": "replace_between()",
+      "id": "scripts_gera_index_replace_between"
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "scripts/gera_index.py",
+      "source_location": "L140",
+      "community": 6,
+      "norm_label": "main()",
+      "id": "scripts_gera_index_main"
+    },
+    {
+      "label": "Parse index.md e extrai: t\u00edtulo, metadados, t\u00f3picos",
+      "file_type": "rationale",
+      "source_file": "scripts/gera_index.py",
+      "source_location": "L27",
+      "community": 6,
+      "norm_label": "parse index.md e extrai: titulo, metadados, topicos",
+      "id": "scripts_gera_index_rationale_27"
+    },
+    {
+      "label": "Gera HTML dos cards a partir dos t\u00f3picos",
+      "file_type": "rationale",
+      "source_file": "scripts/gera_index.py",
+      "source_location": "L107",
+      "community": 6,
+      "norm_label": "gera html dos cards a partir dos topicos",
+      "id": "scripts_gera_index_rationale_107"
+    },
+    {
+      "label": "Replace conte\u00fado entre dois marcadores",
+      "file_type": "rationale",
+      "source_file": "scripts/gera_index.py",
+      "source_location": "L134",
+      "community": 6,
+      "norm_label": "replace conteudo entre dois marcadores",
+      "id": "scripts_gera_index_rationale_134"
     },
     {
       "label": "safe_href()",
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L77",
-      "id": "scripts_gera_html_safe_href",
-      "community": 6,
-      "norm_label": "safe_href()"
+      "community": 1,
+      "norm_label": "safe_href()",
+      "id": "scripts_gera_html_safe_href"
     },
     {
       "label": "pick_agent_icon()",
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L84",
-      "id": "scripts_gera_html_pick_agent_icon",
-      "community": 6,
-      "norm_label": "pick_agent_icon()"
+      "community": 1,
+      "norm_label": "pick_agent_icon()",
+      "id": "scripts_gera_html_pick_agent_icon"
     },
     {
       "label": "Card",
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L130",
-      "id": "scripts_gera_html_card",
       "community": 1,
-      "norm_label": "card"
+      "norm_label": "card",
+      "id": "scripts_gera_html_card"
     },
     {
       "label": "parse_args()",
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L136",
-      "id": "scripts_gera_html_parse_args",
-      "community": 5,
-      "norm_label": "parse_args()"
+      "community": 1,
+      "norm_label": "parse_args()",
+      "id": "scripts_gera_html_parse_args"
     },
     {
       "label": "esc()",
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L171",
-      "id": "scripts_gera_html_esc",
-      "community": 6,
-      "norm_label": "esc()"
+      "community": 1,
+      "norm_label": "esc()",
+      "id": "scripts_gera_html_esc"
     },
     {
       "label": "inline_md()",
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L175",
-      "id": "scripts_gera_html_inline_md",
-      "community": 6,
-      "norm_label": "inline_md()"
+      "community": 1,
+      "norm_label": "inline_md()",
+      "id": "scripts_gera_html_inline_md"
     },
     {
       "label": "strip_source_references()",
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L201",
-      "id": "scripts_gera_html_strip_source_references",
       "community": 1,
-      "norm_label": "strip_source_references()"
+      "norm_label": "strip_source_references()",
+      "id": "scripts_gera_html_strip_source_references"
     },
     {
       "label": "extract_h1_title()",
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L224",
-      "id": "scripts_gera_html_extract_h1_title",
-      "community": 5,
-      "norm_label": "extract_h1_title()"
+      "community": 1,
+      "norm_label": "extract_h1_title()",
+      "id": "scripts_gera_html_extract_h1_title"
     },
     {
       "label": "parse_authors_line()",
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L233",
-      "id": "scripts_gera_html_parse_authors_line",
       "community": 1,
-      "norm_label": "parse_authors_line()"
+      "norm_label": "parse_authors_line()",
+      "id": "scripts_gera_html_parse_authors_line"
     },
     {
       "label": "parse_agent_block()",
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L250",
-      "id": "scripts_gera_html_parse_agent_block",
-      "community": 6,
-      "norm_label": "parse_agent_block()"
+      "community": 1,
+      "norm_label": "parse_agent_block()",
+      "id": "scripts_gera_html_parse_agent_block"
     },
     {
       "label": "split_key_value_item()",
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L328",
-      "id": "scripts_gera_html_split_key_value_item",
       "community": 1,
-      "norm_label": "split_key_value_item()"
+      "norm_label": "split_key_value_item()",
+      "id": "scripts_gera_html_split_key_value_item"
     },
     {
       "label": "extract_agent_access_url()",
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L347",
-      "id": "scripts_gera_html_extract_agent_access_url",
       "community": 1,
-      "norm_label": "extract_agent_access_url()"
+      "norm_label": "extract_agent_access_url()",
+      "id": "scripts_gera_html_extract_agent_access_url"
     },
     {
       "label": "render_copilot_agent_cta()",
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L364",
-      "id": "scripts_gera_html_render_copilot_agent_cta",
-      "community": 6,
-      "norm_label": "render_copilot_agent_cta()"
+      "community": 1,
+      "norm_label": "render_copilot_agent_cta()",
+      "id": "scripts_gera_html_render_copilot_agent_cta"
     },
     {
       "label": "classify_critical_paragraph()",
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L375",
-      "id": "scripts_gera_html_classify_critical_paragraph",
       "community": 1,
-      "norm_label": "classify_critical_paragraph()"
+      "norm_label": "classify_critical_paragraph()",
+      "id": "scripts_gera_html_classify_critical_paragraph"
     },
     {
       "label": "is_strategic_paragraph()",
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L400",
-      "id": "scripts_gera_html_is_strategic_paragraph",
       "community": 1,
-      "norm_label": "is_strategic_paragraph()"
+      "norm_label": "is_strategic_paragraph()",
+      "id": "scripts_gera_html_is_strategic_paragraph"
     },
     {
       "label": "clean_md_title()",
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L418",
-      "id": "scripts_gera_html_clean_md_title",
-      "community": 9,
-      "norm_label": "clean_md_title()"
+      "community": 1,
+      "norm_label": "clean_md_title()",
+      "id": "scripts_gera_html_clean_md_title"
     },
     {
       "label": "strip_leading_number()",
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L430",
-      "id": "scripts_gera_html_strip_leading_number",
-      "community": 9,
-      "norm_label": "strip_leading_number()"
+      "community": 1,
+      "norm_label": "strip_leading_number()",
+      "id": "scripts_gera_html_strip_leading_number"
     },
     {
       "label": "is_page_marker_line()",
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L436",
-      "id": "scripts_gera_html_is_page_marker_line",
       "community": 1,
-      "norm_label": "is_page_marker_line()"
+      "norm_label": "is_page_marker_line()",
+      "id": "scripts_gera_html_is_page_marker_line"
     },
     {
       "label": "is_page_comment_line()",
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L453",
-      "id": "scripts_gera_html_is_page_comment_line",
       "community": 1,
-      "norm_label": "is_page_comment_line()"
+      "norm_label": "is_page_comment_line()",
+      "id": "scripts_gera_html_is_page_comment_line"
     },
     {
       "label": "is_separator_line()",
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L463",
-      "id": "scripts_gera_html_is_separator_line",
       "community": 1,
-      "norm_label": "is_separator_line()"
+      "norm_label": "is_separator_line()",
+      "id": "scripts_gera_html_is_separator_line"
     },
     {
       "label": "is_ocr_comment_line()",
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L468",
-      "id": "scripts_gera_html_is_ocr_comment_line",
       "community": 1,
-      "norm_label": "is_ocr_comment_line()"
+      "norm_label": "is_ocr_comment_line()",
+      "id": "scripts_gera_html_is_ocr_comment_line"
     },
     {
       "label": "derive_page_card_title()",
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L473",
-      "id": "scripts_gera_html_derive_page_card_title",
       "community": 1,
-      "norm_label": "derive_page_card_title()"
+      "norm_label": "derive_page_card_title()",
+      "id": "scripts_gera_html_derive_page_card_title"
     },
     {
       "label": "pick_icon()",
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L523",
-      "id": "scripts_gera_html_pick_icon",
-      "community": 9,
-      "norm_label": "pick_icon()"
+      "community": 1,
+      "norm_label": "pick_icon()",
+      "id": "scripts_gera_html_pick_icon"
     },
     {
       "label": "pick_item_icon()",
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L531",
-      "id": "scripts_gera_html_pick_item_icon",
-      "community": 9,
-      "norm_label": "pick_item_icon()"
+      "community": 1,
+      "norm_label": "pick_item_icon()",
+      "id": "scripts_gera_html_pick_item_icon"
     },
     {
       "label": "assign_unique_icons()",
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L555",
-      "id": "scripts_gera_html_assign_unique_icons",
-      "community": 5,
-      "norm_label": "assign_unique_icons()"
+      "community": 1,
+      "norm_label": "assign_unique_icons()",
+      "id": "scripts_gera_html_assign_unique_icons"
     },
     {
       "label": "file_to_data_uri()",
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L569",
-      "id": "scripts_gera_html_file_to_data_uri",
-      "community": 5,
-      "norm_label": "file_to_data_uri()"
+      "community": 1,
+      "norm_label": "file_to_data_uri()",
+      "id": "scripts_gera_html_file_to_data_uri"
     },
     {
       "label": "parse_markdown()",
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L576",
-      "id": "scripts_gera_html_parse_markdown",
       "community": 1,
-      "norm_label": "parse_markdown()"
+      "norm_label": "parse_markdown()",
+      "id": "scripts_gera_html_parse_markdown"
     },
     {
       "label": "render_cards()",
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L1089",
-      "id": "scripts_gera_html_render_cards",
-      "community": 9,
-      "norm_label": "render_cards()"
+      "community": 1,
+      "norm_label": "render_cards()",
+      "id": "scripts_gera_html_render_cards"
     },
     {
       "label": "render_menu_from_labels()",
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L1211",
-      "id": "scripts_gera_html_render_menu_from_labels",
-      "community": 6,
-      "norm_label": "render_menu_from_labels()"
+      "community": 1,
+      "norm_label": "render_menu_from_labels()",
+      "id": "scripts_gera_html_render_menu_from_labels"
     },
     {
       "label": "render_topics_accordion()",
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L1233",
-      "id": "scripts_gera_html_render_topics_accordion",
-      "community": 6,
-      "norm_label": "render_topics_accordion()"
+      "community": 1,
+      "norm_label": "render_topics_accordion()",
+      "id": "scripts_gera_html_render_topics_accordion"
     },
     {
       "label": "validate_completeness()",
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L1292",
-      "id": "scripts_gera_html_validate_completeness",
-      "community": 5,
-      "norm_label": "validate_completeness()"
+      "community": 1,
+      "norm_label": "validate_completeness()",
+      "id": "scripts_gera_html_validate_completeness"
     },
     {
       "label": "validate_content_preservation()",
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L1313",
-      "id": "scripts_gera_html_validate_content_preservation",
-      "community": 8,
-      "norm_label": "validate_content_preservation()"
+      "community": 1,
+      "norm_label": "validate_content_preservation()",
+      "id": "scripts_gera_html_validate_content_preservation"
     },
     {
       "label": "replace_between()",
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L1425",
-      "id": "scripts_gera_html_replace_between",
-      "community": 5,
-      "norm_label": "replace_between()"
+      "community": 1,
+      "norm_label": "replace_between()",
+      "id": "scripts_gera_html_replace_between"
     },
     {
       "label": "normalize_data_uri()",
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L1434",
-      "id": "scripts_gera_html_normalize_data_uri",
-      "community": 5,
-      "norm_label": "normalize_data_uri()"
+      "community": 1,
+      "norm_label": "normalize_data_uri()",
+      "id": "scripts_gera_html_normalize_data_uri"
     },
     {
       "label": "apply_global_page_rules()",
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L1441",
-      "id": "scripts_gera_html_apply_global_page_rules",
-      "community": 5,
-      "norm_label": "apply_global_page_rules()"
+      "community": 1,
+      "norm_label": "apply_global_page_rules()",
+      "id": "scripts_gera_html_apply_global_page_rules"
     },
     {
       "label": "generate_index_page()",
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L1757",
-      "id": "scripts_gera_html_generate_index_page",
-      "community": 0,
-      "norm_label": "generate_index_page()"
+      "community": 5,
+      "norm_label": "generate_index_page()",
+      "id": "scripts_gera_html_generate_index_page"
     },
     {
       "label": "main()",
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L1819",
-      "id": "scripts_gera_html_main",
-      "community": 5,
-      "norm_label": "main()"
+      "community": 1,
+      "norm_label": "main()",
+      "id": "scripts_gera_html_main"
     },
     {
       "label": "Regra absoluta: o HTML n\u00e3o pode perder conte\u00fado relevante do markdown.     Faz v",
       "file_type": "rationale",
       "source_file": "scripts/gera_html.py",
       "source_location": "L1314",
-      "id": "scripts_gera_html_rationale_1314",
-      "community": 8,
-      "norm_label": "regra absoluta: o html nao pode perder conteudo relevante do markdown.     faz v"
+      "community": 1,
+      "norm_label": "regra absoluta: o html nao pode perder conteudo relevante do markdown.     faz v",
+      "id": "scripts_gera_html_rationale_1314"
     },
     {
       "label": "Generate landing page with index.template.html",
       "file_type": "rationale",
       "source_file": "scripts/gera_html.py",
       "source_location": "L1758",
-      "id": "scripts_gera_html_rationale_1758",
-      "community": 0,
-      "norm_label": "generate landing page with index.template.html"
+      "community": 5,
+      "norm_label": "generate landing page with index.template.html",
+      "id": "scripts_gera_html_rationale_1758"
     },
     {
       "label": "Generate landing page with index.template.html",
       "file_type": "rationale",
       "source_file": "gera_html.py",
       "source_location": "L1746",
-      "community": 0,
+      "community": 5,
       "norm_label": "generate landing page with index.template.html",
       "id": "scripts_gera_html_rationale_1746"
     },
@@ -458,7 +1232,7 @@
       "file_type": "rationale",
       "source_file": "gera_html.py",
       "source_location": "L1313",
-      "community": 8,
+      "community": 1,
       "norm_label": "regra absoluta: o html nao pode perder conteudo relevante do markdown.     faz v",
       "id": "scripts_gera_html_rationale_1313"
     },
@@ -467,7 +1241,7 @@
       "file_type": "rationale",
       "source_file": "gera_html.py",
       "source_location": "L1745",
-      "community": 0,
+      "community": 5,
       "norm_label": "generate landing page with index.template.html",
       "id": "scripts_gera_html_rationale_1745"
     },
@@ -476,7 +1250,7 @@
       "file_type": "rationale",
       "source_file": "scripts/gera_index.py",
       "source_location": "L19",
-      "community": 3,
+      "community": 6,
       "norm_label": "parse index.md e extrai: titulo, metadados, topicos",
       "id": "scripts_gera_index_rationale_19"
     },
@@ -485,7 +1259,7 @@
       "file_type": "rationale",
       "source_file": "scripts/gera_index.py",
       "source_location": "L99",
-      "community": 3,
+      "community": 6,
       "norm_label": "gera html dos cards a partir dos topicos",
       "id": "scripts_gera_index_rationale_99"
     },
@@ -494,7 +1268,7 @@
       "file_type": "rationale",
       "source_file": "scripts/gera_index.py",
       "source_location": "L126",
-      "community": 3,
+      "community": 6,
       "norm_label": "replace conteudo entre dois marcadores",
       "id": "scripts_gera_index_rationale_126"
     },
@@ -503,7 +1277,7 @@
       "file_type": "code",
       "source_file": "gera_html.py",
       "source_location": "L1190",
-      "community": 9,
+      "community": 1,
       "norm_label": "parse_menu_md()",
       "id": "scripts_gera_html_parse_menu_md"
     },
@@ -512,7 +1286,7 @@
       "file_type": "code",
       "source_file": "gera_html.py",
       "source_location": "L1308",
-      "community": 6,
+      "community": 1,
       "norm_label": "render_topics_menu()",
       "id": "scripts_gera_html_render_topics_menu"
     },
@@ -521,7 +1295,7 @@
       "file_type": "rationale",
       "source_file": "gera_html.py",
       "source_location": "L1385",
-      "community": 8,
+      "community": 1,
       "norm_label": "regra absoluta: o html nao pode perder conteudo relevante do markdown.     faz v",
       "id": "scripts_gera_html_rationale_1385"
     },
@@ -530,7 +1304,7 @@
       "file_type": "rationale",
       "source_file": "gera_html.py",
       "source_location": "L1817",
-      "community": 0,
+      "community": 5,
       "norm_label": "generate landing page with index.template.html",
       "id": "scripts_gera_html_rationale_1817"
     },
@@ -539,7 +1313,7 @@
       "file_type": "rationale",
       "source_file": "gera_html.py",
       "source_location": "L1328",
-      "community": 8,
+      "community": 1,
       "norm_label": "regra absoluta: o html nao pode perder conteudo relevante do markdown.     faz v",
       "id": "scripts_gera_html_rationale_1328"
     },
@@ -548,7 +1322,7 @@
       "file_type": "rationale",
       "source_file": "gera_html.py",
       "source_location": "L1698",
-      "community": 0,
+      "community": 5,
       "norm_label": "generate landing page with index.template.html",
       "id": "scripts_gera_html_rationale_1698"
     },
@@ -557,7 +1331,7 @@
       "file_type": "rationale",
       "source_file": "gera_html.py",
       "source_location": "L1324",
-      "community": 8,
+      "community": 1,
       "norm_label": "regra absoluta: o html nao pode perder conteudo relevante do markdown.     faz v",
       "id": "scripts_gera_html_rationale_1324"
     },
@@ -566,7 +1340,7 @@
       "file_type": "rationale",
       "source_file": "gera_html.py",
       "source_location": "L1694",
-      "community": 0,
+      "community": 5,
       "norm_label": "generate landing page with index.template.html",
       "id": "scripts_gera_html_rationale_1694"
     },
@@ -575,7 +1349,7 @@
       "file_type": "rationale",
       "source_file": "gera_html.py",
       "source_location": "L1491",
-      "community": 0,
+      "community": 5,
       "norm_label": "generate landing page with index.template.html",
       "id": "scripts_gera_html_rationale_1491"
     },
@@ -584,7 +1358,7 @@
       "file_type": "rationale",
       "source_file": "gera_html.py",
       "source_location": "L1460",
-      "community": 0,
+      "community": 5,
       "norm_label": "generate landing page with index.template.html",
       "id": "scripts_gera_html_rationale_1460"
     },
@@ -593,7 +1367,7 @@
       "file_type": "rationale",
       "source_file": "gera_html.py",
       "source_location": "L1450",
-      "community": 0,
+      "community": 5,
       "norm_label": "generate landing page with index.template.html",
       "id": "scripts_gera_html_rationale_1450"
     },
@@ -602,7 +1376,7 @@
       "file_type": "rationale",
       "source_file": "gera_html.py",
       "source_location": "L1451",
-      "community": 0,
+      "community": 5,
       "norm_label": "generate landing page with index.template.html",
       "id": "scripts_gera_html_rationale_1451"
     },
@@ -611,7 +1385,7 @@
       "file_type": "rationale",
       "source_file": "gera_html.py",
       "source_location": "L1437",
-      "community": 0,
+      "community": 5,
       "norm_label": "generate landing page with index.template.html",
       "id": "scripts_gera_html_rationale_1437"
     },
@@ -620,7 +1394,7 @@
       "file_type": "rationale",
       "source_file": "gera_html.py",
       "source_location": "L1408",
-      "community": 0,
+      "community": 5,
       "norm_label": "generate landing page with index.template.html",
       "id": "scripts_gera_html_rationale_1408"
     },
@@ -629,7 +1403,7 @@
       "file_type": "rationale",
       "source_file": "gera_html.py",
       "source_location": "L1337",
-      "community": 0,
+      "community": 5,
       "norm_label": "generate landing page with index.template.html",
       "id": "scripts_gera_html_rationale_1337"
     },
@@ -638,7 +1412,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L1",
-      "community": 4,
+      "community": 2,
       "norm_label": "build_topico.py",
       "id": "home_pl_projetos_aulas_tribunal_do_juri_scripts_build_topico_py"
     },
@@ -647,7 +1421,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L62",
-      "community": 4,
+      "community": 2,
       "norm_label": "card",
       "id": "scripts_build_topico_card"
     },
@@ -683,7 +1457,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L116",
-      "community": 4,
+      "community": 2,
       "norm_label": "strip_source_references()",
       "id": "scripts_build_topico_strip_source_references"
     },
@@ -701,7 +1475,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L151",
-      "community": 7,
+      "community": 2,
       "norm_label": "parse_authors_line()",
       "id": "scripts_build_topico_parse_authors_line"
     },
@@ -710,7 +1484,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L168",
-      "community": 4,
+      "community": 2,
       "norm_label": "split_key_value_item()",
       "id": "scripts_build_topico_split_key_value_item"
     },
@@ -719,7 +1493,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L187",
-      "community": 7,
+      "community": 2,
       "norm_label": "classify_critical_paragraph()",
       "id": "scripts_build_topico_classify_critical_paragraph"
     },
@@ -728,7 +1502,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L212",
-      "community": 7,
+      "community": 2,
       "norm_label": "is_strategic_paragraph()",
       "id": "scripts_build_topico_is_strategic_paragraph"
     },
@@ -737,7 +1511,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L230",
-      "community": 7,
+      "community": 2,
       "norm_label": "clean_md_title()",
       "id": "scripts_build_topico_clean_md_title"
     },
@@ -746,7 +1520,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L242",
-      "community": 7,
+      "community": 2,
       "norm_label": "strip_leading_number()",
       "id": "scripts_build_topico_strip_leading_number"
     },
@@ -755,7 +1529,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L248",
-      "community": 4,
+      "community": 2,
       "norm_label": "is_page_marker_line()",
       "id": "scripts_build_topico_is_page_marker_line"
     },
@@ -764,7 +1538,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L265",
-      "community": 4,
+      "community": 2,
       "norm_label": "is_page_comment_line()",
       "id": "scripts_build_topico_is_page_comment_line"
     },
@@ -773,7 +1547,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L275",
-      "community": 4,
+      "community": 2,
       "norm_label": "is_separator_line()",
       "id": "scripts_build_topico_is_separator_line"
     },
@@ -782,7 +1556,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L280",
-      "community": 4,
+      "community": 2,
       "norm_label": "is_ocr_comment_line()",
       "id": "scripts_build_topico_is_ocr_comment_line"
     },
@@ -791,7 +1565,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L285",
-      "community": 4,
+      "community": 2,
       "norm_label": "derive_page_card_title()",
       "id": "scripts_build_topico_derive_page_card_title"
     },
@@ -809,7 +1583,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L343",
-      "community": 7,
+      "community": 2,
       "norm_label": "pick_item_icon()",
       "id": "scripts_build_topico_pick_item_icon"
     },
@@ -827,7 +1601,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L377",
-      "community": 4,
+      "community": 2,
       "norm_label": "file_to_data_uri()",
       "id": "scripts_build_topico_file_to_data_uri"
     },
@@ -836,7 +1610,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L384",
-      "community": 4,
+      "community": 2,
       "norm_label": "parse_markdown()",
       "id": "scripts_build_topico_parse_markdown"
     },
@@ -845,7 +1619,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L770",
-      "community": 7,
+      "community": 2,
       "norm_label": "render_cards()",
       "id": "scripts_build_topico_render_cards"
     },
@@ -854,7 +1628,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L809",
-      "community": 7,
+      "community": 2,
       "norm_label": "parse_menu_md()",
       "id": "scripts_build_topico_parse_menu_md"
     },
@@ -926,156 +1700,197 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "gera_index.py",
-      "source_location": "L19",
+      "source_file": "build_all.py",
+      "source_location": "L25",
       "weight": 1.0,
       "confidence_score": 1.0,
-      "source": "gera_index_py",
-      "target": "scripts_gera_index_safe_href"
+      "source": "build_all_py",
+      "target": "scripts_build_all_get_project_root"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "gera_index.py",
-      "source_location": "L18",
+      "source_file": "build_all.py",
+      "source_location": "L33",
       "weight": 1.0,
       "confidence_score": 1.0,
-      "source": "gera_index_py",
-      "target": "scripts_gera_index_parse_index_md"
+      "source": "build_all_py",
+      "target": "scripts_build_all_discover_markdown_files"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "gera_index.py",
-      "source_location": "L98",
+      "source_file": "build_all.py",
+      "source_location": "L54",
       "weight": 1.0,
       "confidence_score": 1.0,
-      "source": "gera_index_py",
-      "target": "scripts_gera_index_generate_cards_html"
+      "source": "build_all_py",
+      "target": "scripts_build_all_build_html"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "gera_index.py",
-      "source_location": "L125",
+      "source_file": "build_all.py",
+      "source_location": "L97",
       "weight": 1.0,
       "confidence_score": 1.0,
-      "source": "gera_index_py",
-      "target": "scripts_gera_index_replace_between"
+      "source": "build_all_py",
+      "target": "scripts_build_all_print_header"
     },
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "gera_index.py",
-      "source_location": "L132",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "gera_index_py",
-      "target": "scripts_gera_index_main"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "gera_index.py",
-      "source_location": "L120",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "scripts_gera_index_generate_cards_html",
-      "target": "scripts_gera_index_safe_href"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "gera_index.py",
-      "source_location": "L154",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "scripts_gera_index_main",
-      "target": "scripts_gera_index_parse_index_md"
-    },
-    {
-      "relation": "rationale_for",
-      "confidence": "EXTRACTED",
-      "source_file": "gera_index.py",
-      "source_location": "L27",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "scripts_gera_index_rationale_27",
-      "target": "scripts_gera_index_parse_index_md"
-    },
-    {
-      "relation": "rationale_for",
-      "confidence": "EXTRACTED",
-      "source_file": "gera_index.py",
-      "source_location": "L19",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "scripts_gera_index_rationale_19",
-      "target": "scripts_gera_index_parse_index_md"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "gera_index.py",
-      "source_location": "L157",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "scripts_gera_index_main",
-      "target": "scripts_gera_index_generate_cards_html"
-    },
-    {
-      "relation": "rationale_for",
-      "confidence": "EXTRACTED",
-      "source_file": "gera_index.py",
+      "source_file": "build_all.py",
       "source_location": "L107",
       "weight": 1.0,
       "confidence_score": 1.0,
-      "source": "scripts_gera_index_rationale_107",
-      "target": "scripts_gera_index_generate_cards_html"
+      "source": "build_all_py",
+      "target": "scripts_build_all_print_summary"
     },
     {
-      "relation": "rationale_for",
+      "relation": "contains",
       "confidence": "EXTRACTED",
-      "source_file": "gera_index.py",
-      "source_location": "L99",
+      "source_file": "build_all.py",
+      "source_location": "L140",
       "weight": 1.0,
       "confidence_score": 1.0,
-      "source": "scripts_gera_index_rationale_99",
-      "target": "scripts_gera_index_generate_cards_html"
+      "source": "build_all_py",
+      "target": "scripts_build_all_main"
     },
     {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
-      "source_file": "gera_index.py",
-      "source_location": "L167",
+      "source_file": "build_all.py",
+      "source_location": "L142",
       "weight": 1.0,
       "confidence_score": 1.0,
-      "source": "scripts_gera_index_main",
-      "target": "scripts_gera_index_replace_between"
+      "source": "scripts_build_all_main",
+      "target": "scripts_build_all_get_project_root"
     },
     {
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
-      "source_file": "gera_index.py",
-      "source_location": "L134",
+      "source_file": "build_all.py",
+      "source_location": "L26",
       "weight": 1.0,
       "confidence_score": 1.0,
-      "source": "scripts_gera_index_rationale_134",
-      "target": "scripts_gera_index_replace_between"
+      "source": "scripts_build_all_rationale_26",
+      "target": "scripts_build_all_get_project_root"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "build_all.py",
+      "source_location": "L149",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_build_all_main",
+      "target": "scripts_build_all_discover_markdown_files"
     },
     {
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
-      "source_file": "gera_index.py",
-      "source_location": "L126",
+      "source_file": "build_all.py",
+      "source_location": "L34",
       "weight": 1.0,
       "confidence_score": 1.0,
-      "source": "scripts_gera_index_rationale_126",
-      "target": "scripts_gera_index_replace_between"
+      "source": "scripts_build_all_rationale_34",
+      "target": "scripts_build_all_discover_markdown_files"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "build_all.py",
+      "source_location": "L169",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_build_all_main",
+      "target": "scripts_build_all_build_html"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "build_all.py",
+      "source_location": "L56",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_build_all_rationale_56",
+      "target": "scripts_build_all_build_html"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "build_all.py",
+      "source_location": "L55",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_build_all_rationale_55",
+      "target": "scripts_build_all_build_html"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "build_all.py",
+      "source_location": "L146",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_build_all_main",
+      "target": "scripts_build_all_print_header"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "build_all.py",
+      "source_location": "L98",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_build_all_rationale_98",
+      "target": "scripts_build_all_print_header"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "build_all.py",
+      "source_location": "L99",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_build_all_rationale_99",
+      "target": "scripts_build_all_print_header"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "build_all.py",
+      "source_location": "L178",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_build_all_main",
+      "target": "scripts_build_all_print_summary"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "build_all.py",
+      "source_location": "L108",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_build_all_rationale_108",
+      "target": "scripts_build_all_print_summary"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "build_all.py",
+      "source_location": "L109",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_build_all_rationale_109",
+      "target": "scripts_build_all_print_summary"
     },
     {
       "relation": "contains",
@@ -1466,6 +2281,1585 @@
       "confidence_score": 1.0,
       "source": "gera_html_py",
       "target": "scripts_gera_html_render_topics_menu"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/postprocessor.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_postprocessor_py",
+      "target": "html_gen_postprocessor_apply_global_page_rules"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/postprocessor.py",
+      "source_location": "L15",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_postprocessor_rationale_15",
+      "target": "html_gen_postprocessor_apply_global_page_rules"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "html_gen/postprocessor.py",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "html_gen_postprocessor_apply_global_page_rules",
+      "target": "html_gen_utils_esc"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "html_gen/cli.py",
+      "source_location": "L141",
+      "weight": 1.0,
+      "source": "html_gen_cli_main",
+      "target": "html_gen_postprocessor_apply_global_page_rules"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/__init__.py",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_init_py",
+      "target": "html_gen_models_py"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/__init__.py",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_init_py",
+      "target": "html_gen_utils_py"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/__init__.py",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_init_py",
+      "target": "html_gen_classifier_py"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/__init__.py",
+      "source_location": "L14",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_init_py",
+      "target": "html_gen_icons_py"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/classifier.py",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_classifier_py",
+      "target": "html_gen_utils_py"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/classifier.py",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_classifier_py",
+      "target": "html_gen_classifier_is_page_marker_line"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/classifier.py",
+      "source_location": "L24",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_classifier_py",
+      "target": "html_gen_classifier_is_page_comment_line"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/classifier.py",
+      "source_location": "L34",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_classifier_py",
+      "target": "html_gen_classifier_is_separator_line"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/classifier.py",
+      "source_location": "L39",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_classifier_py",
+      "target": "html_gen_classifier_is_ocr_comment_line"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/classifier.py",
+      "source_location": "L44",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_classifier_py",
+      "target": "html_gen_classifier_classify_critical_paragraph"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/classifier.py",
+      "source_location": "L69",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_classifier_py",
+      "target": "html_gen_classifier_is_strategic_paragraph"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "html_gen/classifier.py",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "html_gen_classifier_is_page_marker_line",
+      "target": "html_gen_utils_clean_md_title"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "html_gen/parser.py",
+      "source_location": "L248",
+      "weight": 1.0,
+      "source": "html_gen_parser_derive_page_card_title",
+      "target": "html_gen_classifier_is_page_marker_line"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "html_gen/parser.py",
+      "source_location": "L320",
+      "weight": 1.0,
+      "source": "html_gen_parser_parse_markdown",
+      "target": "html_gen_classifier_is_page_marker_line"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "html_gen/parser.py",
+      "source_location": "L248",
+      "weight": 1.0,
+      "source": "html_gen_parser_derive_page_card_title",
+      "target": "html_gen_classifier_is_page_comment_line"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "html_gen/parser.py",
+      "source_location": "L320",
+      "weight": 1.0,
+      "source": "html_gen_parser_parse_markdown",
+      "target": "html_gen_classifier_is_page_comment_line"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "html_gen/parser.py",
+      "source_location": "L254",
+      "weight": 1.0,
+      "source": "html_gen_parser_derive_page_card_title",
+      "target": "html_gen_classifier_is_separator_line"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "html_gen/parser.py",
+      "source_location": "L378",
+      "weight": 1.0,
+      "source": "html_gen_parser_parse_markdown",
+      "target": "html_gen_classifier_is_separator_line"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "html_gen/parser.py",
+      "source_location": "L252",
+      "weight": 1.0,
+      "source": "html_gen_parser_derive_page_card_title",
+      "target": "html_gen_classifier_is_ocr_comment_line"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "html_gen/parser.py",
+      "source_location": "L365",
+      "weight": 1.0,
+      "source": "html_gen_parser_parse_markdown",
+      "target": "html_gen_classifier_is_ocr_comment_line"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "html_gen/classifier.py",
+      "source_location": "L45",
+      "weight": 1.0,
+      "source": "html_gen_classifier_classify_critical_paragraph",
+      "target": "html_gen_utils_clean_md_title"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "html_gen/parser.py",
+      "source_location": "L833",
+      "weight": 1.0,
+      "source": "html_gen_parser_parse_markdown",
+      "target": "html_gen_classifier_classify_critical_paragraph"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "html_gen/classifier.py",
+      "source_location": "L70",
+      "weight": 1.0,
+      "source": "html_gen_classifier_is_strategic_paragraph",
+      "target": "html_gen_utils_clean_md_title"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "html_gen/parser.py",
+      "source_location": "L842",
+      "weight": 1.0,
+      "source": "html_gen_parser_parse_markdown",
+      "target": "html_gen_classifier_is_strategic_paragraph"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/validation.py",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_validation_py",
+      "target": "html_gen_validation_validate_completeness"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/validation.py",
+      "source_location": "L31",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_validation_py",
+      "target": "html_gen_validation_validate_content_preservation"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/validation.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_validation_rationale_8",
+      "target": "html_gen_validation_validate_completeness"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "html_gen/cli.py",
+      "source_location": "L145",
+      "weight": 1.0,
+      "source": "html_gen_cli_main",
+      "target": "html_gen_validation_validate_completeness"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/validation.py",
+      "source_location": "L32",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_validation_rationale_32",
+      "target": "html_gen_validation_validate_content_preservation"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "html_gen/validation.py",
+      "source_location": "L120",
+      "weight": 1.0,
+      "source": "html_gen_validation_validate_content_preservation",
+      "target": "html_gen_utils_clean_md_title"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "html_gen/cli.py",
+      "source_location": "L146",
+      "weight": 1.0,
+      "source": "html_gen_cli_main",
+      "target": "html_gen_validation_validate_content_preservation"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/icons.py",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_icons_py",
+      "target": "html_gen_constants_py"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/icons.py",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_icons_py",
+      "target": "html_gen_utils_py"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/icons.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_icons_py",
+      "target": "html_gen_icons_pick_agent_icon"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/icons.py",
+      "source_location": "L53",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_icons_py",
+      "target": "html_gen_icons_pick_icon"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/icons.py",
+      "source_location": "L61",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_icons_py",
+      "target": "html_gen_icons_pick_item_icon"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/icons.py",
+      "source_location": "L85",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_icons_py",
+      "target": "html_gen_icons_assign_unique_icons"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "html_gen/icons.py",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "html_gen_icons_pick_agent_icon",
+      "target": "html_gen_utils_clean_md_title"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "html_gen/parser.py",
+      "source_location": "L141",
+      "weight": 1.0,
+      "source": "html_gen_parser_parse_agent_block",
+      "target": "html_gen_icons_pick_agent_icon"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/icons.py",
+      "source_location": "L89",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_icons_assign_unique_icons",
+      "target": "html_gen_icons_pick_icon"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "html_gen/icons.py",
+      "source_location": "L54",
+      "weight": 1.0,
+      "source": "html_gen_icons_pick_icon",
+      "target": "html_gen_utils_clean_md_title"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "html_gen/renderer.py",
+      "source_location": "L131",
+      "weight": 1.0,
+      "source": "html_gen_renderer_render_cards",
+      "target": "html_gen_icons_pick_icon"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "html_gen/parser.py",
+      "source_location": "L416",
+      "weight": 1.0,
+      "source": "html_gen_parser_parse_markdown",
+      "target": "html_gen_icons_pick_icon"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "html_gen/icons.py",
+      "source_location": "L66",
+      "weight": 1.0,
+      "source": "html_gen_icons_pick_item_icon",
+      "target": "html_gen_utils_clean_md_title"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "html_gen/renderer.py",
+      "source_location": "L153",
+      "weight": 1.0,
+      "source": "html_gen_renderer_render_cards",
+      "target": "html_gen_icons_pick_item_icon"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "html_gen/parser.py",
+      "source_location": "L550",
+      "weight": 1.0,
+      "source": "html_gen_parser_parse_markdown",
+      "target": "html_gen_icons_pick_item_icon"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "html_gen/cli.py",
+      "source_location": "L133",
+      "weight": 1.0,
+      "source": "html_gen_cli_main",
+      "target": "html_gen_icons_assign_unique_icons"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/utils.py",
+      "source_location": "L10",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_utils_py",
+      "target": "html_gen_utils_esc"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/utils.py",
+      "source_location": "L14",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_utils_py",
+      "target": "html_gen_utils_safe_href"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/utils.py",
+      "source_location": "L21",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_utils_py",
+      "target": "html_gen_utils_inline_md"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/utils.py",
+      "source_location": "L47",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_utils_py",
+      "target": "html_gen_utils_clean_md_title"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/utils.py",
+      "source_location": "L59",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_utils_py",
+      "target": "html_gen_utils_strip_leading_number"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/utils.py",
+      "source_location": "L65",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_utils_py",
+      "target": "html_gen_utils_file_to_data_uri"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/utils.py",
+      "source_location": "L72",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_utils_py",
+      "target": "html_gen_utils_normalize_data_uri"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/utils.py",
+      "source_location": "L79",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_utils_py",
+      "target": "html_gen_utils_replace_between"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/utils.py",
+      "source_location": "L18",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_utils_safe_href",
+      "target": "html_gen_utils_esc"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/utils.py",
+      "source_location": "L35",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_utils_inline_md",
+      "target": "html_gen_utils_esc"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "html_gen/cli.py",
+      "source_location": "L91",
+      "weight": 1.0,
+      "source": "html_gen_cli_generate_index_page",
+      "target": "html_gen_utils_esc"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "html_gen/renderer.py",
+      "source_location": "L38",
+      "weight": 1.0,
+      "source": "html_gen_renderer_inline_md",
+      "target": "html_gen_utils_esc"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "html_gen/renderer.py",
+      "source_location": "L189",
+      "weight": 1.0,
+      "source": "html_gen_renderer_render_menu_from_labels",
+      "target": "html_gen_utils_esc"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "html_gen/renderer.py",
+      "source_location": "L213",
+      "weight": 1.0,
+      "source": "html_gen_renderer_render_topics_accordion",
+      "target": "html_gen_utils_esc"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "html_gen/parser.py",
+      "source_location": "L163",
+      "weight": 1.0,
+      "source": "html_gen_parser_parse_agent_block",
+      "target": "html_gen_utils_esc"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "html_gen/parser.py",
+      "source_location": "L470",
+      "weight": 1.0,
+      "source": "html_gen_parser_parse_markdown",
+      "target": "html_gen_utils_esc"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "html_gen/cli.py",
+      "source_location": "L88",
+      "weight": 1.0,
+      "source": "html_gen_cli_generate_index_page",
+      "target": "html_gen_utils_safe_href"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "html_gen/renderer.py",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "html_gen_renderer_render_copilot_agent_cta",
+      "target": "html_gen_utils_safe_href"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "html_gen/parser.py",
+      "source_location": "L152",
+      "weight": 1.0,
+      "source": "html_gen_parser_parse_agent_block",
+      "target": "html_gen_utils_safe_href"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "html_gen/parser.py",
+      "source_location": "L223",
+      "weight": 1.0,
+      "source": "html_gen_parser_render_copilot_agent_cta",
+      "target": "html_gen_utils_safe_href"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "html_gen/parser.py",
+      "source_location": "L772",
+      "weight": 1.0,
+      "source": "html_gen_parser_parse_markdown",
+      "target": "html_gen_utils_safe_href"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/utils.py",
+      "source_location": "L60",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_utils_strip_leading_number",
+      "target": "html_gen_utils_clean_md_title"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "html_gen/renderer.py",
+      "source_location": "L132",
+      "weight": 1.0,
+      "source": "html_gen_renderer_render_cards",
+      "target": "html_gen_utils_clean_md_title"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "html_gen/parser.py",
+      "source_location": "L62",
+      "weight": 1.0,
+      "source": "html_gen_parser_extract_h1_title",
+      "target": "html_gen_utils_clean_md_title"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "html_gen/parser.py",
+      "source_location": "L82",
+      "weight": 1.0,
+      "source": "html_gen_parser_parse_authors_line",
+      "target": "html_gen_utils_clean_md_title"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "html_gen/parser.py",
+      "source_location": "L263",
+      "weight": 1.0,
+      "source": "html_gen_parser_derive_page_card_title",
+      "target": "html_gen_utils_clean_md_title"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "html_gen/parser.py",
+      "source_location": "L387",
+      "weight": 1.0,
+      "source": "html_gen_parser_parse_markdown",
+      "target": "html_gen_utils_clean_md_title"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "html_gen/renderer.py",
+      "source_location": "L134",
+      "weight": 1.0,
+      "source": "html_gen_renderer_render_cards",
+      "target": "html_gen_utils_strip_leading_number"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "html_gen/parser.py",
+      "source_location": "L567",
+      "weight": 1.0,
+      "source": "html_gen_parser_parse_markdown",
+      "target": "html_gen_utils_strip_leading_number"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "html_gen/cli.py",
+      "source_location": "L139",
+      "weight": 1.0,
+      "source": "html_gen_cli_main",
+      "target": "html_gen_utils_replace_between"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/cli.py",
+      "source_location": "L16",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_cli_py",
+      "target": "html_gen_cli_parse_args"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/cli.py",
+      "source_location": "L52",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_cli_py",
+      "target": "html_gen_cli_generate_index_page"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/cli.py",
+      "source_location": "L114",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_cli_py",
+      "target": "html_gen_cli_main"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/cli.py",
+      "source_location": "L116",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_cli_main",
+      "target": "html_gen_cli_parse_args"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/cli.py",
+      "source_location": "L17",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_cli_rationale_17",
+      "target": "html_gen_cli_parse_args"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/cli.py",
+      "source_location": "L124",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_cli_main",
+      "target": "html_gen_cli_generate_index_page"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/cli.py",
+      "source_location": "L48",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_cli_rationale_48",
+      "target": "html_gen_cli_generate_index_page"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/cli.py",
+      "source_location": "L53",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_cli_rationale_53",
+      "target": "html_gen_cli_generate_index_page"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/cli.py",
+      "source_location": "L110",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_cli_rationale_110",
+      "target": "html_gen_cli_main"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "html_gen/cli.py",
+      "source_location": "L132",
+      "weight": 1.0,
+      "source": "html_gen_cli_main",
+      "target": "html_gen_parser_parse_markdown"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "html_gen/cli.py",
+      "source_location": "L134",
+      "weight": 1.0,
+      "source": "html_gen_cli_main",
+      "target": "html_gen_renderer_render_cards"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "html_gen/cli.py",
+      "source_location": "L135",
+      "weight": 1.0,
+      "source": "html_gen_cli_main",
+      "target": "html_gen_parser_extract_h1_title"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "html_gen/cli.py",
+      "source_location": "L137",
+      "weight": 1.0,
+      "source": "html_gen_cli_main",
+      "target": "html_gen_renderer_render_topics_accordion"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/cli.py",
+      "source_location": "L115",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_cli_rationale_115",
+      "target": "html_gen_cli_main"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/renderer.py",
+      "source_location": "L12",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_renderer_py",
+      "target": "html_gen_renderer_render_copilot_agent_cta"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/renderer.py",
+      "source_location": "L23",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_renderer_py",
+      "target": "html_gen_renderer_inline_md"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/renderer.py",
+      "source_location": "L50",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_renderer_py",
+      "target": "html_gen_renderer_render_cards"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/renderer.py",
+      "source_location": "L172",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_renderer_py",
+      "target": "html_gen_renderer_render_menu_from_labels"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/renderer.py",
+      "source_location": "L194",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_renderer_py",
+      "target": "html_gen_renderer_render_topics_accordion"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/renderer.py",
+      "source_location": "L139",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_renderer_render_cards",
+      "target": "html_gen_renderer_inline_md"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/renderer.py",
+      "source_location": "L24",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_renderer_rationale_24",
+      "target": "html_gen_renderer_inline_md"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/renderer.py",
+      "source_location": "L197",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_renderer_render_topics_accordion",
+      "target": "html_gen_renderer_render_menu_from_labels"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/models.py",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_models_py",
+      "target": "html_gen_constants_py"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/models.py",
+      "source_location": "L10",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_models_py",
+      "target": "html_gen_models_card"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "html_gen/parser.py",
+      "source_location": "L342",
+      "weight": 1.0,
+      "source": "html_gen_parser_parse_markdown",
+      "target": "html_gen_models_card"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/parser.py",
+      "source_location": "L32",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_parser_py",
+      "target": "html_gen_parser_strip_source_references"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/parser.py",
+      "source_location": "L56",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_parser_py",
+      "target": "html_gen_parser_extract_h1_title"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/parser.py",
+      "source_location": "L66",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_parser_py",
+      "target": "html_gen_parser_parse_authors_line"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/parser.py",
+      "source_location": "L88",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_parser_py",
+      "target": "html_gen_parser_parse_agent_block"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/parser.py",
+      "source_location": "L174",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_parser_py",
+      "target": "html_gen_parser_split_key_value_item"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/parser.py",
+      "source_location": "L197",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_parser_py",
+      "target": "html_gen_parser_extract_agent_access_url"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/parser.py",
+      "source_location": "L221",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_parser_py",
+      "target": "html_gen_parser_render_copilot_agent_cta"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/parser.py",
+      "source_location": "L233",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_parser_py",
+      "target": "html_gen_parser_derive_page_card_title"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/parser.py",
+      "source_location": "L288",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_parser_py",
+      "target": "html_gen_parser_file_to_data_uri"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/parser.py",
+      "source_location": "L299",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_parser_py",
+      "target": "html_gen_parser_parse_markdown"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/parser.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_parser_rationale_1",
+      "target": "html_gen_parser_py"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/parser.py",
+      "source_location": "L317",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_parser_parse_markdown",
+      "target": "html_gen_parser_strip_source_references"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/parser.py",
+      "source_location": "L33",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_parser_rationale_33",
+      "target": "html_gen_parser_strip_source_references"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/parser.py",
+      "source_location": "L57",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_parser_rationale_57",
+      "target": "html_gen_parser_extract_h1_title"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/parser.py",
+      "source_location": "L812",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_parser_parse_markdown",
+      "target": "html_gen_parser_parse_authors_line"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/parser.py",
+      "source_location": "L67",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_parser_rationale_67",
+      "target": "html_gen_parser_parse_authors_line"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/parser.py",
+      "source_location": "L406",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_parser_parse_markdown",
+      "target": "html_gen_parser_parse_agent_block"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/parser.py",
+      "source_location": "L89",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_parser_rationale_89",
+      "target": "html_gen_parser_parse_agent_block"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/parser.py",
+      "source_location": "L530",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_parser_parse_markdown",
+      "target": "html_gen_parser_split_key_value_item"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/parser.py",
+      "source_location": "L175",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_parser_rationale_175",
+      "target": "html_gen_parser_split_key_value_item"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/parser.py",
+      "source_location": "L788",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_parser_parse_markdown",
+      "target": "html_gen_parser_extract_agent_access_url"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/parser.py",
+      "source_location": "L198",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_parser_rationale_198",
+      "target": "html_gen_parser_extract_agent_access_url"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/parser.py",
+      "source_location": "L793",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_parser_parse_markdown",
+      "target": "html_gen_parser_render_copilot_agent_cta"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/parser.py",
+      "source_location": "L222",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_parser_rationale_222",
+      "target": "html_gen_parser_render_copilot_agent_cta"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/parser.py",
+      "source_location": "L383",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_parser_parse_markdown",
+      "target": "html_gen_parser_derive_page_card_title"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/parser.py",
+      "source_location": "L234",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_parser_rationale_234",
+      "target": "html_gen_parser_derive_page_card_title"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/parser.py",
+      "source_location": "L466",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_parser_parse_markdown",
+      "target": "html_gen_parser_file_to_data_uri"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/parser.py",
+      "source_location": "L289",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_parser_rationale_289",
+      "target": "html_gen_parser_file_to_data_uri"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/parser.py",
+      "source_location": "L300",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_parser_rationale_300",
+      "target": "html_gen_parser_parse_markdown"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gera_index.py",
+      "source_location": "L19",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "gera_index_py",
+      "target": "scripts_gera_index_safe_href"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gera_index.py",
+      "source_location": "L18",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "gera_index_py",
+      "target": "scripts_gera_index_parse_index_md"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gera_index.py",
+      "source_location": "L98",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "gera_index_py",
+      "target": "scripts_gera_index_generate_cards_html"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gera_index.py",
+      "source_location": "L125",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "gera_index_py",
+      "target": "scripts_gera_index_replace_between"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "gera_index.py",
+      "source_location": "L132",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "gera_index_py",
+      "target": "scripts_gera_index_main"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "gera_index.py",
+      "source_location": "L120",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_gera_index_generate_cards_html",
+      "target": "scripts_gera_index_safe_href"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "gera_index.py",
+      "source_location": "L154",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_gera_index_main",
+      "target": "scripts_gera_index_parse_index_md"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "gera_index.py",
+      "source_location": "L27",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_gera_index_rationale_27",
+      "target": "scripts_gera_index_parse_index_md"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "gera_index.py",
+      "source_location": "L19",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_gera_index_rationale_19",
+      "target": "scripts_gera_index_parse_index_md"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "gera_index.py",
+      "source_location": "L157",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_gera_index_main",
+      "target": "scripts_gera_index_generate_cards_html"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "gera_index.py",
+      "source_location": "L107",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_gera_index_rationale_107",
+      "target": "scripts_gera_index_generate_cards_html"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "gera_index.py",
+      "source_location": "L99",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_gera_index_rationale_99",
+      "target": "scripts_gera_index_generate_cards_html"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "gera_index.py",
+      "source_location": "L167",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_gera_index_main",
+      "target": "scripts_gera_index_replace_between"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "gera_index.py",
+      "source_location": "L134",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_gera_index_rationale_134",
+      "target": "scripts_gera_index_replace_between"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "gera_index.py",
+      "source_location": "L126",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "scripts_gera_index_rationale_126",
+      "target": "scripts_gera_index_replace_between"
     },
     {
       "relation": "calls",
@@ -3723,5 +6117,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "618e95352e9d54476fc199ca5848ddd426738899"
+  "built_at_commit": "e1df9124ee34c9fb0b475bc1fc61163cd641389d"
 }

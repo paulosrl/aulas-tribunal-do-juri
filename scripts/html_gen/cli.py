@@ -36,11 +36,6 @@ def parse_args() -> argparse.Namespace:
         help='Título da página (tag <title>). Padrão: "Defina o título da página"',
     )
     parser.add_argument(
-        "--menu-md",
-        default="menu.md",
-        help="Arquivo markdown com título e itens do menu lateral",
-    )
-    parser.add_argument(
         "--section-mode",
         choices=("semantic", "page"),
         default="semantic",

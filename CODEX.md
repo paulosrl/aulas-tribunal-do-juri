@@ -24,7 +24,7 @@ python3 scripts/gera_html.py conteudo/index.md html/index.html
 python3 scripts/gera_html.py conteudo/N.md html/N.html \
   --template templates/topico.template.html \
   --page-title "<titulo>" \
-  --menu-md conteudo/index.md \
+
   --section-mode semantic
 ```
 
@@ -34,7 +34,7 @@ python3 scripts/gera_html.py conteudo/N.md html/N.html \
 python3 scripts/gera_html.py conteudo/favoritos.md html/favoritos.html \
   --template templates/topico.template.html \
   --page-title "Inteligência Artificial Aplicada ao Tribunal do Júri — Favoritos" \
-  --menu-md conteudo/index.md \
+
   --section-mode semantic
 ```
 
@@ -44,7 +44,7 @@ python3 scripts/gera_html.py conteudo/favoritos.md html/favoritos.html \
 python3 scripts/gera_html.py conteudo/notebooklm.md html/notebooklm.html \
   --template templates/topico.template.html \
   --page-title "NotebookLM no Tribunal do Júri" \
-  --menu-md conteudo/index.md \
+
   --section-mode semantic
 ```
 

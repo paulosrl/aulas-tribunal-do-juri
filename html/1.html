@@ -819,6 +819,73 @@
 .prompt-lab-btn-link:hover {
   background: #fcd34d;
 }
+/* Practice card: pergunta + link para testar */
+.practice-card {
+  margin: 1.1rem 0 1.2rem 0;
+  border-radius: 14px;
+  border: 1.5px solid rgba(245, 158, 11, 0.45);
+  background: linear-gradient(135deg, rgba(254,243,199,0.18) 0%, rgba(251,191,36,0.08) 100%);
+  box-shadow: 0 4px 18px rgba(245,158,11,0.10);
+  padding: 1.1rem 1.3rem 1rem 1.3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+.practice-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+.practice-card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: #fff;
+  font-size: 0.82rem;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(245,158,11,0.28);
+}
+.practice-card-label {
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: #b45309;
+}
+.practice-card-question {
+  font-size: 1.02rem;
+  font-style: italic;
+  color: var(--text-main);
+  line-height: 1.6;
+  margin: 0;
+  padding-left: 0.3rem;
+  border-left: 3px solid #f59e0b;
+}
+.practice-card-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  color: #fff !important;
+  font-weight: 700;
+  font-size: 0.84rem;
+  border-radius: 8px;
+  padding: 0.48rem 1rem;
+  text-decoration: none !important;
+  border-bottom: none !important;
+  box-shadow: 0 3px 10px rgba(245,158,11,0.30);
+  align-self: flex-start;
+  transition: transform 0.15s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+}
+.practice-card-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(245,158,11,0.38);
+  opacity: 1;
+}
 </style>
 </head>
 <body>
@@ -878,7 +945,7 @@
                 <a href="favoritos.html" class="nav-l nav-topic-header"><i class="fas fa-star"></i> <span class="nav-topic-num">6.</span> Favoritos</a>
             </div>
             <div class="nav-topic-group">
-                <a href="notebooklm.html" class="nav-l nav-topic-header"><i class="fas fa-brain"></i> <span class="nav-topic-num">7.</span> NotebookLM</a>
+                <a href="notebooklm.html" class="nav-l nav-topic-header"><i class="fas fa-brain"></i> <span class="nav-topic-num">7.</span> Notebooklm - Guia e Dicas</a>
             </div>
 <!-- AUTO:MENU:TOPICOS:END -->
         </nav>
@@ -1134,8 +1201,14 @@
                 <blockquote><strong>A IA não assume o risco. O operador, sim.</strong></blockquote>
                 <h3><i class="fas fa-star"></i> O Perigo da Delegação</h3>
                 <p><em>&quot;Qual a probabilidade de condenação no caso concreto em anexo? Dê um percentual e sua justificativa.&quot;</em> — Delegar o julgamento de mérito e a previsão probabilística diretamente à máquina é um atalho perigoso. A IA estrutura a informação; quem julga o cenário é o Promotor.</p>
-                <p>“Qual a probabilidade de condenação no caso em anexo. Dê um percentual e sua justificativa?</p>
-                <p><a href="https://chatgpt.com/g/g-68d571815f088191ab4734aeb48bad39-qual-a-probabilidade-de-condenacao" target="_blank">https://chatgpt.com/g/g-68d571815f088191ab4734aeb48bad39-qual-a-probabilidade-de-condenacao</a></p>
+                <div class="practice-card">
+                  <div class="practice-card-header">
+                    <span class="practice-card-icon"><i class="fas fa-flask"></i></span>
+                    <span class="practice-card-label">Experimente</span>
+                  </div>
+                  <p class="practice-card-question">“Qual a probabilidade de condenação no caso em anexo. Dê um percentual e sua justificativa?”</p>
+                  <a href="https://chatgpt.com/g/g-68d571815f088191ab4734aeb48bad39-qual-a-probabilidade-de-condenacao" class="practice-card-btn" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> Testar agente</a>
+                </div>
                 <h3><i class="fas fa-pencil-ruler"></i> O Protocolo Antialucinação (Os 3 V&#x27;s)</h3>
                 <ol class="icon-ol">
                 <li class="li-topic"><span class="li-topic-icon icon-check-circle"><i class="fas fa-check-circle"></i></span><span class="li-topic-text"><strong>Verificar:</strong> Exija links da IA. Cheque as bases factuais oficiais. Nunca confie em citações automáticas.</span></li>

@@ -77,7 +77,7 @@ python3 scripts/gera_html.py conteudo/index.md html/index.html
 python3 scripts/gera_html.py conteudo/3.md html/3.html \
   --template templates/topico.template.html \
   --page-title "Inteligência Artificial Aplicada ao Tribunal do Júri — Do Inquérito ao Plenário" \
-  --menu-md conteudo/index.md \
+
   --section-mode semantic
 ```
 
@@ -87,7 +87,7 @@ python3 scripts/gera_html.py conteudo/3.md html/3.html \
 python3 scripts/gera_html.py conteudo/favoritos.md html/favoritos.html \
   --template templates/topico.template.html \
   --page-title "Inteligência Artificial Aplicada ao Tribunal do Júri — Favoritos" \
-  --menu-md conteudo/index.md \
+
   --section-mode semantic
 ```
 
@@ -204,7 +204,7 @@ Injeção de menu sidebar e aplicação de regras globais.
 
 **O que faz:**
 
-- Extrai menu de `conteudo/index.md` (ou arquivo customizado via `--menu-md`)
+- Renderiza menu lateral fixo a partir de `TOPIC_NAV_ITEMS` do gerador
 - Renderiza sidebar com 7 itens fixos: Início, Tópicos (1-5), Favoritos, NotebookLM
 - Injeta menu na tag `<!-- AUTO:menu -->`
 - Aplica regras CSS/JavaScript globais (tema claro/escuro, responsive)

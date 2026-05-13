@@ -60,7 +60,7 @@ TOPIC_NAV_ITEMS: list[tuple[str, str, str]] = [
     ("Elementos Gráficos no Júri", "4.html", "fa-chart-line"),
     ("NotebookLM no Júri", "5.html", "fa-pencil-ruler"),
     ("Favoritos", "favoritos.html", "fa-star"),
-    ("NotebookLM", "notebooklm.html", "fa-brain"),
+    ("Notebooklm - Guia e Dicas", "notebooklm.html", "fa-brain"),
 ]
 
 NUMBERED_TOPIC_PAGES = {item[1] for item in TOPIC_NAV_ITEMS}

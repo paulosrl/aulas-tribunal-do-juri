@@ -34,13 +34,14 @@ def discover_markdown_files(conteudo_dir: Path) -> list[Path]:
     """Descobre todos os .md em conteudo/ e ordena logicamente"""
     md_files = sorted(conteudo_dir.glob('*.md'))
 
-    # Ordena: index.md primeiro, depois 1-5, depois favoritos e notebooklm
+    # Ordena: index.md primeiro, depois tópicos numéricos (1, 2, 10...), depois extras.
     def sort_key(p: Path) -> tuple:
         name = p.name
+        stem = p.stem
         if name == 'index.md':
             return (0, '')
-        elif name[0].isdigit():
-            return (1, int(name[0]))
+        elif stem.isdigit():
+            return (1, int(stem))
         elif name == 'favoritos.md':
             return (2, '')
         elif name == 'notebooklm.md':
@@ -72,7 +73,6 @@ def build_html(script_dir: Path, project_root: Path, md_file: Path) -> bool:
     if md_name != 'index.md':
         cmd.extend([
             '--template', str(project_root / 'templates' / 'topico.template.html'),
-            '--menu-md', str(project_root / 'conteudo' / 'index.md'),
             '--section-mode', 'semantic',
         ])
 
