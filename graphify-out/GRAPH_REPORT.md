@@ -1,7 +1,7 @@
 # Graph Report - aulas-tribunal-do-juri  (2026-05-12)
 
 ## Corpus Check
-- 1 files · ~41,207 words
+- 1 files · ~37,931 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `55b78b06`
+- Built from commit: `fa2505b1`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 

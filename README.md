@@ -6,6 +6,10 @@ Repositório do material em HTML da trilha **Inteligência Artificial Aplicada a
 
 Este projeto converte conteúdos em Markdown (`conteudo/*.md`) para páginas HTML com layout padronizado, menu lateral consistente, tema claro/escuro e navegação entre tópicos.
 
+## Acesso ao Site (GitHub Pages)
+
+- URL pública: **https://paulosrl.github.io/aulas-tribunal-do-juri/**
+
 ## Estrutura do Projeto
 
 - `conteudo/`
