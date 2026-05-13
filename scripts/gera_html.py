@@ -1297,18 +1297,21 @@ def apply_global_page_rules(html_out: str, out_path: Path, page_title: str, menu
   opacity: 1;
 }
 .caor-card {
-  font-size: 1.2em;
+  font-size: 1.02em;
 }
 .caor-card h1,
 .caor-card h2,
 .caor-card h3 {
-  font-size: 1.2em;
+  font-size: 1.02em;
 }
 .caor-card p {
-  font-size: 1.2em;
+  font-size: 1.02em;
 }
 .caor-card li {
-  font-size: 1.2em;
+  font-size: 1.02em;
+}
+.nav-topic-subitems .nav-l {
+  font-size: clamp(0.89rem, 1.035vw, 0.98rem) !important;
 }
 </style>"""
     html_out = html_out.replace("</head>", f"{agent_css}\n</head>", 1)
