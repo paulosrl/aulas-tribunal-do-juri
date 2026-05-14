@@ -20,20 +20,21 @@ O projeto converte conteúdo Markdown em páginas HTML com:
 ├── conteudo/
 │   ├── index.md
 │   ├── 1.md ... 5.md
-│   ├── favoritos.md
-│   └── notebooklm.md
+│   ├── 6.md
+│   └── 7.md
 ├── templates/
 │   ├── index.template.html
 │   └── topico.template.html
 ├── scripts/
 │   ├── build_all.py
 │   ├── gera_html.py (wrapper)
+│   ├── lock_menu_items.py
 │   └── html_gen/ (módulo principal)
 ├── html/
 │   ├── index.html
 │   ├── 1.html ... 5.html
-│   ├── favoritos.html
-│   └── notebooklm.html
+│   ├── 6.html
+│   └── 7.html
 ├── graphify-out/
 ├── AGENTS.md
 ├── CLAUDE.md
@@ -41,6 +42,34 @@ O projeto converte conteúdo Markdown em páginas HTML com:
 ├── GEMINI.md
 └── README.md
 ```
+
+---
+
+## Arquivos Python: Função e Uso
+
+### Scripts executáveis (`scripts/`)
+
+| Arquivo | Função | Como usar |
+|---|---|---|
+| `scripts/build_all.py` | Orquestra build completo: descobre `conteudo/*.md`, ordena (`index`, tópicos numéricos, extras), chama o gerador e imprime sumário de sucesso/falha. | `python3 scripts/build_all.py` |
+| `scripts/gera_html.py` | Wrapper de entrada para o módulo `html_gen`; delega para `html_gen.cli.main()`. | `python3 scripts/gera_html.py <input.md> <output.html> [--template ... --page-title ... --section-mode semantic\|page]` |
+| `scripts/lock_menu_items.py` | Trava/destrava cards e itens de menu por número de tópico nos HTMLs gerados, incluindo modo simulação (`--dry-run`). | Travar: `python3 scripts/lock_menu_items.py --items 4 5 7`  •  Destravar: `python3 scripts/lock_menu_items.py --items 4 5 7 --unlock` |
+
+### Módulo principal (`scripts/html_gen/`)
+
+| Arquivo | Função | Como usar |
+|---|---|---|
+| `scripts/html_gen/cli.py` | CLI principal do gerador: parse de argumentos, escolha de fluxo (landing vs tópico), parse, renderização, pós-processamento e validações. | Uso indireto via `scripts/gera_html.py` ou direto: `python3 -m html_gen.cli ...` (com `PYTHONPATH` ajustado para `scripts/`). |
+| `scripts/html_gen/parser.py` | Converte Markdown em `List[Card]`; interpreta headings, listas, tabelas, blockquotes, alertas, blocos de agente e imagens locais em data URI. | Uso interno por import em `cli.py`. |
+| `scripts/html_gen/renderer.py` | Renderiza cards HTML, submenu interno e acordeão lateral de tópicos. | Uso interno por import em `cli.py`. |
+| `scripts/html_gen/postprocessor.py` | Regras globais após render: título, logo/ícones embutidos, CSS/JS injetados e ajustes finais de navegação/layout. | Uso interno por import em `cli.py`. |
+| `scripts/html_gen/validation.py` | Valida completude e preservação de conteúdo entre Markdown e HTML final; lança erro em perda relevante. | Uso interno por import em `cli.py`. |
+| `scripts/html_gen/icons.py` | Seleção e distribuição de ícones (cards, itens e agentes), com regras semânticas e prevenção de duplicação. | Uso interno por import em `parser.py`, `renderer.py` e `cli.py`. |
+| `scripts/html_gen/classifier.py` | Classificadores de linhas e conteúdo: marcadores de página, comentários OCR, separadores e heurísticas de parágrafo estratégico/crítico. | Uso interno por import em `parser.py`. |
+| `scripts/html_gen/utils.py` | Utilitários transversais: escape HTML, sanitização de `href`, markdown inline, limpeza de títulos, data URI e substituição entre marcadores. | Uso interno por import em múltiplos módulos. |
+| `scripts/html_gen/constants.py` | Constantes centrais: marcadores `AUTO`, regras/pool de ícones, regex de cabeçalho de agente e itens do menu lateral. | Uso interno por import em múltiplos módulos. |
+| `scripts/html_gen/models.py` | Modelo `Card` (`dataclass`) e re-export de constantes usadas no pacote. | Uso interno por import em parser/render. |
+| `scripts/html_gen/__init__.py` | Ponto de exportação do pacote `html_gen` (`__all__`) para facilitar imports externos. | Uso por import (`from html_gen import ...`) quando necessário. |
 
 ---
 
@@ -57,7 +86,7 @@ Este script:
 - Descobre automaticamente todos os `.md` em `conteudo/`
 - Aplica configurações de página-título e template apropriadas
 - Gera um relatório com sucesso/falha de cada arquivo
-- Mantém ordem lógica: `index.md` → tópicos 1-5 → favoritos → notebooklm
+- Mantém ordem lógica: `index.md` → tópicos `1.md` a `7.md`
 
 ---
 
@@ -77,17 +106,24 @@ python3 scripts/gera_html.py conteudo/index.md html/index.html
 python3 scripts/gera_html.py conteudo/3.md html/3.html \
   --template templates/topico.template.html \
   --page-title "Inteligência Artificial Aplicada ao Tribunal do Júri — Do Inquérito ao Plenário" \
-
   --section-mode semantic
 ```
 
-**Favoritos / NotebookLM:**
+**Favoritos (Tópico 6):**
 
 ```bash
-python3 scripts/gera_html.py conteudo/favoritos.md html/favoritos.html \
+python3 scripts/gera_html.py conteudo/6.md html/6.html \
   --template templates/topico.template.html \
   --page-title "Inteligência Artificial Aplicada ao Tribunal do Júri — Favoritos" \
+  --section-mode semantic
+```
 
+**Guia NotebookLM (Tópico 7):**
+
+```bash
+python3 scripts/gera_html.py conteudo/7.md html/7.html \
+  --template templates/topico.template.html \
+  --page-title "NotebookLM no Tribunal do Júri" \
   --section-mode semantic
 ```
 
@@ -108,8 +144,8 @@ Ele permite **travar** e **destravar** itens de navegação por número de tópi
   - `html/3.html`
   - `html/4.html`
   - `html/5.html`
-  - `html/favoritos.html`
-  - `html/notebooklm.html`
+  - `html/6.html`
+  - `html/7.html`
 
 ### Comandos
 
@@ -233,8 +269,8 @@ Mapeia títulos de blocos para ícones Font Awesome 6 de forma automática.
 **Exemplos de mapeamento:**
 
 - "Introdução" → `fa-book-open`
-- "Segurança" → `fa-shield-alt`
-- "Tecnologia" → `fa-microchip`
+- "Segurança" → `fa-shield-halved`
+- "Análise" → `fa-search`
 
 **Entrada**: HTML com blocos (sem ícones)
 
@@ -252,9 +288,9 @@ Injeta conteúdo HTML no template apropriado.
 - Gera cards com título, descrição, ícone
 - Renderiza grid de 7 tópicos (1-5, Favoritos, NotebookLM)
 
-**Para tópicos** (`1.html` a `5.html`, `favoritos.html`, `notebooklm.html`):
+**Para tópicos** (`1.html` a `5.html`, `6.html`, `7.html`):
 
-- Injeta conteúdo na tag `<!-- AUTO:content -->`
+- Injeta conteúdo entre `<!-- AUTO:CONTENT:START -->` e `<!-- AUTO:CONTENT:END -->`
 - Preserva estrutura de template
 
 **Entrada**: HTML processado + template
@@ -271,7 +307,7 @@ Injeção de menu sidebar e aplicação de regras globais.
 
 - Renderiza menu lateral fixo a partir de `TOPIC_NAV_ITEMS` do gerador
 - Renderiza sidebar com 7 itens fixos: Início, Tópicos (1-5), Favoritos, NotebookLM
-- Injeta menu na tag `<!-- AUTO:menu -->`
+- Injeta menu entre `<!-- AUTO:MENU:TOPICOS:START -->` e `<!-- AUTO:MENU:TOPICOS:END -->`
 - Aplica regras CSS/JavaScript globais (tema claro/escuro, responsive)
 - Escapa HTML especial e sanitiza URLs (previne XSS)
 
@@ -294,7 +330,7 @@ Verifica integridade do conteúdo antes de salvar.
 
 **Entrada**: Markdown original + HTML final
 
-**Saída**: Bool (sucesso/falha) + detalhes
+**Saída**: logs de validação no stdout; em perda relevante, erro (`ValueError`) interrompendo a geração
 
 ---
 
@@ -323,7 +359,7 @@ html/N.html
 ## Regras Visíveis no HTML Gerado
 
 - Sidebar com navegação unificada para **1 a 5**, **Favoritos** e **NotebookLM**.
-- Página de favoritos deixa de ficar bloqueada quando `html/favoritos.html` existe.
+- Página de favoritos deixa de ficar bloqueada quando `html/6.html` existe.
 - Botões “Acessar Agente Copilot” são gerados a partir de linhas `Acesse o agente: ...` e posicionados antes de `Funcionalidades principais`.
 - Ícone desses botões usa `copilot.png` (embutido como data URI no CSS).
 

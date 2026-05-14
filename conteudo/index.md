@@ -36,10 +36,10 @@ Organização analítica e leitura orientada por IA.
 
 ***
 
-## [Tópico 6 | Favoritos](favoritos.html)
+## [Tópico 6 | Favoritos](6.html)
 
 Atalhos rápidos para referências e materiais prioritários.
 
-## [Tópico 7 | Guia NotebookLM](notebooklm.html)
+## [Tópico 7 | Guia NotebookLM](7.html)
 
 Atalhos rápidos para referências e materiais prioritários.

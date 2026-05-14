@@ -31,7 +31,7 @@ python3 scripts/gera_html.py conteudo/N.md html/N.html \
 ### Favoritos
 
 ```bash
-python3 scripts/gera_html.py conteudo/favoritos.md html/favoritos.html \
+python3 scripts/gera_html.py conteudo/6.md html/6.html \
   --template templates/topico.template.html \
   --page-title "Inteligência Artificial Aplicada ao Tribunal do Júri — Favoritos" \
 
@@ -41,7 +41,7 @@ python3 scripts/gera_html.py conteudo/favoritos.md html/favoritos.html \
 ### NotebookLM
 
 ```bash
-python3 scripts/gera_html.py conteudo/notebooklm.md html/notebooklm.html \
+python3 scripts/gera_html.py conteudo/7.md html/7.html \
   --template templates/topico.template.html \
   --page-title "NotebookLM no Tribunal do Júri" \
 

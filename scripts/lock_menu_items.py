@@ -16,8 +16,8 @@ DEFAULT_FILES: List[Path] = [
     ROOT / "html/3.html",
     ROOT / "html/4.html",
     ROOT / "html/5.html",
-    ROOT / "html/favoritos.html",
-    ROOT / "html/notebooklm.html",
+    ROOT / "html/6.html",
+    ROOT / "html/7.html",
 ]
 
 LOCK_ICON = '<span class="codex-lock-emoji" aria-hidden="true">🔒</span> <i class="fas fa-lock codex-lock-icon" aria-hidden="true"></i>'
@@ -249,7 +249,6 @@ def main() -> int:
     files = resolve_files(args.files)
 
     mode = "UNLOCK" if args.unlock else "LOCK"
-    print(f"Modo: {mode} | Itens: {sorted(items)} | Dry-run: {args.dry_run}")
 
     total_locked = 0
     total_unlocked = 0
@@ -261,12 +260,13 @@ def main() -> int:
         total_unlocked += unlocked
         if changed:
             touched += 1
-        rel = fp.relative_to(ROOT)
-        print(f"- {rel}: locked={locked} unlocked={unlocked} changed={'yes' if changed else 'no'}")
 
+    blocked_items = sorted(items) if not args.unlock else []
+    unblocked_items = sorted(items) if args.unlock else []
     print(
-        "Resumo: "
-        f"arquivos_alterados={touched}, itens_travados={total_locked}, itens_destravados={total_unlocked}"
+        f"Resumo: modo={mode}, dry_run={args.dry_run}, "
+        f"arquivos_alterados={touched}, itens_travados={total_locked}, itens_destravados={total_unlocked}, "
+        f"itens_bloqueados={blocked_items}, itens_desbloqueados={unblocked_items}"
     )
     return 0
 

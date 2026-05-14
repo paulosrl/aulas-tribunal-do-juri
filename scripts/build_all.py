@@ -17,8 +17,8 @@ PAGE_TITLES = {
     '3.md': 'Inteligência Artificial Aplicada ao Tribunal do Júri — Do Inquérito ao Plenário',
     '4.md': 'Segurança, Compliance e Regulamentação de IA',
     '5.md': 'Estudos de Caso e Simulações Práticas',
-    'favoritos.md': 'Inteligência Artificial Aplicada ao Tribunal do Júri — Favoritos',
-    'notebooklm.md': 'NotebookLM no Tribunal do Júri',
+    '6.md': 'Inteligência Artificial Aplicada ao Tribunal do Júri — Favoritos',
+    '7.md': 'NotebookLM no Tribunal do Júri',
 }
 
 
@@ -42,12 +42,8 @@ def discover_markdown_files(conteudo_dir: Path) -> list[Path]:
             return (0, '')
         elif stem.isdigit():
             return (1, int(stem))
-        elif name == 'favoritos.md':
-            return (2, '')
-        elif name == 'notebooklm.md':
-            return (3, '')
         else:
-            return (4, name)
+            return (2, name)
 
     return sorted(md_files, key=sort_key)
 
