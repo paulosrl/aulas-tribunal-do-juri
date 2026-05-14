@@ -82,6 +82,13 @@
       }
     }
 
+    .logos {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+    }
+
     .logo {
       width: 148px;
       height: 148px;
@@ -194,6 +201,7 @@
     @media (max-width: 860px) {
       .grid { grid-template-columns: 1fr; }
       .logo { width: 122px; height: 122px; }
+      .logos { gap: 0.7rem; }
       .site { font-size: 0.98rem; }
     }
   </style>
@@ -202,7 +210,10 @@
   <button class="btn-theme" onclick="toggleTheme()">🌓 TEMA</button>
   <main class="wrap">
     <section class="hero">
-      <img src="logo.png" alt="Logo MPPA" class="logo">
+      <div class="logos">
+        <img src="logo.png" alt="Logo MPPA" class="logo">
+        <img src="mppa.png" alt="Símbolo MPPA" class="logo">
+      </div>
       <h1><!-- AUTO:TITLE --></h1>
       <a class="site" href="https://ciia.mppa.mp.br" target="_blank" rel="noopener noreferrer">ciia.mppa.mp.br</a>
       <p class="subtitle"><!-- AUTO:SUBTITLE --></p>

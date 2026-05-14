@@ -103,6 +103,15 @@ def generate_index_page(md_path: Path, out_path: Path) -> str:
             logo_uri = f"data:{mime_type};base64,{logo_b64}"
             html_out = html_out.replace('src="logo.png"', f'src="{logo_uri}"')
 
+    # Inject mppa symbol as data URI
+    mppa_path = out_path.parent / "mppa.png"
+    if mppa_path.exists():
+        with open(mppa_path, "rb") as f:
+            mppa_b64 = base64.b64encode(f.read()).decode("utf-8")
+            mime_type, _ = mimetypes.guess_type(str(mppa_path))
+            mppa_uri = f"data:{mime_type};base64,{mppa_b64}"
+            html_out = html_out.replace('src="mppa.png"', f'src="{mppa_uri}"')
+
     return html_out
 
 
