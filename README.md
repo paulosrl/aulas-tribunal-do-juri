@@ -93,6 +93,71 @@ python3 scripts/gera_html.py conteudo/favoritos.md html/favoritos.html \
 
 ---
 
+## Travar/Destravar Itens de Menu (Script)
+
+Foi adicionado o utilitário:
+
+- `scripts/lock_menu_items.py`
+
+Ele permite **travar** e **destravar** itens de navegação por número de tópico (ex.: `4 5 7`), atuando em:
+
+- `html/index.html` (cards/menu de acesso da landing)
+- menus laterais dos arquivos:
+  - `html/1.html`
+  - `html/2.html`
+  - `html/3.html`
+  - `html/4.html`
+  - `html/5.html`
+  - `html/favoritos.html`
+  - `html/notebooklm.html`
+
+### Comandos
+
+**Travar itens 4, 5 e 7:**
+
+```bash
+python3 scripts/lock_menu_items.py --items 4 5 7
+```
+
+**Destravar itens 4, 5 e 7:**
+
+```bash
+python3 scripts/lock_menu_items.py --items 4 5 7 --unlock
+```
+
+**Simular sem gravar (`dry-run`):**
+
+```bash
+python3 scripts/lock_menu_items.py --items 4 5 7 --dry-run
+```
+
+**Limitar a arquivos específicos:**
+
+```bash
+python3 scripts/lock_menu_items.py --items 7 --files html/index.html html/1.html
+```
+
+### O que o script altera ao travar
+
+- adiciona classe `nav-locked`
+- remove `href` (guardando em `data-href`)
+- adiciona `aria-disabled="true"` e `tabindex="-1"`
+- adiciona cadeado visual (`🔒` + ícone `fa-lock`)
+
+### O que o script faz ao destravar
+
+- remove `nav-locked`
+- restaura `href` a partir de `data-href`
+- remove `aria-disabled`, `tabindex` e `data-href`
+- remove o cadeado injetado
+
+### Observações
+
+- O `index.html` da raiz do repositório é apenas redirecionador para `html/index.html`.
+- O script é idempotente para uso normal (não deve duplicar lock em fluxos de lock/unlock).
+
+---
+
 ## Arquitetura
 
 ### Estrutura de Módulos
