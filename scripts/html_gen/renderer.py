@@ -9,6 +9,21 @@ from html_gen.constants import TOPIC_NAV_ITEMS, NUMBERED_TOPIC_PAGES
 from html_gen.models import Card
 
 
+def _default_authors_meta_html() -> str:
+    return (
+        '<div class="authors-meta">\n'
+        '  <div class="authors-org authors-org-first">Ministério Público do Pará - MPPA</div>\n'
+        '  <div class="authors-org">Comitê de Governança da Inovação e Inteligência Artificial - CIIA</div>\n'
+        '  <div class="authors-org">Grupo de Atuação Especial do Júri – GAEJÚRI</div>\n'
+        '  <div class="authors-date">Inteligência Artificial Aplicada ao Tribunal do Júri - 14 e 15 de maio de 2025</div>\n'
+        '  <div class="authors-note-row">\n'
+        '    <div class="authors-note">Material produzido com apoio de ferramentas de IA por:</div>\n'
+        '    <div class="authors-badges"><span class="author-badge"><span class="author-icon"><i class="fas fa-user-tie"></i></span> Rodrigo Aquino</span><span class="author-badge"><span class="author-icon"><i class="fas fa-user-tie"></i></span> Paulo Lima</span></div>\n'
+        "  </div>\n"
+        "</div>"
+    )
+
+
 def render_copilot_agent_cta(url: str) -> str:
     safe_url = safe_href(url)
     return (
@@ -51,6 +66,31 @@ def render_cards(cards: List[Card], card_icons: List[str]) -> str:
     def _is_summary_title(title: str) -> bool:
         t = clean_md_title(title).lower()
         return ("sumário" in t) or ("sumario" in t)
+
+    def _is_main_summary_title(title: str) -> bool:
+        t = clean_md_title(title)
+        t = strip_leading_number(t).strip().lower()
+        t = re.sub(r"[^a-zà-ÿ0-9]+", "", t)
+        return t == "sumario"
+
+    has_summary_card = any(_is_main_summary_title(c.title) for c in cards)
+
+    if cards:
+        first_card = cards[0]
+        authors_block = None
+        kept_blocks: List[str] = []
+        for block in first_card.blocks:
+            if authors_block is None and 'class="authors-meta"' in (block or ""):
+                authors_block = block
+                continue
+            kept_blocks.append(block)
+        first_card.blocks = kept_blocks
+        if authors_block is None:
+            authors_block = _default_authors_meta_html()
+        header_title = first_card.title.strip()
+        cards.insert(0, Card(level=1, title=header_title, blocks=[authors_block]))
+        if not first_card.blocks:
+            cards.pop(1)
 
     def _include_in_navigation(idx: int, card: Card) -> bool:
         if idx == 1 and card.level == 1:
@@ -128,13 +168,18 @@ def render_cards(cards: List[Card], card_icons: List[str]) -> str:
         htag = "h1" if card.level == 1 else "h2"
         icon = card_icons[idx - 1] if idx - 1 < len(card_icons) else pick_icon(card.title, "fa-book-open")
         title = clean_md_title(card.title)
+        if _is_summary_title(card.title):
+            title = "Sumário"
+            icon = "fa-book-open"
         if htag == "h2":
             title = strip_leading_number(title)
             title = re.sub(r"^\d+(?:\.\d+)*[\.\-\)]?\s*", "", title).strip()
         if not title:
             title = f"Seção {idx}"
         out.append(f'            <section id="{section_id}" class="caor-card">')
-        out.append(f'                <{htag}><i class="fas {icon}"></i> {inline_md(title)}</{htag}>')
+        is_first_header_card = idx == 1 and any('class="authors-meta"' in (b or "") for b in card.blocks)
+        if not is_first_header_card:
+            out.append(f'                <{htag}><i class="fas {icon}"></i> {inline_md(title)}</{htag}>')
         auto_summary = _build_main_summary_table(idx, card) if _is_summary_title(card.title) else None
         is_single_plain_paragraph = (
             len(card.blocks) == 1
@@ -162,6 +207,8 @@ def render_cards(cards: List[Card], card_icons: List[str]) -> str:
                     block = _linkify_summary_table(block, idx)
                 for bl in block.splitlines():
                     out.append(f"                {bl}")
+        if is_first_header_card and has_summary_card:
+            out.append(f'                <{htag}><i class="fas {icon}"></i> {inline_md(title)}</{htag}>')
         out.append("            </section>")
         out.append("")
     return "\n".join(out).rstrip() + "\n"

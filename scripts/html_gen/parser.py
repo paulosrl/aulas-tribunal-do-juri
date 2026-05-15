@@ -67,7 +67,7 @@ def parse_authors_line(text: str) -> tuple[str, str, str] | None:
     """
     Parse authors metadata line.
 
-    Example: "Autores: Rodrigo Aquino e Paulo Lima | MPPA - CIIA | 14 e 15 de maio de 2026"
+    Example: "Autores: Rodrigo Aquino e Paulo Lima | Ministério Público do Pará - MPPA | 14 e 15 de maio de 2026"
     Returns: (authors, org, date) tuple.
     """
     m = re.match(r"^\s*\*{0,2}\s*Autores:\s*(.+?)\s*\*{0,2}\s*$", text, flags=re.IGNORECASE)
@@ -822,15 +822,20 @@ def parse_markdown(markdown: str, md_dir: Path, section_mode: str = "semantic") 
                 author_badges.append(
                     f'<span class="author-badge"><span class="author-icon"><i class="fas fa-user-tie"></i></span> {inline_md(authors)}</span>'
                 )
-            safe_org = inline_md(org) if org else "MPPA - CIIA"
-            safe_date = inline_md(date) if date else ""
-            date_html = f'  <div class="authors-date">{safe_date}</div>\n' if safe_date else ""
+            # Padrão institucional fixo definido para o bloco de autores.
+            # Mantemos estrutura padrão em todas as páginas.
+            org_html = (
+                "  <div class=\"authors-org authors-org-first\">Ministério Público do Pará - MPPA</div>\n"
+                "  <div class=\"authors-org\">Comitê de Governança da Inovação e Inteligência Artificial - CIIA</div>\n"
+                "  <div class=\"authors-org\">Grupo de Atuação Especial do Júri – GAEJÚRI</div>\n"
+            )
+            date_html = '  <div class="authors-date">Inteligência Artificial Aplicada ao Tribunal do Júri - 14 e 15 de maio de 2025</div>\n'
             current.blocks.append(
                 '<div class="authors-meta">\n'
-                f'  <div class="authors-org">{safe_org}</div>\n'
+                f"{org_html}"
                 f"{date_html}"
                 '  <div class="authors-note-row">\n'
-                '    <div class="authors-note">Material produzido com apoio de ferramentas de IA</div>\n'
+                '    <div class="authors-note">Material produzido com apoio de ferramentas de IA por:</div>\n'
                 f'    <div class="authors-badges">{"".join(author_badges)}</div>\n'
                 "  </div>\n"
                 "</div>"

@@ -553,7 +553,7 @@
             padding: 0.85rem 0.95rem 0.8rem 0.95rem;
             border-radius: 12px;
             border: 1px solid rgba(148, 163, 184, 0.24);
-            background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.015) 100%);
+            background: #000917;
         }
         .authors-badges {
             display: flex;
@@ -608,11 +608,21 @@
         .authors-org, .authors-date {
             font-size: 1.188rem;
             line-height: 1.45;
+            color: #e8eefc;
+        }
+        .authors-org-first {
+            font-weight: 500;
         }
         .authors-note {
             font-size: 1.008rem;
             opacity: 0.85;
             flex: 1;
+            color: #c9d5f1;
+        }
+        .authors-meta .author-badge {
+            color: #fbd246;
+            background: rgba(251, 210, 70, 0.12);
+            border: 1px solid rgba(251, 210, 70, 0.35);
         }
         .authors-note-row {
             margin-top: 0.35rem;
@@ -1081,19 +1091,20 @@ body.dark-mode .caor-card a.copilot-agent-cta {
         <div class="content-container">
             <!-- AUTO:CONTENT:START -->
             <section id="p1" class="caor-card">
-                <h1><i class="fas fa-gavel"></i> Elementos Gráficos no Tribunal do Júri: Da investigação ao plenário: Visualizar para convencer</h1>
                 <div class="authors-meta">
-                  <div class="authors-org">MPPA — CIIA</div>
-                  <div class="authors-date">14 e 15 de maio de 2025</div>
+                  <div class="authors-org authors-org-first">Ministério Público do Pará - MPPA</div>
+                  <div class="authors-org">Comitê de Governança da Inovação e Inteligência Artificial - CIIA</div>
+                  <div class="authors-org">Grupo de Atuação Especial do Júri – GAEJÚRI</div>
+                  <div class="authors-date">Inteligência Artificial Aplicada ao Tribunal do Júri - 14 e 15 de maio de 2025</div>
                   <div class="authors-note-row">
-                    <div class="authors-note">Material produzido com apoio de ferramentas de IA</div>
+                    <div class="authors-note">Material produzido com apoio de ferramentas de IA por:</div>
                     <div class="authors-badges"><span class="author-badge"><span class="author-icon"><i class="fas fa-user-tie"></i></span> Rodrigo Aquino</span><span class="author-badge"><span class="author-icon"><i class="fas fa-user-tie"></i></span> Paulo Lima</span></div>
                   </div>
                 </div>
             </section>
 
             <section id="p2" class="caor-card">
-                <h2><i class="fas fa-list-ol"></i> 📑Sumário</h2>
+                <h2><i class="fas fa-book-open"></i> Sumário</h2>
                 <p><a class="summary-link" href="#p3"><span class="num-badge">1</span> <strong>Por que visualizar?</strong></a></p>
                 <p><a class="summary-link" href="#p4"><span class="num-badge">2</span> <strong>Clareza, Persuasão e Precisão</strong></a></p>
                 <p><a class="summary-link" href="#p5"><span class="num-badge">3</span> <strong>Clareza</strong></a></p>

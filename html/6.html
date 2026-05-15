@@ -553,7 +553,7 @@
             padding: 0.85rem 0.95rem 0.8rem 0.95rem;
             border-radius: 12px;
             border: 1px solid rgba(148, 163, 184, 0.24);
-            background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.015) 100%);
+            background: #000917;
         }
         .authors-badges {
             display: flex;
@@ -608,11 +608,21 @@
         .authors-org, .authors-date {
             font-size: 1.188rem;
             line-height: 1.45;
+            color: #e8eefc;
+        }
+        .authors-org-first {
+            font-weight: 500;
         }
         .authors-note {
             font-size: 1.008rem;
             opacity: 0.85;
             flex: 1;
+            color: #c9d5f1;
+        }
+        .authors-meta .author-badge {
+            color: #fbd246;
+            background: rgba(251, 210, 70, 0.12);
+            border: 1px solid rgba(251, 210, 70, 0.35);
         }
         .authors-note-row {
             margin-top: 0.35rem;
@@ -1054,12 +1064,12 @@ body.dark-mode .caor-card a.copilot-agent-cta {
             <div class="nav-topic-group nav-topic-open">
                 <span class="nav-l nav-topic-header nav-aula current"><i class="fas fa-star"></i> <span class="nav-topic-num">6.</span> Favoritos <i class="fas fa-chevron-down nav-topic-chevron"></i></span>
                 <div class="nav-topic-subitems">
-            <a href="#p1" class="nav-l"><i class="fas fa-list-ol"></i> <span class="nav-topic-num">1.</span> CIIA</a>
-            <a href="#p2" class="nav-l"><i class="fas fa-book-open"></i> <span class="nav-topic-num">2.</span> Guia NotebookLM</a>
-            <a href="#p3" class="nav-l"><i class="fas fa-window-maximize"></i> <span class="nav-topic-num">3.</span> 🔒 Banco de Prompts</a>
-            <a href="#p4" class="nav-l"><i class="fas fa-pencil-ruler"></i> <span class="nav-topic-num">4.</span> 🔒 Marias</a>
-            <a href="#p5" class="nav-l"><i class="fas fa-exclamation-triangle"></i> <span class="nav-topic-num">5.</span> 🔒 Dhiana</a>
-            <a href="#p6" class="nav-l"><i class="fas fa-shield-halved"></i> <span class="nav-topic-num">6.</span> 🔒 Assistentes de IA</a>
+            <a href="#p2" class="nav-l"><i class="fas fa-book-open"></i> <span class="nav-topic-num">1.</span> CIIA</a>
+            <a href="#p3" class="nav-l"><i class="fas fa-window-maximize"></i> <span class="nav-topic-num">2.</span> Guia NotebookLM</a>
+            <a href="#p4" class="nav-l"><i class="fas fa-pencil-ruler"></i> <span class="nav-topic-num">3.</span> 🔒 Banco de Prompts</a>
+            <a href="#p5" class="nav-l"><i class="fas fa-exclamation-triangle"></i> <span class="nav-topic-num">4.</span> 🔒 Marias</a>
+            <a href="#p6" class="nav-l"><i class="fas fa-shield-halved"></i> <span class="nav-topic-num">5.</span> 🔒 Dhiana</a>
+            <a href="#p7" class="nav-l"><i class="fas fa-list-ol"></i> <span class="nav-topic-num">6.</span> 🔒 Assistentes de IA</a>
                 </div>
             </div>
             <div class="nav-topic-group">
@@ -1075,39 +1085,52 @@ body.dark-mode .caor-card a.copilot-agent-cta {
         <div class="content-container">
             <!-- AUTO:CONTENT:START -->
             <section id="p1" class="caor-card">
-                <h2><i class="fas fa-list-ol"></i> CIIA</h2>
+                <div class="authors-meta">
+                  <div class="authors-org authors-org-first">Ministério Público do Pará - MPPA</div>
+                  <div class="authors-org">Comitê de Governança da Inovação e Inteligência Artificial - CIIA</div>
+                  <div class="authors-org">Grupo de Atuação Especial do Júri – GAEJÚRI</div>
+                  <div class="authors-date">Inteligência Artificial Aplicada ao Tribunal do Júri - 14 e 15 de maio de 2025</div>
+                  <div class="authors-note-row">
+                    <div class="authors-note">Material produzido com apoio de ferramentas de IA por:</div>
+                    <div class="authors-badges"><span class="author-badge"><span class="author-icon"><i class="fas fa-user-tie"></i></span> Rodrigo Aquino</span><span class="author-badge"><span class="author-icon"><i class="fas fa-user-tie"></i></span> Paulo Lima</span></div>
+                  </div>
+                </div>
+            </section>
+
+            <section id="p2" class="caor-card">
+                <h2><i class="fas fa-book-open"></i> CIIA</h2>
                 <p>Desenvolvemos soluções tecnológicas inovadoras para otimizar os processos do Ministério Público do Pará, democratizando o acesso à justiça através da inteligência artificial.</p>
                 <p><a href="https://ciia.mppa.mp.br/" target="_blank">https://ciia.mppa.mp.br/</a></p>
             </section>
 
-            <section id="p2" class="caor-card">
-                <h2><i class="fas fa-book-open"></i> Guia NotebookLM</h2>
+            <section id="p3" class="caor-card">
+                <h2><i class="fas fa-window-maximize"></i> Guia NotebookLM</h2>
                 <p>Guia e Dicas (Mihailo Zoin)</p>
                 <p><a href="https://claude.ai/public/artifacts/3a35b96b-4753-420c-a51f-57dd55f70071" target="_blank">https://claude.ai/public/artifacts/3a35b96b-4753-420c-a51f-57dd55f70071</a></p>
             </section>
 
-            <section id="p3" class="caor-card">
-                <h2><i class="fas fa-window-maximize"></i> 🔒 Banco de Prompts</h2>
+            <section id="p4" class="caor-card">
+                <h2><i class="fas fa-pencil-ruler"></i> 🔒 Banco de Prompts</h2>
                 <p>Repositório digital criado pelo Escritório de IA para armazenar, organizar e disponibilizar prompts otimizados para diferentes áreas de atuação do MPPA.</p>
                 <p><a href="https://www2.mppa.mp.br/portal" target="_blank">https://www2.mppa.mp.br/portal</a></p>
             </section>
 
-            <section id="p4" class="caor-card">
-                <h2><i class="fas fa-pencil-ruler"></i> 🔒 Marias</h2>
+            <section id="p5" class="caor-card">
+                <h2><i class="fas fa-exclamation-triangle"></i> 🔒 Marias</h2>
                 <p>Agente virtual do MPPA que analisa processos de violência doméstica e gera minutas ao usuário.</p>
                 <p>Usa linguagem natural, facilitando a navegação do usuário e interação com a máquina.</p>
                 <p>Criado para otimizar a análise e resposta do usuário, impulsionando a atividade-fim do membro do MPPA.</p>
                 <p><a href="https://marias.mppa.mp.br/login" target="_blank">https://marias.mppa.mp.br/login</a></p>
             </section>
 
-            <section id="p5" class="caor-card">
-                <h2><i class="fas fa-exclamation-triangle"></i> 🔒 Dhiana</h2>
+            <section id="p6" class="caor-card">
+                <h2><i class="fas fa-shield-halved"></i> 🔒 Dhiana</h2>
                 <p>DHIAna, assistente virtual com inteligência artificial do Ministério Público do Estado do Pará (MPPA), visa otimizar o acesso, compreensão e aplicação do Sistema Interamericano de Direitos Humanos (SIDH) por membros e servidores.</p>
                 <p><a href="https://dhiana.mppa.mp.br" target="_blank">https://dhiana.mppa.mp.br</a></p>
             </section>
 
-            <section id="p6" class="caor-card">
-                <h2><i class="fas fa-shield-halved"></i> 🔒 Assistentes de IA</h2>
+            <section id="p7" class="caor-card">
+                <h2><i class="fas fa-book-open"></i> 🔒 Assistentes de IA</h2>
                 <p>Estes assistentes de IA são recursos exclusivos do Copilot e só podem ser utilizados por usuários autenticados (credenciais do MPPA). Os assistentes estão organizados por área de especialização.</p>
                 <p><a href="https://ciia.mppa.mp.br/assistentes-de-ia.htm" target="_blank">https://ciia.mppa.mp.br/assistentes-de-ia.htm</a></p>
             </section>
