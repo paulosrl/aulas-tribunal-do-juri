@@ -210,8 +210,22 @@ def main() -> None:
     menu_group_title = primary_h1 or args.page_title
     topics_html = render_topics_accordion(out_path, cards, card_icons, args.menu_icon)
 
+    # Extract topic number from filename (e.g., 1.md → 1)
+    topic_number = ""
+    topic_title_html = ""
+    md_stem = md_path.stem
+    if md_stem.isdigit():
+        topic_number = md_stem
+        # Extract title from H1 and remove leading number if present
+        h1_title = primary_h1 or ""
+        # Remove leading "Tópico N |" pattern if present
+        h1_title = re.sub(r"^[Tt]ópico\s+\d+\s*\|\s*", "", h1_title).strip()
+        if h1_title:
+            topic_title_html = f'<div class="topic-header"><span class="topic-number">{topic_number}</span> <span class="topic-title">{esc(h1_title)}</span></div>'
+
     html_out = replace_between(template, CONTENT_START, CONTENT_END, content_html)
     html_out = replace_between(html_out, TOPICS_START, TOPICS_END, topics_html)
+    html_out = html_out.replace("<!-- AUTO:TOPIC:HEADER -->", topic_title_html)
     html_out = apply_global_page_rules(html_out, out_path, md_path, args.page_title, menu_group_title)
 
     out_path.write_text(html_out, encoding="utf-8")

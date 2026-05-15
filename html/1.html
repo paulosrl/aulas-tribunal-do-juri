@@ -308,7 +308,28 @@
         .fa-vial::before{content:"\f492"}
         .fa-window-maximize::before{content:"\f2d0"}
         .fa-skeleton::before{content:"\f54c"}
-        
+
+        /* Topic Header */
+        .topic-header {
+            display: flex;
+            align-items: baseline;
+            gap: 0.8rem;
+            margin-bottom: 2rem;
+            padding-left: 0;
+        }
+        .topic-number {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 900;
+            color: var(--accent);
+            line-height: 1;
+        }
+        .topic-title {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            font-weight: 600;
+            color: var(--text-main);
+            line-height: 1.3;
+        }
+
         /* Card Datavirtus */
         .caor-card { 
             background: var(--card-bg); border-radius: 20px; padding: clamp(1.5rem, 5vw, 3rem); 
@@ -1106,6 +1127,7 @@ body.dark-mode .caor-card a.copilot-agent-cta {
 
     <main class="main-content">
         <div class="content-container">
+            <div class="topic-header"><span class="topic-number">1</span> <span class="topic-title">Inteligência Artificial Aplicada ao Tribunal do Júri — Do Inquérito ao Plenário</span></div>
             <!-- AUTO:CONTENT:START -->
             <section id="p1" class="caor-card">
                 <div class="authors-meta">
