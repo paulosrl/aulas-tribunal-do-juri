@@ -79,6 +79,45 @@ Verificar sintaxe Python:
 python3 -m py_compile scripts/build_all.py scripts/gera_html.py scripts/lock_menu_items.py scripts/html_gen/*.py
 ```
 
+## Regra de Títulos (CRÍTICA)
+
+**Todos os títulos das páginas seguem este padrão:**
+
+```text
+Inteligência Artificial Aplicada ao Tribunal do Júri — <Tópico>
+```
+
+**Exemplo:**
+
+- `1.html`: "Inteligência Artificial Aplicada ao Tribunal do Júri — Do Inquérito ao Plenário"
+- `2.html`: "Inteligência Artificial Aplicada ao Tribunal do Júri — Engenharia de Prompts"
+- `3.html`: "Inteligência Artificial Aplicada ao Tribunal do Júri — Fluxo nos Crimes Dolosos"
+
+**Como funciona:**
+
+1. `build_all.py` extrai o H1 (primeira linha `# ...`) de cada arquivo markdown
+2. Usa a função `build_page_title()` para montar o título padrão
+3. Passa automaticamente via `--page-title` ao gerador
+4. **Não é necessário editar manualmente** — a regra é aplicada automaticamente
+
+**Mapeamento de tópicos (PAGE_TOPICS):**
+
+Em `scripts/build_all.py`, cada arquivo tem seu tópico definido:
+
+```python
+PAGE_TOPICS = {
+    '1.md': 'Do Inquérito ao Plenário',
+    '2.md': 'Engenharia de Prompts',
+    '3.md': 'Fluxo nos Crimes Dolosos',
+    '4.md': 'Elementos Gráficos no Tribunal do Júri',
+    '5.md': 'NotebookLM',
+    '6.md': 'Sites Abertos',
+    '7.md': 'Apresentação',
+}
+```
+
+Se precisar mudar o tópico de uma página, edite `PAGE_TOPICS` em `build_all.py`, não o arquivo markdown.
+
 ## Regras Visuais (Tema Claro/Escuro)
 
 **Tema claro (`prefers-color-scheme: light`):**

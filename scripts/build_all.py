@@ -10,17 +10,53 @@ from pathlib import Path
 from datetime import datetime
 
 
-# Mapeamento de page-titles para cada arquivo
-PAGE_TITLES = {
+# Prefixo padrão para todos os títulos de página
+TITLE_PREFIX = 'Inteligência Artificial Aplicada ao Tribunal do Júri'
+
+# Mapeamento de tópicos principais (extraído do H1 de cada arquivo)
+# Se o tópico for None, é extraído automaticamente do H1 do arquivo
+PAGE_TOPICS = {
     'index.md': None,  # Landing page, não precisa --page-title
-    '1.md': 'Inteligência Artificial Aplicada ao Tribunal do Júri — Do Inquérito ao Plenário',
-    '2.md': 'Engenharia de Prompts – Aplicada ao Ministério Público',
-    '3.md': 'Inteligência Artificial Aplicada ao Tribunal do Júri — Do Inquérito ao Plenário',
-    '4.md': 'Segurança, Compliance e Regulamentação de IA',
-    '5.md': 'Estudos de Caso e Simulações Práticas',
-    '6.md': 'Inteligência Artificial Aplicada ao Tribunal do Júri — Favoritos',
-    '7.md': 'NotebookLM no Tribunal do Júri',
+    '1.md': 'Abertura',
+    '2.md': 'Engenharia de Prompts',
+    '3.md': 'Agentes no Júri',
+    '4.md': 'Elementos Gráficos no Júri',
+    '5.md': 'NotebookLM no Júri',
+    '6.md': 'Favoritos',
+    '7.md': 'Notebooklm - Guia e Dicas',
 }
+
+
+def extract_h1_from_markdown(md_path: Path) -> str:
+    """
+    Extrai o primeiro H1 do arquivo markdown.
+    Retorna texto sem '#' e espaços extras.
+    """
+    try:
+        content = md_path.read_text(encoding='utf-8')
+        for line in content.split('\n'):
+            if line.startswith('# '):
+                return line[2:].strip()
+    except Exception:
+        pass
+    return 'Sem Título'
+
+
+def build_page_title(md_name: str, md_path: Path) -> str | None:
+    """
+    Constrói o título completo da página.
+    Padrão: "Inteligência Artificial Aplicada ao Tribunal do Júri — <Tópico>"
+    """
+    if md_name == 'index.md':
+        return None  # Landing page não precisa
+
+    # Usar tópico predefinido ou extrair do arquivo
+    topic = PAGE_TOPICS.get(md_name)
+    if topic is None:
+        topic = extract_h1_from_markdown(md_path)
+
+    # Montar título final
+    return f'{TITLE_PREFIX} — {topic}'
 
 
 def get_project_root() -> Path:
@@ -73,7 +109,7 @@ def build_html(script_dir: Path, project_root: Path, md_file: Path, timeout_seco
             '--section-mode', 'semantic',
         ])
 
-        page_title = PAGE_TITLES.get(md_name)
+        page_title = build_page_title(md_name, md_file)
         if page_title:
             cmd.extend(['--page-title', page_title])
 
