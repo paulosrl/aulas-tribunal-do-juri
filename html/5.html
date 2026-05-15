@@ -28,6 +28,16 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; transition: background 0.3s, color 0.3s; }
+        a, a:visited, a:hover, a:active {
+            color: #8A1F3A !important;
+            font-weight: 600 !important;
+        }
+        body.dark-mode a,
+        body.dark-mode a:visited,
+        body.dark-mode a:hover,
+        body.dark-mode a:active {
+            color: #fbd246 !important;
+        }
         body { font-family: 'Inter', system-ui, sans-serif; background-color: var(--bg-main); color: var(--text-main); display: flex; min-height: 100vh; overflow-x: hidden; }
 
         /* Sidebar */
@@ -83,7 +93,7 @@
             align-items: center;
             gap: 0.45rem;
             font-size: 1.188rem;
-            color: var(--nav-text);
+            color: #8A1F3A;
             text-decoration: none;
             font-weight: 500;
             background: rgba(167,31,49,0.08);
@@ -95,7 +105,7 @@
         }
         .sidebar-site:hover {
             background: var(--nav-hover);
-            color: var(--accent);
+            color: #8A1F3A;
             opacity: 1;
         }
         .sidebar-site i {
@@ -349,6 +359,11 @@
         }
         .caor-card p { margin-bottom: 0.95rem; }
         .caor-card p:last-child { margin-bottom: 0; }
+        body.dark-mode .caor-card h1,
+        body.dark-mode .caor-card h2,
+        body.dark-mode .caor-card h3 {
+            color: #fcd34d !important;
+        }
 
 
         /* Listas e Tabelas */
@@ -399,7 +414,7 @@
         }
         ul li.li-kv::before { content: none; }
         .li-kv-label {
-            color: var(--accent);
+            color: #8A1F3A;
             font-weight: 800;
             margin-bottom: 0.34rem;
             letter-spacing: 0.1px;
@@ -445,6 +460,36 @@
             font-weight: 700;
             font-size: 1.032rem;
             line-height: 1;
+        }
+        .summary-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            color: #fbd246 !important;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .summary-link strong {
+            font-weight: 600;
+        }
+        .summary-link:hover {
+            color: #fbd246 !important;
+            text-decoration: underline;
+        }
+        body.dark-mode .nav-topic-group > .nav-topic-header {
+            color: #fbd246 !important;
+        }
+        body.dark-mode .nav-topic-subitems .nav-l {
+            color: #fbd246 !important;
+        }
+        #sidebar-nav > a.nav-l:first-child i.fa-bullseye {
+            color: #7a1e3a !important;
+        }
+        body.dark-mode #sidebar-nav > a.nav-l:first-child {
+            color: #fbd246 !important;
+        }
+        body.dark-mode #sidebar-nav > a.nav-l:first-child i {
+            color: #7a1e3a !important;
         }
 
         /* UI Elements */
@@ -520,6 +565,40 @@
             color: var(--accent);
             font-weight: 700;
             font-size: 1.032rem;
+        }
+        .author-badge i {
+            color: currentColor;
+            font-size: 0.95em;
+        }
+        .author-icon {
+            width: 1.22rem;
+            height: 1.22rem;
+            border-radius: 999px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #f59e0b 0%, #f43f5e 52%, #8b5cf6 100%);
+            border: 1px solid rgba(255,255,255,0.45);
+            box-shadow: 0 1px 4px rgba(15, 23, 42, 0.25);
+            flex-shrink: 0;
+        }
+        .author-icon i {
+            color: #fff7d6;
+            font-size: 0.68rem;
+            line-height: 1;
+        }
+        body.dark-mode .author-badge {
+            color: #fbd246;
+            background: rgba(251, 210, 70, 0.12);
+            border: 1px solid rgba(251, 210, 70, 0.35);
+        }
+        body.dark-mode .author-icon {
+            background: linear-gradient(135deg, #fbd246 0%, #f59e0b 45%, #ef4444 100%);
+            border-color: rgba(251, 210, 70, 0.7);
+            box-shadow: 0 0 0 1px rgba(251,210,70,0.25), 0 2px 8px rgba(245,158,11,0.35);
+        }
+        body.dark-mode .author-icon i {
+            color: #1f2937;
         }
         .authors-org, .authors-date {
             font-size: 1.188rem;
@@ -709,10 +788,14 @@
 }
 /* Clickable cards for index page */
 .caor-card a {
-  color: var(--accent);
+  color: #8a1f3a !important;
+  font-weight: 600 !important;
   text-decoration: none;
   cursor: pointer;
   transition: opacity 0.2s ease;
+}
+body.dark-mode .caor-card a {
+  color: #fbd246 !important;
 }
 .caor-card a:hover {
   opacity: 0.8;
@@ -724,28 +807,35 @@
 .copilot-agent-cta-wrap {
   margin: 0.5rem 0 1rem 0;
 }
-.copilot-agent-cta {
+.caor-card a.copilot-agent-cta {
   display: inline-flex;
   align-items: center;
   gap: 0.62rem;
   background: linear-gradient(135deg, #8a1f3a 0%, #a72c55 40%, #c63d73 100%);
-  color: #fff !important;
+  color: #facc15 !important;
   border: 0;
   border-radius: 12px;
   padding: 0.7rem 1rem;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 0.95rem;
   text-decoration: none !important;
   border-bottom: none !important;
   box-shadow: 0 6px 18px rgba(138, 31, 58, 0.28);
   transition: transform 0.15s ease, box-shadow 0.2s ease, opacity 0.2s ease;
 }
-.copilot-agent-cta:hover {
+body.dark-mode .caor-card a.copilot-agent-cta {
+  color: #fbd246 !important;
+}
+.caor-card a.copilot-agent-cta:hover {
   transform: translateY(-1px);
   box-shadow: 0 10px 22px rgba(138, 31, 58, 0.34);
   opacity: 1;
 }
-.copilot-agent-cta .fa-external-link-alt {
+.caor-card a.copilot-agent-cta .copilot-agent-cta-label,
+.caor-card a.copilot-agent-cta .fa-external-link-alt {
+  color: inherit !important;
+}
+.caor-card a.copilot-agent-cta .fa-external-link-alt {
   font-size: 0.82rem;
   opacity: 0.95;
 }
@@ -906,7 +996,7 @@
             </a>
         </div>
         <nav id="sidebar-nav">
-                        <a href="index.html" class="nav-l"><i class="fas fa-play-circle"></i> Página Principal</a>
+                        <a href="index.html" class="nav-l"><i class="fas fa-bullseye"></i> Página Principal</a>
             <hr class="nav-divider-line">
             <div class="nav-group-title">Tópicos</div>
             <!-- AUTO:MENU:TOPICOS:START -->
@@ -920,29 +1010,28 @@
                 <a href="3.html" class="nav-l nav-topic-header"><i class="fas fa-gavel"></i> <span class="nav-topic-num">3.</span> Agentes no Júri</a>
             </div>
             <div class="nav-topic-group">
-                <a class="nav-l nav-topic-header nav-locked" aria-disabled="true" tabindex="-1" data-href="4.html"><i class="fas fa-chart-line"></i> <span class="nav-topic-num">4.</span> Elementos Gráficos no Júri <span class="codex-lock-emoji" aria-hidden="true">🔒</span> <i class="fas fa-lock codex-lock-icon" aria-hidden="true"></i></a>
+                <a href="4.html" class="nav-l nav-topic-header"><i class="fas fa-chart-line"></i> <span class="nav-topic-num">4.</span> Elementos Gráficos no Júri</a>
             </div>
             <div class="nav-topic-group nav-topic-open">
-                <span class="nav-l nav-topic-header nav-aula current nav-locked" aria-disabled="true" tabindex="-1"><i class="fas fa-pencil-ruler"></i> <span class="nav-topic-num">5. <span class="codex-lock-emoji" aria-hidden="true">🔒</span> <i class="fas fa-lock codex-lock-icon" aria-hidden="true"></i></span> NotebookLM no Júri <i class="fas fa-chevron-down nav-topic-chevron"></i></span>
+                <span class="nav-l nav-topic-header nav-aula current"><i class="fas fa-pencil-ruler"></i> <span class="nav-topic-num">5.</span> NotebookLM no Júri <i class="fas fa-chevron-down nav-topic-chevron"></i></span>
                 <div class="nav-topic-subitems">
-            <a href="#p2" class="nav-l"><i class="fas fa-book-open"></i> <span class="nav-topic-num">1.</span> 📑 Sumário</a>
-            <a href="#p3" class="nav-l"><i class="fas fa-gavel"></i> <span class="nav-topic-num">2.</span> A extensão da mente do Promotor e o fim do caos documental</a>
-            <a href="#p4" class="nav-l"><i class="fas fa-database"></i> <span class="nav-topic-num">3.</span> O poder das fontes: internet versus autos</a>
-            <a href="#p5" class="nav-l"><i class="fas fa-window-maximize"></i> <span class="nav-topic-num">4.</span> Extração seletiva e organização estratégica dos autos</a>
-            <a href="#p6" class="nav-l"><i class="fas fa-sync"></i> <span class="nav-topic-num">5.</span> Processos volumosos: centralização, interação e foco</a>
-            <a href="#p7" class="nav-l"><i class="fas fa-pencil-ruler"></i> <span class="nav-topic-num">6.</span> Relatório Analítico FIRAC e a fratura da tese defensiva</a>
-            <a href="#p8" class="nav-l"><i class="fas fa-exclamation-triangle"></i> <span class="nav-topic-num">7.</span> A revolução da escuta: extração inteligente de depoimentos</a>
-            <a href="#p9" class="nav-l"><i class="fas fa-shield-halved"></i> <span class="nav-topic-num">8.</span> O desafio da escala e os limites da IA em áudio e vídeo</a>
-            <a href="#p10" class="nav-l"><i class="fas fa-search"></i> <span class="nav-topic-num">9.</span> Engenharia de áudio como simulador cognitivo e estratégico</a>
-            <a href="#p11" class="nav-l"><i class="fas fa-check-circle"></i> <span class="nav-topic-num">10.</span> Psicologia do júri, recursos visuais e organização probatória</a>
-            <a href="#p12" class="nav-l"><i class="fas fa-bullseye"></i> <span class="nav-topic-num">11.</span> O protagonismo inegociável do Promotor de Justiça</a>
+            <a href="#p3" class="nav-l"><i class="fas fa-gavel"></i> <span class="nav-topic-num">1.</span> A extensão da mente do Promotor e o fim do caos documental</a>
+            <a href="#p4" class="nav-l"><i class="fas fa-database"></i> <span class="nav-topic-num">2.</span> O poder das fontes: internet versus autos</a>
+            <a href="#p5" class="nav-l"><i class="fas fa-window-maximize"></i> <span class="nav-topic-num">3.</span> Extração seletiva e organização estratégica dos autos</a>
+            <a href="#p6" class="nav-l"><i class="fas fa-sync"></i> <span class="nav-topic-num">4.</span> Processos volumosos: centralização, interação e foco</a>
+            <a href="#p7" class="nav-l"><i class="fas fa-pencil-ruler"></i> <span class="nav-topic-num">5.</span> Relatório Analítico FIRAC e a fratura da tese defensiva</a>
+            <a href="#p8" class="nav-l"><i class="fas fa-exclamation-triangle"></i> <span class="nav-topic-num">6.</span> A revolução da escuta: extração inteligente de depoimentos</a>
+            <a href="#p9" class="nav-l"><i class="fas fa-shield-halved"></i> <span class="nav-topic-num">7.</span> O desafio da escala e os limites da IA em áudio e vídeo</a>
+            <a href="#p10" class="nav-l"><i class="fas fa-search"></i> <span class="nav-topic-num">8.</span> Engenharia de áudio como simulador cognitivo e estratégico</a>
+            <a href="#p11" class="nav-l"><i class="fas fa-check-circle"></i> <span class="nav-topic-num">9.</span> Psicologia do júri, recursos visuais e organização probatória</a>
+            <a href="#p12" class="nav-l"><i class="fas fa-bullseye"></i> <span class="nav-topic-num">10.</span> O protagonismo inegociável do Promotor de Justiça</a>
                 </div>
             </div>
             <div class="nav-topic-group">
                 <a href="6.html" class="nav-l nav-topic-header"><i class="fas fa-star"></i> <span class="nav-topic-num">6.</span> Favoritos</a>
             </div>
             <div class="nav-topic-group">
-                <a class="nav-l nav-topic-header nav-locked" aria-disabled="true" tabindex="-1" data-href="7.html"><i class="fas fa-brain"></i> <span class="nav-topic-num">7.</span> Notebooklm - Guia e Dicas <span class="codex-lock-emoji" aria-hidden="true">🔒</span> <i class="fas fa-lock codex-lock-icon" aria-hidden="true"></i></a>
+                <a href="7.html" class="nav-l nav-topic-header"><i class="fas fa-brain"></i> <span class="nav-topic-num">7.</span> Notebooklm - Guia e Dicas</a>
             </div>
 <!-- AUTO:MENU:TOPICOS:END -->
         </nav>
@@ -956,7 +1045,7 @@
             <section id="p1" class="caor-card">
                 <h1><i class="fas fa-list-ol"></i> NotebookLM - O Gabinete como Centro de Inteligência Analítica</h1>
                 <div class="authors-meta">
-                  <div class="authors-badges"><span class="author-badge">🏅 Rodrigo Aquino</span><span class="author-badge">🏅 Paulo Lima</span></div>
+                  <div class="authors-badges"><span class="author-badge"><span class="author-icon"><i class="fas fa-user-tie"></i></span> Rodrigo Aquino</span><span class="author-badge"><span class="author-icon"><i class="fas fa-user-tie"></i></span> Paulo Lima</span></div>
                   <div class="authors-org">MPPA — CIIA</div>
                   <div class="authors-date">14 e 15 de maio de 2025</div>
                   <div class="authors-note">Material produzido com apoio de ferramentas de IA</div>
@@ -965,24 +1054,16 @@
 
             <section id="p2" class="caor-card">
                 <h2><i class="fas fa-book-open"></i> 📑 Sumário</h2>
-                <div class="table-wrap">
-                <table class="caor-table">
-                <thead><tr><th class="col-index">#</th><th>Nome da Seção</th></tr></thead>
-                <tbody>
-                <tr><td class="col-index"><a href="#p2"><span class="num-badge">1</span></a></td><td><a href="#p2">📑 Sumário</a></td></tr>
-                <tr><td class="col-index"><a href="#p3"><span class="num-badge">2</span></a></td><td><a href="#p3">A extensão da mente do Promotor e o fim do caos documental</a></td></tr>
-                <tr><td class="col-index"><a href="#p4"><span class="num-badge">3</span></a></td><td><a href="#p4">O poder das fontes: internet versus autos</a></td></tr>
-                <tr><td class="col-index"><a href="#p5"><span class="num-badge">4</span></a></td><td><a href="#p5">Extração seletiva e organização estratégica dos autos</a></td></tr>
-                <tr><td class="col-index"><a href="#p6"><span class="num-badge">5</span></a></td><td><a href="#p6">Processos volumosos: centralização, interação e foco</a></td></tr>
-                <tr><td class="col-index"><a href="#p7"><span class="num-badge">6</span></a></td><td><a href="#p7">Relatório Analítico FIRAC e a fratura da tese defensiva</a></td></tr>
-                <tr><td class="col-index"><a href="#p8"><span class="num-badge">7</span></a></td><td><a href="#p8">A revolução da escuta: extração inteligente de depoimentos</a></td></tr>
-                <tr><td class="col-index"><a href="#p9"><span class="num-badge">8</span></a></td><td><a href="#p9">O desafio da escala e os limites da IA em áudio e vídeo</a></td></tr>
-                <tr><td class="col-index"><a href="#p10"><span class="num-badge">9</span></a></td><td><a href="#p10">Engenharia de áudio como simulador cognitivo e estratégico</a></td></tr>
-                <tr><td class="col-index"><a href="#p11"><span class="num-badge">10</span></a></td><td><a href="#p11">Psicologia do júri, recursos visuais e organização probatória</a></td></tr>
-                <tr><td class="col-index"><a href="#p12"><span class="num-badge">11</span></a></td><td><a href="#p12">O protagonismo inegociável do Promotor de Justiça</a></td></tr>
-                </tbody>
-                </table>
-                </div>
+                <p><a class="summary-link" href="#p3"><span class="num-badge">1</span> <strong>A extensão da mente do Promotor e o fim do caos documental</strong></a></p>
+                <p><a class="summary-link" href="#p4"><span class="num-badge">2</span> <strong>O poder das fontes: internet versus autos</strong></a></p>
+                <p><a class="summary-link" href="#p5"><span class="num-badge">3</span> <strong>Extração seletiva e organização estratégica dos autos</strong></a></p>
+                <p><a class="summary-link" href="#p6"><span class="num-badge">4</span> <strong>Processos volumosos: centralização, interação e foco</strong></a></p>
+                <p><a class="summary-link" href="#p7"><span class="num-badge">5</span> <strong>Relatório Analítico FIRAC e a fratura da tese defensiva</strong></a></p>
+                <p><a class="summary-link" href="#p8"><span class="num-badge">6</span> <strong>A revolução da escuta: extração inteligente de depoimentos</strong></a></p>
+                <p><a class="summary-link" href="#p9"><span class="num-badge">7</span> <strong>O desafio da escala e os limites da IA em áudio e vídeo</strong></a></p>
+                <p><a class="summary-link" href="#p10"><span class="num-badge">8</span> <strong>Engenharia de áudio como simulador cognitivo e estratégico</strong></a></p>
+                <p><a class="summary-link" href="#p11"><span class="num-badge">9</span> <strong>Psicologia do júri, recursos visuais e organização probatória</strong></a></p>
+                <p><a class="summary-link" href="#p12"><span class="num-badge">10</span> <strong>O protagonismo inegociável do Promotor de Justiça</strong></a></p>
             </section>
 
             <section id="p3" class="caor-card">
@@ -1089,7 +1170,16 @@
     <script>
         function toggleTheme() {
             document.body.classList.toggle('dark-mode');
+            localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
         }
+        (function applySavedTheme() {
+            const saved = localStorage.getItem('theme');
+            if (saved === 'dark') {
+                document.body.classList.add('dark-mode');
+            } else {
+                document.body.classList.remove('dark-mode');
+            }
+        })();
 
         const menuButton = document.getElementById('menu-toggle');
         const mobileOverlay = document.getElementById('mobile-overlay');

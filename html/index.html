@@ -17,6 +17,16 @@
     }
 
     * { box-sizing: border-box; }
+    a, a:visited, a:hover, a:active {
+      color: #8a1f3a !important;
+      font-weight: 600 !important;
+    }
+    body.dark-mode a,
+    body.dark-mode a:visited,
+    body.dark-mode a:hover,
+    body.dark-mode a:active {
+      color: #fbd246 !important;
+    }
     body {
       margin: 0;
       font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
@@ -101,7 +111,7 @@
 
     h1 {
       margin: 1rem 0 0.35rem;
-      color: var(--accent);
+      color: #8a1f3a;
       font-size: clamp(1.2rem, 2.5vw, 1.9rem);
       line-height: 1.22;
     }
@@ -112,7 +122,7 @@
       padding: 0.42rem 0.9rem;
       border-radius: 999px;
       background: var(--chip);
-      color: var(--text-main);
+      color: #8a1f3a;
       text-decoration: none;
       font-size: 1.05rem;
       font-weight: 600;
@@ -137,7 +147,7 @@
     .card {
       display: block;
       text-decoration: none;
-      color: var(--text-main);
+      color: #8a1f3a;
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-left: 6px solid var(--accent);
@@ -169,7 +179,7 @@
 
     .tag {
       display: inline-block;
-      color: var(--accent);
+      color: #8a1f3a;
       font-size: 0.75rem;
       font-weight: 700;
       text-transform: uppercase;
@@ -182,7 +192,7 @@
       font-size: 1.08rem;
       font-weight: 800;
       line-height: 1.28;
-      color: var(--accent);
+      color: #8a1f3a;
     }
 
     .desc {
@@ -242,17 +252,17 @@
       </div>
       <p class="desc">Aplicação de agentes no fluxo do Tribunal do Júri.</p>
     </a>
-    <a class="card nav-locked" aria-disabled="true" tabindex="-1" data-href="4.html">
+    <a href="4.html" class="card">
       <div class="title-row">
         <i class="fas fa-landmark"></i>
-        <h2 class="title">Tópico 4 | Elementos Gráficos no Júri</h2> <span class="codex-lock-emoji" aria-hidden="true">🔒</span> <i class="fas fa-lock codex-lock-icon" aria-hidden="true"></i>
+        <h2 class="title">Tópico 4 | Elementos Gráficos no Júri</h2>
       </div>
       <p class="desc">Recursos visuais para síntese e sustentação oral.</p>
     </a>
-    <a class="card nav-locked" aria-disabled="true" tabindex="-1" data-href="5.html">
+    <a href="5.html" class="card">
       <div class="title-row">
         <i class="fas fa-landmark"></i>
-        <h2 class="title">Tópico 5 | NotebookLM no Júri</h2> <span class="codex-lock-emoji" aria-hidden="true">🔒</span> <i class="fas fa-lock codex-lock-icon" aria-hidden="true"></i>
+        <h2 class="title">Tópico 5 | NotebookLM no Júri</h2>
       </div>
       <p class="desc">Organização analítica e leitura orientada por IA.</p>
     </a>
@@ -263,10 +273,10 @@
       </div>
       <p class="desc">Atalhos rápidos para referências e materiais prioritários.</p>
     </a>
-    <a class="card nav-locked" aria-disabled="true" tabindex="-1" data-href="7.html">
+    <a href="7.html" class="card">
       <div class="title-row">
         <i class="fas fa-landmark"></i>
-        <h2 class="title">Tópico 7 | Guia NotebookLM</h2> <span class="codex-lock-emoji" aria-hidden="true">🔒</span> <i class="fas fa-lock codex-lock-icon" aria-hidden="true"></i>
+        <h2 class="title">Tópico 7 | Guia NotebookLM</h2>
       </div>
       <p class="desc">Atalhos rápidos para referências e materiais prioritários.</p>
     </a>
@@ -280,9 +290,14 @@
       document.body.classList.toggle("dark-mode");
       localStorage.setItem("theme", document.body.classList.contains("dark-mode") ? "dark" : "light");
     }
-    // Padrão obrigatório: sempre iniciar no tema claro.
-    document.body.classList.remove("dark-mode");
-    localStorage.setItem("theme", "light");
+    (function applySavedTheme() {
+      const saved = localStorage.getItem("theme");
+      if (saved === "dark") {
+        document.body.classList.add("dark-mode");
+      } else {
+        document.body.classList.remove("dark-mode");
+      }
+    })();
   </script>
 </body>
 </html>

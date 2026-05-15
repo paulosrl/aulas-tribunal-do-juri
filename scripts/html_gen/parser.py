@@ -815,9 +815,13 @@ def parse_markdown(markdown: str, md_dir: Path, section_mode: str = "semantic") 
             author_names = [x.strip() for x in re.split(r"\s+e\s+", authors, flags=re.IGNORECASE) if x.strip()]
             author_badges = []
             for name in author_names[:2]:
-                author_badges.append(f'<span class="author-badge">🏅 {inline_md(name)}</span>')
+                author_badges.append(
+                    f'<span class="author-badge"><span class="author-icon"><i class="fas fa-user-tie"></i></span> {inline_md(name)}</span>'
+                )
             if not author_badges:
-                author_badges.append(f'<span class="author-badge">🏅 {inline_md(authors)}</span>')
+                author_badges.append(
+                    f'<span class="author-badge"><span class="author-icon"><i class="fas fa-user-tie"></i></span> {inline_md(authors)}</span>'
+                )
             safe_org = inline_md(org) if org else "MPPA - CIIA"
             safe_date = inline_md(date) if date else ""
             date_html = f'  <div class="authors-date">{safe_date}</div>\n' if safe_date else ""

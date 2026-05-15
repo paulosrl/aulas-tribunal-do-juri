@@ -5,6 +5,7 @@ Build automatizado: descobre todos os .md em conteudo/ e gera respectivos .html
 
 import subprocess
 import sys
+import argparse
 from pathlib import Path
 from datetime import datetime
 
@@ -48,7 +49,7 @@ def discover_markdown_files(conteudo_dir: Path) -> list[Path]:
     return sorted(md_files, key=sort_key)
 
 
-def build_html(script_dir: Path, project_root: Path, md_file: Path) -> bool:
+def build_html(script_dir: Path, project_root: Path, md_file: Path, timeout_seconds: int = 30) -> bool:
     """
     Executa gera_html.py para um arquivo markdown
     Retorna True se bem-sucedido, False caso contrário
@@ -77,13 +78,13 @@ def build_html(script_dir: Path, project_root: Path, md_file: Path) -> bool:
             cmd.extend(['--page-title', page_title])
 
     try:
-        result = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
+        result = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout_seconds)
         if result.returncode != 0:
             print(f'  ❌ ERRO: {result.stderr or result.stdout}')
             return False
         return True
     except subprocess.TimeoutExpired:
-        print(f'  ❌ TIMEOUT após 30 segundos')
+        print(f'  ❌ TIMEOUT após {timeout_seconds} segundos')
         return False
     except Exception as e:
         print(f'  ❌ EXCEÇÃO: {e}')
@@ -133,8 +134,22 @@ def print_summary(results: dict):
         return 1
 
 
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description='Build automatizado: descobre todos os .md em conteudo/ e gera respectivos .html.'
+    )
+    parser.add_argument(
+        '--timeout',
+        type=int,
+        default=30,
+        help='Timeout em segundos por arquivo durante a geração (padrão: 30).',
+    )
+    return parser.parse_args()
+
+
 def main():
     try:
+        args = parse_args()
         project_root = get_project_root()
         script_dir = project_root / 'scripts'
         conteudo_dir = project_root / 'conteudo'
@@ -162,7 +177,7 @@ def main():
 
             print(f'[{i}/{len(md_files)}] {md_name:<20} → {html_name:<20}', end=' ', flush=True)
 
-            success = build_html(script_dir, project_root, md_file)
+            success = build_html(script_dir, project_root, md_file, timeout_seconds=args.timeout)
             results[md_name] = success
 
             if success:

@@ -52,6 +52,13 @@ def render_cards(cards: List[Card], card_icons: List[str]) -> str:
         t = clean_md_title(title).lower()
         return ("sumário" in t) or ("sumario" in t)
 
+    def _include_in_navigation(idx: int, card: Card) -> bool:
+        if idx == 1 and card.level == 1:
+            return False
+        if _is_summary_title(card.title):
+            return False
+        return True
+
     def _extract_text_lines_from_blocks(blocks: List[str]) -> List[str]:
         lines: List[str] = []
         for block in blocks:
@@ -64,10 +71,10 @@ def render_cards(cards: List[Card], card_icons: List[str]) -> str:
         return lines
 
     def _build_main_summary_table(current_idx: int, card: Card) -> str | None:
-        # O sumário deve espelhar o submenu esquerdo: mesmos itens e mesmas âncoras.
+        # O sumário deve espelhar o submenu esquerdo: sem o item "Sumário".
         entries: List[tuple[int, str]] = []
         for target_idx, target_card in enumerate(cards, start=1):
-            if target_idx == 1 and target_card.level == 1:
+            if not _include_in_navigation(target_idx, target_card):
                 continue
             short = strip_leading_number(target_card.title)
             short = re.sub(r"^\d+(?:\.\d+)*[\.\-\)]?\s*", "", short).strip()
@@ -81,19 +88,10 @@ def render_cards(cards: List[Card], card_icons: List[str]) -> str:
         rows: List[str] = []
         for i, (tgt, label) in enumerate(entries, start=1):
             rows.append(
-                "<tr>"
-                f'<td class="col-index"><a href="#p{tgt}"><span class="num-badge">{i}</span></a></td>'
-                f'<td><a href="#p{tgt}">{inline_md(label)}</a></td>'
-                "</tr>"
+                f'<p><a class="summary-link" href="#p{tgt}"><span class="num-badge">{i}</span> '
+                f"<strong>{inline_md(label)}</strong></a></p>"
             )
-        return (
-            '<div class="table-wrap">\n'
-            '<table class="caor-table">\n'
-            "<thead><tr><th class=\"col-index\">#</th><th>Nome da Seção</th></tr></thead>\n"
-            "<tbody>\n"
-            + "\n".join(rows)
-            + "\n</tbody>\n</table>\n</div>"
-        )
+        return "\n".join(rows)
 
     def _linkify_summary_table(block_html: str, current_section_idx: int) -> str:
         # Em tabelas de "Sumário", liga cada linha numerada ao card correspondente.
@@ -170,10 +168,16 @@ def render_cards(cards: List[Card], card_icons: List[str]) -> str:
 
 
 def render_menu_from_labels(cards: List[Card], card_icons: List[str], menu_icon: str) -> str:
+    def _is_summary_title(title: str) -> bool:
+        t = clean_md_title(title).lower()
+        return ("sumário" in t) or ("sumario" in t)
+
     def _submenu_entries() -> list[tuple[int, str, str]]:
         entries: list[tuple[int, str, str]] = []
         for idx, card in enumerate(cards, start=1):
             if idx == 1 and card.level == 1:
+                continue
+            if _is_summary_title(card.title):
                 continue
             short = strip_leading_number(card.title)
             short = re.sub(r"^\d+(?:\.\d+)*[\.\-\)]?\s*", "", short).strip()

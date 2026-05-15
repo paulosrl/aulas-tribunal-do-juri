@@ -13,6 +13,35 @@ from html_gen.icons import assign_unique_icons
 from html_gen.validation import validate_completeness, validate_content_preservation
 
 
+def _card_has_meaningful_content(card) -> bool:
+    """Return True when card has at least one non-empty content block."""
+    for block in card.blocks:
+        if block and block.strip():
+            return True
+    return False
+
+
+def _strip_removed_empty_headings(markdown: str, removed_titles: list[str]) -> str:
+    """
+    Remove heading lines from markdown validation input when those sections were
+    intentionally dropped for being empty.
+    """
+    if not removed_titles:
+        return markdown
+    title_set = {t.strip().lower() for t in removed_titles if t and t.strip()}
+    out_lines: list[str] = []
+    for raw in markdown.splitlines():
+        m = re.match(r"^\s*#{1,6}\s+(.*)$", raw)
+        if not m:
+            out_lines.append(raw)
+            continue
+        heading_text = re.sub(r"\s+", " ", m.group(1)).strip()
+        if heading_text.lower() in title_set:
+            continue
+        out_lines.append(raw)
+    return "\n".join(out_lines)
+
+
 def parse_args() -> argparse.Namespace:
     """Parse command-line arguments for the HTML generator."""
     parser = argparse.ArgumentParser(
@@ -134,6 +163,11 @@ def main() -> None:
     template = tpl_path.read_text(encoding="utf-8")
 
     cards = parse_markdown(markdown, md_path.parent, section_mode=args.section_mode)
+    original_cards_count = len(cards)
+    removed_empty_titles = [c.title for c in cards if not _card_has_meaningful_content(c)]
+    cards = [c for c in cards if _card_has_meaningful_content(c)]
+    removed_empty_cards = original_cards_count - len(cards)
+
     card_icons = assign_unique_icons(cards, args.menu_icon)
     content_html = render_cards(cards, card_icons)
     primary_h1 = extract_h1_title(markdown)
@@ -146,8 +180,11 @@ def main() -> None:
 
     out_path.write_text(html_out, encoding="utf-8")
     print(f"OK: {out_path} gerado a partir de {md_path} com {len(cards)} seção(ões).")
+    if removed_empty_cards:
+        print(f"INFO: {removed_empty_cards} seção(ões) vazia(s) foram removidas automaticamente.")
     validate_completeness(markdown, html_out, cards)
-    validate_content_preservation(markdown, html_out)
+    validation_markdown = _strip_removed_empty_headings(markdown, removed_empty_titles)
+    validate_content_preservation(validation_markdown, html_out)
 
 
 if __name__ == "__main__":

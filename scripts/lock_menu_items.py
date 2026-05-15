@@ -24,7 +24,15 @@ LOCK_ICON = '<span class="codex-lock-emoji" aria-hidden="true">🔒</span> <i cl
 
 A_CARD_RE = re.compile(r"<a\b([^>]*)class=\"([^\"]*\bcard\b[^\"]*)\"([^>]*)>(.*?)</a>", re.DOTALL)
 A_MENU_RE = re.compile(r"<a\b([^>]*)class=\"([^\"]*\bnav-l\b[^\"]*\bnav-topic-header\b[^\"]*)\"([^>]*)>(.*?)</a>", re.DOTALL)
-SPAN_MENU_RE = re.compile(r"<span\b([^>]*)class=\"([^\"]*\bnav-l\b[^\"]*\bnav-topic-header\b[^\"]*)\"([^>]*)>(.*?)</span>", re.DOTALL)
+SPAN_MENU_RE = re.compile(
+    r"<span\b([^>]*)class=\"([^\"]*\bnav-l\b[^\"]*\bnav-topic-header\b[^\"]*)\"([^>]*)>"
+    r"(.*?<span[^>]*class=\"[^\"]*\bnav-topic-num\b[^\"]*\"[^>]*>.*?</span>.*?"
+    r"<i[^>]*class=\"[^\"]*\bnav-topic-chevron\b[^\"]*\"[^>]*></i>"
+    r"(?:\s*<span class=\"codex-lock-emoji\" aria-hidden=\"true\">🔒</span>\s*"
+    r"<i class=\"fas fa-lock codex-lock-icon\" aria-hidden=\"true\"></i>)?\s*)"
+    r"</span>",
+    re.DOTALL,
+)
 
 
 def parse_args() -> argparse.Namespace:
@@ -77,6 +85,11 @@ def remove_class(class_attr: str, cls: str) -> str:
 def strip_lock_icon(inner_html: str) -> str:
     inner_html = re.sub(
         r"\s*<span class=\"codex-lock-emoji\" aria-hidden=\"true\">🔒</span>\s*<i class=\"fas fa-lock codex-lock-icon\" aria-hidden=\"true\"></i>",
+        "",
+        inner_html,
+    )
+    inner_html = re.sub(
+        r"\s*<span class=\"codex-lock-emoji\" aria-hidden=\"true\">🔒</span>",
         "",
         inner_html,
     )
@@ -192,7 +205,15 @@ def patch_match(full_match: str, unlock: bool) -> Tuple[str, bool]:
             injected = insert_lock_icon_in_card_title(inner)
             new_inner = injected if injected != inner else (inner + " " + LOCK_ICON)
         else:
-            new_inner = inner + " " + LOCK_ICON
+            if "nav-topic-chevron" in inner:
+                new_inner = re.sub(
+                    r"(\s*<i[^>]*class=\"[^\"]*\bnav-topic-chevron\b[^\"]*\"[^>]*></i>)",
+                    " " + LOCK_ICON + r"\1",
+                    inner,
+                    count=1,
+                )
+            else:
+                new_inner = inner + " " + LOCK_ICON
         changed = True
     elif "codex-lock-emoji" not in inner:
         new_inner = inner.replace(

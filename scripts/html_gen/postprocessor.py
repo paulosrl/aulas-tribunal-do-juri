@@ -198,10 +198,14 @@ def apply_global_page_rules(
 }
 /* Clickable cards for index page */
 .caor-card a {
-  color: var(--accent);
+  color: #8a1f3a !important;
+  font-weight: 600 !important;
   text-decoration: none;
   cursor: pointer;
   transition: opacity 0.2s ease;
+}
+body.dark-mode .caor-card a {
+  color: #fbd246 !important;
 }
 .caor-card a:hover {
   opacity: 0.8;
@@ -213,28 +217,35 @@ def apply_global_page_rules(
 .copilot-agent-cta-wrap {
   margin: 0.5rem 0 1rem 0;
 }
-.copilot-agent-cta {
+.caor-card a.copilot-agent-cta {
   display: inline-flex;
   align-items: center;
   gap: 0.62rem;
   background: linear-gradient(135deg, #8a1f3a 0%, #a72c55 40%, #c63d73 100%);
-  color: #fff !important;
+  color: #facc15 !important;
   border: 0;
   border-radius: 12px;
   padding: 0.7rem 1rem;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 0.95rem;
   text-decoration: none !important;
   border-bottom: none !important;
   box-shadow: 0 6px 18px rgba(138, 31, 58, 0.28);
   transition: transform 0.15s ease, box-shadow 0.2s ease, opacity 0.2s ease;
 }
-.copilot-agent-cta:hover {
+body.dark-mode .caor-card a.copilot-agent-cta {
+  color: #fbd246 !important;
+}
+.caor-card a.copilot-agent-cta:hover {
   transform: translateY(-1px);
   box-shadow: 0 10px 22px rgba(138, 31, 58, 0.34);
   opacity: 1;
 }
-.copilot-agent-cta .fa-external-link-alt {
+.caor-card a.copilot-agent-cta .copilot-agent-cta-label,
+.caor-card a.copilot-agent-cta .fa-external-link-alt {
+  color: inherit !important;
+}
+.caor-card a.copilot-agent-cta .fa-external-link-alt {
   font-size: 0.82rem;
   opacity: 0.95;
 }
