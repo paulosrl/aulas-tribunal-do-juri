@@ -12,7 +12,7 @@ from html_gen.models import Card
 def _default_authors_meta_html() -> str:
     return (
         '<div class="authors-meta">\n'
-        '  <div class="authors-org authors-org-first">Ministério Público do Pará - MPPA</div>\n'
+        '  <div class="authors-org authors-org-first">Ministério Público do Estado do Pará - MPPA</div>\n'
         '  <div class="authors-org">Comitê de Governança da Inovação e Inteligência Artificial - CIIA</div>\n'
         '  <div class="authors-org">Grupo de Atuação Especial do Júri – GAEJÚRI</div>\n'
         '  <div class="authors-date">Inteligência Artificial Aplicada ao Tribunal do Júri - 14 e 15 de maio de 2025</div>\n'

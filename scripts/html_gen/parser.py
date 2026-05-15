@@ -825,7 +825,7 @@ def parse_markdown(markdown: str, md_dir: Path, section_mode: str = "semantic") 
             # Padrão institucional fixo definido para o bloco de autores.
             # Mantemos estrutura padrão em todas as páginas.
             org_html = (
-                "  <div class=\"authors-org authors-org-first\">Ministério Público do Pará - MPPA</div>\n"
+                "  <div class=\"authors-org authors-org-first\">Ministério Público do Estado do Pará - MPPA</div>\n"
                 "  <div class=\"authors-org\">Comitê de Governança da Inovação e Inteligência Artificial - CIIA</div>\n"
                 "  <div class=\"authors-org\">Grupo de Atuação Especial do Júri – GAEJÚRI</div>\n"
             )
