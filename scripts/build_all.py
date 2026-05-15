@@ -6,6 +6,7 @@ Build automatizado: descobre todos os .md em conteudo/ e gera respectivos .html
 import subprocess
 import sys
 import argparse
+import os
 from pathlib import Path
 from datetime import datetime
 
@@ -114,7 +115,9 @@ def build_html(script_dir: Path, project_root: Path, md_file: Path, timeout_seco
             cmd.extend(['--page-title', page_title])
 
     try:
-        result = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout_seconds)
+        env = os.environ.copy()
+        env['PYTHONDONTWRITEBYTECODE'] = '1'
+        result = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout_seconds, env=env)
         if result.returncode != 0:
             print(f'  ❌ ERRO: {result.stderr or result.stdout}')
             return False
