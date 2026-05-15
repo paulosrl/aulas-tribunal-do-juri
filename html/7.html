@@ -191,6 +191,8 @@
         .nav-topic-subitems .nav-l {
             font-size: clamp(0.77rem, 0.9vw, 0.85rem);
             padding: 6px 8px 6px 12px;
+            font-weight: 400 !important;
+            color: #8A1F3A !important;
         }
 
         .nav-l { display: flex; align-items: center; gap: 10px; padding: 10px 10px 10px 20px; color: #8A1F3A; text-decoration: none; border-radius: 8px; margin-bottom: 5px; font-size: clamp(1.001rem, 1.183vw, 1.113rem); font-weight: 600; border-bottom: 1px solid var(--nav-divider); overflow-wrap: anywhere; }
@@ -479,8 +481,12 @@
         body.dark-mode .nav-topic-group > .nav-topic-header {
             color: #fbd246 !important;
         }
-        body.dark-mode .nav-topic-subitems .nav-l {
-            color: #fbd246 !important;
+        body.dark-mode .nav-topic-subitems .nav-l { color: #ffffff !important; }
+        body:not(.dark-mode) .nav-topic-subitems .nav-l,
+        body:not(.dark-mode) .nav-topic-subitems .nav-l:visited,
+        body:not(.dark-mode) .nav-topic-subitems .nav-l:hover,
+        body:not(.dark-mode) .nav-topic-subitems .nav-l:active {
+            color: #8A1F3A !important;
         }
         #sidebar-nav > a.nav-l:first-child i.fa-bullseye {
             color: #7a1e3a !important;
@@ -785,6 +791,14 @@
 }
 .nav-topic-subitems .nav-l {
   font-size: clamp(0.89rem, 1.035vw, 0.98rem) !important;
+  font-weight: 400 !important;
+  color: #8A1F3A !important;
+}
+body:not(.dark-mode) .nav-topic-subitems .nav-l,
+body:not(.dark-mode) .nav-topic-subitems .nav-l:visited,
+body:not(.dark-mode) .nav-topic-subitems .nav-l:hover,
+body:not(.dark-mode) .nav-topic-subitems .nav-l:active {
+  color: #8A1F3A !important;
 }
 /* Clickable cards for index page */
 .caor-card a {

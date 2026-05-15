@@ -195,6 +195,14 @@ def apply_global_page_rules(
 }
 .nav-topic-subitems .nav-l {
   font-size: clamp(0.89rem, 1.035vw, 0.98rem) !important;
+  font-weight: 400 !important;
+  color: #8A1F3A !important;
+}
+body:not(.dark-mode) .nav-topic-subitems .nav-l,
+body:not(.dark-mode) .nav-topic-subitems .nav-l:visited,
+body:not(.dark-mode) .nav-topic-subitems .nav-l:hover,
+body:not(.dark-mode) .nav-topic-subitems .nav-l:active {
+  color: #8A1F3A !important;
 }
 /* Clickable cards for index page */
 .caor-card a {

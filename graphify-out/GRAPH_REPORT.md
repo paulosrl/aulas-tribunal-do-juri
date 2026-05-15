@@ -1,7 +1,7 @@
 # Graph Report - aulas-tribunal-do-juri  (2026-05-14)
 
 ## Corpus Check
-- 14 files · ~80,381 words
+- 14 files · ~79,841 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `a6a011ca`
+- Built from commit: `d3ff3c38`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -37,16 +37,16 @@
 10. `main()` - 14 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `main()` --calls--> `replace_between()`  [INFERRED]
-  html_gen/cli.py → scripts/html_gen/utils.py
 - `apply_global_page_rules()` --calls--> `esc()`  [INFERRED]
   html_gen/postprocessor.py → scripts/html_gen/utils.py
-- `main()` --calls--> `assign_unique_icons()`  [INFERRED]
-  html_gen/cli.py → scripts/html_gen/icons.py
-- `generate_index_page()` --calls--> `esc()`  [INFERRED]
-  html_gen/cli.py → scripts/html_gen/utils.py
-- `generate_index_page()` --calls--> `safe_href()`  [INFERRED]
-  html_gen/cli.py → scripts/html_gen/utils.py
+- `Imprime cabeçalho visual` --rationale_for--> `print_header()`  [EXTRACTED]
+  build_all.py → scripts/build_all.py
+- `Imprime sumário final` --rationale_for--> `print_summary()`  [EXTRACTED]
+  build_all.py → scripts/build_all.py
+- `main()` --calls--> `apply_global_page_rules()`  [INFERRED]
+  scripts/html_gen/cli.py → html_gen/postprocessor.py
+- `main()` --calls--> `replace_between()`  [INFERRED]
+  scripts/html_gen/cli.py → scripts/html_gen/utils.py
 
 ## Communities (8 total, 0 thin omitted)
 

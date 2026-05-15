@@ -141,7 +141,7 @@
     {
       "label": "build_all.py",
       "file_type": "code",
-      "source_file": "build_all.py",
+      "source_file": "scripts/build_all.py",
       "source_location": "L1",
       "id": "build_all_py",
       "community": 3,
@@ -150,7 +150,7 @@
     {
       "label": "get_project_root()",
       "file_type": "code",
-      "source_file": "build_all.py",
+      "source_file": "scripts/build_all.py",
       "source_location": "L26",
       "id": "scripts_build_all_get_project_root",
       "community": 3,
@@ -159,7 +159,7 @@
     {
       "label": "discover_markdown_files()",
       "file_type": "code",
-      "source_file": "build_all.py",
+      "source_file": "scripts/build_all.py",
       "source_location": "L34",
       "id": "scripts_build_all_discover_markdown_files",
       "community": 3,
@@ -168,7 +168,7 @@
     {
       "label": "build_html()",
       "file_type": "code",
-      "source_file": "build_all.py",
+      "source_file": "scripts/build_all.py",
       "source_location": "L52",
       "id": "scripts_build_all_build_html",
       "community": 3,
@@ -177,7 +177,7 @@
     {
       "label": "print_header()",
       "file_type": "code",
-      "source_file": "build_all.py",
+      "source_file": "scripts/build_all.py",
       "source_location": "L94",
       "id": "scripts_build_all_print_header",
       "community": 3,
@@ -186,7 +186,7 @@
     {
       "label": "print_summary()",
       "file_type": "code",
-      "source_file": "build_all.py",
+      "source_file": "scripts/build_all.py",
       "source_location": "L104",
       "id": "scripts_build_all_print_summary",
       "community": 3,
@@ -195,7 +195,7 @@
     {
       "label": "parse_args()",
       "file_type": "code",
-      "source_file": "build_all.py",
+      "source_file": "scripts/build_all.py",
       "source_location": "L137",
       "id": "scripts_build_all_parse_args",
       "community": 3,
@@ -204,7 +204,7 @@
     {
       "label": "main()",
       "file_type": "code",
-      "source_file": "build_all.py",
+      "source_file": "scripts/build_all.py",
       "source_location": "L150",
       "id": "scripts_build_all_main",
       "community": 3,
@@ -213,7 +213,7 @@
     {
       "label": "Retorna a raiz do projeto (onde est\u00e1 conteudo/ e html/)",
       "file_type": "rationale",
-      "source_file": "build_all.py",
+      "source_file": "scripts/build_all.py",
       "source_location": "L27",
       "id": "scripts_build_all_rationale_27",
       "community": 3,
@@ -222,7 +222,7 @@
     {
       "label": "Descobre todos os .md em conteudo/ e ordena logicamente",
       "file_type": "rationale",
-      "source_file": "build_all.py",
+      "source_file": "scripts/build_all.py",
       "source_location": "L35",
       "id": "scripts_build_all_rationale_35",
       "community": 3,
@@ -231,7 +231,7 @@
     {
       "label": "Executa gera_html.py para um arquivo markdown     Retorna True se bem-sucedido,",
       "file_type": "rationale",
-      "source_file": "build_all.py",
+      "source_file": "scripts/build_all.py",
       "source_location": "L53",
       "id": "scripts_build_all_rationale_53",
       "community": 3,
@@ -240,7 +240,7 @@
     {
       "label": "Imprime cabe\u00e7alho visual",
       "file_type": "rationale",
-      "source_file": "build_all.py",
+      "source_file": "scripts/build_all.py",
       "source_location": "L95",
       "id": "scripts_build_all_rationale_95",
       "community": 3,
@@ -249,7 +249,7 @@
     {
       "label": "Imprime sum\u00e1rio final",
       "file_type": "rationale",
-      "source_file": "build_all.py",
+      "source_file": "scripts/build_all.py",
       "source_location": "L105",
       "id": "scripts_build_all_rationale_105",
       "community": 3,
@@ -537,7 +537,7 @@
     {
       "label": "cli.py",
       "file_type": "code",
-      "source_file": "html_gen/cli.py",
+      "source_file": "scripts/html_gen/cli.py",
       "source_location": "L1",
       "id": "html_gen_cli_py",
       "community": 4,
@@ -546,7 +546,7 @@
     {
       "label": "_card_has_meaningful_content()",
       "file_type": "code",
-      "source_file": "html_gen/cli.py",
+      "source_file": "scripts/html_gen/cli.py",
       "source_location": "L16",
       "id": "html_gen_cli_card_has_meaningful_content",
       "community": 4,
@@ -555,7 +555,7 @@
     {
       "label": "_strip_removed_empty_headings()",
       "file_type": "code",
-      "source_file": "html_gen/cli.py",
+      "source_file": "scripts/html_gen/cli.py",
       "source_location": "L24",
       "id": "html_gen_cli_strip_removed_empty_headings",
       "community": 4,
@@ -564,7 +564,7 @@
     {
       "label": "parse_args()",
       "file_type": "code",
-      "source_file": "html_gen/cli.py",
+      "source_file": "scripts/html_gen/cli.py",
       "source_location": "L45",
       "id": "html_gen_cli_parse_args",
       "community": 4,
@@ -573,7 +573,7 @@
     {
       "label": "generate_index_page()",
       "file_type": "code",
-      "source_file": "html_gen/cli.py",
+      "source_file": "scripts/html_gen/cli.py",
       "source_location": "L76",
       "id": "html_gen_cli_generate_index_page",
       "community": 4,
@@ -582,7 +582,7 @@
     {
       "label": "main()",
       "file_type": "code",
-      "source_file": "html_gen/cli.py",
+      "source_file": "scripts/html_gen/cli.py",
       "source_location": "L147",
       "id": "html_gen_cli_main",
       "community": 4,
@@ -591,7 +591,7 @@
     {
       "label": "Return True when card has at least one non-empty content block.",
       "file_type": "rationale",
-      "source_file": "html_gen/cli.py",
+      "source_file": "scripts/html_gen/cli.py",
       "source_location": "L17",
       "id": "html_gen_cli_rationale_17",
       "community": 4,
@@ -600,7 +600,7 @@
     {
       "label": "Remove heading lines from markdown validation input when those sections were",
       "file_type": "rationale",
-      "source_file": "html_gen/cli.py",
+      "source_file": "scripts/html_gen/cli.py",
       "source_location": "L25",
       "id": "html_gen_cli_rationale_25",
       "community": 4,
@@ -609,7 +609,7 @@
     {
       "label": "Parse command-line arguments for the HTML generator.",
       "file_type": "rationale",
-      "source_file": "html_gen/cli.py",
+      "source_file": "scripts/html_gen/cli.py",
       "source_location": "L46",
       "id": "html_gen_cli_rationale_46",
       "community": 4,
@@ -618,7 +618,7 @@
     {
       "label": "Generate landing page with index.template.html",
       "file_type": "rationale",
-      "source_file": "html_gen/cli.py",
+      "source_file": "scripts/html_gen/cli.py",
       "source_location": "L77",
       "id": "html_gen_cli_rationale_77",
       "community": 4,
@@ -627,7 +627,7 @@
     {
       "label": "Main entry point: orchestrates parsing, rendering, and validation.",
       "file_type": "rationale",
-      "source_file": "html_gen/cli.py",
+      "source_file": "scripts/html_gen/cli.py",
       "source_location": "L148",
       "id": "html_gen_cli_rationale_148",
       "community": 4,
@@ -2282,9 +2282,9 @@
       "source_file": "build_all.py",
       "source_location": "L137",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "build_all_py",
-      "target": "scripts_build_all_parse_args",
-      "confidence_score": 1.0
+      "target": "scripts_build_all_parse_args"
     },
     {
       "relation": "contains",
@@ -2313,9 +2313,9 @@
       "source_file": "build_all.py",
       "source_location": "L27",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_build_all_rationale_27",
-      "target": "scripts_build_all_get_project_root",
-      "confidence_score": 1.0
+      "target": "scripts_build_all_get_project_root"
     },
     {
       "relation": "rationale_for",
@@ -2344,9 +2344,9 @@
       "source_file": "build_all.py",
       "source_location": "L35",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_build_all_rationale_35",
-      "target": "scripts_build_all_discover_markdown_files",
-      "confidence_score": 1.0
+      "target": "scripts_build_all_discover_markdown_files"
     },
     {
       "relation": "rationale_for",
@@ -2375,9 +2375,9 @@
       "source_file": "build_all.py",
       "source_location": "L53",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_build_all_rationale_53",
-      "target": "scripts_build_all_build_html",
-      "confidence_score": 1.0
+      "target": "scripts_build_all_build_html"
     },
     {
       "relation": "rationale_for",
@@ -2426,9 +2426,9 @@
       "source_file": "build_all.py",
       "source_location": "L95",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_build_all_rationale_95",
-      "target": "scripts_build_all_print_header",
-      "confidence_score": 1.0
+      "target": "scripts_build_all_print_header"
     },
     {
       "relation": "rationale_for",
@@ -2477,9 +2477,9 @@
       "source_file": "build_all.py",
       "source_location": "L105",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_build_all_rationale_105",
-      "target": "scripts_build_all_print_summary",
-      "confidence_score": 1.0
+      "target": "scripts_build_all_print_summary"
     },
     {
       "relation": "rationale_for",
@@ -2518,9 +2518,9 @@
       "source_file": "build_all.py",
       "source_location": "L152",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "scripts_build_all_main",
-      "target": "scripts_build_all_parse_args",
-      "confidence_score": 1.0
+      "target": "scripts_build_all_parse_args"
     },
     {
       "relation": "contains",
@@ -3785,9 +3785,9 @@
       "source_file": "html_gen/cli.py",
       "source_location": "L16",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "html_gen_cli_py",
-      "target": "html_gen_cli_card_has_meaningful_content",
-      "confidence_score": 1.0
+      "target": "html_gen_cli_card_has_meaningful_content"
     },
     {
       "relation": "contains",
@@ -3795,9 +3795,9 @@
       "source_file": "html_gen/cli.py",
       "source_location": "L24",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "html_gen_cli_py",
-      "target": "html_gen_cli_strip_removed_empty_headings",
-      "confidence_score": 1.0
+      "target": "html_gen_cli_strip_removed_empty_headings"
     },
     {
       "relation": "contains",
@@ -3836,9 +3836,9 @@
       "source_file": "html_gen/cli.py",
       "source_location": "L167",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "html_gen_cli_main",
-      "target": "html_gen_cli_card_has_meaningful_content",
-      "confidence_score": 1.0
+      "target": "html_gen_cli_card_has_meaningful_content"
     },
     {
       "relation": "rationale_for",
@@ -3846,9 +3846,9 @@
       "source_file": "html_gen/cli.py",
       "source_location": "L17",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "html_gen_cli_rationale_17",
-      "target": "html_gen_cli_card_has_meaningful_content",
-      "confidence_score": 1.0
+      "target": "html_gen_cli_card_has_meaningful_content"
     },
     {
       "relation": "calls",
@@ -3857,9 +3857,9 @@
       "source_file": "html_gen/cli.py",
       "source_location": "L186",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "html_gen_cli_main",
-      "target": "html_gen_cli_strip_removed_empty_headings",
-      "confidence_score": 1.0
+      "target": "html_gen_cli_strip_removed_empty_headings"
     },
     {
       "relation": "rationale_for",
@@ -3867,9 +3867,9 @@
       "source_file": "html_gen/cli.py",
       "source_location": "L25",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "html_gen_cli_rationale_25",
-      "target": "html_gen_cli_strip_removed_empty_headings",
-      "confidence_score": 1.0
+      "target": "html_gen_cli_strip_removed_empty_headings"
     },
     {
       "relation": "calls",
@@ -3888,9 +3888,9 @@
       "source_file": "html_gen/cli.py",
       "source_location": "L46",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "html_gen_cli_rationale_46",
-      "target": "html_gen_cli_parse_args",
-      "confidence_score": 1.0
+      "target": "html_gen_cli_parse_args"
     },
     {
       "relation": "rationale_for",
@@ -3919,9 +3919,9 @@
       "source_file": "html_gen/cli.py",
       "source_location": "L77",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "html_gen_cli_rationale_77",
-      "target": "html_gen_cli_generate_index_page",
-      "confidence_score": 1.0
+      "target": "html_gen_cli_generate_index_page"
     },
     {
       "relation": "rationale_for",
@@ -3949,9 +3949,9 @@
       "source_file": "html_gen/cli.py",
       "source_location": "L148",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "html_gen_cli_rationale_148",
-      "target": "html_gen_cli_main",
-      "confidence_score": 1.0
+      "target": "html_gen_cli_main"
     },
     {
       "relation": "calls",
@@ -6849,5 +6849,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "a6a011ca4412d795d2e64419918e1b19e65cf571"
+  "built_at_commit": "d3ff3c38d4e3bd0e9ccad0429d27205109154a1c"
 }
