@@ -105,13 +105,34 @@ def generate_index_page(md_path: Path, out_path: Path) -> str:
     # Extract metadata
     subtitle = ""
     footer = ""
+    institutional_html = ""
     subtitle_match = re.search(r"^\*\*subtítulo:\*\*\s+(.+)$", markdown, re.MULTILINE)
     footer_match = re.search(r"^\*\*rodapé:\*\*\s+(.+)$", markdown, re.MULTILINE)
+    institutional_match = re.search(r"^\*\*institutional:\*\*\s+(.+)$", markdown, re.MULTILINE)
 
     if subtitle_match:
         subtitle = subtitle_match.group(1)
     if footer_match:
         footer = footer_match.group(1)
+    if institutional_match:
+        # Parse institutional info: org1 | org2 | date | author1 | author2
+        inst_parts = [p.strip() for p in institutional_match.group(1).split("|")]
+        if len(inst_parts) >= 5:
+            ciia = inst_parts[0]
+            gaejuri = inst_parts[1]
+            date = inst_parts[2]
+            author1 = inst_parts[3]
+            author2 = inst_parts[4]
+
+            institutional_html = f'''      <div class="authors-meta-index">
+        <div class="authors-org-index">{esc(ciia)}</div>
+        <div class="authors-org-index">{esc(gaejuri)}</div>
+        <div class="authors-date-index">{esc(date)}</div>
+        <div class="authors-badges-row">
+          <span class="author-badge"><span class="author-icon"><i class="fas fa-user-tie"></i></span> {esc(author1)}</span>
+          <span class="author-badge"><span class="author-icon"><i class="fas fa-user-tie"></i></span> {esc(author2)}</span>
+        </div>
+      </div>'''
 
     # Extract topics (H2 with links)
     topic_pattern = r"^## \[([^\]]+)\]\(([^)]+)\)\s*\n\n(.+?)(?=\n\n\*\*\*|$)"
@@ -139,6 +160,7 @@ def generate_index_page(md_path: Path, out_path: Path) -> str:
     # Replace markers
     html_out = template.replace("<!-- AUTO:TITLE -->", esc(title))
     html_out = html_out.replace("<!-- AUTO:SUBTITLE -->", esc(subtitle))
+    html_out = html_out.replace("<!-- AUTO:INSTITUTIONAL -->", institutional_html)
     html_out = html_out.replace("<!-- AUTO:FOOTER -->", esc(footer))
     html_out = html_out.replace("      <!-- AUTO:CARDS:START -->\n      <!-- AUTO:CARDS:END -->", f"      <!-- AUTO:CARDS:START -->\n{cards_html}      <!-- AUTO:CARDS:END -->")
 

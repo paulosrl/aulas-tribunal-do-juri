@@ -2,7 +2,8 @@
 
 **site:** ciia.mppa.mp.br
 **subtítulo:** Selecione um tópico para acessar o conteúdo completo da formação.
-**rodapé:** MPPA — CIIA
+**rodapé:** Ministério Público do Pará - MPPA
+**institutional:** Comitê de Governança da Inovação e Inteligência Artificial - CIIA | Grupo de Atuação Especial do Júri – GAEJÚRI | 14 e 15 de maio de 2025 | Rodrigo Aquino | Paulo Lima
 
 ***
 

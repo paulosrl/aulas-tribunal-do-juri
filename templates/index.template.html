@@ -218,6 +218,77 @@
       .logos { gap: 0.7rem; }
       .site { font-size: 0.98rem; }
     }
+
+    .authors-meta-index {
+      margin: 0.6rem 0 0.5rem;
+      text-align: center;
+    }
+
+    .authors-org-index, .authors-date-index {
+      font-size: 0.85rem;
+      color: #3b0000;
+      margin: 0.2rem 0;
+      line-height: 1.4;
+    }
+
+    .authors-badges-row {
+      display: flex;
+      justify-content: center;
+      gap: 0.4rem;
+      margin-top: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .author-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.2rem;
+      padding: 0.2rem 0.4rem;
+      border-radius: 999px;
+      background: #facc15;
+      color: #3b0000;
+      font-weight: 600;
+      font-size: 0.8rem;
+      border: 1px solid #facc15;
+    }
+
+    .author-icon {
+      width: 0.95rem;
+      height: 0.95rem;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #f59e0b 0%, #f43f5e 52%, #8b5cf6 100%);
+      border: 1px solid rgba(255,255,255,0.45);
+      flex-shrink: 0;
+    }
+
+    .author-icon i {
+      color: #fff7d6;
+      font-size: 0.55rem;
+      line-height: 1;
+    }
+
+    body.dark-mode .authors-org-index,
+    body.dark-mode .authors-date-index {
+      color: #e8eefc;
+    }
+
+    body.dark-mode .author-badge {
+      color: #fbd246;
+      background: rgba(251, 210, 70, 0.12);
+      border: 1px solid rgba(251, 210, 70, 0.35);
+    }
+
+    body.dark-mode .author-icon {
+      background: linear-gradient(135deg, #fbd246 0%, #f59e0b 45%, #ef4444 100%);
+      border-color: rgba(251, 210, 70, 0.7);
+    }
+
+    body.dark-mode .author-icon i {
+      color: #1f2937;
+    }
   </style>
 </head>
 <body>
@@ -229,6 +300,7 @@
         <img src="mppa.png" alt="Símbolo MPPA" class="logo">
       </div>
       <h1><!-- AUTO:TITLE --></h1>
+      <!-- AUTO:INSTITUTIONAL -->
       <a class="site" href="https://ciia.mppa.mp.br" target="_blank" rel="noopener noreferrer">ciia.mppa.mp.br</a>
       <p class="subtitle"><!-- AUTO:SUBTITLE --></p>
     </section>
