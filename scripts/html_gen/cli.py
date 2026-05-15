@@ -151,11 +151,22 @@ def generate_index_page(md_path: Path, out_path: Path) -> str:
       <p class="desc">{esc(topic['desc'])}</p>
     </a>\n'''
 
+    # Process footer to add robot icons next to author names
+    footer_processed = footer
+    footer_processed = footer_processed.replace(
+        "Rodrigo Aquino",
+        '<span class="author-with-icon"><i class="fas fa-robot" style="color: #f59e0b;"></i> Rodrigo Aquino</span>'
+    )
+    footer_processed = footer_processed.replace(
+        "Paulo Lima",
+        '<span class="author-with-icon"><i class="fas fa-robot" style="color: #8b5cf6;"></i> Paulo Lima</span>'
+    )
+
     # Replace markers
     html_out = template.replace("<!-- AUTO:TITLE -->", esc(title))
     html_out = html_out.replace("<!-- AUTO:SUBTITLE -->", esc(subtitle))
     html_out = html_out.replace("<!-- AUTO:INSTITUTIONAL -->", institutional_html)
-    html_out = html_out.replace("<!-- AUTO:FOOTER -->", esc(footer))
+    html_out = html_out.replace("<!-- AUTO:FOOTER -->", footer_processed)
     html_out = html_out.replace("      <!-- AUTO:CARDS:START -->\n      <!-- AUTO:CARDS:END -->", f"      <!-- AUTO:CARDS:START -->\n{cards_html}      <!-- AUTO:CARDS:END -->")
 
     # Inject logo as data URI
