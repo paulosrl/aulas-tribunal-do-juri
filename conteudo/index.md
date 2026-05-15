@@ -1,6 +1,6 @@
 # Inteligência Artificial Aplicada ao Tribunal do Júri
 
-**rodapé:** Este material foi produzido por Rodrigo Aquino e Paulo Lima apoiado por ferramentas de IA (Maio/2026)
+**rodapé:** Material produzido por Rodrigo Aquino e Paulo Lima, com apoio de ferramentas de inteligência artificial. Maio de 2026.
 **institutional:** Comitê de Governança da Inovação e Inteligência Artificial - CIIA | Grupo de Atuação Especial do Júri – GAEJÚRI | 14 e 15 de maio de 2025
 
 ***
