@@ -1,11 +1,10 @@
 import re
-import html
 from typing import List
 from pathlib import Path
 
-from html_gen.utils import esc, safe_href, clean_md_title, strip_leading_number
+from html_gen.utils import esc, safe_href, clean_md_title, strip_leading_number, inline_md
 from html_gen.icons import pick_icon, pick_item_icon
-from html_gen.constants import TOPIC_NAV_ITEMS, NUMBERED_TOPIC_PAGES
+from html_gen.constants import TOPIC_NAV_ITEMS, NUMBERED_TOPIC_PAGES, COURSE_DATE_LABEL
 from html_gen.models import Card
 
 
@@ -16,7 +15,7 @@ def _default_authors_meta_html() -> str:
         '  <div class="authors-org">Comitê de Governança da Inovação e Inteligência Artificial - CIIA</div>\n'
         '  <div class="authors-org">Grupo de Atuação Especial do Júri – GAEJÚRI</div>\n'
         '  <div class="authors-date-row">\n'
-        '    <div class="authors-date">Inteligência Artificial Aplicada ao Tribunal do Júri - 14 e 15 de maio de 2025</div>\n'
+        f'    <div class="authors-date">{COURSE_DATE_LABEL}</div>\n'
         '    <div class="authors-badges"><span class="author-badge"><span class="author-icon"><i class="fas fa-user-tie"></i></span> Rodrigo Aquino</span><span class="author-badge"><span class="author-icon"><i class="fas fa-user-tie"></i></span> Paulo Lima</span></div>\n'
         "  </div>\n"
         "</div>"
@@ -32,33 +31,6 @@ def render_copilot_agent_cta(url: str) -> str:
         '<i class="fas fa-external-link-alt" aria-hidden="true"></i>'
         "</a>"
     )
-
-
-def inline_md(text: str) -> str:
-    """Convert markdown inline formatting to HTML."""
-    placeholders: dict[str, str] = {}
-
-    def _store(fragment: str) -> str:
-        key = f"\x02{len(placeholders)}\x03"
-        placeholders[key] = fragment
-        return key
-
-    def _make_link(url: str, label: str) -> str:
-        return _store(f'<a href="{safe_href(url)}" target="_blank">{esc(label)}</a>')
-
-    text = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", lambda m: _make_link(m.group(2), m.group(1)), text)
-    text = re.sub(r'(?<!["\'/])(https?://[^\s<>"{}^\[\]]+?)(?=[\s\[\]()]|$)', lambda m: _make_link(m.group(1), m.group(1)), text)
-
-    text = esc(text)
-
-    for key, fragment in placeholders.items():
-        text = text.replace(key, fragment)
-
-    text = re.sub(r"\\([\\`*_{}\[\]()#+\-.!])", r"\1", text)
-    text = re.sub(r"`([^`]+)`", lambda m: f"<code>{m.group(1)}</code>", text)
-    text = re.sub(r"\*\*([^*]+)\*\*", lambda m: f"<strong>{m.group(1)}</strong>", text)
-    text = re.sub(r"\*([^*]+)\*", lambda m: f"<em>{m.group(1)}</em>", text)
-    return text
 
 
 def render_cards(cards: List[Card], card_icons: List[str]) -> str:

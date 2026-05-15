@@ -64,3 +64,6 @@ TOPIC_NAV_ITEMS: list[tuple[str, str, str]] = [
 ]
 
 NUMBERED_TOPIC_PAGES = {item[1] for item in TOPIC_NAV_ITEMS}
+
+# Texto institucional centralizado para evitar divergência entre parser/renderer.
+COURSE_DATE_LABEL = "Inteligência Artificial Aplicada ao Tribunal do Júri - 14 e 15 de maio de 2026"

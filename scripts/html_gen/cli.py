@@ -238,8 +238,6 @@ def main() -> None:
     html_out = replace_between(html_out, CONTENT_START, CONTENT_END, content_html)
     html_out = replace_between(html_out, TOPICS_START, TOPICS_END, topics_html)
     html_out = apply_global_page_rules(html_out, out_path, md_path, args.page_title, menu_group_title)
-    html_out = replace_between(html_out, TOPICS_START, TOPICS_END, topics_html)
-    html_out = apply_global_page_rules(html_out, out_path, md_path, args.page_title, menu_group_title)
 
     out_path.write_text(html_out, encoding="utf-8")
     append_generation_log(out_path, html_out)

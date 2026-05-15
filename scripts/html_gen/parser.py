@@ -9,7 +9,7 @@ import re
 from pathlib import Path
 from typing import List
 
-from html_gen.constants import AGENT_HEADER_PAT
+from html_gen.constants import AGENT_HEADER_PAT, COURSE_DATE_LABEL
 from html_gen.models import Card
 from html_gen.utils import (
     esc,
@@ -829,7 +829,7 @@ def parse_markdown(markdown: str, md_dir: Path, section_mode: str = "semantic") 
                 "  <div class=\"authors-org\">Comitê de Governança da Inovação e Inteligência Artificial - CIIA</div>\n"
                 "  <div class=\"authors-org\">Grupo de Atuação Especial do Júri – GAEJÚRI</div>\n"
             )
-            date_html = '    <div class="authors-date">Inteligência Artificial Aplicada ao Tribunal do Júri - 14 e 15 de maio de 2025</div>'
+            date_html = f'    <div class="authors-date">{COURSE_DATE_LABEL}</div>'
             current.blocks.append(
                 '<div class="authors-meta">\n'
                 f"{org_html}"
