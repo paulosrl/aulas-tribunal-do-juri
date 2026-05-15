@@ -152,7 +152,7 @@ def generate_index_page(md_path: Path, out_path: Path) -> str:
     </a>\n'''
 
     # Process footer to add robot icons next to author names
-    footer_processed = footer
+    footer_processed = esc(footer)
     footer_processed = footer_processed.replace(
         "Rodrigo Aquino",
         '<span class="author-with-icon"><i class="fas fa-robot" style="color: #f59e0b;"></i> Rodrigo Aquino</span>'
