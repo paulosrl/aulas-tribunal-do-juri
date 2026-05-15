@@ -1,62 +1,46 @@
 # GEMINI.md
 
-Guia de trabalho do Gemini neste repositório.
+Memória operacional curta do projeto.
 
-## Estado Atual do Projeto
+## Estado Atual
 
-- Gerador principal: `scripts/gera_html.py`
-- Fontes: `conteudo/*.md`
-- Saídas: `html/*.html`
-- Template de tópicos: `templates/topico.template.html`
-- Template de landing: `templates/index.template.html`
+- Entrada de conteúdo: `conteudo/index.md` e `conteudo/1.md` ... `conteudo/7.md`.
+- Saídas: `html/index.html` e `html/1.html` ... `html/7.html`.
+- Templates: `templates/index.template.html` e `templates/topico.template.html`.
+- Pipeline principal: `scripts/html_gen/*` (via `scripts/gera_html.py`).
 
-## Build
+## Comandos de Trabalho
 
-### Landing
-
-```bash
-python3 scripts/gera_html.py conteudo/index.md html/index.html
-```
-
-### Tópico
+Build completo:
 
 ```bash
-python3 scripts/gera_html.py conteudo/N.md html/N.html \
-  --template templates/topico.template.html \
-  --page-title "<titulo>" \
-
-  --section-mode semantic
+python3 scripts/build_all.py
 ```
 
-### Favoritos
+Build unitário:
 
 ```bash
-python3 scripts/gera_html.py conteudo/6.md html/6.html \
-  --template templates/topico.template.html \
-  --page-title "Inteligência Artificial Aplicada ao Tribunal do Júri — Favoritos" \
-
-  --section-mode semantic
+python3 scripts/gera_html.py conteudo/N.md html/N.html --template templates/topico.template.html --page-title "<titulo>" --section-mode semantic
 ```
 
-### NotebookLM
+Lock/unlock de menu:
 
 ```bash
-python3 scripts/gera_html.py conteudo/7.md html/7.html \
-  --template templates/topico.template.html \
-  --page-title "NotebookLM no Tribunal do Júri" \
-
-  --section-mode semantic
+python3 scripts/lock_menu_items.py --items 4 5 7
+python3 scripts/lock_menu_items.py --items 4 5 7 --unlock
 ```
 
-## Regras Importantes
+## Regras Visuais Atuais
+
+- Tema claro: menu em `#8A1F3A`.
+- Tema escuro: destaques principais em `#fbd246`.
+- Subitens:
+  - claro em `#8A1F3A`
+  - escuro em branco
+- Ícones dos subitens mantêm paleta própria.
+
+## Regras de Segurança de Edição
 
 - Não remover marcadores `<!-- AUTO:* -->` dos templates.
-- Menu lateral padrão tem 7 itens, incluindo `Favoritos` e `NotebookLM`.
-- Botão de agente Copilot é detectado por linha `Acesse o agente: ...`.
-- Ícone do botão Copilot usa `copilot.png` e é embutido no CSS.
-
-## Graphify
-
-Siga o `AGENTS.md`:
-- ler `graphify-out/GRAPH_REPORT.md` para contexto arquitetural
-- após mudar código Python, rodar `graphify update .`
+- Sincronizar mudanças de estilo entre template e `postprocessor.py`.
+- Após alterar Python: `graphify update .`.

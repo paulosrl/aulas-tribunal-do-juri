@@ -1,92 +1,92 @@
-# Análise do Codebase - 2026-05-13
+# Análise do Codebase - 2026-05-14
 
 ## Resumo Executivo
 
-**Estado**: ✅ Clean repository  
-**Última análise**: 2026-05-13  
-**Arquivos analisados**: 29 arquivos principais
+- Estado: ativo e consistente com geração atual.
+- Escopo analisado: scripts Python, templates, conteúdo markdown e HTML gerado.
+- Fonte arquitetural: `graphify-out/GRAPH_REPORT.md` (build `2026-05-14`).
 
-### Estrutura
+## Estrutura Atual
 
-```
+```text
 aulas-tribunal-do-juri/
-├── scripts/           (2.039 linhas Python)
-├── conteudo/          (1.782 linhas Markdown + metadados)
-├── templates/         (2 templates HTML com Font Awesome 6)
-├── html/              (Saídas geradas)
-└── graphify-out/      (Análise arquitetural)
+├── conteudo/                 # 8 arquivos markdown (index + 1..7)
+├── templates/                # index.template.html e topico.template.html
+├── scripts/
+│   ├── build_all.py
+│   ├── gera_html.py          # wrapper de 7 linhas
+│   ├── lock_menu_items.py
+│   └── html_gen/             # pipeline modularizado
+├── html/                     # páginas geradas
+└── graphify-out/
 ```
 
-## Métricas Principais
+## Métricas de Código (linhas)
 
-| Métrica | Valor |
-|---------|-------|
-| **Tamanho código** | 1.854 linhas (gera_html.py) |
-| **Tamanho conteúdo** | 1.782 linhas (8 arquivos .md) |
-| **Proporção** | 1.14:1 (code:content) |
-| **Nós (graphify)** | 102 |
-| **Arestas** | 266 |
-| **Comunidades** | 11 |
-| **God nodes** | 2 (>20 edges) |
-| **Coesão alta** | Comunidades 9-10 (0.53-0.67) |
+- `scripts/gera_html.py`: 7
+- `scripts/html_gen/parser.py`: 860
+- `scripts/html_gen/postprocessor.py`: 417
+- `scripts/html_gen/renderer.py`: 254
+- `scripts/html_gen/cli.py`: 191
+- `scripts/html_gen/validation.py`: 170
+- `scripts/html_gen/*` total: 2.293
 
-## Componentes Críticos
+## Arquitetura de Geração
 
-### 1. Gerador Principal (`gera_html.py`)
-- **Responsabilidade**: Markdown → HTML via templates
-- **Linhas**: 1.854
-- **God node**: `build_topico.py` (30 arestas)
-- **Funções-chave**:
-  - `parse_markdown()` - 23+ arestas (crítica)
-  - `apply_global_page_rules()`
-  - `assign_unique_icons()`
-  - `generate_index_page()`
+Entrada de build:
+- `python3 scripts/build_all.py`
+- `python3 scripts/gera_html.py ...`
 
-### 2. Conteúdo Educacional
-- **5 tópicos**: 1.148 linhas (~5.6k palavras)
-- **Especiais**: Favoritos (42 linhas), NotebookLM (659 linhas)
-- **Landing**: index.md com 7 tópicos no menu
+Fluxo:
+1. `html_gen.cli`: parse de args e roteamento.
+2. `html_gen.parser`: markdown para `Card`.
+3. `html_gen.icons`: ícones únicos e consistentes.
+4. `html_gen.renderer`: conteúdo e menu/sumário.
+5. `html_gen.postprocessor`: ajustes visuais globais, CSS/JS e CTAs.
+6. `html_gen.validation`: completude e preservação de conteúdo.
 
-### 3. Sistema Visual
-- **Font Awesome 6**: Embutido nos templates
-- **Ícones**: Renderizados via CSS ::before + cor li-topic-icon
-- **Copilot button**: Data URI embutido (copilot.png)
+## Script de Lock/Unlock
 
-## Padrões Detectados
+Arquivo: `scripts/lock_menu_items.py`
 
-### Pontos Fortes
-✅ **Segurança**: Comunidade 9 com alta coesão (0.53) - escaping centralizado  
-✅ **Renderização**: Comunidade 10 com alta coesão (0.67) - menu/ícones bem integrados  
-✅ **Qualidade**: 100% de extração graphify (sem ambiguidades)  
-✅ **Simplicidade**: Maioria das funções < 50 linhas  
+- Atua em `html/index.html` e `html/1..7.html`.
+- Modos: lock, unlock e dry-run.
+- Remove/injeta bloqueio em itens de menu e cards por número de tópico.
+- Estado atual: fluxo idempotente sem duplicar cadeado ao reaplicar operação.
 
-### Pontos de Atenção
-⚠️ **gera_html.py**: 1.854 linhas (ideal: <800)  
-⚠️ **Graphify desatualizado**: Último em c536700, HEAD é 618e953  
-⚠️ **Hub central**: `esc()` conecta 5+ comunidades (refatorar com cuidado)  
+## Estado Visual Relevante
 
-## Histórico Recent
+- Tema claro:
+  - itens de menu em `#8A1F3A`
+  - subitens em `#8A1F3A`
+- Tema escuro:
+  - títulos principais e links destacados em `#fbd246`
+  - subitens em branco
+- Ícones dos subitens preservam cores originais (não forçados para branco).
 
-```
-618e953  refactor: update document titles and realign icon categories
-3cefff5  fix: update session metadata and session dates
-c536700  refactor: update course metadata, reorganize curriculum
-1b308b9  feat: add new site assets and update project infrastructure
-eec9c6d  chore: relocate copilot.png to the html directory
-```
+## Graphify (estado atual)
 
-**Padrão**: Refactors focados em metadados, nenhuma alteração destrutiva.
+Dados de `graphify-out/GRAPH_REPORT.md`:
+- 219 nós
+- 464 arestas
+- 8 comunidades
+- God node principal listado: `build_topico.py` (legado de nomenclatura do grafo)
 
-## Recomendações
+Observação:
+- O relatório inclui nomes legados, mas o pipeline real executado está em `scripts/html_gen/*`.
 
-1. **Manter graphify atualizado**: `graphify update .` após mudanças Python
-2. **Atenção com refatorações**: Comunidades 9-10 têm alta coesão (testes necessários)
-3. **Validação de conteúdo**: Função `validate_content_preservation()` é crítica
-4. **Documentação**: Manter CLAUDE.md, AGENTS.md, CODEX.md sincronizados
+## Riscos Técnicos
 
-## Próximas Ações
+- `parser.py` e `postprocessor.py` concentram boa parte da complexidade.
+- Regras de CSS injetadas no template e no pós-processador exigem sincronização para evitar regressão visual.
+- Mudanças de estrutura no menu exigem validação em todas as páginas (`1..7` e `index`).
 
-- [ ] Atualizar graphify: `graphify update .`
-- [ ] Review de gera_html.py para possível split
-- [ ] Verificar todos os 11 tópicos do menu lateral
-- [ ] Testar rendering de ícones FA6 em todos os navegadores
+## Rotina Recomendada de Validação
+
+1. `python3 scripts/build_all.py`
+2. Comparar hashes de `html/*.html` antes/depois quando necessário.
+3. Testar lock/unlock:
+   - `python3 scripts/lock_menu_items.py --items 4 5 7`
+   - `python3 scripts/lock_menu_items.py --items 4 5 7 --unlock`
+4. Atualizar grafo após mudanças em Python:
+   - `graphify update .`

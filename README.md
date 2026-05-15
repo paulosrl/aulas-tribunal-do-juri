@@ -6,69 +6,36 @@ Publicação: <https://paulosrl.github.io/aulas-tribunal-do-juri/>
 
 ## Visão Geral
 
-O projeto converte arquivos Markdown em:
-- `html/index.html` (landing page)
-- `html/1.html` ... `html/7.html` (páginas de tópicos)
+O projeto converte `conteudo/*.md` em:
+- `html/index.html` (landing)
+- `html/1.html` ... `html/7.html` (tópicos)
 
-A geração aplica automaticamente:
-- layout e estilos a partir de templates
-- menu lateral unificado de tópicos
-- tema claro/escuro
-- regras visuais e componentes (ex.: CTA de agente Copilot)
-- validações de completude e preservação de conteúdo
+O pipeline aplica templates, navegação lateral, tema claro/escuro, componentes visuais e validações de conteúdo automaticamente.
 
 ## Estrutura
 
 ```text
 .
 ├── conteudo/
-│   ├── index.md
-│   └── 1.md ... 7.md
 ├── templates/
-│   ├── index.template.html
-│   └── topico.template.html
 ├── scripts/
 │   ├── build_all.py
 │   ├── gera_html.py
 │   ├── lock_menu_items.py
 │   └── html_gen/
 ├── html/
-│   ├── index.html
-│   └── 1.html ... 7.html
-├── graphify-out/
-└── README.md
+└── graphify-out/
 ```
 
-## Como Gerar
+## Geração
 
-### Build completo (recomendado)
+Build completo:
 
 ```bash
 python3 scripts/build_all.py
 ```
 
-Opções:
-
-```bash
-python3 scripts/build_all.py --help
-python3 scripts/build_all.py --timeout 45
-```
-
-Comportamento:
-- descobre automaticamente `conteudo/*.md`
-- ordena em `index.md`, depois páginas numéricas
-- gera saída em `html/`
-- mostra sumário final com sucesso/falha por arquivo
-
-### Build por arquivo
-
-Landing:
-
-```bash
-python3 scripts/gera_html.py conteudo/index.md html/index.html
-```
-
-Tópico:
+Build de um arquivo:
 
 ```bash
 python3 scripts/gera_html.py conteudo/3.md html/3.html \
@@ -77,32 +44,25 @@ python3 scripts/gera_html.py conteudo/3.md html/3.html \
   --section-mode semantic
 ```
 
-## Pipeline de Geração (real)
+## Pipeline Real (scripts/html_gen)
 
-Entrada principal: `scripts/gera_html.py` (wrapper de `html_gen.cli.main`).
+Entrada: `scripts/gera_html.py` (wrapper fino para `html_gen.cli.main`).
 
-Fluxo:
-1. `cli.py`: parse de argumentos e roteamento (landing vs tópico)
-2. `parser.py`: markdown -> estrutura `Card` e blocos HTML
-3. `cli.py`: remoção automática de seções vazias (cards sem conteúdo útil)
-4. `icons.py`: atribuição de ícones únicos
-5. `renderer.py`: render de cards e navegação interna
-6. `postprocessor.py`: regras globais de página, CSS/JS e injeções finais
-7. `validation.py`: completude + preservação de conteúdo
-8. gravação do HTML final
+1. `cli.py`: argumentos e roteamento (landing x tópico)
+2. `parser.py`: markdown para estrutura `Card`
+3. `cli.py`: remoção de seções vazias
+4. `icons.py`: deduplicação e atribuição de ícones
+5. `renderer.py`: HTML de conteúdo + menu/sumário
+6. `postprocessor.py`: CSS/JS e ajustes globais finais
+7. `validation.py`: completude e preservação de conteúdo
 
-## Scripts Python
+## Scripts
 
-### `scripts/build_all.py`
-Orquestra o build de todos os markdowns em `conteudo/`.
+- `scripts/build_all.py`: orquestra build de todos os markdowns.
+- `scripts/gera_html.py`: ponto de entrada CLI do gerador.
+- `scripts/lock_menu_items.py`: trava/destrava itens de menu/cards por tópico.
 
-### `scripts/gera_html.py`
-Wrapper CLI para o módulo gerador `scripts/html_gen/cli.py`.
-
-### `scripts/lock_menu_items.py`
-Trava/destrava itens de menu e cards por número de tópico.
-
-Exemplos:
+Exemplos do lock:
 
 ```bash
 python3 scripts/lock_menu_items.py --items 4 5 7
@@ -110,41 +70,34 @@ python3 scripts/lock_menu_items.py --items 4 5 7 --unlock
 python3 scripts/lock_menu_items.py --items 4 5 7 --dry-run
 ```
 
-Observação: o script é idempotente no fluxo normal (executar lock ou unlock repetidamente não duplica alterações).
+## Regras de Estilo em Uso
 
-## `scripts/html_gen/`
+- Tema claro: texto de menu em `#8A1F3A`.
+- Tema escuro: títulos principais do menu e links destacados em `#fbd246`.
+- Subitens do menu:
+  - tema claro em `#8A1F3A`
+  - tema escuro em branco
+- Ícones mantêm paleta própria (não herdam cor forçada dos subitens).
 
-Módulo principal do gerador:
-- `cli.py`: orquestração
-- `parser.py`: parse de markdown
-- `renderer.py`: render em HTML
-- `postprocessor.py`: regras globais pós-render
-- `validation.py`: validações de segurança de conteúdo
-- `icons.py`: mapeamento de ícones
-- `classifier.py`: heurísticas de classificação de linhas
-- `utils.py`: utilitários
-- `constants.py`: constantes
-- `models.py`: `Card` e tipos
+## Observações
 
-## Comportamentos Importantes
+- `index.html` na raiz é redirecionador para `html/index.html`.
+- Landing embute `html/logo.png` e `html/mppa.png` como data URI quando disponíveis.
+- CTA “Acessar Agente Copilot” é convertido para botão estilizado no pós-processamento.
 
-- `index.html` na raiz do repositório é redirecionador para `html/index.html`.
-- A landing (`html/index.html`) embute logos quando `html/logo.png` e `html/mppa.png` existem.
-- Em páginas de tópico, links de CTA de agente Copilot são convertidos para botão estilizado.
-- No build atual, seções vazias são descartadas automaticamente para evitar cards sem conteúdo.
+## Graphify
 
-## Publicação
+Após alterar código Python:
 
 ```bash
-git add conteudo/ html/ scripts/ templates/ README.md
-git commit -m "Atualiza conteúdo e páginas geradas"
-git push origin main
+graphify update .
 ```
 
 ## Documentos Relacionados
 
 - `AGENTS.md`
-- `CLAUDE.md`
 - `CODEX.md`
+- `CLAUDE.md`
 - `GEMINI.md`
+- `CODEBASE_ANALYSIS.md`
 - `scripts/html_gen/README.md`
