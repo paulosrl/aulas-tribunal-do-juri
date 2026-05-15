@@ -29,3 +29,4 @@ Pacote principal de transformação `Markdown -> HTML` das páginas de tópico.
 - `scripts/gera_html.py` é wrapper fino para `html_gen.cli.main`.
 - As regras visuais críticas ficam em `templates/topico.template.html` e `postprocessor.py`.
 - Alterações de estilo devem manter template e pós-processador alinhados.
+- `cli.py` registra cada página gerada em `loggerador.md` com data/hora e hash SHA-256.

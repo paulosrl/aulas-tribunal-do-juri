@@ -11,6 +11,7 @@ Formato adotado:
 
 ### Added
 - Criação de `CHANGELOG.md` para rastrear mudanças de forma contínua.
+- Implementação do `loggerador.md` com registro por página gerada (página, data/hora e SHA-256).
 
 ### Changed
 - Padronização de cores no tema escuro com destaque em `#fbd246`.
@@ -27,6 +28,7 @@ Formato adotado:
 - Remoção de tabelas na área de sumário, mantendo estrutura em parágrafos com numeração e links.
 - Ajuste de estilo do sumário para negrito leve e padronização com `1.html`.
 - Sincronização de regras entre `templates/topico.template.html` e `scripts/html_gen/postprocessor.py`.
+- Atualização da documentação operacional para incluir o fluxo de log de geração automática.
 
 ### Fixed
 - Correção da cor do ícone da "Página Principal" conforme paleta definida.
@@ -47,3 +49,4 @@ Formato adotado:
 - Build completo executado em `index` e `1..7` com `python3 scripts/build_all.py`.
 - Testes de `lock`/`unlock` com `dry-run` no `scripts/lock_menu_items.py`.
 - Verificação de consistência por hash entre saídas HTML antes/depois de rebuild quando aplicável.
+- Revisão de pente-fino executada com `py_compile` + build + lock/unlock dry-run, sem falhas bloqueantes.

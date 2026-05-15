@@ -8,6 +8,7 @@ Memória operacional curta do projeto.
 - Saídas: `html/index.html` e `html/1.html` ... `html/7.html`.
 - Templates: `templates/index.template.html` e `templates/topico.template.html`.
 - Pipeline principal: `scripts/html_gen/*` (via `scripts/gera_html.py`).
+- Log de geração: `loggerador.md` (página, data/hora e SHA-256).
 
 ## Comandos de Trabalho
 
@@ -30,6 +31,12 @@ python3 scripts/lock_menu_items.py --items 4 5 7
 python3 scripts/lock_menu_items.py --items 4 5 7 --unlock
 ```
 
+Conferir log:
+
+```bash
+sed -n '1,40p' loggerador.md
+```
+
 ## Regras Visuais Atuais
 
 - Tema claro: menu em `#8A1F3A`.
@@ -44,3 +51,12 @@ python3 scripts/lock_menu_items.py --items 4 5 7 --unlock
 - Não remover marcadores `<!-- AUTO:* -->` dos templates.
 - Sincronizar mudanças de estilo entre template e `postprocessor.py`.
 - Após alterar Python: `graphify update .`.
+
+## Pente-fino Rápido
+
+```bash
+python3 -m py_compile scripts/build_all.py scripts/gera_html.py scripts/lock_menu_items.py scripts/html_gen/*.py
+python3 scripts/build_all.py
+python3 scripts/lock_menu_items.py --items 4 5 7 --dry-run
+python3 scripts/lock_menu_items.py --items 4 5 7 --unlock --dry-run
+```

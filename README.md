@@ -62,12 +62,32 @@ Entrada: `scripts/gera_html.py` (wrapper fino para `html_gen.cli.main`).
 - `scripts/gera_html.py`: ponto de entrada CLI do gerador.
 - `scripts/lock_menu_items.py`: trava/destrava itens de menu/cards por tópico.
 
+## Log de Geração
+
+- Arquivo: `loggerador.md`
+- Registro automático por página gerada com:
+  - caminho da página (`html/*.html`)
+  - data/hora de geração
+  - hash SHA-256 do HTML final
+- O log é alimentado pelo `scripts/html_gen/cli.py` a cada execução de geração.
+
+## Checklist de Revisão (Pente-fino)
+
+Executar após mudanças relevantes:
+
+```bash
+python3 -m py_compile scripts/build_all.py scripts/gera_html.py scripts/lock_menu_items.py scripts/html_gen/*.py
+python3 scripts/build_all.py
+python3 scripts/lock_menu_items.py --items 4 5 6 --dry-run
+python3 scripts/lock_menu_items.py --items 4 5 6 --unlock --dry-run
+```
+
 Exemplos do lock:
 
 ```bash
-python3 scripts/lock_menu_items.py --items 4 5 7
-python3 scripts/lock_menu_items.py --items 4 5 7 --unlock
-python3 scripts/lock_menu_items.py --items 4 5 7 --dry-run
+python3 scripts/lock_menu_items.py --items 4 5 6
+python3 scripts/lock_menu_items.py --items 4 5 6 --unlock
+python3 scripts/lock_menu_items.py --items 4 5 6 --dry-run
 ```
 
 ## Regras de Estilo em Uso
@@ -101,3 +121,4 @@ graphify update .
 - `GEMINI.md`
 - `CODEBASE_ANALYSIS.md`
 - `scripts/html_gen/README.md`
+- `loggerador.md`

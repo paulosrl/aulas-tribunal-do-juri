@@ -1,10 +1,11 @@
-# Análise do Codebase - 2026-05-14
+# Análise do Codebase - 2026-05-14 (pente-fino)
 
 ## Resumo Executivo
 
 - Estado: ativo e consistente com geração atual.
 - Escopo analisado: scripts Python, templates, conteúdo markdown e HTML gerado.
 - Fonte arquitetural: `graphify-out/GRAPH_REPORT.md` (build `2026-05-14`).
+- Revisão de pente-fino concluída sem falhas bloqueantes.
 
 ## Estrutura Atual
 
@@ -18,6 +19,7 @@ aulas-tribunal-do-juri/
 │   ├── lock_menu_items.py
 │   └── html_gen/             # pipeline modularizado
 ├── html/                     # páginas geradas
+├── loggerador.md             # trilha de geração (página/data/hora/hash)
 └── graphify-out/
 ```
 
@@ -27,7 +29,7 @@ aulas-tribunal-do-juri/
 - `scripts/html_gen/parser.py`: 860
 - `scripts/html_gen/postprocessor.py`: 417
 - `scripts/html_gen/renderer.py`: 254
-- `scripts/html_gen/cli.py`: 191
+- `scripts/html_gen/cli.py`: 212
 - `scripts/html_gen/validation.py`: 170
 - `scripts/html_gen/*` total: 2.293
 
@@ -44,6 +46,7 @@ Fluxo:
 4. `html_gen.renderer`: conteúdo e menu/sumário.
 5. `html_gen.postprocessor`: ajustes visuais globais, CSS/JS e CTAs.
 6. `html_gen.validation`: completude e preservação de conteúdo.
+7. `html_gen.cli`: append em `loggerador.md` com timestamp + SHA-256 por página.
 
 ## Script de Lock/Unlock
 
@@ -67,8 +70,8 @@ Arquivo: `scripts/lock_menu_items.py`
 ## Graphify (estado atual)
 
 Dados de `graphify-out/GRAPH_REPORT.md`:
-- 219 nós
-- 464 arestas
+- 226 nós
+- 472 arestas
 - 8 comunidades
 - God node principal listado: `build_topico.py` (legado de nomenclatura do grafo)
 
@@ -90,3 +93,17 @@ Observação:
    - `python3 scripts/lock_menu_items.py --items 4 5 7 --unlock`
 4. Atualizar grafo após mudanças em Python:
    - `graphify update .`
+
+## Pente-fino Executado (2026-05-14)
+
+Checklist aplicado:
+1. Compilação Python sem execução (`py_compile`) nos scripts principais e `scripts/html_gen/*`.
+2. Build completo (`python3 scripts/build_all.py`) com 8/8 páginas geradas.
+3. Dry-run do lock/unlock (`scripts/lock_menu_items.py`) sem regressão funcional.
+4. Verificação do novo logger (`loggerador.md`) ativo no fluxo de geração.
+
+Achados:
+- Nenhum erro de sintaxe em Python.
+- Nenhuma falha de geração no build automático.
+- Fluxo de lock/unlock consistente no estado atual.
+- Log por página (timestamp + SHA-256) funcionando conforme requisito.

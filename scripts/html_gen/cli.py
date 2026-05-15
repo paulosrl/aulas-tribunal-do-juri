@@ -1,7 +1,9 @@
 import argparse
 import base64
+import hashlib
 import mimetypes
 import re
+from datetime import datetime
 from pathlib import Path
 from typing import List
 from html_gen.constants import MENU_START, MENU_END, CONTENT_START, CONTENT_END, TOPICS_START, TOPICS_END
@@ -11,6 +13,23 @@ from html_gen.renderer import render_cards, render_menu_from_labels, render_topi
 from html_gen.postprocessor import apply_global_page_rules
 from html_gen.icons import assign_unique_icons
 from html_gen.validation import validate_completeness, validate_content_preservation
+
+REPO_ROOT = Path(__file__).resolve().parents[2]
+GEN_LOG_PATH = REPO_ROOT / "loggerador.md"
+
+
+def append_generation_log(output_path: Path, html_content: str) -> None:
+    """Append generation metadata for one page to loggerador.md."""
+    page_rel = output_path.resolve().relative_to(REPO_ROOT.resolve())
+    created_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    page_hash = hashlib.sha256(html_content.encode("utf-8")).hexdigest()
+    if not GEN_LOG_PATH.exists():
+        GEN_LOG_PATH.write_text(
+            "# Loggerador\n\n| Página | Data/Hora | SHA-256 |\n|---|---|---|\n",
+            encoding="utf-8",
+        )
+    with GEN_LOG_PATH.open("a", encoding="utf-8") as logf:
+        logf.write(f"| `{page_rel.as_posix()}` | `{created_at}` | `{page_hash}` |\n")
 
 
 def _card_has_meaningful_content(card) -> bool:
@@ -156,6 +175,7 @@ def main() -> None:
     if out_path.name == "index.html":
         html_out = generate_index_page(md_path, out_path)
         out_path.write_text(html_out, encoding="utf-8")
+        append_generation_log(out_path, html_out)
         print(f"OK: {out_path} gerado como landing page.")
         return
 
@@ -179,6 +199,7 @@ def main() -> None:
     html_out = apply_global_page_rules(html_out, out_path, md_path, args.page_title, menu_group_title)
 
     out_path.write_text(html_out, encoding="utf-8")
+    append_generation_log(out_path, html_out)
     print(f"OK: {out_path} gerado a partir de {md_path} com {len(cards)} seção(ões).")
     if removed_empty_cards:
         print(f"INFO: {removed_empty_cards} seção(ões) vazia(s) foram removidas automaticamente.")
