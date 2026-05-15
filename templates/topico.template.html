@@ -559,7 +559,6 @@
             display: flex;
             flex-wrap: wrap;
             gap: 0.45rem;
-            margin-bottom: 0.35rem;
         }
         .author-badge {
             display: inline-flex;
@@ -611,9 +610,32 @@
             line-height: 1.45;
         }
         .authors-note {
-            margin-top: 0.25rem;
             font-size: 1.008rem;
             opacity: 0.85;
+            flex: 1;
+        }
+        .authors-note-row {
+            margin-top: 0.35rem;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.6rem;
+        }
+        .authors-note-row .authors-badges {
+            justify-content: flex-end;
+            margin-left: auto !important;
+            flex-shrink: 0;
+        }
+        @media (max-width: 720px) {
+            .authors-note-row {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .authors-note-row .authors-badges {
+                margin-left: 0;
+                justify-content: flex-start;
+            }
         }
         .media-figure {
             margin: 1rem 0 1.3rem 0;
@@ -719,9 +741,11 @@
             <section id="p1" class="caor-card">
                 <h1><i class="fas fa-list-ol"></i> O Gabinete como Centro de Inteligência Analítica com NotebookLM</h1>
                 <div class="authors-meta">
-                  <div class="authors-badges"><span class="author-badge"><span class="author-icon"><i class="fas fa-user-tie"></i></span> Rodrigo Aquino</span><span class="author-badge"><span class="author-icon"><i class="fas fa-user-tie"></i></span> Paulo Lima</span></div>
                   <div class="authors-org">MPPA -  CIIA  (14 e 15 de maio de 2026)</div>
-                  <div class="authors-note">Material produzido com apoio de ferramentas de IA</div>
+                  <div class="authors-note-row">
+                    <div class="authors-note">Material produzido com apoio de ferramentas de IA</div>
+                    <div class="authors-badges"><span class="author-badge"><span class="author-icon"><i class="fas fa-user-tie"></i></span> Rodrigo Aquino</span><span class="author-badge"><span class="author-icon"><i class="fas fa-user-tie"></i></span> Paulo Lima</span></div>
+                  </div>
                 </div>
             </section>
 

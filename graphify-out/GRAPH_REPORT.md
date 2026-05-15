@@ -1,7 +1,7 @@
 # Graph Report - aulas-tribunal-do-juri  (2026-05-14)
 
 ## Corpus Check
-- 14 files · ~79,782 words
+- 14 files · ~80,399 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `e3d8dda1`
+- Built from commit: `8b31cfee`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -37,16 +37,16 @@
 10. `main()` - 14 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `Imprime cabeçalho visual` --rationale_for--> `print_header()`  [EXTRACTED]
-  build_all.py → scripts/build_all.py
-- `Imprime sumário final` --rationale_for--> `print_summary()`  [EXTRACTED]
-  build_all.py → scripts/build_all.py
-- `main()` --calls--> `replace_between()`  [INFERRED]
-  scripts/html_gen/cli.py → scripts/html_gen/utils.py
-- `render_topics_menu()` --calls--> `esc()`  [EXTRACTED]
-  gera_html.py → scripts/gera_html.py
-- `Regra absoluta: o HTML não pode perder conteúdo relevante do markdown.     Faz v` --rationale_for--> `validate_content_preservation()`  [EXTRACTED]
-  gera_html.py → scripts/gera_html.py
+- `parse_agent_block()` --calls--> `esc()`  [INFERRED]
+  html_gen/parser.py → scripts/html_gen/utils.py
+- `parse_markdown()` --calls--> `esc()`  [INFERRED]
+  html_gen/parser.py → scripts/html_gen/utils.py
+- `parse_agent_block()` --calls--> `safe_href()`  [INFERRED]
+  html_gen/parser.py → scripts/html_gen/utils.py
+- `parse_markdown()` --calls--> `safe_href()`  [INFERRED]
+  html_gen/parser.py → scripts/html_gen/utils.py
+- `main()` --calls--> `parse_markdown()`  [INFERRED]
+  scripts/html_gen/cli.py → html_gen/parser.py
 
 ## Communities (8 total, 0 thin omitted)
 

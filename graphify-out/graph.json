@@ -735,7 +735,7 @@
     {
       "label": "parser.py",
       "file_type": "code",
-      "source_file": "scripts/html_gen/parser.py",
+      "source_file": "html_gen/parser.py",
       "source_location": "L1",
       "id": "html_gen_parser_py",
       "community": 0,
@@ -744,7 +744,7 @@
     {
       "label": "strip_source_references()",
       "file_type": "code",
-      "source_file": "scripts/html_gen/parser.py",
+      "source_file": "html_gen/parser.py",
       "source_location": "L32",
       "id": "html_gen_parser_strip_source_references",
       "community": 0,
@@ -753,7 +753,7 @@
     {
       "label": "extract_h1_title()",
       "file_type": "code",
-      "source_file": "scripts/html_gen/parser.py",
+      "source_file": "html_gen/parser.py",
       "source_location": "L56",
       "id": "html_gen_parser_extract_h1_title",
       "community": 0,
@@ -762,7 +762,7 @@
     {
       "label": "parse_authors_line()",
       "file_type": "code",
-      "source_file": "scripts/html_gen/parser.py",
+      "source_file": "html_gen/parser.py",
       "source_location": "L66",
       "id": "html_gen_parser_parse_authors_line",
       "community": 0,
@@ -771,7 +771,7 @@
     {
       "label": "parse_agent_block()",
       "file_type": "code",
-      "source_file": "scripts/html_gen/parser.py",
+      "source_file": "html_gen/parser.py",
       "source_location": "L88",
       "id": "html_gen_parser_parse_agent_block",
       "community": 0,
@@ -780,7 +780,7 @@
     {
       "label": "split_key_value_item()",
       "file_type": "code",
-      "source_file": "scripts/html_gen/parser.py",
+      "source_file": "html_gen/parser.py",
       "source_location": "L174",
       "id": "html_gen_parser_split_key_value_item",
       "community": 0,
@@ -789,7 +789,7 @@
     {
       "label": "extract_agent_access_url()",
       "file_type": "code",
-      "source_file": "scripts/html_gen/parser.py",
+      "source_file": "html_gen/parser.py",
       "source_location": "L197",
       "id": "html_gen_parser_extract_agent_access_url",
       "community": 0,
@@ -798,7 +798,7 @@
     {
       "label": "render_copilot_agent_cta()",
       "file_type": "code",
-      "source_file": "scripts/html_gen/parser.py",
+      "source_file": "html_gen/parser.py",
       "source_location": "L221",
       "id": "html_gen_parser_render_copilot_agent_cta",
       "community": 2,
@@ -807,7 +807,7 @@
     {
       "label": "derive_page_card_title()",
       "file_type": "code",
-      "source_file": "scripts/html_gen/parser.py",
+      "source_file": "html_gen/parser.py",
       "source_location": "L233",
       "id": "html_gen_parser_derive_page_card_title",
       "community": 0,
@@ -816,7 +816,7 @@
     {
       "label": "file_to_data_uri()",
       "file_type": "code",
-      "source_file": "scripts/html_gen/parser.py",
+      "source_file": "html_gen/parser.py",
       "source_location": "L288",
       "id": "html_gen_parser_file_to_data_uri",
       "community": 0,
@@ -825,7 +825,7 @@
     {
       "label": "parse_markdown()",
       "file_type": "code",
-      "source_file": "scripts/html_gen/parser.py",
+      "source_file": "html_gen/parser.py",
       "source_location": "L299",
       "id": "html_gen_parser_parse_markdown",
       "community": 0,
@@ -834,7 +834,7 @@
     {
       "label": "Parser module: Markdown \u2192 List[Card] conversion.  Core parsing logic for convert",
       "file_type": "rationale",
-      "source_file": "scripts/html_gen/parser.py",
+      "source_file": "html_gen/parser.py",
       "source_location": "L1",
       "id": "html_gen_parser_rationale_1",
       "community": 0,
@@ -843,7 +843,7 @@
     {
       "label": "Remove APENAS refer\u00eancias autom\u00e1ticas de ferramentas (SharePoint, Copilot Chat).",
       "file_type": "rationale",
-      "source_file": "scripts/html_gen/parser.py",
+      "source_file": "html_gen/parser.py",
       "source_location": "L33",
       "id": "html_gen_parser_rationale_33",
       "community": 0,
@@ -852,7 +852,7 @@
     {
       "label": "Extract the H1 title from markdown source.",
       "file_type": "rationale",
-      "source_file": "scripts/html_gen/parser.py",
+      "source_file": "html_gen/parser.py",
       "source_location": "L57",
       "id": "html_gen_parser_rationale_57",
       "community": 0,
@@ -861,7 +861,7 @@
     {
       "label": "Parse authors metadata line.      Example: \"Autores: Rodrigo Aquino e Paulo Lima",
       "file_type": "rationale",
-      "source_file": "scripts/html_gen/parser.py",
+      "source_file": "html_gen/parser.py",
       "source_location": "L67",
       "id": "html_gen_parser_rationale_67",
       "community": 0,
@@ -870,7 +870,7 @@
     {
       "label": "Parse agent block: description, pillars, and access link.      Returns: (html_bl",
       "file_type": "rationale",
-      "source_file": "scripts/html_gen/parser.py",
+      "source_file": "html_gen/parser.py",
       "source_location": "L89",
       "id": "html_gen_parser_rationale_89",
       "community": 0,
@@ -879,7 +879,7 @@
     {
       "label": "Split key-value item from markdown.      Acepta padr\u00f5es como:     - \u2696\ufe0f **Ativida",
       "file_type": "rationale",
-      "source_file": "scripts/html_gen/parser.py",
+      "source_file": "html_gen/parser.py",
       "source_location": "L175",
       "id": "html_gen_parser_rationale_175",
       "community": 0,
@@ -888,7 +888,7 @@
     {
       "label": "Extract agent access URL from paragraph text.      Matches:     - \"Acesse o agen",
       "file_type": "rationale",
-      "source_file": "scripts/html_gen/parser.py",
+      "source_file": "html_gen/parser.py",
       "source_location": "L198",
       "id": "html_gen_parser_rationale_198",
       "community": 0,
@@ -897,7 +897,7 @@
     {
       "label": "Render CTA (Call-to-Action) button for Copilot agent access.",
       "file_type": "rationale",
-      "source_file": "scripts/html_gen/parser.py",
+      "source_file": "html_gen/parser.py",
       "source_location": "L222",
       "id": "html_gen_parser_rationale_222",
       "community": 2,
@@ -906,7 +906,7 @@
     {
       "label": "Derive card title from lines, prioritizing headings and bold text.      Used in",
       "file_type": "rationale",
-      "source_file": "scripts/html_gen/parser.py",
+      "source_file": "html_gen/parser.py",
       "source_location": "L234",
       "id": "html_gen_parser_rationale_234",
       "community": 0,
@@ -915,7 +915,7 @@
     {
       "label": "Convert image file to data URI for embedding.",
       "file_type": "rationale",
-      "source_file": "scripts/html_gen/parser.py",
+      "source_file": "html_gen/parser.py",
       "source_location": "L289",
       "id": "html_gen_parser_rationale_289",
       "community": 0,
@@ -924,7 +924,7 @@
     {
       "label": "MAIN PARSER: Convert markdown to List[Card].      This is the core parsing engin",
       "file_type": "rationale",
-      "source_file": "scripts/html_gen/parser.py",
+      "source_file": "html_gen/parser.py",
       "source_location": "L300",
       "id": "html_gen_parser_rationale_300",
       "community": 0,
@@ -6993,5 +6993,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "e3d8dda1efeeadff8f1e6ba8be0682582a62a562"
+  "built_at_commit": "8b31cfee9d9355bfa715f6d7e7a61ca3e2f978a0"
 }

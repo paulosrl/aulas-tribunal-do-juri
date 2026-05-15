@@ -827,10 +827,12 @@ def parse_markdown(markdown: str, md_dir: Path, section_mode: str = "semantic") 
             date_html = f'  <div class="authors-date">{safe_date}</div>\n' if safe_date else ""
             current.blocks.append(
                 '<div class="authors-meta">\n'
-                f'  <div class="authors-badges">{"".join(author_badges)}</div>\n'
                 f'  <div class="authors-org">{safe_org}</div>\n'
                 f"{date_html}"
-                '  <div class="authors-note">Material produzido com apoio de ferramentas de IA</div>\n'
+                '  <div class="authors-note-row">\n'
+                '    <div class="authors-note">Material produzido com apoio de ferramentas de IA</div>\n'
+                f'    <div class="authors-badges">{"".join(author_badges)}</div>\n'
+                "  </div>\n"
                 "</div>"
             )
             continue
