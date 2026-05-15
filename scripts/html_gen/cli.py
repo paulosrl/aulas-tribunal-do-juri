@@ -155,11 +155,11 @@ def generate_index_page(md_path: Path, out_path: Path) -> str:
     footer_processed = esc(footer)
     footer_processed = footer_processed.replace(
         "Rodrigo Aquino",
-        '<span class="author-with-icon"><i class="fas fa-microchip" style="color: #f59e0b;"></i> Rodrigo Aquino</span>'
+        '<span class="author-with-icon">🤖 Rodrigo Aquino</span>'
     )
     footer_processed = footer_processed.replace(
         "Paulo Lima",
-        '<span class="author-with-icon"><i class="fas fa-microchip" style="color: #8b5cf6;"></i> Paulo Lima</span>'
+        '<span class="author-with-icon">🤖 Paulo Lima</span>'
     )
 
     # Replace markers
