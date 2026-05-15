@@ -3,7 +3,10 @@
     "allow": [
       "Bash(git commit *)",
       "Bash(grep -n \"^def \\\\|^class \\\\|^[A-Z_]\\\\{2,\\\\} \" /home/pl/projetos/aulas-tribunal-do-juri/scripts/gera_html.py)",
-      "Bash(python3 scripts/gera_html.py conteudo/index.md html/index.html)"
+      "Bash(python3 scripts/gera_html.py conteudo/index.md html/index.html)",
+      "Bash(python3 scripts/build_all.py)",
+      "Bash(git revert *)",
+      "Bash(python3 scripts/gera_html.py conteudo/1.md html/1.html --template templates/topico.template.html --section-mode semantic)"
     ]
   }
 }

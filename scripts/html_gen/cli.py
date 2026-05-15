@@ -6,7 +6,7 @@ import re
 from datetime import datetime
 from pathlib import Path
 from typing import List
-from html_gen.constants import MENU_START, MENU_END, CONTENT_START, CONTENT_END, TOPICS_START, TOPICS_END
+from html_gen.constants import MENU_START, MENU_END, CONTENT_START, CONTENT_END, TOPICS_START, TOPICS_END, TOPIC_NAV_ITEMS
 from html_gen.utils import esc, safe_href, replace_between
 from html_gen.parser import parse_markdown, extract_h1_title
 from html_gen.renderer import render_cards, render_menu_from_labels, render_topics_accordion
@@ -210,21 +210,31 @@ def main() -> None:
     menu_group_title = primary_h1 or args.page_title
     topics_html = render_topics_accordion(out_path, cards, card_icons, args.menu_icon)
 
-    # Extract topic number from filename (e.g., 1.md → 1)
-    topic_number = ""
-    topic_title_html = ""
+    # Extract topic number and insert after authors section
     md_stem = md_path.stem
     if md_stem.isdigit():
         topic_number = md_stem
-        # Extract title from H1 and remove leading number if present
-        h1_title = primary_h1 or ""
-        # Remove leading "Tópico N |" pattern if present
-        h1_title = re.sub(r"^[Tt]ópico\s+\d+\s*\|\s*", "", h1_title).strip()
-        # Always generate even if h1_title is empty
-        topic_title_html = f'<div class="topic-header"><span class="topic-number">{topic_number}</span> <span class="topic-title">{esc(h1_title)}</span></div>'
+        # Get topic name from TOPIC_NAV_ITEMS for numbered pages
+        topic_name = None
+        html_filename = f"{md_stem}.html"
+        for label, filename, _ in TOPIC_NAV_ITEMS:
+            if filename == html_filename:
+                topic_name = label
+                break
+        # If not found in TOPIC_NAV_ITEMS, fall back to H1 title
+        if not topic_name:
+            h1_title = primary_h1 or ""
+            h1_title = re.sub(r"^[Tt]ópico\s+\d+\s*\|\s*", "", h1_title).strip()
+            topic_name = h1_title or f"Tópico {topic_number}"
+        # Create topic header HTML
+        topic_title_html = f'<div class="topic-header"><span class="topic-number">{topic_number}</span> <span class="topic-title">{esc(topic_name)}</span></div>\n'
+        # Insert after the first section (authors section)
+        # Pattern: closing </section> followed by newlines
+        pattern = r'(            </section>\n\n)'
+        replacement = r'\1' + topic_title_html + '\n'
+        content_html = re.sub(pattern, replacement, content_html, count=1)
 
-    # Replace topic header BEFORE replace_between (to avoid it being overwritten)
-    html_out = template.replace("<!-- AUTO:TOPIC:HEADER -->", topic_title_html)
+    html_out = template.replace("<!-- AUTO:TOPIC:HEADER -->", "")
     html_out = replace_between(html_out, CONTENT_START, CONTENT_END, content_html)
     html_out = replace_between(html_out, TOPICS_START, TOPICS_END, topics_html)
     html_out = apply_global_page_rules(html_out, out_path, md_path, args.page_title, menu_group_title)

@@ -326,8 +326,11 @@
         .topic-title {
             font-size: clamp(1.2rem, 3vw, 1.8rem);
             font-weight: 600;
-            color: var(--text-main);
+            color: #8a1f3a;
             line-height: 1.3;
+        }
+        body.dark-mode .topic-title {
+            color: var(--text-main);
         }
 
         /* Card Datavirtus */
@@ -680,6 +683,32 @@
                 align-items: flex-start;
             }
             .authors-note-row .authors-badges {
+                margin-left: 0;
+                justify-content: flex-start;
+            }
+        }
+        .authors-date-row {
+            margin-top: 0.35rem;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.6rem;
+        }
+        .authors-date-row .authors-date {
+            flex: 1;
+        }
+        .authors-date-row .authors-badges {
+            justify-content: flex-end;
+            margin-left: auto !important;
+            flex-shrink: 0;
+        }
+        @media (max-width: 720px) {
+            .authors-date-row {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .authors-date-row .authors-badges {
                 margin-left: 0;
                 justify-content: flex-start;
             }
@@ -1453,13 +1482,14 @@ body.dark-mode .caor-card a.copilot-agent-cta {
                   <div class="authors-org authors-org-first">Ministério Público do Estado do Pará - MPPA</div>
                   <div class="authors-org">Comitê de Governança da Inovação e Inteligência Artificial - CIIA</div>
                   <div class="authors-org">Grupo de Atuação Especial do Júri – GAEJÚRI</div>
-                  <div class="authors-date">Inteligência Artificial Aplicada ao Tribunal do Júri - 14 e 15 de maio de 2025</div>
-                  <div class="authors-note-row">
-                    <div class="authors-note">Material produzido com apoio de ferramentas de IA por:</div>
+                  <div class="authors-date-row">
+                    <div class="authors-date">Inteligência Artificial Aplicada ao Tribunal do Júri - 14 e 15 de maio de 2025</div>
                     <div class="authors-badges"><span class="author-badge"><span class="author-icon"><i class="fas fa-user-tie"></i></span> Rodrigo Aquino</span><span class="author-badge"><span class="author-icon"><i class="fas fa-user-tie"></i></span> Paulo Lima</span></div>
                   </div>
                 </div>
             </section>
+
+<div class="topic-header"><span class="topic-number">7</span> <span class="topic-title">Notebooklm - Guia e Dicas</span></div>
 
             <section id="p2" class="caor-card">
                 <h1><i class="fas fa-book-open"></i> Apresentação</h1>

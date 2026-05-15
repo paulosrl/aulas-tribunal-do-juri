@@ -40,16 +40,16 @@
     "hash": "d1a4aab0e0b84843c34d1079ce75d39e"
   },
   "/home/pl/projetos/aulas-tribunal-do-juri/scripts/html_gen/renderer.py": {
-    "mtime": 1778802995.3102362,
-    "hash": "b7a89602b355ceef043886b695f6fc73"
+    "mtime": 1778809984.7461894,
+    "hash": "d00757bd26ac25122a06e9ea4a49a949"
   },
   "/home/pl/projetos/aulas-tribunal-do-juri/scripts/html_gen/models.py": {
     "mtime": 1778712138.3285532,
     "hash": "bea21020fd559c2b04565e7b59a7d3e4"
   },
   "/home/pl/projetos/aulas-tribunal-do-juri/scripts/html_gen/parser.py": {
-    "mtime": 1778808765.0976267,
-    "hash": "307632bca1f3d549dcd07787df813e73"
+    "mtime": 1778809712.4876533,
+    "hash": "05c2180141bd493689edf817ccc7d833"
   },
   "/home/pl/projetos/aulas-tribunal-do-juri/scripts/html_gen/constants.py": {
     "mtime": 1778799912.9271352,
@@ -76,8 +76,8 @@
     "hash": "8504e84939dfd2952f634d8b68ec3477"
   },
   "/home/pl/projetos/aulas-tribunal-do-juri/loggerador.md": {
-    "mtime": 1778806845.7765653,
-    "hash": "abe4a05dc3ae04744638dd5d366bc5a7"
+    "mtime": 1778809995.32511,
+    "hash": "2eef31cd683b8ef861b4e43e6367e7f5"
   },
   "/home/pl/projetos/aulas-tribunal-do-juri/CHANGELOG.md": {
     "mtime": 1778806886.0051105,
@@ -92,80 +92,80 @@
     "hash": "b99568bf2d825dc9e89e58b7f4c3ef52"
   },
   "/home/pl/projetos/aulas-tribunal-do-juri/templates/topico.template.html": {
-    "mtime": 1778808756.6311157,
-    "hash": "9cfc76968911d6453a3ff94b1ed15705"
+    "mtime": 1778809992.2524438,
+    "hash": "d281fb453800ee6c60d179ff72ad3619"
   },
   "/home/pl/projetos/aulas-tribunal-do-juri/templates/index.template.html": {
     "mtime": 1778804973.0600955,
     "hash": "a24569e25cf36653eb7b6c100044db1b"
   },
   "/home/pl/projetos/aulas-tribunal-do-juri/conteudo/1.md": {
-    "mtime": 1778713827.0159702,
-    "hash": "4693f67cdefbb616c0488fedb7fde71c"
+    "mtime": 1778809651.6444783,
+    "hash": "76d70d156d5d5bb284038d4f8abf63db"
   },
   "/home/pl/projetos/aulas-tribunal-do-juri/conteudo/7.md": {
     "mtime": 1778799912.9124684,
     "hash": "be5fb94b75a719c0ef40f28f465e0160"
   },
   "/home/pl/projetos/aulas-tribunal-do-juri/conteudo/index.md": {
-    "mtime": 1778799912.9124684,
-    "hash": "a5587a5380108384d7f9f5f8a925db88"
+    "mtime": 1778809651.648145,
+    "hash": "dca220cc79d863d36f7a68a40211243e"
   },
   "/home/pl/projetos/aulas-tribunal-do-juri/conteudo/5.md": {
-    "mtime": 1778799912.9124684,
-    "hash": "5dc45e9098e5d601615b359f4482d286"
+    "mtime": 1778809651.6444783,
+    "hash": "7c220f8bcf3633469dcfaa109dd7cd3d"
   },
   "/home/pl/projetos/aulas-tribunal-do-juri/conteudo/3.md": {
-    "mtime": 1778707833.243681,
-    "hash": "0c0b0fb900312482b306087cac1e6547"
+    "mtime": 1778809651.6444783,
+    "hash": "2789aafa362baa2fdf686cdb40c9cca1"
   },
   "/home/pl/projetos/aulas-tribunal-do-juri/conteudo/4.md": {
-    "mtime": 1778709859.0992892,
-    "hash": "fc083fb0f0ea09d0d401a05471605f6d"
+    "mtime": 1778809651.6444783,
+    "hash": "b1570cc2d8f7eae7ebfbac9a8bfc2888"
   },
   "/home/pl/projetos/aulas-tribunal-do-juri/conteudo/6.md": {
     "mtime": 1778799912.9124684,
     "hash": "5fb0e10fa9c8ce9b1b8472615fa0b657"
   },
   "/home/pl/projetos/aulas-tribunal-do-juri/conteudo/2.md": {
-    "mtime": 1778684635.813414,
-    "hash": "cc793be4271e2e3cb085d6fbec8799fc"
+    "mtime": 1778809651.6444783,
+    "hash": "9d6e06761f9c718f04a1a696798c4061"
   },
   "/home/pl/projetos/aulas-tribunal-do-juri/scripts/html_gen/README.md": {
     "mtime": 1778806256.9551792,
     "hash": "0272e0aab889251f7d75802904b24688"
   },
   "/home/pl/projetos/aulas-tribunal-do-juri/html/4.html": {
-    "mtime": 1778808782.015626,
-    "hash": "81cc5073db5730280a45242158285512"
+    "mtime": 1778809995.1197767,
+    "hash": "db1b20014e9aa005fed2ce572cc6f1bc"
   },
   "/home/pl/projetos/aulas-tribunal-do-juri/html/3.html": {
-    "mtime": 1778808782.0119593,
-    "hash": "79c66b95997096d0f2ba105372733551"
+    "mtime": 1778809995.0354435,
+    "hash": "a2192b0e2ba370491818c96d3969bb46"
   },
   "/home/pl/projetos/aulas-tribunal-do-juri/html/index.html": {
-    "mtime": 1778808782.0192926,
-    "hash": "b08c3da30c7a134f9e9522caaa3d2409"
+    "mtime": 1778809994.8484435,
+    "hash": "60b89bbe80ee21b9ff20032bce80688a"
   },
   "/home/pl/projetos/aulas-tribunal-do-juri/html/7.html": {
-    "mtime": 1778808782.0192926,
-    "hash": "e6e2c83f457d2e5a32facfbbfeee4db6"
+    "mtime": 1778809995.3214433,
+    "hash": "3bdda4732a20d459854c3b5717043e5c"
   },
   "/home/pl/projetos/aulas-tribunal-do-juri/html/5.html": {
-    "mtime": 1778808782.015626,
-    "hash": "70522fbc13d0bb24e52fa3a781b32f8d"
+    "mtime": 1778809995.1894433,
+    "hash": "9f39dde6576e7ae0560b842719268e1a"
   },
   "/home/pl/projetos/aulas-tribunal-do-juri/html/1.html": {
-    "mtime": 1778808782.0082924,
-    "hash": "932ddb4d99a5c7611282070d507f7692"
+    "mtime": 1778809994.8924434,
+    "hash": "ebf6d6b5b4a87af0dc11a1c3d1ee46be"
   },
   "/home/pl/projetos/aulas-tribunal-do-juri/html/2.html": {
-    "mtime": 1778808782.0119593,
-    "hash": "05b6cd94da84d4166aadcab346d5622c"
+    "mtime": 1778809994.9657767,
+    "hash": "ec51c409d1826ce033762b295e57e14f"
   },
   "/home/pl/projetos/aulas-tribunal-do-juri/html/6.html": {
-    "mtime": 1778808782.0192926,
-    "hash": "46c01de09e3f5825e14f84d75f50e0c5"
+    "mtime": 1778809995.2554433,
+    "hash": "01e78f3f5e265bc93dd90fbfd4e6887f"
   },
   "/home/pl/projetos/aulas-tribunal-do-juri/conteudo/logo.png": {
     "mtime": 1778553201.5873196,

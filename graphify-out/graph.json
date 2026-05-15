@@ -270,7 +270,7 @@
       "source_file": "scripts/html_gen/postprocessor.py",
       "source_location": "L1",
       "id": "html_gen_postprocessor_py",
-      "community": 2,
+      "community": 3,
       "norm_label": "postprocessor.py"
     },
     {
@@ -279,7 +279,7 @@
       "source_file": "scripts/html_gen/postprocessor.py",
       "source_location": "L8",
       "id": "html_gen_postprocessor_apply_global_page_rules",
-      "community": 2,
+      "community": 3,
       "norm_label": "apply_global_page_rules()"
     },
     {
@@ -288,7 +288,7 @@
       "source_file": "scripts/html_gen/postprocessor.py",
       "source_location": "L15",
       "id": "html_gen_postprocessor_rationale_15",
-      "community": 2,
+      "community": 3,
       "norm_label": "apply global post-processing rules to html output.      handles:     - title inj"
     },
     {
@@ -369,7 +369,7 @@
       "source_file": "scripts/html_gen/validation.py",
       "source_location": "L1",
       "id": "html_gen_validation_py",
-      "community": 2,
+      "community": 3,
       "norm_label": "validation.py"
     },
     {
@@ -378,7 +378,7 @@
       "source_file": "scripts/html_gen/validation.py",
       "source_location": "L7",
       "id": "html_gen_validation_validate_completeness",
-      "community": 2,
+      "community": 3,
       "norm_label": "validate_completeness()"
     },
     {
@@ -387,7 +387,7 @@
       "source_file": "scripts/html_gen/validation.py",
       "source_location": "L31",
       "id": "html_gen_validation_validate_content_preservation",
-      "community": 2,
+      "community": 3,
       "norm_label": "validate_content_preservation()"
     },
     {
@@ -396,7 +396,7 @@
       "source_file": "scripts/html_gen/validation.py",
       "source_location": "L8",
       "id": "html_gen_validation_rationale_8",
-      "community": 2,
+      "community": 3,
       "norm_label": "validacao de completude: verifica se links e cards vazios foram preservados."
     },
     {
@@ -405,7 +405,7 @@
       "source_file": "scripts/html_gen/validation.py",
       "source_location": "L32",
       "id": "html_gen_validation_rationale_32",
-      "community": 2,
+      "community": 3,
       "norm_label": "regra absoluta: o html nao pode perder conteudo relevante do markdown.     faz v"
     },
     {
@@ -468,7 +468,7 @@
       "source_file": "scripts/html_gen/utils.py",
       "source_location": "L10",
       "id": "html_gen_utils_esc",
-      "community": 2,
+      "community": 0,
       "norm_label": "esc()"
     },
     {
@@ -477,7 +477,7 @@
       "source_file": "scripts/html_gen/utils.py",
       "source_location": "L14",
       "id": "html_gen_utils_safe_href",
-      "community": 2,
+      "community": 0,
       "norm_label": "safe_href()"
     },
     {
@@ -540,7 +540,7 @@
       "source_file": "scripts/html_gen/cli.py",
       "source_location": "L1",
       "id": "html_gen_cli_py",
-      "community": 2,
+      "community": 3,
       "norm_label": "cli.py"
     },
     {
@@ -549,7 +549,7 @@
       "source_file": "scripts/html_gen/cli.py",
       "source_location": "L21",
       "id": "html_gen_cli_append_generation_log",
-      "community": 2,
+      "community": 3,
       "norm_label": "append_generation_log()"
     },
     {
@@ -558,7 +558,7 @@
       "source_file": "scripts/html_gen/cli.py",
       "source_location": "L35",
       "id": "html_gen_cli_card_has_meaningful_content",
-      "community": 2,
+      "community": 3,
       "norm_label": "_card_has_meaningful_content()"
     },
     {
@@ -567,7 +567,7 @@
       "source_file": "scripts/html_gen/cli.py",
       "source_location": "L43",
       "id": "html_gen_cli_strip_removed_empty_headings",
-      "community": 2,
+      "community": 3,
       "norm_label": "_strip_removed_empty_headings()"
     },
     {
@@ -576,7 +576,7 @@
       "source_file": "scripts/html_gen/cli.py",
       "source_location": "L64",
       "id": "html_gen_cli_parse_args",
-      "community": 2,
+      "community": 3,
       "norm_label": "parse_args()"
     },
     {
@@ -585,7 +585,7 @@
       "source_file": "scripts/html_gen/cli.py",
       "source_location": "L95",
       "id": "html_gen_cli_generate_index_page",
-      "community": 2,
+      "community": 3,
       "norm_label": "generate_index_page()"
     },
     {
@@ -594,7 +594,7 @@
       "source_file": "scripts/html_gen/cli.py",
       "source_location": "L166",
       "id": "html_gen_cli_main",
-      "community": 2,
+      "community": 3,
       "norm_label": "main()"
     },
     {
@@ -603,7 +603,7 @@
       "source_file": "scripts/html_gen/cli.py",
       "source_location": "L22",
       "id": "html_gen_cli_rationale_22",
-      "community": 2,
+      "community": 3,
       "norm_label": "append generation metadata for one page to loggerador.md."
     },
     {
@@ -612,7 +612,7 @@
       "source_file": "scripts/html_gen/cli.py",
       "source_location": "L36",
       "id": "html_gen_cli_rationale_36",
-      "community": 2,
+      "community": 3,
       "norm_label": "return true when card has at least one non-empty content block."
     },
     {
@@ -621,7 +621,7 @@
       "source_file": "scripts/html_gen/cli.py",
       "source_location": "L44",
       "id": "html_gen_cli_rationale_44",
-      "community": 2,
+      "community": 3,
       "norm_label": "remove heading lines from markdown validation input when those sections were"
     },
     {
@@ -630,7 +630,7 @@
       "source_file": "scripts/html_gen/cli.py",
       "source_location": "L65",
       "id": "html_gen_cli_rationale_65",
-      "community": 2,
+      "community": 3,
       "norm_label": "parse command-line arguments for the html generator."
     },
     {
@@ -639,7 +639,7 @@
       "source_file": "scripts/html_gen/cli.py",
       "source_location": "L96",
       "id": "html_gen_cli_rationale_96",
-      "community": 2,
+      "community": 3,
       "norm_label": "generate landing page with index.template.html"
     },
     {
@@ -648,7 +648,7 @@
       "source_file": "scripts/html_gen/cli.py",
       "source_location": "L167",
       "id": "html_gen_cli_rationale_167",
-      "community": 2,
+      "community": 3,
       "norm_label": "main entry point: orchestrates parsing, rendering, and validation."
     },
     {
@@ -657,7 +657,7 @@
       "source_file": "scripts/html_gen/renderer.py",
       "source_location": "L1",
       "id": "html_gen_renderer_py",
-      "community": 2,
+      "community": 0,
       "norm_label": "renderer.py"
     },
     {
@@ -666,7 +666,7 @@
       "source_file": "scripts/html_gen/renderer.py",
       "source_location": "L12",
       "id": "html_gen_renderer_render_copilot_agent_cta",
-      "community": 2,
+      "community": 0,
       "norm_label": "render_copilot_agent_cta()"
     },
     {
@@ -675,7 +675,7 @@
       "source_file": "scripts/html_gen/renderer.py",
       "source_location": "L23",
       "id": "html_gen_renderer_inline_md",
-      "community": 2,
+      "community": 0,
       "norm_label": "inline_md()"
     },
     {
@@ -691,18 +691,18 @@
       "label": "render_menu_from_labels()",
       "file_type": "code",
       "source_file": "scripts/html_gen/renderer.py",
-      "source_location": "L170",
+      "source_location": "L173",
       "id": "html_gen_renderer_render_menu_from_labels",
-      "community": 2,
+      "community": 0,
       "norm_label": "render_menu_from_labels()"
     },
     {
       "label": "render_topics_accordion()",
       "file_type": "code",
       "source_file": "scripts/html_gen/renderer.py",
-      "source_location": "L198",
+      "source_location": "L201",
       "id": "html_gen_renderer_render_topics_accordion",
-      "community": 2,
+      "community": 0,
       "norm_label": "render_topics_accordion()"
     },
     {
@@ -711,7 +711,7 @@
       "source_file": "scripts/html_gen/renderer.py",
       "source_location": "L24",
       "id": "html_gen_renderer_rationale_24",
-      "community": 2,
+      "community": 0,
       "norm_label": "convert markdown inline formatting to html."
     },
     {
@@ -735,7 +735,7 @@
     {
       "label": "parser.py",
       "file_type": "code",
-      "source_file": "html_gen/parser.py",
+      "source_file": "scripts/html_gen/parser.py",
       "source_location": "L1",
       "id": "html_gen_parser_py",
       "community": 0,
@@ -744,7 +744,7 @@
     {
       "label": "strip_source_references()",
       "file_type": "code",
-      "source_file": "html_gen/parser.py",
+      "source_file": "scripts/html_gen/parser.py",
       "source_location": "L32",
       "id": "html_gen_parser_strip_source_references",
       "community": 0,
@@ -753,7 +753,7 @@
     {
       "label": "extract_h1_title()",
       "file_type": "code",
-      "source_file": "html_gen/parser.py",
+      "source_file": "scripts/html_gen/parser.py",
       "source_location": "L56",
       "id": "html_gen_parser_extract_h1_title",
       "community": 0,
@@ -762,7 +762,7 @@
     {
       "label": "parse_authors_line()",
       "file_type": "code",
-      "source_file": "html_gen/parser.py",
+      "source_file": "scripts/html_gen/parser.py",
       "source_location": "L66",
       "id": "html_gen_parser_parse_authors_line",
       "community": 0,
@@ -771,7 +771,7 @@
     {
       "label": "parse_agent_block()",
       "file_type": "code",
-      "source_file": "html_gen/parser.py",
+      "source_file": "scripts/html_gen/parser.py",
       "source_location": "L88",
       "id": "html_gen_parser_parse_agent_block",
       "community": 0,
@@ -780,7 +780,7 @@
     {
       "label": "split_key_value_item()",
       "file_type": "code",
-      "source_file": "html_gen/parser.py",
+      "source_file": "scripts/html_gen/parser.py",
       "source_location": "L174",
       "id": "html_gen_parser_split_key_value_item",
       "community": 0,
@@ -789,7 +789,7 @@
     {
       "label": "extract_agent_access_url()",
       "file_type": "code",
-      "source_file": "html_gen/parser.py",
+      "source_file": "scripts/html_gen/parser.py",
       "source_location": "L197",
       "id": "html_gen_parser_extract_agent_access_url",
       "community": 0,
@@ -798,16 +798,16 @@
     {
       "label": "render_copilot_agent_cta()",
       "file_type": "code",
-      "source_file": "html_gen/parser.py",
+      "source_file": "scripts/html_gen/parser.py",
       "source_location": "L221",
       "id": "html_gen_parser_render_copilot_agent_cta",
-      "community": 2,
+      "community": 0,
       "norm_label": "render_copilot_agent_cta()"
     },
     {
       "label": "derive_page_card_title()",
       "file_type": "code",
-      "source_file": "html_gen/parser.py",
+      "source_file": "scripts/html_gen/parser.py",
       "source_location": "L233",
       "id": "html_gen_parser_derive_page_card_title",
       "community": 0,
@@ -816,7 +816,7 @@
     {
       "label": "file_to_data_uri()",
       "file_type": "code",
-      "source_file": "html_gen/parser.py",
+      "source_file": "scripts/html_gen/parser.py",
       "source_location": "L288",
       "id": "html_gen_parser_file_to_data_uri",
       "community": 0,
@@ -825,7 +825,7 @@
     {
       "label": "parse_markdown()",
       "file_type": "code",
-      "source_file": "html_gen/parser.py",
+      "source_file": "scripts/html_gen/parser.py",
       "source_location": "L299",
       "id": "html_gen_parser_parse_markdown",
       "community": 0,
@@ -834,7 +834,7 @@
     {
       "label": "Parser module: Markdown \u2192 List[Card] conversion.  Core parsing logic for convert",
       "file_type": "rationale",
-      "source_file": "html_gen/parser.py",
+      "source_file": "scripts/html_gen/parser.py",
       "source_location": "L1",
       "id": "html_gen_parser_rationale_1",
       "community": 0,
@@ -843,7 +843,7 @@
     {
       "label": "Remove APENAS refer\u00eancias autom\u00e1ticas de ferramentas (SharePoint, Copilot Chat).",
       "file_type": "rationale",
-      "source_file": "html_gen/parser.py",
+      "source_file": "scripts/html_gen/parser.py",
       "source_location": "L33",
       "id": "html_gen_parser_rationale_33",
       "community": 0,
@@ -852,7 +852,7 @@
     {
       "label": "Extract the H1 title from markdown source.",
       "file_type": "rationale",
-      "source_file": "html_gen/parser.py",
+      "source_file": "scripts/html_gen/parser.py",
       "source_location": "L57",
       "id": "html_gen_parser_rationale_57",
       "community": 0,
@@ -861,7 +861,7 @@
     {
       "label": "Parse authors metadata line.      Example: \"Autores: Rodrigo Aquino e Paulo Lima",
       "file_type": "rationale",
-      "source_file": "html_gen/parser.py",
+      "source_file": "scripts/html_gen/parser.py",
       "source_location": "L67",
       "id": "html_gen_parser_rationale_67",
       "community": 0,
@@ -870,7 +870,7 @@
     {
       "label": "Parse agent block: description, pillars, and access link.      Returns: (html_bl",
       "file_type": "rationale",
-      "source_file": "html_gen/parser.py",
+      "source_file": "scripts/html_gen/parser.py",
       "source_location": "L89",
       "id": "html_gen_parser_rationale_89",
       "community": 0,
@@ -879,7 +879,7 @@
     {
       "label": "Split key-value item from markdown.      Acepta padr\u00f5es como:     - \u2696\ufe0f **Ativida",
       "file_type": "rationale",
-      "source_file": "html_gen/parser.py",
+      "source_file": "scripts/html_gen/parser.py",
       "source_location": "L175",
       "id": "html_gen_parser_rationale_175",
       "community": 0,
@@ -888,7 +888,7 @@
     {
       "label": "Extract agent access URL from paragraph text.      Matches:     - \"Acesse o agen",
       "file_type": "rationale",
-      "source_file": "html_gen/parser.py",
+      "source_file": "scripts/html_gen/parser.py",
       "source_location": "L198",
       "id": "html_gen_parser_rationale_198",
       "community": 0,
@@ -897,16 +897,16 @@
     {
       "label": "Render CTA (Call-to-Action) button for Copilot agent access.",
       "file_type": "rationale",
-      "source_file": "html_gen/parser.py",
+      "source_file": "scripts/html_gen/parser.py",
       "source_location": "L222",
       "id": "html_gen_parser_rationale_222",
-      "community": 2,
+      "community": 0,
       "norm_label": "render cta (call-to-action) button for copilot agent access."
     },
     {
       "label": "Derive card title from lines, prioritizing headings and bold text.      Used in",
       "file_type": "rationale",
-      "source_file": "html_gen/parser.py",
+      "source_file": "scripts/html_gen/parser.py",
       "source_location": "L234",
       "id": "html_gen_parser_rationale_234",
       "community": 0,
@@ -915,7 +915,7 @@
     {
       "label": "Convert image file to data URI for embedding.",
       "file_type": "rationale",
-      "source_file": "html_gen/parser.py",
+      "source_file": "scripts/html_gen/parser.py",
       "source_location": "L289",
       "id": "html_gen_parser_rationale_289",
       "community": 0,
@@ -924,7 +924,7 @@
     {
       "label": "MAIN PARSER: Convert markdown to List[Card].      This is the core parsing engin",
       "file_type": "rationale",
-      "source_file": "html_gen/parser.py",
+      "source_file": "scripts/html_gen/parser.py",
       "source_location": "L300",
       "id": "html_gen_parser_rationale_300",
       "community": 0,
@@ -940,11 +940,29 @@
       "norm_label": "constants.py"
     },
     {
+      "label": "_default_authors_meta_html()",
+      "file_type": "code",
+      "source_file": "html_gen/renderer.py",
+      "source_location": "L12",
+      "community": 0,
+      "norm_label": "_default_authors_meta_html()",
+      "id": "html_gen_renderer_default_authors_meta_html"
+    },
+    {
+      "label": "Convert markdown inline formatting to HTML.",
+      "file_type": "rationale",
+      "source_file": "html_gen/renderer.py",
+      "source_location": "L38",
+      "community": 0,
+      "norm_label": "convert markdown inline formatting to html.",
+      "id": "html_gen_renderer_rationale_38"
+    },
+    {
       "label": "Return True when card has at least one non-empty content block.",
       "file_type": "rationale",
       "source_file": "scripts/html_gen/cli.py",
       "source_location": "L17",
-      "community": 2,
+      "community": 3,
       "norm_label": "return true when card has at least one non-empty content block.",
       "id": "html_gen_cli_rationale_17"
     },
@@ -953,7 +971,7 @@
       "file_type": "rationale",
       "source_file": "scripts/html_gen/cli.py",
       "source_location": "L25",
-      "community": 2,
+      "community": 3,
       "norm_label": "remove heading lines from markdown validation input when those sections were",
       "id": "html_gen_cli_rationale_25"
     },
@@ -962,7 +980,7 @@
       "file_type": "rationale",
       "source_file": "scripts/html_gen/cli.py",
       "source_location": "L46",
-      "community": 2,
+      "community": 3,
       "norm_label": "parse command-line arguments for the html generator.",
       "id": "html_gen_cli_rationale_46"
     },
@@ -971,7 +989,7 @@
       "file_type": "rationale",
       "source_file": "scripts/html_gen/cli.py",
       "source_location": "L77",
-      "community": 2,
+      "community": 3,
       "norm_label": "generate landing page with index.template.html",
       "id": "html_gen_cli_rationale_77"
     },
@@ -980,7 +998,7 @@
       "file_type": "rationale",
       "source_file": "scripts/html_gen/cli.py",
       "source_location": "L148",
-      "community": 2,
+      "community": 3,
       "norm_label": "main entry point: orchestrates parsing, rendering, and validation.",
       "id": "html_gen_cli_rationale_148"
     },
@@ -1034,7 +1052,7 @@
       "file_type": "rationale",
       "source_file": "scripts/html_gen/cli.py",
       "source_location": "L48",
-      "community": 2,
+      "community": 3,
       "norm_label": "generate landing page with index.template.html",
       "id": "html_gen_cli_rationale_48"
     },
@@ -1043,7 +1061,7 @@
       "file_type": "rationale",
       "source_file": "scripts/html_gen/cli.py",
       "source_location": "L119",
-      "community": 2,
+      "community": 3,
       "norm_label": "main entry point: orchestrates parsing, rendering, and validation.",
       "id": "html_gen_cli_rationale_119"
     },
@@ -1079,7 +1097,7 @@
       "file_type": "rationale",
       "source_file": "scripts/html_gen/cli.py",
       "source_location": "L110",
-      "community": 2,
+      "community": 3,
       "norm_label": "main entry point: orchestrates parsing, rendering, and validation.",
       "id": "html_gen_cli_rationale_110"
     },
@@ -1106,7 +1124,7 @@
       "file_type": "rationale",
       "source_file": "scripts/html_gen/cli.py",
       "source_location": "L53",
-      "community": 2,
+      "community": 3,
       "norm_label": "generate landing page with index.template.html",
       "id": "html_gen_cli_rationale_53"
     },
@@ -1115,7 +1133,7 @@
       "file_type": "rationale",
       "source_file": "scripts/html_gen/cli.py",
       "source_location": "L115",
-      "community": 2,
+      "community": 3,
       "norm_label": "main entry point: orchestrates parsing, rendering, and validation.",
       "id": "html_gen_cli_rationale_115"
     },
@@ -1754,7 +1772,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L1",
-      "community": 3,
+      "community": 2,
       "norm_label": "build_topico.py",
       "id": "home_pl_projetos_aulas_tribunal_do_juri_scripts_build_topico_py"
     },
@@ -1763,7 +1781,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L62",
-      "community": 3,
+      "community": 2,
       "norm_label": "card",
       "id": "scripts_build_topico_card"
     },
@@ -1772,7 +1790,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L68",
-      "community": 3,
+      "community": 2,
       "norm_label": "parse_args()",
       "id": "scripts_build_topico_parse_args"
     },
@@ -1781,7 +1799,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L103",
-      "community": 3,
+      "community": 2,
       "norm_label": "esc()",
       "id": "scripts_build_topico_esc"
     },
@@ -1790,7 +1808,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L107",
-      "community": 3,
+      "community": 2,
       "norm_label": "inline_md()",
       "id": "scripts_build_topico_inline_md"
     },
@@ -1799,7 +1817,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L116",
-      "community": 3,
+      "community": 2,
       "norm_label": "strip_source_references()",
       "id": "scripts_build_topico_strip_source_references"
     },
@@ -1808,7 +1826,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L142",
-      "community": 3,
+      "community": 2,
       "norm_label": "extract_h1_title()",
       "id": "scripts_build_topico_extract_h1_title"
     },
@@ -1817,7 +1835,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L151",
-      "community": 3,
+      "community": 2,
       "norm_label": "parse_authors_line()",
       "id": "scripts_build_topico_parse_authors_line"
     },
@@ -1826,7 +1844,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L168",
-      "community": 3,
+      "community": 2,
       "norm_label": "split_key_value_item()",
       "id": "scripts_build_topico_split_key_value_item"
     },
@@ -1835,7 +1853,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L187",
-      "community": 3,
+      "community": 2,
       "norm_label": "classify_critical_paragraph()",
       "id": "scripts_build_topico_classify_critical_paragraph"
     },
@@ -1844,7 +1862,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L212",
-      "community": 3,
+      "community": 2,
       "norm_label": "is_strategic_paragraph()",
       "id": "scripts_build_topico_is_strategic_paragraph"
     },
@@ -1853,7 +1871,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L230",
-      "community": 3,
+      "community": 2,
       "norm_label": "clean_md_title()",
       "id": "scripts_build_topico_clean_md_title"
     },
@@ -1862,7 +1880,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L242",
-      "community": 3,
+      "community": 2,
       "norm_label": "strip_leading_number()",
       "id": "scripts_build_topico_strip_leading_number"
     },
@@ -1871,7 +1889,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L248",
-      "community": 3,
+      "community": 2,
       "norm_label": "is_page_marker_line()",
       "id": "scripts_build_topico_is_page_marker_line"
     },
@@ -1880,7 +1898,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L265",
-      "community": 3,
+      "community": 2,
       "norm_label": "is_page_comment_line()",
       "id": "scripts_build_topico_is_page_comment_line"
     },
@@ -1889,7 +1907,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L275",
-      "community": 3,
+      "community": 2,
       "norm_label": "is_separator_line()",
       "id": "scripts_build_topico_is_separator_line"
     },
@@ -1898,7 +1916,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L280",
-      "community": 3,
+      "community": 2,
       "norm_label": "is_ocr_comment_line()",
       "id": "scripts_build_topico_is_ocr_comment_line"
     },
@@ -1907,7 +1925,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L285",
-      "community": 3,
+      "community": 2,
       "norm_label": "derive_page_card_title()",
       "id": "scripts_build_topico_derive_page_card_title"
     },
@@ -1916,7 +1934,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L335",
-      "community": 3,
+      "community": 2,
       "norm_label": "pick_icon()",
       "id": "scripts_build_topico_pick_icon"
     },
@@ -1925,7 +1943,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L343",
-      "community": 3,
+      "community": 2,
       "norm_label": "pick_item_icon()",
       "id": "scripts_build_topico_pick_item_icon"
     },
@@ -1934,7 +1952,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L363",
-      "community": 3,
+      "community": 2,
       "norm_label": "assign_unique_icons()",
       "id": "scripts_build_topico_assign_unique_icons"
     },
@@ -1943,7 +1961,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L377",
-      "community": 3,
+      "community": 2,
       "norm_label": "file_to_data_uri()",
       "id": "scripts_build_topico_file_to_data_uri"
     },
@@ -1952,7 +1970,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L384",
-      "community": 3,
+      "community": 2,
       "norm_label": "parse_markdown()",
       "id": "scripts_build_topico_parse_markdown"
     },
@@ -1961,7 +1979,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L770",
-      "community": 3,
+      "community": 2,
       "norm_label": "render_cards()",
       "id": "scripts_build_topico_render_cards"
     },
@@ -1970,7 +1988,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L809",
-      "community": 3,
+      "community": 2,
       "norm_label": "parse_menu_md()",
       "id": "scripts_build_topico_parse_menu_md"
     },
@@ -1979,7 +1997,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L834",
-      "community": 3,
+      "community": 2,
       "norm_label": "render_menu_from_labels()",
       "id": "scripts_build_topico_render_menu_from_labels"
     },
@@ -1988,7 +2006,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L851",
-      "community": 3,
+      "community": 2,
       "norm_label": "render_topics_menu()",
       "id": "scripts_build_topico_render_topics_menu"
     },
@@ -1997,7 +2015,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L894",
-      "community": 3,
+      "community": 2,
       "norm_label": "replace_between()",
       "id": "scripts_build_topico_replace_between"
     },
@@ -2006,7 +2024,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L903",
-      "community": 3,
+      "community": 2,
       "norm_label": "normalize_data_uri()",
       "id": "scripts_build_topico_normalize_data_uri"
     },
@@ -2015,7 +2033,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L910",
-      "community": 3,
+      "community": 2,
       "norm_label": "apply_global_page_rules()",
       "id": "scripts_build_topico_apply_global_page_rules"
     },
@@ -2024,7 +2042,7 @@
       "file_type": "code",
       "source_file": "scripts/gera_html.py",
       "source_location": "L960",
-      "community": 3,
+      "community": 2,
       "norm_label": "main()",
       "id": "scripts_build_topico_main"
     },
@@ -2033,7 +2051,7 @@
       "file_type": "code",
       "source_file": "build_topico.py",
       "source_location": "L1",
-      "community": 3,
+      "community": 2,
       "norm_label": "build_topico.py",
       "id": "build_topico_py"
     }
@@ -4222,6 +4240,16 @@
       "target": "html_gen_renderer_render_topics_accordion"
     },
     {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/renderer.py",
+      "source_location": "L12",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_renderer_py",
+      "target": "html_gen_renderer_default_authors_meta_html"
+    },
+    {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
@@ -4241,6 +4269,27 @@
       "confidence_score": 1.0,
       "source": "html_gen_renderer_rationale_24",
       "target": "html_gen_renderer_inline_md"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/renderer.py",
+      "source_location": "L38",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_renderer_rationale_38",
+      "target": "html_gen_renderer_inline_md"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "html_gen/renderer.py",
+      "source_location": "L69",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "html_gen_renderer_render_cards",
+      "target": "html_gen_renderer_default_authors_meta_html"
     },
     {
       "relation": "calls",
@@ -6993,5 +7042,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "8b31cfee9d9355bfa715f6d7e7a61ca3e2f978a0"
+  "built_at_commit": "8f770c2fa795a25a8f380b4643552b2fa4e7770f"
 }

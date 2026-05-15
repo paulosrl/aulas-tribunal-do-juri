@@ -829,13 +829,12 @@ def parse_markdown(markdown: str, md_dir: Path, section_mode: str = "semantic") 
                 "  <div class=\"authors-org\">Comitê de Governança da Inovação e Inteligência Artificial - CIIA</div>\n"
                 "  <div class=\"authors-org\">Grupo de Atuação Especial do Júri – GAEJÚRI</div>\n"
             )
-            date_html = '  <div class="authors-date">Inteligência Artificial Aplicada ao Tribunal do Júri - 14 e 15 de maio de 2025</div>\n'
+            date_html = '    <div class="authors-date">Inteligência Artificial Aplicada ao Tribunal do Júri - 14 e 15 de maio de 2025</div>'
             current.blocks.append(
                 '<div class="authors-meta">\n'
                 f"{org_html}"
-                f"{date_html}"
-                '  <div class="authors-note-row">\n'
-                '    <div class="authors-note">Material produzido com apoio de ferramentas de IA por:</div>\n'
+                '  <div class="authors-date-row">\n'
+                f"{date_html}\n"
                 f'    <div class="authors-badges">{"".join(author_badges)}</div>\n'
                 "  </div>\n"
                 "</div>"

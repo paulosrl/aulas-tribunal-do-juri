@@ -15,9 +15,8 @@ def _default_authors_meta_html() -> str:
         '  <div class="authors-org authors-org-first">Ministério Público do Estado do Pará - MPPA</div>\n'
         '  <div class="authors-org">Comitê de Governança da Inovação e Inteligência Artificial - CIIA</div>\n'
         '  <div class="authors-org">Grupo de Atuação Especial do Júri – GAEJÚRI</div>\n'
-        '  <div class="authors-date">Inteligência Artificial Aplicada ao Tribunal do Júri - 14 e 15 de maio de 2025</div>\n'
-        '  <div class="authors-note-row">\n'
-        '    <div class="authors-note">Material produzido com apoio de ferramentas de IA por:</div>\n'
+        '  <div class="authors-date-row">\n'
+        '    <div class="authors-date">Inteligência Artificial Aplicada ao Tribunal do Júri - 14 e 15 de maio de 2025</div>\n'
         '    <div class="authors-badges"><span class="author-badge"><span class="author-icon"><i class="fas fa-user-tie"></i></span> Rodrigo Aquino</span><span class="author-badge"><span class="author-icon"><i class="fas fa-user-tie"></i></span> Paulo Lima</span></div>\n'
         "  </div>\n"
         "</div>"
